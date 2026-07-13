@@ -2527,7 +2527,7 @@ The generative pipeline's narrative counterpart. Where the forge generates raw m
 | 4. Review & Contradiction | Adversarial error check | 7 checks: timeline, geography, NPC knowledge, lorebook, player knowledge, mechanical, emotional coherence. Etiology stress test ("who built this room and why?"). Spoiler audit: SAFE/GATED/CLASSIFIED. Content-forge crosscheck. | All 7 pass, etiology airtight |
 | 5. Output & Filing | Final review + return | Re-read all written files. Confirm no thinking-block notes leaked, all secrets gated, FINGERPRINT immutable. Return "Done." | Clean return |
 
-**Standard outputs:** Location prep files (THYRICOST_PREP.md), arc design documents (ARAMANTHUS_ARC_DESIGN.md), truth files, antagonist dossiers, cultivation updates, lorebook entries, resonance additions, world progress entries.
+**Standard outputs:** Location prep files (`<PLACE>_PREP.md`), arc design documents (`<ANTAGONIST>_ARC_DESIGN.md`), truth files, antagonist dossiers, cultivation updates, lorebook entries, resonance additions, world progress entries.
 
 **Named failure mode:** The Amaranthine Archive — anemic prep, invented history, logical gaps requiring retroactive player repair. Referenced 3 times in the methodology as the anti-pattern. Every check exists to prevent recurrence.
 
@@ -2839,7 +2839,7 @@ The root cause of "maps never just worked": two prep parsers disagreed on the ro
 - **Canonical = h2 `## ROOM:`.** `_load_prep_file`'s room regex was aligned to `map_system`'s exact pattern; the two now parse the same rooms (asserted by test). `validate_prep_file` cross-checks the walkable parser, so "valid" ⟺ "walkable." The `### SECRET:` spoiler-section mechanism is separate and unchanged.
 - **content-forge** (`content-forge/SKILL.md`) documents that canonical format exactly, with no stale tool references (the deleted `location_init`/`map_init`/`location_*`/`map_*` calls were replaced by the consolidated `map(action=…)`/`geography(action=…)`), mandatory overworld registration via `geography(add_location, …, known=<by type>)`, and `**Entrance:**`.
 - **dm-design** gains a spatial-consistency gate (runs `validate_consistency`, confirms walkable rooms + registration), scoped to issues the *design introduced* (pre-existing data debt does not block).
-- **Curated backfill** (the 6 active/near-future preps): KALAXIS, THYRICOST, OUTER_REACH, CHROMATIC_WOUND_RETURN, CHRYSALIS_TIER all walkable (every room reachable from a marked entrance); CERULINE_ARCOLOGY registered as its overworld node (interior authoring is downstream content).
+- **Curated backfill** (the active/near-future preps at the time): all walkable (every room reachable from a marked entrance); one overworld-only site registered as its node (interior authoring is downstream content).
 
 ### Rendering / Surfacing (Phase 5)
 
