@@ -9,7 +9,7 @@ import pytest
 class TestExtractPronouns:
     def test_parens_format(self):
         from scripts.audit_lorebook import extract_pronouns
-        assert extract_pronouns("Saphora (she/her). Cacogen mechanic.") == "she/her"
+        assert extract_pronouns("Harlow (she/her). Cacogen mechanic.") == "she/her"
 
     def test_compound_parens(self):
         from scripts.audit_lorebook import extract_pronouns
@@ -36,7 +36,7 @@ class TestExtractPronouns:
 
     def test_no_pronouns_found(self):
         from scripts.audit_lorebook import extract_pronouns
-        assert extract_pronouns("Petname: Creenash → Vela.") is None
+        assert extract_pronouns("Petname: Brek → Mira.") is None
 
     def test_only_searches_first_200_chars(self):
         from scripts.audit_lorebook import extract_pronouns
@@ -47,7 +47,7 @@ class TestExtractPronouns:
 class TestExtractSpecies:
     def test_known_species(self):
         from scripts.audit_lorebook import extract_species
-        assert extract_species("Saphora (she/her). Cacogen mechanic.") == "cacogen"
+        assert extract_species("Harlow (she/her). Cacogen mechanic.") == "cacogen"
 
     def test_true_kin(self):
         from scripts.audit_lorebook import extract_species
@@ -59,7 +59,7 @@ class TestExtractSpecies:
 
     def test_neobloom(self):
         from scripts.audit_lorebook import extract_species
-        assert extract_species("Creenash. Neobloom, photosynthesizes.") == "neobloom"
+        assert extract_species("Brek. Neobloom, photosynthesizes.") == "neobloom"
 
     def test_synthesis_being(self):
         from scripts.audit_lorebook import extract_species
@@ -67,7 +67,7 @@ class TestExtractSpecies:
 
     def test_no_species_found(self):
         from scripts.audit_lorebook import extract_species
-        assert extract_species("Petname: Creenash → Vela.") is None
+        assert extract_species("Petname: Brek → Mira.") is None
 
     def test_only_searches_first_200_chars(self):
         from scripts.audit_lorebook import extract_species
@@ -103,17 +103,17 @@ class TestGenerateShortContext:
 SAMPLE_LOREBOOK = {
     "meta": {"version": 2, "last_updated": "2026-03-08", "description": "test", "schema_notes": "v2"},
     "entries": [
-        {"keywords": ["saphora"], "category": "people", "status": "CANONICAL",
-         "context": "Saphora (she/her). Cacogen mechanic, Arthropoda Sapiens. Chosen sister. " * 8,
+        {"keywords": ["harlow"], "category": "people", "status": "CANONICAL",
+         "context": "Harlow (she/her). Cacogen mechanic, Arthropoda Sapiens. Chosen sister. " * 8,
          "short_context": "Existing short context."},
-        {"keywords": ["mneme"], "category": "people", "status": "ESTABLISHED",
-         "context": "Mneme. Pre-Collapse consciousness. Pronouns: she/her. Woke Day 103. " * 8,
+        {"keywords": ["echoe"], "category": "people", "status": "ESTABLISHED",
+         "context": "Echoe. Pre-Collapse consciousness. Pronouns: she/her. Woke Day 103. " * 8,
          "short_context": ""},
         {"keywords": ["terrace garden"], "category": "places", "status": "ESTABLISHED",
          "context": "The Terrace Garden spans three tiers. " * 20,
          "short_context": ""},
         {"keywords": ["stupid"], "category": "continuity", "status": "ESTABLISHED",
-         "context": "Running joke between Creenash and Vela.", "short_context": ""},
+         "context": "Running joke between Brek and Mira.", "short_context": ""},
     ]
 }
 
@@ -137,24 +137,24 @@ class TestAuditLorebook:
 
     def test_adds_pronouns_to_people(self):
         stats, data, _ = self._run_audit()
-        saphora = data["entries"][0]
-        assert saphora["pronouns"] == "she/her"
+        harlow = data["entries"][0]
+        assert harlow["pronouns"] == "she/her"
 
     def test_adds_species_to_people(self):
         stats, data, _ = self._run_audit()
-        saphora = data["entries"][0]
-        assert saphora["species"] == "arthropoda sapiens"
+        harlow = data["entries"][0]
+        assert harlow["species"] == "arthropoda sapiens"
 
     def test_generates_missing_short_context(self):
         stats, data, _ = self._run_audit()
-        mneme = data["entries"][1]
-        assert mneme["short_context"]
-        assert len(mneme["short_context"]) <= 450
+        echoe = data["entries"][1]
+        assert echoe["short_context"]
+        assert len(echoe["short_context"]) <= 450
 
     def test_preserves_existing_short_context(self):
         stats, data, _ = self._run_audit()
-        saphora = data["entries"][0]
-        assert saphora["short_context"] == "Existing short context."
+        harlow = data["entries"][0]
+        assert harlow["short_context"] == "Existing short context."
 
     def test_no_identity_fields_on_non_people(self):
         stats, data, _ = self._run_audit()
@@ -171,7 +171,7 @@ class TestAuditLorebook:
         assert (tmp / "lorebook.json.bak").exists()
 
     def test_generates_report(self):
-        freq = {"saphora": 5, "mneme": 1}
+        freq = {"harlow": 5, "echoe": 1}
         stats, _, tmp = self._run_audit(frequency_data=freq, report=True)
         report = (tmp / "report.md").read_text()
         assert "High-Traffic Entries" in report
@@ -193,5 +193,5 @@ class TestAuditLorebook:
     def test_short_entries_untouched(self):
         stats, data, _ = self._run_audit()
         stupid = data["entries"][3]
-        assert stupid["context"] == "Running joke between Creenash and Vela."
+        assert stupid["context"] == "Running joke between Brek and Mira."
         assert stupid["short_context"] == ""
