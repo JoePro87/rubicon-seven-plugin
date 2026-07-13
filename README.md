@@ -239,6 +239,17 @@ The DM calls the engine's tools itself as the story needs them:
 - `map(action="render", map_name="ruined_vault")` - Display vault map
 - `search(action="tiered", query="...", tier=1)` - Search campaign history
 
+### World-Building (the content-forge skill)
+
+When you ask the DM to **generate, create, prep, or build** any place — a single room, a
+vault, a settlement, a whole hexcrawl region — it invokes the bundled `content-forge`
+skill automatically. The forge checks existing canon first (lorebook, geography, campaign
+history), rolls on the real book tables via the dice tools, and produces a DM-only prep
+document with secrets you won't see as a player. You never call it directly; just say
+what you want to exist ("build out the ruined arcology to the north") and play on. Heads
+up: forging a large region is the engine's heaviest job — expect it to take noticeably
+longer than a normal play turn.
+
 ### Ending a Session
 
 ```
