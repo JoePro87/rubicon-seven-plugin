@@ -51,9 +51,13 @@ claude
 **2. Add the marketplace and install the plugin** (run these inside Claude Code):
 
 ```
-/plugin marketplace add JoePro87/rubicon-seven-plugin
+/plugin marketplace add https://github.com/JoePro87/rubicon-seven-plugin.git
 /plugin install rubicon-seven@rubicon-seven
 ```
+
+> Use the full `https://` URL exactly as written. The short `owner/repo` form makes the
+> download run over SSH, which fails with `Permission denied (publickey)` unless you have
+> SSH keys set up with GitHub — the https form works with a normal `gh auth login`.
 
 This makes the `/vaarn-start` onboarding skill (and the engine hooks) available.
 
