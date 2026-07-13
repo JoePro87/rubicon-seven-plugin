@@ -3,7 +3,6 @@
     "description": "Generic transport mode speeds, capacities, and requirements for travel-time estimation. A campaign may override or extend these: if TRANSPORT_SPEEDS.json exists in the campaign directory, its transport_modes and stamina_requirements entries are merged over this file (campaign wins per entry).",
     "notes": "Use for calculating unknown routes. Always defer to canonical route times when available."
   },
-
   "transport_modes": {
     "foot": {
       "name": "Walking/Marching",
@@ -11,134 +10,145 @@
       "daily_range_miles": 20,
       "sustained_hours": 8,
       "applies_terrain_modifier": "foot_modifier",
-
       "capacity": {
         "passengers": 0,
         "cargo_slots": 30
       },
-
       "requirements": {
         "vehicles": [],
-        "operators": ["any"],
-        "special": ["rest_8_hours_per_day"]
+        "operators": [
+          "any"
+        ],
+        "special": [
+          "rest_8_hours_per_day"
+        ]
       },
-
       "safety": "safe",
       "notes": "Base human/humanoid travel speed. A party typically travels as a group at this pace."
     },
-
     "burden_lizard_caravan": {
       "name": "Burden Lizard Caravan",
       "base_speed_mph": 2.0,
       "daily_range_miles": 16,
       "sustained_hours": 8,
       "applies_terrain_modifier": "foot_modifier",
-
       "capacity": {
         "passengers": 6,
         "cargo_slots": 200
       },
-
       "requirements": {
-        "vehicles": ["burden_lizards", "tack_and_supplies"],
-        "operators": ["any_with_animal_handling"],
-        "special": ["lizard_food", "water_supply"]
+        "vehicles": [
+          "burden_lizards",
+          "tack_and_supplies"
+        ],
+        "operators": [
+          "any_with_animal_handling"
+        ],
+        "special": [
+          "lizard_food",
+          "water_supply"
+        ]
       },
-
       "safety": "safe",
       "notes": "Slower than foot but carries massive cargo. Traditional Vaarn transport."
     },
-
     "cargo_crawler": {
       "name": "Cargo Crawler (Pre-Collapse Vehicle)",
       "base_speed_mph": 25,
       "daily_range_miles": 200,
       "sustained_hours": 24,
       "applies_terrain_modifier": "vehicle_modifier",
-
       "capacity": {
         "passengers": 4,
         "cargo_slots": 150
       },
-
       "requirements": {
-        "vehicles": ["cargo_crawler"],
-        "operators": ["any_with_vehicle_operation"],
-        "special": ["fuel", "maintenance"]
+        "vehicles": [
+          "cargo_crawler"
+        ],
+        "operators": [
+          "any_with_vehicle_operation"
+        ],
+        "special": [
+          "fuel",
+          "maintenance"
+        ]
       },
-
       "vehicle_stats": {
         "hull": 12,
         "av": 14,
         "speed": 6,
         "item_slots": 150
       },
-
       "safety": "safe",
       "notes": "Reliable but slow. Good for supply runs."
     },
-
     "hoverbike": {
       "name": "Hoverbike (Pre-Collapse)",
       "base_speed_mph": 60,
       "daily_range_miles": 480,
       "sustained_hours": 24,
       "applies_terrain_modifier": "vehicle_modifier",
-
       "capacity": {
         "passengers": 1,
         "cargo_slots": 10
       },
-
       "requirements": {
-        "vehicles": ["hoverbike"],
-        "operators": ["any_with_vehicle_operation"],
-        "special": ["sky_seeking_stone_charged"]
+        "vehicles": [
+          "hoverbike"
+        ],
+        "operators": [
+          "any_with_vehicle_operation"
+        ],
+        "special": [
+          "sky_seeking_stone_charged"
+        ]
       },
-
       "vehicle_stats": {
         "hull": 5,
         "av": 12,
         "speed": 8,
         "item_slots": 10
       },
-
       "safety": "safe_with_helmet",
       "notes": "Fast personal transport. Speed +8 means wear helmets."
     },
-
     "ornithopter": {
       "name": "Ornithopter (Titan Aircraft)",
       "base_speed_mph": 120,
       "daily_range_miles": 960,
       "sustained_hours": 24,
       "applies_terrain_modifier": null,
-
       "capacity": {
         "passengers": 6,
         "cargo_slots": 70
       },
-
       "requirements": {
-        "vehicles": ["ornithopter"],
-        "operators": ["trained_pilot"],
-        "special": ["fuel", "maintenance"]
+        "vehicles": [
+          "ornithopter"
+        ],
+        "operators": [
+          "trained_pilot"
+        ],
+        "special": [
+          "fuel",
+          "maintenance"
+        ]
       },
-
       "vehicle_stats": {
         "hull": 7,
         "av": 18,
         "speed": 12,
         "item_slots": 70,
-        "weapons": ["laser_lance_3d6"]
+        "weapons": [
+          "laser_lance_3d6"
+        ]
       },
-
       "safety": "safe",
       "terrain_notes": "Ignores terrain modifiers - aerial travel",
       "notes": "Fastest reliable transport when one can be found and fueled."
     }
   },
-
   "time_conversion": {
     "bells_per_day": 24,
     "hours_per_bell": 1,
@@ -147,5 +157,6 @@
     "bell_12": "12 PM (noon)",
     "bell_20": "8 PM (dusk)",
     "notes": "Bell system corresponds directly to hours. Bell 1 = 1 AM, Bell 24 = Midnight"
-  }
+  },
+  "attribution": "Setting content derived from Vaults of Vaarn, created by Leo Hunt (graculusdroog.itch.io), used under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/. Unofficial fan tool; not endorsed by Leo Hunt. See data/rules/README.md and the repo NOTICE."
 }

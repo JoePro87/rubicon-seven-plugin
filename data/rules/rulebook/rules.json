@@ -2178,5 +2178,6 @@
       "rule": "Weapon tags modify attacks. TYPE-DOUBLING tags (double damage vs a creature type): Anti-Paradoxical->Outsider; Eroding->Mineral/vehicles/structures; Hypergeometric->Hypergeometric; Electrical->Synthetic/metal-armoured/submerged; Psyche-Suppressant->Psychic (and wielder cannot use Mystic Gifts). AV-CONDITIONAL: Mauling (+1 die vs AV<=13, half vs AV>=16); Piercing (+1 die vs AV>=16, half vs AV<=13); Vibroactive (hits as though target unarmoured). DAMAGE-BOOST: Heavy/Strong (double base dmg), Colossal (triple), Nano-edged (+2 dice), Autarch's (+4 dice). AV/DEFENCE: Corrosive/Ultra-Corrosive (degrade AV), Aegis-Bearing (+5 AV), Reflecting (missed attacks hit attacker). BIOLOGICAL-ONLY: Vampiric/Blood-Rapturous (heal from kills), Necrotic (d6 STR), Neurotoxic (CON save vs death). STATUS: Agonising, Entangling, Concussive, Blinding, Freezing, Lithifying, Annihilating. Exotic: Extra-Dimensional (= Hypergeometric + Anti-Paradoxical), Hard Light (0 slots), Psionic (PSY to-hit), Stim-Boosting (+1 action), Heat-Seeking, Indestructible, Polymorphic, Rocket Boosted, Parasitic, Unstable. Full text: docs/CRIMSON_HOUND_DAMAGE_RULES_VERIFIED.md.",
       "source": "Crimson Hound (printed) - VERIFIED 2026-06-07"
     }
-  ]
+  ],
+  "attribution": "Setting content derived from Vaults of Vaarn, created by Leo Hunt (graculusdroog.itch.io), used under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/. Unofficial fan tool; not endorsed by Leo Hunt. See data/rules/README.md and the repo NOTICE."
 }

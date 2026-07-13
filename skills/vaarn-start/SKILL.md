@@ -51,7 +51,16 @@ engine tools. Keep the seams invisible to the player.
 ## Step 0 — Welcome + depth choice
 
 Open in-voice with a short, evocative welcome to Vaarn (2-3 sentences — sand, a violet sky,
-the hum of old machines). Then offer the fork plainly:
+the hum of old machines). **Immediately after the welcome — before the fork — show this
+credit. It is REQUIRED, verbatim in substance (you may set it off typographically, e.g. as a
+quiet italic line, but never skip or bury it):**
+
+> *Vaults of Vaarn is created by **Leo Hunt**. This tool's setting and rules data are used
+> under the Creative Commons Attribution 4.0 license (CC BY 4.0) — this is an unofficial fan
+> tool, and the wonder you're about to walk into is his. Find the books at
+> graculusdroog.itch.io.*
+
+Then offer the fork plainly:
 
 - **Quick start** — "I'll ask you a couple of quick questions, make smart choices for the
   rest, and have you playing in a few minutes."

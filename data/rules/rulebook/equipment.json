@@ -31,7 +31,7 @@
           }
         ]
       },
-      "description": "Rugged wheeled synthetic conveyance. Drives itself, obeys simple instructions. Difficult to steal \u2014 will not accept a new master until the old has died.",
+      "description": "Rugged wheeled synthetic conveyance. Drives itself, obeys simple instructions. Difficult to steal — will not accept a new master until the old has died.",
       "lore_refs": [],
       "source": "Crimson Hound printed p.73 (verified 2026-06-07 audit remediation)"
     },
@@ -467,9 +467,10 @@
           "Unarmed by ancient custom. Crew typically includes 2d6 Level 2 guards."
         ]
       },
-      "description": "Wooden cargo ship built around a large sky-seeking stone. Used by Vaarnish merchant guilds. Ornate or utilitarian, never armed \u2014 guards travel onboard.",
+      "description": "Wooden cargo ship built around a large sky-seeking stone. Used by Vaarnish merchant guilds. Ornate or utilitarian, never armed — guards travel onboard.",
       "lore_refs": [],
       "source": "Crimson Hound printed p.76 (verified 2026-06-07 audit remediation)"
     }
-  ]
+  ],
+  "attribution": "Setting content derived from Vaults of Vaarn, created by Leo Hunt (graculusdroog.itch.io), used under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/. Unofficial fan tool; not endorsed by Leo Hunt. See data/rules/README.md and the repo NOTICE."
 }

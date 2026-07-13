@@ -1,10 +1,64 @@
 {
   "_comment": "Fallback creature-type resistances (Vaarn 2e / Crimson Hound). Used ONLY when a bestiary entry has no explicit stats.resistances. Damage-type vocabulary is canonical (see _normalize_damage_type).",
-  "Biological":     { "immune": [], "double": [], "half": [] },
-  "Synthetic":      { "immune": ["suffocation", "poison", "radiation", "fungal_spores"], "double": ["electrical"], "half": [] },
-  "Psychic":        { "immune": [], "double": [], "half": [] },
-  "Fungal":         { "immune": [], "double": ["fire", "fungicide"], "half": ["kinetic"] },
-  "Mineral":        { "immune": ["fire", "cold", "poison", "radiation", "electrical", "fungal_spores", "suffocation"], "double": ["bludgeoning"], "half": [] },
-  "Hypergeometric": { "immune": [], "double": ["hypergeometric"], "half": [] },
-  "Outsider":       { "varies": true, "immune": [], "double": [], "half": [] }
+  "Biological": {
+    "immune": [],
+    "double": [],
+    "half": []
+  },
+  "Synthetic": {
+    "immune": [
+      "suffocation",
+      "poison",
+      "radiation",
+      "fungal_spores"
+    ],
+    "double": [
+      "electrical"
+    ],
+    "half": []
+  },
+  "Psychic": {
+    "immune": [],
+    "double": [],
+    "half": []
+  },
+  "Fungal": {
+    "immune": [],
+    "double": [
+      "fire",
+      "fungicide"
+    ],
+    "half": [
+      "kinetic"
+    ]
+  },
+  "Mineral": {
+    "immune": [
+      "fire",
+      "cold",
+      "poison",
+      "radiation",
+      "electrical",
+      "fungal_spores",
+      "suffocation"
+    ],
+    "double": [
+      "bludgeoning"
+    ],
+    "half": []
+  },
+  "Hypergeometric": {
+    "immune": [],
+    "double": [
+      "hypergeometric"
+    ],
+    "half": []
+  },
+  "Outsider": {
+    "varies": true,
+    "immune": [],
+    "double": [],
+    "half": []
+  },
+  "attribution": "Setting content derived from Vaults of Vaarn, created by Leo Hunt (graculusdroog.itch.io), used under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/. Unofficial fan tool; not endorsed by Leo Hunt. See data/rules/README.md and the repo NOTICE."
 }
