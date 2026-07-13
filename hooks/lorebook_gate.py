@@ -27,16 +27,21 @@ from rubicon_paths import campaign_dir as _campaign_dir
 CAMPAIGN_DIR = _campaign_dir()
 LOREBOOK_PATH = CAMPAIGN_DIR / "lorebook.json"
 
+# Campaign-side gate-words file: per-campaign exclude/augment vocabulary, the
+# home for a campaign's own trip-wire words and personal-roster belt-and-
+# suspenders excludes. Same fail-open pattern as fabrication_tripwires.json.
+GATE_WORDS_FILENAME = "lorebook_gate_words.json"
+GATE_WORDS_PATH = CAMPAIGN_DIR / GATE_WORDS_FILENAME
+
 # Minimum keyword length — shorter keywords are too noisy
 MIN_KEYWORD_LEN = 5
 
 # Keywords excluded from the gate even if present in lorebook:
-#  - party characters (covered by VOICE.md / NPC discipline already)
+#  - party members are excluded via the LIVE roster (hook_utils.load_party_names),
+#    applied per-call in extract_triggers — never hardcoded here
+#  - campaign-specific excludes come from the campaign-side gate-words file
 #  - high-frequency English words that happen to appear in lorebook keyword lists
-EXCLUDE_KEYWORDS = {
-    # Party
-    "creenash", "vela", "kess", "bugsie", "saphora", "roscar", "petros",
-    "aramanthus", "mnemosyne",
+ENGINE_EXCLUDE_KEYWORDS = {
     # Common English / generic relational terms
     "wife", "husband", "spouse", "married", "love", "mother", "father",
     "daughter", "son", "sister", "brother", "friend", "child", "children",
@@ -55,31 +60,52 @@ EXCLUDE_KEYWORDS = {
 
 # Always-trigger augment list — high-risk terms not always present in lorebook keywords
 # but explicitly named as tripwires in CLAUDE.md / VOICE.md / failure history.
-# Edit when new tripwires emerge.
-AUGMENT_KEYWORDS = frozenset({
+# Book/generic vocabulary only (verified against the engine's shipped rules data
+# 2026-07-13) — campaign-specific tripwires live in the campaign-side gate-words
+# file (GATE_WORDS_PATH) so playtesters get a home for their own.
+# Edit when new BOOK/GENERIC tripwires emerge.
+ENGINE_AUGMENT_KEYWORDS = frozenset({
     # Neobloom biology (Day 116/123 failure modes)
     "neobloom", "neoblooms", "voxpod", "voxpods",
     "photosynthesis", "photosynthesize", "photosynthetic",
-    "patagia", "substrate", "mycorrhizal", "amaranthine",
+    "amaranthine",
     "interface", "compounds", "bioluminescent", "bioluminescence",
     # Species
-    "true-kin", "truekin", "cacogen", "synth", "mantid",
-    "chattersnipe", "lithling", "planeyfolk", "newbeast",
+    "true-kin", "truekin", "cacogen", "synth",
+    "lithling", "planeyfolk", "newbeast",
     # Factions / cults
     "hegemony", "autarch", "autarchy", "seekers", "brotherhood",
-    "cacklemaw", "krypteia",
+    "cacklemaw",
     # Cosmology / mystic
     "kronophage", "mycomorph", "communion", "gleam", "exotica",
-    # Geography (Vaarn-specific)
-    "vaarn", "ceruline", "kalaxis", "lazul", "vermillion",
-    "thyricost", "delta complex", "sandwhisper",
+    # Geography (book-generic)
+    "vaarn", "lazul",
     # Time / chronology terms — fire the time-estimation rule
     "ago", "decade", "decades", "century", "centuries",
     "millennia", "millennium", "since", "before",
 })
 
+# Back-compat alias — existing imports/tests reference AUGMENT_KEYWORDS.
+AUGMENT_KEYWORDS = ENGINE_AUGMENT_KEYWORDS
 
-def _load_keywords_from_disk() -> tuple[float, frozenset[str]]:
+
+def _load_gate_words() -> tuple[float, frozenset, frozenset]:
+    """Campaign-side gate words: (mtime, excludes, augments). Fail-open."""
+    try:
+        mtime = GATE_WORDS_PATH.stat().st_mtime
+        data = json.loads(GATE_WORDS_PATH.read_text(encoding="utf-8"))
+        exc = frozenset(
+            str(w).strip().lower() for w in data.get("exclude_keywords", []) if str(w).strip()
+        )
+        aug = frozenset(
+            str(w).strip().lower() for w in data.get("augment_keywords", []) if str(w).strip()
+        )
+        return mtime, exc, aug
+    except Exception:
+        return 0.0, frozenset(), frozenset()
+
+
+def _load_keywords_from_disk(campaign_excludes: frozenset) -> tuple[float, frozenset[str]]:
     """Read lorebook.json, return (mtime, keyword_set). On error: (0.0, empty)."""
     try:
         mtime = LOREBOOK_PATH.stat().st_mtime
@@ -101,31 +127,38 @@ def _load_keywords_from_disk() -> tuple[float, frozenset[str]]:
             kw_norm = kw.strip().lower()
             if len(kw_norm) < MIN_KEYWORD_LEN:
                 continue
-            if kw_norm in EXCLUDE_KEYWORDS:
+            if kw_norm in ENGINE_EXCLUDE_KEYWORDS or kw_norm in campaign_excludes:
                 continue
             keywords.add(kw_norm)
 
     return mtime, frozenset(keywords)
 
 
-# Module-level cache; invalidated on mtime change
-_CACHE: dict = {"mtime": -1.0, "keywords": frozenset()}
+# Module-level cache; invalidated when either the lorebook or gate-words file changes
+_CACHE: dict = {"mtime": -1.0, "gw_mtime": -1.0, "keywords": frozenset()}
 
 
 def load_lorebook_keywords() -> frozenset[str]:
-    """Return the active keyword set, reloading if lorebook.json changed."""
+    """Return the active keyword set, reloading if lorebook.json or the
+    campaign gate-words file changed."""
     try:
         mtime = LOREBOOK_PATH.stat().st_mtime
     except Exception:
         # lorebook.json missing/unreadable: never silently drop tripwire enforcement.
-        # Fall back to the always-on AUGMENT_KEYWORDS if nothing is cached yet
-        # (a populated cache already includes the augment list from a prior load).
-        return _CACHE["keywords"] or frozenset(AUGMENT_KEYWORDS)
-    if mtime != _CACHE["mtime"]:
-        new_mtime, new_kw = _load_keywords_from_disk()
-        # Union with augment list — always-on tripwires
+        # Fall back to the always-on augment lists (engine + campaign) if nothing
+        # is cached yet (a populated cache already includes the augments from a
+        # prior load).
+        if _CACHE["keywords"]:
+            return _CACHE["keywords"]
+        _gw_mtime, _exc, campaign_augments = _load_gate_words()
+        return frozenset(ENGINE_AUGMENT_KEYWORDS | campaign_augments)
+
+    gw_mtime, campaign_excludes, campaign_augments = _load_gate_words()
+    if mtime != _CACHE["mtime"] or gw_mtime != _CACHE["gw_mtime"]:
+        new_mtime, new_kw = _load_keywords_from_disk(campaign_excludes)
         _CACHE["mtime"] = new_mtime
-        _CACHE["keywords"] = frozenset(new_kw | AUGMENT_KEYWORDS)
+        _CACHE["gw_mtime"] = gw_mtime
+        _CACHE["keywords"] = frozenset(new_kw | ENGINE_AUGMENT_KEYWORDS | campaign_augments)
     return _CACHE["keywords"]
 
 
@@ -153,6 +186,22 @@ def extract_triggers(message: str, max_triggers: int = 5) -> list[str]:
     for m in multi:
         if m not in hits:
             hits.append(m)
+
+    # Party names are excluded fresh every call from the LIVE roster — no cache
+    # staleness class, since the roster can change between turns.
+    from hooks.hook_utils import load_party_names
+    party: set[str] = set()
+    try:
+        for nm in load_party_names(CAMPAIGN_DIR):
+            nml = nm.strip().lower()
+            if nml:
+                party.add(nml)
+                for tok in nml.split():
+                    if len(tok) >= MIN_KEYWORD_LEN:
+                        party.add(tok)
+    except Exception:
+        party = set()
+    hits = [h for h in hits if h not in party]
 
     return hits[:max_triggers]
 

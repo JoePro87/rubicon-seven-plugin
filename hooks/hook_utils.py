@@ -255,6 +255,42 @@ def file_lock(*, lock_path: Optional[Path] = None, timeout: float = 5.0):
                 time.sleep(0.02)
 
 
+def load_party_names(campaign_dir) -> set:
+    """Party-member display names from the LIVE character roster.
+
+    Prefer split sheets (characters/*.json, each carrying a "name" field),
+    fall back to the monolithic characters.json, empty set on any failure.
+    Shared by consolidated_stop_check (fabrication never-flag set) and
+    lorebook_gate (trigger exclusion) — one home, no drifted copies.
+    """
+    names = set()
+    try:
+        campaign_dir = Path(campaign_dir)
+        chars_dir = campaign_dir / "characters"
+        if chars_dir.exists():
+            for p in chars_dir.glob("*.json"):
+                if p.name == "_meta.json":
+                    continue
+                try:
+                    data = json.loads(p.read_text(encoding="utf-8"))
+                except Exception:
+                    continue
+                nm = data.get("name", "")
+                if nm:
+                    names.add(nm)
+        if not names:
+            mono = campaign_dir / "characters.json"
+            if mono.exists():
+                data = json.loads(mono.read_text(encoding="utf-8"))
+                for c in data.get("characters", {}).values():
+                    nm = c.get("name", "")
+                    if nm:
+                        names.add(nm)
+    except Exception:
+        return set()
+    return names
+
+
 def in_maintenance(state: dict) -> bool:
     """True when maintenance mode is active — the prose/advisory layer is muted.
 

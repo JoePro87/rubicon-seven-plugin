@@ -36,6 +36,7 @@ from hooks.hook_utils import (
     read_hook_input,
     file_lock,
     in_maintenance,
+    load_party_names,
     STATE_CHANGING_TOOLS,
     NON_STATE_ACTIONS,
     TOOL_LABELS,
@@ -1217,37 +1218,11 @@ def _load_party_names() -> set:
     """Party-member names to never flag as fabrication, read from the LIVE
     character roster rather than a hardcoded personal-campaign list.
 
-    Mirrors server._vp_party_names: prefer the split sheets (characters/*.json,
-    each carrying a "name" field), fall back to the monolithic characters.json,
-    and return an empty set on any failure. Portable across campaigns/OSS
-    deployments (resolves via the module CAMPAIGN_DIR, same as every other read
-    in this hook) and self-updating as the party changes.
+    Delegates to the shared hook_utils.load_party_names loader (one home,
+    no drifted copies) — same split-sheet/monolithic-fallback/fail-open
+    contract, resolved via the module CAMPAIGN_DIR.
     """
-    names = set()
-    try:
-        chars_dir = CAMPAIGN_DIR / "characters"
-        if chars_dir.exists():
-            for p in chars_dir.glob("*.json"):
-                if p.name == "_meta.json":
-                    continue
-                try:
-                    data = json.loads(p.read_text(encoding="utf-8"))
-                except Exception:
-                    continue
-                nm = data.get("name", "")
-                if nm:
-                    names.add(nm)
-        if not names:
-            mono = CAMPAIGN_DIR / "characters.json"
-            if mono.exists():
-                data = json.loads(mono.read_text(encoding="utf-8"))
-                for c in data.get("characters", {}).values():
-                    nm = c.get("name", "")
-                    if nm:
-                        names.add(nm)
-    except Exception:
-        return set()
-    return names
+    return load_party_names(CAMPAIGN_DIR)
 
 
 def _check_npc_fabrication(hook_input: dict, state: dict, response_text: str) -> tuple[bool, str, dict]:

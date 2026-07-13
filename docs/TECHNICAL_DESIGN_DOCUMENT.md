@@ -3012,10 +3012,12 @@ Implemented in `hooks/lorebook_gate.py`.
 
 **Filtering:**
 - Minimum keyword length: 5 characters.
-- Excluded: party character names + ~72 common English words (wife, mother, room, hall, tower, council, etc.).
+- Excluded: `ENGINE_EXCLUDE_KEYWORDS` (~72 common English/domain words: wife, mother, room, hall, tower, council, etc.) ∪ campaign `exclude_keywords` (see below) — applied when deriving keywords from the lorebook. **Party character names are excluded live**: `extract_triggers` subtracts the roster (via `hook_utils.load_party_names`, full names + name tokens ≥5 chars) per call, so the exclusion tracks the actual party in ANY campaign, never a hardcoded list (2026-07-13; owner literals are guarded absent from the hook source by `tests/test_stop_hook_party_roster.py`).
 - `should_skip_message` bypasses the gate for admin input (`/`, `!`), parentheticals, messages under 20 chars, and hook-feedback echoes.
 
-**Augmented keywords (53):** Always-trigger terms for species, factions, cosmology, geography, Neobloom biology (neobloom, voxpod, photosynthesis, patagia, substrate, mycorrhizal, hegemony, autarch, kronophage, ceruline, kalaxis, vaarn, …), unioned into the keyword set regardless of presence in lorebook entries.
+**Augmented keywords:** `ENGINE_AUGMENT_KEYWORDS` (book/generic always-trigger terms — species, factions, cosmology, book geography, chronology terms; `AUGMENT_KEYWORDS` remains as an alias) ∪ campaign `augment_keywords`, unioned into the keyword set regardless of presence in lorebook entries.
+
+**Campaign-side gate words (2026-07-13):** `lorebook_gate_words.json` in the campaign dir — `{"exclude_keywords": [...], "augment_keywords": [...]}` — merges over the engine lists (excludes subtract from lorebook-derived triggers; augments are always-on). **Fail-open**: missing/malformed file ⇒ engine defaults alone. The keyword cache is keyed on BOTH mtimes (lorebook + gate-words). Campaign-personal words (owner geography like ceruline/kalaxis, table-specific tripwires like patagia/substrate) live in this file, not in engine code — same pattern as `fabrication_tripwires.json`.
 
 ### Engine-Bundled Rules-Data (`data/rules/`)
 
