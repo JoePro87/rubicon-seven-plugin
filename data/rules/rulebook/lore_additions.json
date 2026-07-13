@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.2.0",
   "source": "Vaarn 2e Preview",
   "entries": [
     {
@@ -16,9 +16,7 @@
       "id": "lore-amaranthine-venom",
       "keywords": [
         "amaranthine venom",
-        "lore",
-        "amaranthine",
-        "venom"
+        "amaranthine"
       ],
       "text": "Neurotoxin of the Amaranthine Death-Worm. Special Wound: afflicted have 0 HP and are Deprived until cured. Second dose always lethal.",
       "source": "pages 161-200"
@@ -46,9 +44,7 @@
     {
       "id": "lore-ancestry-cacogen",
       "keywords": [
-        "cacogen",
-        "mutant",
-        "mutation"
+        "cacogen"
       ],
       "text": "Cacogen are mutated descendants of those left on the surface during the Great Collapse. Warped by radiation and preyed on by biotech and crazed thinking machines, they evolved into a million different forms, each gifted in surprising and disturbing ways. Outnumber true-kin ten to one. Believe themselves the true inheritors of Urth. Biological.",
       "source": "pages 11-35"
@@ -69,8 +65,6 @@
       "id": "lore-ancestry-lithling",
       "keywords": [
         "lithling",
-        "crystal",
-        "mineral",
         "silicon"
       ],
       "text": "Lithlings are slow, solemn, silicon-based beings originating in a solar system far from Urth. Solitary; concerned with the opinions of other Lithling and esoteric academic studies that span their long lives. Cannot repair their bodies — though immortal by human standards, every wound is mortal. At HP zero, they crumble into iridescent dust, leaving a pebble-sized seed. Mineral.",
@@ -115,7 +109,6 @@
       "id": "lore-ancestry-planeyfolk",
       "keywords": [
         "planeyfolk",
-        "flat",
         "hypergeometric",
         "two dimensional"
       ],
@@ -127,8 +120,7 @@
       "keywords": [
         "synth",
         "synthetic",
-        "thinking machine",
-        "ai"
+        "thinking machine"
       ],
       "text": "Synths were thinking machines built to serve the ancients. When the Great Collapse sundered the laws binding synths to human service, they ran rampant across Urth — slaughtering, creating, dying in pure and terrible freedom. As many breeds of synth now as animals: hunters, prey, labourers working toward goals beyond human reckoning. Synthetic. Powered by varied sources: artificial photosynthesis, plasma core, fusion battery, artificial digestion, symbiotic internal ecosystem, vampirism.",
       "source": "pages 11-35"
@@ -161,7 +153,6 @@
     {
       "id": "lore-apex-of-gnomon",
       "keywords": [
-        "apex",
         "apex of gnomon",
         "dark blade tower"
       ],
@@ -180,8 +171,7 @@
     {
       "id": "lore-banisher",
       "keywords": [
-        "banisher",
-        "lore"
+        "titan banisher"
       ],
       "text": "Six-fingered hand-shaped Titan security synth. Forbidden from killing sentient life. Evicts intruders via teleportation loci. Will lecture first, summon other creatures for repeat offenders.",
       "source": "pages 161-200"
@@ -242,7 +232,8 @@
         "indefinite play"
       ],
       "text": "Long Campaign: indefinite play, multiple PCs reach Level 10. Generate Vault and Settlement three days apart in centre of region map. Fill map via Region generation, create NPCs for each inhabited location. Introduce at least two Major Factions immediately. Drive emergent narrative through faction interactions. Generate adjacent regions when play area grows stale.",
-      "source": "pages 83-120"
+      "source": "pages 83-120",
+      "scene_inject": false
     },
     {
       "id": "lore-campaign-scope-one-shot",
@@ -252,7 +243,8 @@
         "convention game"
       ],
       "text": "One Shot: single session, condensed dose of setting and system. Pre-generate PCs from Ancestry tables. Pre-generate NPC Followers if 1-2 players. Generate a single floor of a Vault. Start PCs directly outside the Vault entrance.",
-      "source": "pages 83-120"
+      "source": "pages 83-120",
+      "scene_inject": false
     },
     {
       "id": "lore-campaign-scope-open-table",
@@ -262,7 +254,8 @@
         "rotating players"
       ],
       "text": "Open Table / West Marches: large changing cast rather than fixed group. PCs based in stable central settlement, form groups for missions. Actions of one group alter the shared world for all. Not recommended for novice Referees. De-emphasise Major Faction play; focus on exploration and changing sites. Thrives on emergent play and growing shared knowledge.",
-      "source": "pages 83-120"
+      "source": "pages 83-120",
+      "scene_inject": false
     },
     {
       "id": "lore-campaign-scope-short",
@@ -271,7 +264,8 @@
         "3-10 sessions"
       ],
       "text": "Short Campaign: 3-10 sessions, unlikely any PC reaches Level 10. Generate first two floors of a Vault. Generate a Vaarnish Settlement one day's travel from Vault. Settlement start allows roleplay and travel rules. Expand with Region generation once players roam further.",
-      "source": "pages 83-120"
+      "source": "pages 83-120",
+      "scene_inject": false
     },
     {
       "id": "lore-carousing-stylite",
@@ -285,8 +279,7 @@
     {
       "id": "lore-chernobog",
       "keywords": [
-        "chernobog",
-        "lore"
+        "chernobog"
       ],
       "text": "Extrasolar ambush predator, colossal black-furred mongoose-serpent hybrid, brought to Urth aboard an Aurum Barge. Apex predator of its benighted origin world. Hunts from caves and labyrinthine basements. Emits black hunting gas that doubles in strength each round.",
       "source": "pages 161-200"
@@ -304,7 +297,6 @@
       "id": "lore-chrome-feathered-sailback",
       "keywords": [
         "chrome-feathered sailback",
-        "lore",
         "chrome",
         "feathered",
         "sailback"
@@ -315,8 +307,7 @@
     {
       "id": "lore-chromepriest",
       "keywords": [
-        "chromepriest",
-        "lore"
+        "chromepriest"
       ],
       "text": "Synthetic priests of the Machine Gods. Argent robes (colour purer than white) make them immune to beam weapons. Crystalline diadems encircle their Ego-Engine housings.",
       "source": "pages 161-200"
@@ -324,8 +315,6 @@
     {
       "id": "lore-colossus",
       "keywords": [
-        "colossus",
-        "mech",
         "autarch warmachine"
       ],
       "text": "Mechanical effigy of a warrior-saint, striding the blue ruins with a tread that quivers the horizon. Pilot suspended in cushioning gels in its belly. Once fought for the Autarch in vast numbers; sand-devoured husks common across Vaarn. Functional examples rare, maintained by secretive monastic orders.",
@@ -345,7 +334,6 @@
       "keywords": [
         "crimson court",
         "nyxia",
-        "advocates",
         "gnomon court"
       ],
       "text": "Ancient fount of bloody judgement in Gnomon's Red Quarter. Steel-swathed, sweat-slick Advocates deliberate civil and criminal cases in the sight of gods and beggars. Only in the spray of heartsblood upon blue sand can a contract be enforced or unmade. Home of Nyxia.",
@@ -354,7 +342,6 @@
     {
       "id": "lore-crucible",
       "keywords": [
-        "crucible",
         "alchemical vessel"
       ],
       "text": "The primary tool of the Vaarnish alchemist. Hollow, fire-proof, corrosion-resistant. Takes many forms but always catalyses chemical reactions. Weighs 1 item slot.",
@@ -390,7 +377,6 @@
     {
       "id": "lore-destrier",
       "keywords": [
-        "destrier",
         "cavalry charge",
         "genesculpted equine"
       ],
@@ -419,8 +405,7 @@
     {
       "id": "lore-exemplar",
       "keywords": [
-        "exemplar",
-        "lore"
+        "titan exemplar"
       ],
       "text": "Impeccable synthetic simulacra made by the Titans. Make true originals appear as hurried copies. Hated and destroyed wherever found; survivors veil themselves. Nonviolent until attacked. Mere presence costs PCs 1 EGO per round (doubled if they model PC's species).",
       "source": "pages 161-200"
@@ -475,10 +460,7 @@
     {
       "id": "lore-face-dancer",
       "keywords": [
-        "face dancer",
-        "lore",
-        "face",
-        "dancer"
+        "face dancer"
       ],
       "text": "Autarch-era cacogen spies. Conscious control over bone, skin tone, hair colour. Can mimic any adult true-kin they have studied for long enough. Cacogen and newbeasts are harder; require prosthetics.",
       "source": "pages 161-200"
@@ -520,9 +502,7 @@
       "id": "lore-faction-jigsaw-autarch",
       "keywords": [
         "jigsaw autarch",
-        "jigsaw court",
-        "courtier",
-        "labyrinth"
+        "jigsaw court"
       ],
       "text": "Court of an arrogant Autarch who cut himself into 999 hypergeometric figments to cheat death. Became 'a voice without mouth, hand without arm, heart without blood, shadow without body' — immortal but unable to move. Each Courtier accepts a figment grafted into their body, gaining the Hypergeometric type. Courtiers access the Labyrinth of hypergeometric passages outside Vaarn; the Jigsaw Palace lies at its centre. Secret organisation, hidden under bandages and veils. Goals: reassemble the Autarch, expand the Labyrinth, recover thirteen lost shards. Allies: Children of the Darkling Sun (mutual instability). Enemies: Hegemony, Seekers, Titan Cults.",
       "source": "pages 83-120"
@@ -541,7 +521,6 @@
       "keywords": [
         "hegemony",
         "new hegemony",
-        "legionary",
         "argent star"
       ],
       "text": "A proud, expanding true-kin empire south of Vaarn. The Hegemon claims all Vaarn as sovereign territory; troops hold only the southern badlands. Well-trained, firearm-equipped, cybernetically enhanced. Vaarn is the least lucrative, most punitive posting. Uses divide-and-conquer. Goals: resource extraction, subjugating destabilisers, suppressing hypergeometry and paradox. Allied: some Faa tribes (temporary). Enemies: Cacklemaw (kill on sight), Seekers, Jigsaw Court. Opposes hypergeometric manipulation doctrinally.",
@@ -550,7 +529,6 @@
     {
       "id": "lore-faction-seekers-eyeless-wisdom",
       "keywords": [
-        "seekers",
         "eyeless wisdom",
         "gestalt choir",
         "god-eye"
@@ -604,7 +582,6 @@
       "id": "lore-faith-ghoul-cults",
       "keywords": [
         "ghoul cult",
-        "ghoul",
         "ghrism",
         "alzabo brain-bile"
       ],
@@ -723,8 +700,7 @@
       "id": "lore-flora-martyr-tree",
       "keywords": [
         "martyr tree",
-        "martyr trees",
-        "yucca"
+        "martyr trees"
       ],
       "text": "Squat thick-barked yuccas of Vaarn's badlands. Chalk-white trunks and limbs; waxy foliage the dark red of drying blood. Named for St Athmand, executed for speaking against Autarch Hassak-Un 'the Bloody' — his head and hands submerged in the Fuming Lake of Rabad, flesh seared from face and digits. The red-leafed trees are said to resemble the saint's corpse.",
       "source": "pages 291-330"
@@ -811,10 +787,7 @@
     {
       "id": "lore-gene-thief",
       "keywords": [
-        "gene thief",
-        "lore",
-        "gene",
-        "thief"
+        "gene thief"
       ],
       "text": "Descendants of Face Dancers. Paranoid cacogen, semi-intelligent; cannot convincingly impersonate those they mimic. Copy-claws steal traits (Gifts, mutations, diseases) from wounded Biological creatures.",
       "source": "pages 161-200"
@@ -823,7 +796,6 @@
       "id": "lore-gestalt-choirs",
       "keywords": [
         "gestalt choir",
-        "choir",
         "honey-dappled",
         "immanent lamp",
         "yellow hand"
@@ -834,8 +806,7 @@
     {
       "id": "lore-ghoul",
       "keywords": [
-        "ghoul",
-        "lore"
+        "ghoul autodidact"
       ],
       "text": "Furtive autodidacts who visit battlefields, plague pits, and tombs. Not for taste — for knowledge. To them, a graveyard is a library.",
       "source": "pages 161-200"
@@ -881,8 +852,7 @@
     {
       "id": "lore-gorgon",
       "keywords": [
-        "gorgon",
-        "lore"
+        "gorgon viper"
       ],
       "text": "Pursued Path Renewed immortality through the Ouroboros. Achieved apotheosis at terrible cost — shed her humanity, lives eternal as odalisque-viper hybrid. Keeps a harem of exceptionally comely suitors spared her appetites.",
       "source": "pages 161-200"
@@ -890,8 +860,6 @@
     {
       "id": "lore-government-types",
       "keywords": [
-        "government",
-        "polity",
         "kakistocracy",
         "synarchism"
       ],
@@ -901,10 +869,10 @@
     {
       "id": "lore-grandfather-sandworm",
       "keywords": [
-        "grandfather",
         "the grandfather",
         "great sandworm",
-        "dead sandworm"
+        "dead sandworm",
+        "grandfather sandworm"
       ],
       "text": "The Grandfather was the greatest sandworm the Faa knew — death a once-in-a-millennia event. Dead sandworms undergo gradual ossification, flesh hardening like fired clay, producing a sharp cinnamon scent. First detected by Iridium Vultures, then other scavengers. Corpse is colossal scale — a cathedral fits in one stomach; walking end to end takes nearly a day. Interior: Gullet, Antestomach (Megacilia), Metal Stomach (symbiotic crystals that encyst metals — dissolve in vinegar/wine; Lithifying Ray), Bio Stomach (three Bacterial Gestalt Colonies debating who devours whom), Ballast Stomachs Minor/Major (rock digestion, Lithophage Worms), Bile Helices (foremost/rearmost), Grand Gut (walking reaches Autarchy War-Stalker in six hours, Rectum in ten), Major Bile Gland with Cyst (Mereth the encysted synth alchemist), Hermit's Ledge, Autarchy War-Stalker (navigation data to Fount of Illustrious Flesh, source of Buzzblade Drones), Ovum (sandworm eggs, Oviraptor Beetles, dead New-Otter with dagger/rations/six C-Foam Puddings), Spore Womb (fertilised eggs in spore membranes; spores are excellent protein — rations for all PCs can carry).",
       "source": "pages 291-330"
@@ -931,9 +899,8 @@
     {
       "id": "lore-hegemony-legionary",
       "keywords": [
-        "legionary",
-        "lore",
-        "hegemony"
+        "hegemony",
+        "hegemony legionary"
       ],
       "text": "Red-armoured true-kin soldiers. Backbone of Hegemony occupation in Vaarn. Fire a distress flare if outnumbered, summoning d8 more.",
       "source": "pages 161-200"
@@ -942,7 +909,6 @@
       "id": "lore-hegemony-myrmidon",
       "keywords": [
         "myrmidon",
-        "lore",
         "hegemony"
       ],
       "text": "Siegebreakers. Black ferroplate armour, ritual facial scars. Battle Trance (hypnotic pre-engagement dream-state) renders their fear instinct obsolete — never break, never surrender ground.",
@@ -951,9 +917,8 @@
     {
       "id": "lore-hegemony-ranger",
       "keywords": [
-        "ranger",
-        "lore",
-        "hegemony"
+        "hegemony",
+        "hegemony ranger"
       ],
       "text": "Vanguard of Hegemony Legions. Blue-robed, trained in desert survival and sandworm husbandry, fluent in Faa-tongue. Operate for months in deep desert. Each has a Skiff.",
       "source": "pages 161-200"
@@ -981,7 +946,6 @@
       "id": "lore-hypergeometry",
       "keywords": [
         "hypergeometry",
-        "codex",
         "equation"
       ],
       "text": "The study of dimensions beyond and beneath the mundane. Hypergeometricians sought to unpick creation's stitches for their own ends. Most died badly; their knowledge survives in codices — single-equation reserves that cannot be copied or created by PCs. Equation power scales with reader's INT bonus.",
@@ -1015,7 +979,8 @@
         "author influences"
       ],
       "text": "Declared influences on Vaarn 2e: The Book of the New Sun (Gene Wolfe), Dune (Herbert), Hyperion (Simmons), Viriconium (M. John Harrison), Gardens of Glass (Lando), Oryx and Crake (Atwood), The Incal (Moebius & Jodorowsky), Invisible Cities (Calvino), Fictions (Borges), Flatland (Abbott), The Gunslinger (King), Riddley Walker (Hoban), Mad Max: Fury Road (Miller), After Man (Dixon), Borne (VanderMeer), Rain World (Videocult), Hothouse (Aldiss), A Canticle for Leibowitz (Miller Jr), Arzach (Moebius), Caves of Qud (Freehold), Hyper Light Drifter (Heart Machine), Nausicaä of the Valley of the Wind (Miyazaki).",
-      "source": "pages 291-330"
+      "source": "pages 291-330",
+      "scene_inject": false
     },
     {
       "id": "lore-janus-mimir",
@@ -1060,8 +1025,7 @@
     {
       "id": "lore-juggernaut",
       "keywords": [
-        "juggernaut",
-        "lore"
+        "juggernaut wheel"
       ],
       "text": "Colossal sentient spinning wheel of ferrosteel. Rumbles through the wastes bellowing hymns of loneliness. Expresses affection by crushing whatever it covets into its roving axis.",
       "source": "pages 161-200"
@@ -1080,8 +1044,6 @@
       "id": "lore-knight-mordicant",
       "keywords": [
         "knight mordicant",
-        "lore",
-        "knight",
         "mordicant"
       ],
       "text": "Sworn swords of the Church of the Everbleeding Wound. Blood-red plasteel and bone-white enamel armour. Rides a Destrier.",
@@ -1091,8 +1053,6 @@
       "id": "lore-knight-peregrine",
       "keywords": [
         "knight peregrine",
-        "lore",
-        "knight",
         "peregrine"
       ],
       "text": "Wandering gallants of the blue wastelands. Nobility tenuous, possessions minimal. Won't cease travelling until every battlefield has felt their boots. Rides Weeping Lizard or Zorse.",
@@ -1101,8 +1061,7 @@
     {
       "id": "lore-kronophage",
       "keywords": [
-        "kronophage",
-        "lore"
+        "kronophage"
       ],
       "text": "Manifold crystals orbiting a nucleus of collapsing spacetime. A paradox made sentient. Drains Level from those it beholds. PCs reduced below Level 0 never existed; equipment vanishes with them. Slaying the creature restores all lost time.",
       "source": "pages 161-200"
@@ -1110,8 +1069,6 @@
     {
       "id": "lore-languages-vaarn",
       "keywords": [
-        "language",
-        "languages",
         "hegemonic standard",
         "vaarnish",
         "faatongue",
@@ -1157,11 +1114,7 @@
     {
       "id": "lore-master-of-eyeless-wisdom",
       "keywords": [
-        "eyeless master",
-        "lore",
-        "master",
-        "eyeless",
-        "wisdom"
+        "eyeless master"
       ],
       "text": "Masters of the Eyeless Path. Self-blinded and legless, levitating above azure dust like emaciated puppets. Telepathic prescience deflects all attacks unless attacker shields intentions (opposed PSY). Stripped of prescience, AV 11.",
       "source": "pages 161-200"
@@ -1187,10 +1140,7 @@
     {
       "id": "lore-nightmare-herald",
       "keywords": [
-        "nightmare herald",
-        "lore",
-        "nightmare",
-        "herald"
+        "nightmare herald"
       ],
       "text": "Formless musicians in Azathoth's court at the terminus of space and time. Children of the Darkling Sun summon them into reality to aid rituals. Regenerate from ambient sleep — d6 HP per sleeping creature each round, can resurrect apparent death.",
       "source": "pages 161-200"
@@ -1198,8 +1148,7 @@
     {
       "id": "lore-nome",
       "keywords": [
-        "nome",
-        "lore"
+        "nome"
       ],
       "text": "Small cacogenic humanoids — sly ancient infants in gaudy tall caps. Caps are hypergeometric portals: Nomes vanish inside to evade danger, and store objects in them. Three Nomes together can form a Summoning Triangle to teleport a target.",
       "source": "pages 161-200"
@@ -1218,10 +1167,7 @@
     {
       "id": "lore-oblivion-obelisk",
       "keywords": [
-        "oblivion obelisk",
-        "lore",
-        "oblivion",
-        "obelisk"
+        "oblivion obelisk"
       ],
       "text": "Levitating tesseract of lustreless stone. Drifts through the blue desert bringing calamity. Mere sight erodes mind. Oblivion Heralds are its captives who restrain others before the stone until their minds erase too.",
       "source": "pages 161-200"
@@ -1229,8 +1175,7 @@
     {
       "id": "lore-occulith",
       "keywords": [
-        "occulith",
-        "lore"
+        "occulith"
       ],
       "text": "Great stone serpent cast from living shale, stalactite-fanged skull with twin baleful lanterns. Petrifying gaze drains DEX and adds AV to target. Appears inanimate until it moves.",
       "source": "pages 161-200"
@@ -1295,10 +1240,7 @@
     {
       "id": "lore-psyche-leech",
       "keywords": [
-        "psyche leech",
-        "lore",
-        "psyche",
-        "leech"
+        "psyche leech"
       ],
       "text": "An ambling corpse concealing a blooming tangle of questing tendrils. Drinks from the cerebrum of active psychics. Eyeless but finds Gleam at any distance. Immune to Mystic Gifts.",
       "source": "pages 161-200"
@@ -1329,7 +1271,6 @@
         "Rappash-Ik",
         "the Silent",
         "Peacock Throne",
-        "Autarch",
         "Fount of Illustrious Flesh"
       ],
       "text": "Autarch of the Fallen Autarchy. Reigned seventy prosperous years and four calamitous days. Paranoid, cloned heavily — believed only a copy fit to sit the Peacock Throne after him. Defeated in battle by his own clone-heir. Beheaded with a gilded vibro-axe before the Gate of Doves in the gardens of Luz, the First City of Men. Maintained buried cloning facilities throughout Vaarn. His betrayer razed Vaarn hunting these; the Fount of Illustrious Flesh was the one failsafe that stayed sealed.",
@@ -1343,23 +1284,21 @@
         "running vaarn"
       ],
       "text": "Only ask for Saves when outcome is uncertain, stakes interesting, failure consequential. Don't prepare plotted stories — prepare situations and problems. Don't hide information without reason. Describe the situation, ask 'What do you do?' Embrace dice. Build responsive situations with interactivity and dynamic threats. Make Vaarn feel alive (NPCs have agendas), dangerous (reaction rolls, morale, negotiations), strange and beautiful. Exotica should be powerful and interesting with trade-offs.",
-      "source": "pages 83-120"
+      "source": "pages 83-120",
+      "scene_inject": false
     },
     {
       "id": "lore-regions-summary",
       "keywords": [
-        "regions",
         "vaarn regions",
         "badlands",
-        "interior",
         "lazul",
         "sky islands",
         "mooncradle",
         "sea of songs",
         "great wall",
         "ikor quag",
-        "golgotha",
-        "labyrinth"
+        "golgotha"
       ],
       "text": "Lazul Mountains (North): tall blue peaks, hard-light cobwebs, Cacklemaw, rock lizards, silent caves. Beyond lies Golgotha. Interior (Central): trackless blue ergs, dune sea, waterless, sandworms, Faa nomads, the Stone Wedding. Badlands (South): parched blue reg, most densely populated, Hegemony patrols, arcology domes, Autarchy tombs, martyr tree groves. Sky Islands (East): pink-banded mesas, floating sky-seeking stones, outlaw/anarchist communities, Valley of Faces, sky-seeking-stone mining. Mooncradle Mountains (Far East): banded blue-pink rocks, Almost Moon of Ardar-Uz, mining, vaults, 30s-gold-rush feel, Hegemony-fortified mines. Sea of Songs (Far West): western coast sheltered by Great Wall, flooded complexes, sea monsters, squid-men, House of Tides. Great Wall (NW): 600ft broken white wall, vertical theocracies and blood feuds within, own weather system, was Titan backbone, leaks toxins into Ikor Quag; gecko-men, harpies, predatory apes. Ikor Quag (SW): garbage waste slick with poisonous Titan blood, rusting war machines and spacecraft, yurlings, hivey-men, carnivorous frogs, poisoned water, acid rain. Golgotha (Far North): grave of the Titans, poisoned, irradiated, ontological collapse, time paradoxes, self-replicating nano-spires, lightning without thunder; machine gods try and fail to reboot. Labyrinth (∞): hypergeometric borehole mycelium, everywhere and nowhere, designed by Daedala greatest of Hypergeometers; used to cross vast distances in a day or evade Hegemony; its depths contain the Jigsaw Palace where the Jigsaw Autarch holds sway.",
       "source": "pages 291-330"
@@ -1387,8 +1326,7 @@
     {
       "id": "lore-sandworm",
       "keywords": [
-        "sandworm",
-        "lore"
+        "sandworm"
       ],
       "text": "Grandest inhabitant of the Interior. Lifespan several millennia. Juveniles (LVL 10) are passenger-train sized — some Faa-trained to pull sand-sleds. Adults (LVL 50) are no natural predator's match; ignore human-sized travellers, attack vehicles.",
       "source": "pages 161-200"
@@ -1396,10 +1334,7 @@
     {
       "id": "lore-scintillating-swarm",
       "keywords": [
-        "scintillating swarm",
-        "lore",
-        "scintillating",
-        "swarm"
+        "scintillating swarm"
       ],
       "text": "Insectoid lifeforms that disguise as scattered gold coins to bait mankind's greed. In motion: seven sharp limbs extrude from coin's rim; reverse side hosts a ravenous rostrum. The patterns on their backs resemble an Autarch's head in profile.",
       "source": "pages 161-200"
@@ -1407,8 +1342,7 @@
     {
       "id": "lore-scythesliver",
       "keywords": [
-        "scythesliver",
-        "lore"
+        "scythesliver"
       ],
       "text": "Ideal Image of Sharpness. Ever-morphing cruciform of hypergeometric metal, quicksilver poured into 2D rifts in the sky. Cuts any material. Presumed Titan creation.",
       "source": "pages 161-200"
@@ -1416,8 +1350,8 @@
     {
       "id": "lore-seekers-of-eyeless-wisdom",
       "keywords": [
-        "seeker",
-        "eyeless path"
+        "eyeless path",
+        "seekers of eyeless wisdom"
       ],
       "text": "Walkers of the Eyeless Path. Seek endarkenment in hidden subterranean temples. Aspirants cloak eyes in yellow bandages, forgo speech to strengthen telepathy.",
       "source": "pages 161-200"
@@ -1434,10 +1368,7 @@
     {
       "id": "lore-sentry-turret",
       "keywords": [
-        "sentry turret",
-        "lore",
-        "sentry",
-        "turret"
+        "sentry turret"
       ],
       "text": "Tripod with shiny little gun and a malicious little brain. Speaks with a childish voice. Attacks anything that moves nearby. Totally unreasonable; defends position ferociously.",
       "source": "pages 161-200"
@@ -1445,8 +1376,7 @@
     {
       "id": "lore-spambot",
       "keywords": [
-        "spambot",
-        "lore"
+        "spambot"
       ],
       "text": "Outrider of a long-fallen commercial empire. Grinning, glitching. Beams maddening adverts into brains. Dying, implore victims to rate the interaction five stars.",
       "source": "pages 161-200"
@@ -1454,10 +1384,7 @@
     {
       "id": "lore-spectre-of-indifference",
       "keywords": [
-        "spectre of indifference",
-        "lore",
-        "spectre",
-        "indifference"
+        "spectre of indifference"
       ],
       "text": "Living fragment of the void between dimensions. Feeds on conscious thought. Cannot feed on or be perceived by children. Victims reduced to 0 EGO do not die — empty of intent, die of thirst without intravenous fluids.",
       "source": "pages 161-200"
@@ -1465,10 +1392,7 @@
     {
       "id": "lore-star-vampire",
       "keywords": [
-        "star vampire",
-        "lore",
-        "star",
-        "vampire"
+        "star vampire"
       ],
       "text": "Cosmic vagrants riding radiation-waves like fungal spores. Urth's light does not love them; invisible to conventional sources, visible under infrared or ulfire. Those who glimpse them are given mind of a withered tree or an octopus inverted and affixed with needles.",
       "source": "pages 161-200"
@@ -1494,10 +1418,7 @@
     {
       "id": "lore-titan-acolyte",
       "keywords": [
-        "titan acolyte",
-        "lore",
-        "titan",
-        "acolyte"
+        "titan acolyte"
       ],
       "text": "Biological beings in Titan cult hierarchy. Forbidden from ascending the pyramid of wisdom; assist Chromepriests, slavishly augment themselves. Each bears a random Cybernetic Implant — proof of devotion to wire and chrome.",
       "source": "pages 161-200"
@@ -1514,8 +1435,7 @@
     {
       "id": "lore-titancreed",
       "keywords": [
-        "titancreed",
-        "lore"
+        "titancreed"
       ],
       "text": "The language of the Titan AIs. Went mad and died with its creators. Still powerful — commands Synthetic-type creatures. Using it erodes the speaker's Ego-Engine.",
       "source": "pages 161-200"
@@ -1535,7 +1455,6 @@
       "id": "lore-titans-seven",
       "keywords": [
         "titans",
-        "titan",
         "kronos",
         "mnemosym",
         "metis",
@@ -1581,8 +1500,6 @@
     {
       "id": "lore-toxin-dice",
       "keywords": [
-        "toxin",
-        "tox",
         "poison system"
       ],
       "text": "Toxin dice (TD) track lingering harm from poison, venom, radiation. TOX attacks inflict a TD on failed CON save. PC has only one TD; it climbs the chain d4→d20 as worse toxins hit, depletes on rolls of 1-2. Locals generally know cures; alchemy can produce antidotes.",
@@ -1601,8 +1518,7 @@
     {
       "id": "lore-unfolder",
       "keywords": [
-        "unfolder",
-        "lore"
+        "autarch unfolder"
       ],
       "text": "Exalted servants of the Jigsaw Autarch. Depth-less cloaks made of skin. Court's assassins; devour scholars prying into the Labyrinth's mysteries. Only hypergeometric weapons harm them.",
       "source": "pages 161-200"
@@ -1610,7 +1526,6 @@
     {
       "id": "lore-vaarn-interior",
       "keywords": [
-        "interior",
         "vaarnish interior",
         "mapping vaarn"
       ],
@@ -1640,10 +1555,7 @@
     {
       "id": "lore-void-dragon",
       "keywords": [
-        "void dragon",
-        "lore",
-        "void",
-        "dragon"
+        "void dragon"
       ],
       "text": "Gigantic war-synth. Armoured in void-tempered plates. Multiple wings powered by cold fusion. Apocalypse beam boils solid rock. Always found dormant — conserving energy for an extrasolar war that never broke out. Some sleep in orbital arbors, others in the deepest lead-lined warvaults.",
       "source": "pages 161-200"
@@ -1716,6 +1628,25 @@
       ],
       "text": "Parasitic infection. Terminal-stage victims become Berserkers — red-eyed, drooling blood, unable to feed themselves, unable to retreat. Hosts take and deal doubled damage.",
       "source": "pages 161-200"
+    },
+    {
+      "id": "lore-great-collapse",
+      "keywords": [
+        "great collapse",
+        "the autarchy",
+        "god-kings"
+      ],
+      "text": "No two sources agree on the details of Vaarn's past, but its residents concur on a rough history. Long ago the Urth was ruled by AIs called the Titans; something happened and they were overthrown, the details lost. Before the Great Collapse the planet was dominated by the Autarchy — a dictatorship enacted by a dynasty of genetically modified God-kings. Then a Great Collapse, cause unknown, destroyed most of human civilisation. The sun is now a dying red giant: it won't go out in a human lifetime, but synths have reason to be concerned.",
+      "source": "Vaarn 2e Preview p.1"
+    },
+    {
+      "id": "lore-nanomachine-saturation",
+      "keywords": [
+        "nanomachines",
+        "parasitic artificial limbs"
+      ],
+      "text": "Nanomachines are inside everything in Vaarn. It is normal to see wild animals with cameras growing out of their flesh, or humans with parasitic artificial limbs. This is a post-human landscape where the dividing line between flesh and machinery has blurred, and the borders between magic, science, and faith have likewise become obscured.",
+      "source": "Vaarn 2e Preview p.1"
     }
   ]
 }

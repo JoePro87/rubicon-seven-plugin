@@ -54,6 +54,7 @@ _CHROMA_EXPECTED_VERSION = "1.3.7"
 from tool_tags import Safety, Phase, Domain, TOOL_TAGS
 import push_format as _pf
 import lexical_lane
+import book_lore
 # Wave 0 substrate (tool-consolidation): shared leaves live in engine_core;
 # imported-and-aliased here so every existing reference stays unchanged.
 from engine_core import (CAMPAIGN_DIR, RULES_DATA_DIR, read_file, write_file, dice, _JSON_CACHE,
@@ -4410,6 +4411,23 @@ def check_canon(
 
     specific_matches = [m for m in matches if m[2]]
 
+    # ── Book-lore base layer: shipped CH world facts (DM-facing RAG). ──
+    # Campaign canon always wins: entries sharing ANY keyword with the
+    # campaign lorebook are suppressed inside match_book_entries. Fail-open.
+    book_matches = []
+    try:
+        # No fixed cache_key: default key = str(path), so a repointed
+        # RULES_DATA_DIR (tests) can never serve a stale cached copy.
+        _book_raw = _load_cached_json(
+            RULES_DATA_DIR / "rulebook" / "lore_additions.json")
+        _campaign_kws = {kw.lower().strip()
+                         for e in lorebook.get("entries", [])
+                         for kw in e.get("keywords", []) if isinstance(kw, str)}
+        book_matches = book_lore.match_book_entries(
+            book_lore.book_entries(_book_raw), input_lower, _campaign_kws, _BROAD_KW)
+    except Exception:
+        book_matches = []
+
     # ========================================
     # RESOLVE CONTEXT BLOCKS (needs + regex fallback)
     # ========================================
@@ -4458,10 +4476,22 @@ def check_canon(
     render_matches = list(specific_matches)
     if lore_intent:
         render_matches += [m for m in matches if not m[2]]
+    # Book layer renders AFTER all campaign matches (campaign gets first claim
+    # on the cap) and under its own sub-cap so lore never crowds out canon.
+    BOOK_CONTEXT_CAP = 3
+    _book_specific = [m for m in book_matches if m[2]][:BOOK_CONTEXT_CAP]
+    render_matches += _book_specific
+    if lore_intent:
+        render_matches += [m for m in book_matches
+                           if not m[2]][:BOOK_CONTEXT_CAP - len(_book_specific)]
+    # Truthful only if a book line actually entered render_matches (before the
+    # CONTEXT_CAP slice below) — otherwise the NO-MATCHES reminder gets wrongly
+    # suppressed by a book match that rendered nothing (broad-only, no lore_intent).
+    _book_rendered = bool(_book_specific) or (lore_intent and any(not m[2] for m in book_matches))
     CONTEXT_CAP = 8
     hidden_overflow = max(0, len(render_matches) - CONTEXT_CAP)
     render_matches = render_matches[:CONTEXT_CAP]
-    broad_hidden = (len(matches) - len(specific_matches)) if not lore_intent else 0
+    broad_hidden = ((len(matches) - len(specific_matches)) + sum(1 for m in book_matches if not m[2])) if not lore_intent else 0
 
     if render_matches:
         # count header stays always-fresh; the per-entry bios below may fold to pointers
@@ -4500,7 +4530,7 @@ def check_canon(
         dedup_elements.extend(context_dedup_elements(_rendered_context))
     
     # Handle no matches - compact escalation reminder (native RAG first, ChromaDB second)
-    if not matches:
+    if not matches and not _book_rendered:
         result.append("**NO MATCHES** - Use `search_previous_conversations` first (fast, recent sessions). If not found, try `conversation_search` (ChromaDB, older history). No match ≠ safe to generate.")
 
     # Also scan for geography context (travel times, distances)

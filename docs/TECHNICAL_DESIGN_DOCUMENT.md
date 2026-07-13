@@ -297,6 +297,18 @@ A per-turn telemetry line is logged at INFO via `filter_elements_with_stats`: `c
 
 > Legacy note: the prior `_check_canon_dedup_blocks()` single-`'composite'`-block hashing is retained in `server.py` but is no longer wired into check_canon (kept one cycle for rollback). Its weakness — any change re-shipped the whole monolith — is what element-level delta delivery replaces.
 
+### Book-Lore Canon Layer (2026-07-13)
+
+check_canon carries a second, **read-only** match source beneath the campaign lorebook: the engine-shipped Crimson Hound world-lore file `data/rules/rulebook/lore_additions.json` (v2.2.0, 170 entries, 6 flagged `scene_inject: false`). The layer exists because the lorebook scaffolds **empty** for new campaigns — without it a fresh table's DM narrates with zero automatic world grounding even though the facts ship in the plugin. Design spec: `docs/superpowers/specs/2026-07-12-book-lore-canon-layer-design.md`.
+
+Mechanics (all verified against the shipped code):
+- **Pure leaf module `book_lore.py`** (imports stdlib `re` only, never server): `book_entries(raw)` converts lore entries into the lorebook entry shape (`category="book"`, `status="CH"`, `short_context` mirrors text ≤500 chars) and skips `scene_inject: false` (referee advice — the `rulebook` tool still serves those); `match_book_entries(entries, input_lower, campaign_keywords, broad_kw)` word-boundary-matches with the campaign scan's exact semantics and tuple shape. Fail-open is **per-entry**: one malformed row is skipped, the rest survive.
+- **Campaign canon always wins, two ways.** (1) *Subject-coverage suppression:* a book entry sharing ANY keyword with any campaign lorebook entry never matches — the campaign owns that subject outright, whether or not its entry matched this turn. (2) *Budget priority:* book matches render after all campaign matches, under `BOOK_CONTEXT_CAP = 3` (`server.py` ~4481), inside the overall `CONTEXT_CAP = 8`; broad-token book matches render only under lore intent, capped to the leftover book budget.
+- **Escalation-inert:** book matches never feed `matches`/`specific_matches`, so they cannot trigger auto-FULL (`lorebook_match_count` counts campaign matches only).
+- **Rendering** rides the existing pipeline unchanged: lines emit as `[BOOK] **<first keyword>** (CH): …`, >500-char text goes through `_smart_truncate_lorebook_entry`, and lines fold via `context_dedup_elements` like any lorebook bio.
+- **Fail-open, three layers:** `_load_cached_json` (no fixed cache key — default `str(path)`, so a repointed `RULES_DATA_DIR` can never serve a stale copy) → the module's per-entry guards → an outer `except` that zeroes `book_matches`. Missing/corrupt file ⇒ output identical to pre-layer behavior. The NO-MATCHES escalation reminder fires only when campaign AND book both matched nothing.
+- **No campaign file is ever written.** Book facts have one home (the shipped file); engine-side fixes reach every table on update. Trigger-word hygiene is guarded by `tests/test_book_lore_layer.py` (`_GENERIC_DENY` denylist, `_META_IDS` sync, shape/uniqueness); entry texts are PDF-verified (Crimson Hound printed pages — the Sable Gecko batch extraction is a locator only).
+
 ### Error Handling
 
 Fail-open philosophy: nearly every injection block is wrapped in `try/except` that catches Exception and passes silently. check_canon never crashes — it degrades gracefully by skipping non-critical injections. ChromaDB failures, missing files, and embedding errors all skip silently.
