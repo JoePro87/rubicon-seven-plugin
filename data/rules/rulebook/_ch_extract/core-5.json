@@ -1,0 +1,786 @@
+[
+  {
+    "name": "Alzabo",
+    "printed_pages": "186",
+    "pdf_pages": "193",
+    "type": "Biological",
+    "level": 8,
+    "hp": 36,
+    "av": 15,
+    "morale": "+9",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Claw", "damage": "d8 (2x)"},
+      {"name": "Maul", "damage": "2d6 (if both claws hit same target)"}
+    ],
+    "special": [
+      "The 'mocking-bear'. Red furred predator with ghastly humanoid face. Can mimic the voices and behaviour of people it has eaten. Will remember where they lived and hunt their family."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": true},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Alzabo Biological LVL8(36HP)/AV15/ML+9/ENC1 ATK:2xClaw(d8)+Maul(2d6)ifbothclawshitsametarget The'mockingbear'.Redfurredpredatorwithghastlyhumanoidface.Canmimicthevoicesandbehaviourofpeopleithaseaten.Willrememberwheretheylivedandhunttheirfamily."
+  },
+  {
+    "name": "Amaranthine Death-Worm",
+    "printed_pages": "186",
+    "pdf_pages": "193",
+    "type": "Biological",
+    "level": 6,
+    "hp": 24,
+    "av": 16,
+    "morale": "+9",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Spines", "damage": "d6 (2x)"},
+      {"name": "Poison Spray", "damage": "CON Save vs Amaranthine Venom"}
+    ],
+    "special": [
+      "A reddish-purple rope of muscle and spines, with a blind ravenous mouth at one end. The creature spits a virulent neurotoxin.",
+      "Amaranthine Venom: a special Wound. Afflicted creatures have 0 HP, and are Deprived until the Wound is cured. A second dose is always lethal."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "AmaranthineDeath-Worm Biological LVL6(24HP)/AV16/ML+9/ENC1 ATK:2xSpines(d6)+PoisonSpray(CONSavevsAmaranthineVenom) ... AmaranthineVenom:aspecialWound.Afflictedcreatureshave0HP,andareDepriveduntiltheWoundiscured.Aseconddoseisalwayslethal."
+  },
+  {
+    "name": "Anthrophage",
+    "printed_pages": "186",
+    "pdf_pages": "193",
+    "type": "Synthetic",
+    "level": 0,
+    "hp": 1,
+    "av": 11,
+    "morale": "+10",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Sting", "damage": "Special"}
+    ],
+    "special": [
+      "Small synths with hexagonal heads and nine whirring legs. Once used as a vengeance weapon to render land uninhabitable. They attack human-derived ancestries on sight, ignoring synthetic and mineral-type creatures.",
+      "Sting: an Anthrophage's sting catalyses a rapid reaction in human flesh. Human-derived ancestries must CON save. On failure d4 new Anthrophagi explode from their body, each dealing d8 damage."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Synthetic type rule (p.192): immune to suffocation/poison/radiation/fungal_spores; double from electrical; vulnerable to weaponised LogLang syntax."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Anthrophage Synthetic LVL0(1HP)/AV11/ML+10/ENCd8 ATK:Sting(Special) ... Sting:anAnthrophage'sstingcatalysesarapidreactioninhumanflesh.Human-derivedancestriesmustCONsave.Onfailured4newAnthrophagiexplodefromtheirbody,eachdealingd8damage."
+  },
+  {
+    "name": "Argent Shepherd",
+    "printed_pages": "186",
+    "pdf_pages": "193",
+    "type": "Synthetic",
+    "level": 7,
+    "hp": 28,
+    "av": 16,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Argent Halo Implant", "damage": "Special"}
+    ],
+    "special": [
+      "Abandoned justiciar of the Titan THEMIS. Eight-foot tall synth wearing robes of perfect argent, the colour brighter than white. Will not commit violence but will grab assailants and attempt to implant them with an Argent Halo. This succeeds after an opposed STR save. Anyone implanted with an Argent Halo cannot commit any acts of violence, nor are they able to remove the Halo without expert surgical help. Attempting to harm any living being while wearing a Halo will result in the wearer passing out, with no save possible."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Synthetic type rule (p.192): immune to suffocation/poison/radiation/fungal_spores; double from electrical; vulnerable to weaponised LogLang syntax."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "ArgentShepherd Synthetic LVL7(28HP)/AV16/ML+10/ENC1 ATK:ArgentHaloImplant(Special) AbandonedjusticiaroftheTitanTHEMIS.Eight-foottallsynth..."
+  },
+  {
+    "name": "Babble Bird",
+    "printed_pages": "186",
+    "pdf_pages": "193",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 17,
+    "morale": "+1",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Spurs", "damage": "d4, EGO save vs Babbling"}
+    ],
+    "special": [
+      "Small predatory descendants of hummingbirds. Kills rodents and lizards by injecting them with poison. Territorial and attacks to defend its nest.",
+      "Babbling: In larger animals the poison is not lethal but induces a strange neurological effect, requiring an EGO save. If failed, the victim begins to babble and rave in an unknown language. The noise lasts for d6 hours and prevents all verbal communication. Encounters are never surprised while the babbling is ongoing."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "BabbleBird Biological LVL1(4HP)/AV17/ML+1/ENCd4 ATK:Spurs(d4,EGOsavevsBabbling) Smallpredatorydescendantsofhummingbirds..."
+  },
+  {
+    "name": "Bacterial Gestalt Colony",
+    "printed_pages": "186",
+    "pdf_pages": "193",
+    "type": "Biological / Psychic",
+    "level": 4,
+    "hp": 16,
+    "av": 10,
+    "morale": "+12",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Absorb", "damage": "d8 ongoing, STR save to break free"}
+    ],
+    "special": [
+      "Sentient, slow-moving ooze. Psychic, can communicate in staccato bursts of telepathic imagery. Targets absorbed take d8 damage each round until they make an opposed STR save.",
+      "The colony takes minimum damage from kinetic attacks, but is vulnerable to fungal spores or other sources of antibiotics."
+    ],
+    "resistances": {"immune": [], "minimum": ["kinetic"], "double": [], "half": [], "varies": false, "notes": "Stat block states: minimum damage from kinetic attacks; vulnerable to fungal spores / other antibiotics. Psychic type: may utilize Gifts and detect Psychic Gleam."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "BacterialGestaltColony Biological/Psychic LVL4(16HP)/AV10/ML+12/ENC1 ATK:Absorb(d8ongoing,STRsavetobreakfree) ... Thecolonytakesminimumdamagefromkineticattacks,butisvulnerabletofungalsporesorothersourcesofantibiotics."
+  },
+  {
+    "name": "Bandit",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 13,
+    "morale": "+5",
+    "enc": "d20",
+    "movement": "",
+    "attacks": [
+      {"name": "Basic Weapon", "damage": "generate p.xx"}
+    ],
+    "special": [
+      "Ragged desperate robbers that plague the Blue Ruins. For more details see p.xx."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Bandit Biological LVL1(4HP)/AV13/ML+5/ENCd20 ATK:BasicWeapon(generatep.xx) RaggeddesperaterobbersthatplaguetheBlueRuins.Formoredetailsseep.xx."
+  },
+  {
+    "name": "Banisher",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Synthetic",
+    "level": 6,
+    "hp": 24,
+    "av": 16,
+    "morale": "+7",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Banish", "damage": "Special"},
+      {"name": "Summon", "damage": "Special"}
+    ],
+    "special": [
+      "The Titan AIs were charged with preserving human life wherever possible. The Banishers were an attempt at creating non-lethal security synths. They take the shape of enormous six-fingered hands, which grasp intruders and evict them using teleportation loci embedded in their palms.",
+      "Non-lethal: Banishers are forbidden from killing sentient life. They will first ask you to leave the vault, and lecture you about trespassing.",
+      "Banish: the Banisher grabs an intruder and teleports them to a designated eviction zone. Traditionally this is the entrance to the vault, although sometimes more punitive locations are chosen.",
+      "Summon: truly vexed Banishers, faced with repeat offenders, can teleport in other creatures from the vault to deal with them permanently. Roll on the encounter table for this floor. The summoned creature is not loyal to the Banisher."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Synthetic type rule (p.192): immune to suffocation/poison/radiation/fungal_spores; double from electrical; vulnerable to weaponised LogLang syntax."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Banisher Synthetic LVL6(24HP)/AV16/ML+7/ENC1 ATK:Banish(Special)/Summon(Special) TheTitanAIswerechargedwithpreservinghumanlife..."
+  },
+  {
+    "name": "Battle Boar",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Biological / Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 14,
+    "morale": "+8",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Flamethrower Snout", "damage": "d8, blast, fire"},
+      {"name": "Tusks", "damage": "d6"}
+    ],
+    "special": [
+      "Cyborg war-boars infested with nanomachinery."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Has both Biological and Synthetic types; per p.192 a multi-type creature has all weaknesses and immunities of its types. Synthetic contributes: immune suffocation/poison/radiation/fungal_spores, double electrical, vulnerable to weaponised LogLang. Biological adds none."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "BattleBoar Biological/Synthetic LVL3(12HP)/AV14/ML+8/ENCd6 ATK:FlamethrowerSnout(d8,blast,flame)/Tusks(d6) Cyborgwar-boarsinfestedwithnanomachinery."
+  },
+  {
+    "name": "Behemoth Toad",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 14,
+    "morale": "+7",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Bellyflop", "damage": "d10"},
+      {"name": "Tongue Grab", "damage": "STR save vs Devoured"}
+    ],
+    "special": [
+      "Enormous flabby toads that lurk near Vaarnish water-sources. If hit with a tongue attack, PCs must STR save or be drawn into the toad's mouth and take d8 damage per round."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "BehemothToad Biological LVL4(16HP)/AV14/ML+7/ENCd6 ATK:Bellyflop(d10)/TongueGrab(STRsavevsDevoured) ..."
+  },
+  {
+    "name": "Berserker",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 10,
+    "morale": "Frenzied",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d6 x2"},
+      {"name": "Vomit Blood", "damage": "CON Save vs Wrathworms"}
+    ],
+    "special": [
+      "Unfortunates who have reached the terminal stage of infestation with Wrathworms (p.xx). Red-eyed and drooling blood, unable to feed themselves, they rampage across the blue sands to infect anyone in reach.",
+      "Wrathworms: Berserkers are infested with Wrathworms, and take and receive doubled damage. They attack on sight and will never retreat from combat."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Wrathworms ability: take and receive DOUBLED damage (a creature-specific rule, not a damage-type resistance — applies to all damage)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Wrathworms: takes and deals doubled damage of all kinds; never retreats.",
+    "confidence": "high",
+    "raw_excerpt": "Berserker Biological LVL2(8HP)/AV10/MLFrenzied/ENCd6 ATK:Bite(d6x2)/VomitBlood(CONSavevsWrathworms) ... Wrathworms:BerserkersareinfestedwithWrathworms,andtakeandreceivedoubleddamage.Theyattackonsightandwillneverretreatfromcombat."
+  },
+  {
+    "name": "Blightbeast",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Biological / Synthetic",
+    "level": 10,
+    "hp": 40,
+    "av": 18,
+    "morale": "+12",
+    "enc": "d3",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d10"},
+      {"name": "Bite", "damage": "2d6"},
+      {"name": "Blight Breath", "damage": "d12 poison, blast"}
+    ],
+    "special": [
+      "Colossal cacogenic Gila Monsters, imbued with nanomachinery and armoured with thick black scales. Keratin bristles sprout from their backs in burnt-looking clumps. Their eyes and throats gleam with a sickly green radiance. If threatened they will breathe out a noxious cloud of radioactive gas before lunging to attack with their powerful jaws.",
+      "The creatures seek out radioactive blightstone and gain sustenance from basking near it, although they supplement this nourishment with a more conventional diet of raw meat.",
+      "Blightbeasts are immune to damage caused by energy weapons or radiation, and heal 8 HP per round when in the presence of radioactive material. Blightbeasts have no natural predators, their flesh and blood being thoroughly poisonous. Their corpses cannot be used as a source of rations."
+    ],
+    "resistances": {"immune": ["radiation", "beam"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Stat block: immune to damage from energy weapons (beam) or radiation; heals 8 HP/round near radioactive material. Synthetic type adds immune suffocation/poison/fungal_spores and double electrical; radiation immunity from both Synthetic type and stat block. ('energy weapons' mapped to beam.)"},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Heals 8 HP/round near radioactive material.",
+    "confidence": "high",
+    "raw_excerpt": "Blightbeast Biological/Synthetic LVL10(40HP)/AV18/ML+12/ENCd3 ATK:Claws(d10)+Bite(2d6)/BlightBreath(d12TOX,blast) ... Blightbeastsareimmunetodamagecausedbyenergyweaponsorradiation,andheal8HPperroundwheninthepresenceofradioactivematerial..."
+  },
+  {
+    "name": "Blind Crab",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 18,
+    "morale": "+2",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Big Claw", "damage": "d10"},
+      {"name": "Little Claw", "damage": "d6"}
+    ],
+    "special": [
+      "The evolutionary weight of countless eons has moulded this chthonic predator's body into a familiar shape. They cannot imagine an ocean yet their form recalls aquatic ancestors millions of years distant. A milk-pale carapace encloses surpassingly tasty flesh.",
+      "Blind: hunts by sensing vibrations. Cannot be blinded and hits with ADV in darkness."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Cannot be blinded; attacks with ADV in darkness.",
+    "confidence": "high",
+    "raw_excerpt": "BlindCrab Biological LVL4(16HP)/AV18/ML+2/ENCd6 ATK:BigClaw(d10)+LittleClaw(d6) ... Blind:huntsbysensingvibrations.CannotbeblindedandhitswithADVindarkness."
+  },
+  {
+    "name": "Blue Baboon",
+    "printed_pages": "187",
+    "pdf_pages": "194",
+    "type": "Biological",
+    "level": 0,
+    "hp": 1,
+    "av": 14,
+    "morale": "=Group Size",
+    "enc": "3d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d6"},
+      {"name": "Thrown Rock", "damage": "d6"}
+    ],
+    "special": [
+      "Predatory blue apes of the Vaarnish wastes. Intelligent and carnivorous, hunt in packs."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Morale equals group size.",
+    "confidence": "high",
+    "raw_excerpt": "BlueBaboon Biological LVL0(1HP)/AV14/ML=GroupSize/ENC3d6 ATK:Claws(d6)/ThrownRock(d6) PredatoryblueapesoftheVaarnishwastes.Intelligentandcarnivorous,huntinpacks."
+  },
+  {
+    "name": "Brood Mother",
+    "printed_pages": "187-188",
+    "pdf_pages": "194-195",
+    "type": "Biological",
+    "level": 8,
+    "hp": 32,
+    "av": 16,
+    "morale": "+12",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d8"},
+      {"name": "Grapple", "damage": "DEX save vs Entangled"}
+    ],
+    "special": [
+      "A mother's first duty is to her children, and she is no exception. In fungal forests and wind-swept canyons she hunts, nurturing her brood inside her swollen abdomen. She approaches sleeping travellers from above, swaddling them in blankets tight enough to hush their cries before her sons and daughters emerge to feast.",
+      "The Brood: a Brood Mother births d6 Broodlings [LVL 0 (1 HP), AV 12, Bite (d4)] per combat round, and 2d6 Broodlings on death. Fire or blast attacks prevent this."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Births d6 Broodlings/round and 2d6 on death; fire or blast attacks prevent this.",
+    "confidence": "high",
+    "raw_excerpt": "BroodMother Biological LVL8(32HP)/AV16/ML+12/ENC1 ATK:Claws(d8)/Grapple(DEXsavevsEntangled) ... TheBrood:aBroodMotherbirthsd6Broodlings[LVL0(1HP),AV12,Bite(d4)]percombatround,and2d6Broodlingsondeath.Fireorblastattackspreventthis."
+  },
+  {
+    "name": "Cacogen",
+    "printed_pages": "188",
+    "pdf_pages": "195",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+2",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Improvised Weapon", "damage": "d6"}
+    ],
+    "special": [
+      "Uncounted millennia of gene-sculpting have introduced pernicious instability into the heritage of humankind. Many seeds sown now grow riddled with impurity, and many a mother has cried aloud in horror when the babe was held before her eyes. In some kingdoms mutants are hunted for sport; in others to touch their heads upon a feast-day is thought to bring luck. In all places, however, they are held apart from true-kin, known to all by the ancient name: Cacogen.",
+      "Corrupted Blood: roll on the mutations table (p.xx) to determine the nature of the cacogen's curse."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Cacogen Biological LVL1(4HP)/AV11/ML+2/ENCd8 ATK:ImprovisedWeapon(d6) ... CorruptedBlood:rollonthemutationstable(p.xx)todeterminethenatureofthecacogen'scurse."
+  },
+  {
+    "name": "Cacklemaw",
+    "printed_pages": "188",
+    "pdf_pages": "195",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+8",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Blade", "damage": "d8"},
+      {"name": "Bite", "damage": "d6"},
+      {"name": "Crossbow", "damage": "d8"}
+    ],
+    "special": [
+      "Lurking laughing hyena-women. Fight in packs, with little regard for their own safety. Snap at opponents' faces in close quarters with their powerful teeth. A group of eight or more will include a Cacklemaw Virago (see below)."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192). ATK printed as Blade(d8)+Bite(d6)/Crossbow(d8) — Blade+Bite are multi-attack, Crossbow mutually exclusive."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Cacklemaw Biological LVL2(8HP)/AV13/ML+8/ENC2d6 ATK:Blade(d8)+Bite(d6)/Crossbow(d8) Lurkinglaughinghyena-women..."
+  },
+  {
+    "name": "Cacklemaw Virago",
+    "printed_pages": "188",
+    "pdf_pages": "195",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 15,
+    "morale": "Special",
+    "enc": "1 (with 2d6 Cacklemaw)",
+    "movement": "",
+    "attacks": [
+      {"name": "Blade", "damage": "d8 (2x)"},
+      {"name": "Bite", "damage": "d6"},
+      {"name": "Grenade Launcher", "damage": "d10, blast"}
+    ],
+    "special": [
+      "Virago is the title given to the largest, meanest, and most cunning Cacklemaw warriors. They lead their smaller sisters into battle, and must be seen to savour the violence lest they be challenged by one of their underlings. For this reason Virago will never retreat from combat if other Cacklemaw are alive to witness it."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192). ATK printed as 2xBlade(d8)+Bite(d6)/GrenadeLauncher(d10,blast)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Never retreats from combat if other Cacklemaw are alive to witness.",
+    "confidence": "high",
+    "raw_excerpt": "CacklemawVirago Biological LVL5(20HP)/AV15/MLSpecial/ENC1(with2d6Cacklemaw) ATK::2xBlade(d8)+Bite(d6)/GrenadeLauncher(d10,blast) ..."
+  },
+  {
+    "name": "Chernobog",
+    "printed_pages": "188-189",
+    "pdf_pages": "195-196",
+    "type": "Biological",
+    "level": 12,
+    "hp": 48,
+    "av": 18,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Claw", "damage": "d10 (2x)"},
+      {"name": "Bite", "damage": "d12"},
+      {"name": "Black Cloud", "damage": "2 damage, aura, doubles each round"}
+    ],
+    "special": [
+      "A dread creature from beyond the stars, brought to Urth in the hold of an Aurum Barge. The Chernobog is a colossal black-furred horror, described as 'a child of mongoose and serpent, two foes united under one foul banner'. The creature is an apex predator on the benighted sphere it hails from, hunting by ambush in dark and forgotten places. It prefers caves and the labyrinthine basements of ruined structures as lairs, rarely venturing aboveground.",
+      "If this were not terrible enough, the beast emits a noxious gas from facial glands when hunting, choking and blinding its victims. The Chernobog uses these black clouds to corral prey or cover its escape.",
+      "Black Cloud: each round the Chernobog emits a cocktail of hazardous fumes, dealing 2 damage to every character in the room. The cloud's strength doubles with each subsequent combat round. After three rounds all PCs are fighting as if blinded.",
+      "Cave Fighter: strikes with ADV in enclosed spaces or against blinded creatures."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Black Cloud aura doubles each round; all PCs blinded after 3 rounds. Cave Fighter: ADV in enclosed spaces / vs blinded.",
+    "confidence": "high",
+    "raw_excerpt": "Chernobog Biological LVL12(48HP)/AV18/ML+10/ENC1 ATK:2xClaw(d10)+Bite(d12)+BlackCloud(2damage,aura,doubleseachround) ... BlackCloud:eachroundtheChernobogemitsacocktailofhazardousfumes,dealing2damagetoeverycharacterintheroom.Thecloud'sstrengthdoubleswitheachsubsequentcombatround.AfterthreeroundsallPCsarefightingasifblinded. CaveFighter:strikeswithADVinenclosedspacesoragainstblindedcreatures."
+  },
+  {
+    "name": "Child of the Darkling Sun",
+    "printed_pages": "189",
+    "pdf_pages": "196",
+    "type": "Biological / Psychic",
+    "level": 3,
+    "hp": 12,
+    "av": 11,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Dagger", "damage": "d4"},
+      {"name": "Darkling Dream", "damage": "Special"}
+    ],
+    "special": [
+      "Dark-robed dreamers, hooded in black silk and blinded by their desire to transcend lucid reality.",
+      "Darkling Dream: the Child falls asleep. While they sleep, they manifest a nightmare into the waking world, with no Save possible. The nature of the nightmare varies: stairs may become slides into pits of razors, the sun may have your father's face, doors may seal shut or open into indescribable vistas. Waking the Child (either through damage or anything else that would wake a sleeper) ends their dream's impingement on our reality."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological / Psychic; no resistance stated in stat block. Psychic type: may utilize Gifts and detect Psychic Gleam (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "ChildoftheDarklingSun Biological/Psychic LVL3(12HP)/AV11/ML+5/ENCd6 ATK:Dagger(d4)/DarklingDream(Special) ..."
+  },
+  {
+    "name": "Chimera",
+    "printed_pages": "189",
+    "pdf_pages": "196",
+    "type": "Biological / Synthetic",
+    "level": 6,
+    "hp": 24,
+    "av": 15,
+    "morale": "+8",
+    "enc": "d3",
+    "movement": "",
+    "attacks": [
+      {"name": "Fire Breath", "damage": "d12, fire, blast"},
+      {"name": "Goat Horns", "damage": "d10"},
+      {"name": "Snake Spit", "damage": "d8 poison"}
+    ],
+    "special": [
+      "Monstrous hybrids, birthed from a marriage of cybernetics and sorcerous gene-sculpting. The Chimera is a combination of three animals: traditionally the bodies of a lion, a goat, and a snake were used, but sometimes other animals were substituted instead. Trained Chimera were utilised as weapons of war during the fallen Autarchy, implanted with flamethrowers and other devices."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Has both Biological and Synthetic types; per p.192 a multi-type creature has all weaknesses/immunities. Synthetic contributes immune suffocation/poison/radiation/fungal_spores, double electrical, vulnerable weaponised LogLang. Biological adds none."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "ATK printed as FireBreath(d12)+GoatHorns(d10)+SnakeSpit(d8) multi-attack (joined by +).",
+    "confidence": "high",
+    "raw_excerpt": "Chimera Biological/Synthetic LVL6(24HP)/AV15/ML+8/ENCd3 ATK:FireBreath(d12,Flaming,Blast)+GoatHorns(d10)+SnakeSpit(d8TOX) ..."
+  },
+  {
+    "name": "Chrome-Feathered Sailback",
+    "printed_pages": "189",
+    "pdf_pages": "196",
+    "type": "Biological / Synthetic",
+    "level": 10,
+    "hp": 40,
+    "av": 18,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Heavy Laser Cannon", "damage": "d12 beam"}
+    ],
+    "special": [
+      "Graceful sky-serpents, which warm their cold-blooded bodies with rows of solar panels. These vast creatures generally do not notice travellers on foot, but they will viciously attack vehicles and flying machines without provocation. It is theorised that the Sailbacks interpret the glinting of sunlight on metal as a dominance challenge."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Biological / Synthetic; per p.192 multi-type has all weaknesses/immunities. Synthetic contributes immune suffocation/poison/radiation/fungal_spores, double electrical, vulnerable weaponised LogLang."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Chrome-FeatheredSailback Biological/Synthetic LVL10(40HP)/AV18/ML+10/ENC1 ATK:HeavyLaserCannon(d12beam) Gracefulsky-serpents..."
+  },
+  {
+    "name": "Chromepriest",
+    "printed_pages": "189",
+    "pdf_pages": "196",
+    "type": "Synthetic",
+    "level": 4,
+    "hp": 16,
+    "av": 14,
+    "morale": "+4",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Arc-Thrower", "damage": "d10, electrical"},
+      {"name": "Prism Grenade", "damage": "2d6, blast, beam"}
+    ],
+    "special": [
+      "Synthetic priests of the Machine Gods, resplendent in scaled robes of argent (the colour purer than white). Crystalline diadems encircle their Ego-Engine housing.",
+      "Argent Robes: Chromepriests are immune to damage from beam weapons."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores", "beam"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Stat block 'Argent Robes': immune to beam weapons. Synthetic type adds immune suffocation/poison/radiation/fungal_spores, double electrical, vulnerable weaponised LogLang."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Chromepriest Synthetic LVL4(16HP)/AV14/ML+4/ENCd4 ATK:Arc-Thrower(d10,electrical)/PrismGrenade(2d6,blast,beam) ... ArgentRobes:Chromepriestsareimmunetodamagefrombeamweapons."
+  },
+  {
+    "name": "Chromavore",
+    "printed_pages": "189",
+    "pdf_pages": "196",
+    "type": "Outsider",
+    "level": 6,
+    "hp": 24,
+    "av": 11,
+    "morale": "+15",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Envelop", "damage": "d8 CON damage"}
+    ],
+    "special": [
+      "Living shrouds of impossible colour from a dimension adjacent to ours. Latches onto victims and drains them of energy and colour, leaving pale husks behind.",
+      "Incorporeal: suffers no damage from conventional weapons. Takes d10 damage per round if exposed to sunlight, or artificial light that mimics the sun's rays."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": true, "notes": "Outsider type: resistances and vulnerabilities vary wildly (p.192). Stat block 'Incorporeal': suffers no damage from conventional weapons; takes d10/round in sunlight or sun-mimicking artificial light."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Incorporeal — no damage from conventional weapons; d10/round in sunlight.",
+    "confidence": "high",
+    "raw_excerpt": "Chromavore Outsider LVL6(24HP)/AV11/ML+15/ENC1 ATK:Envelop(d8CONdamage) ... Incorporeal:suffersnodamagefromconventionalweapons.Takesd10damageperroundifexposedtosunlight,orartificiallightthatmimicsthesun'srays."
+  },
+  {
+    "name": "Cliff Ghul",
+    "printed_pages": "189",
+    "pdf_pages": "196",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 13,
+    "morale": "+1",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Festering Bite", "damage": "d6 + d6 poison"}
+    ],
+    "special": [
+      "Hideous hybrids of human, bat, and jackal, known for the guttural ugliness of their cries, the gusto with which they will devour anything, alive or dead, and the rancid foulness of their stink. Their needle-thin teeth are so riddled with disease that Cliff Ghuls are known to bite their prey just once and withdraw into the sky, waiting for the unfortunate victim to succumb to the infection."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192). 'TOX' mapped to poison."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "CliffGhul Biological LVL1(4HP)/AV13/ML+1/ENCd8 ATK:FesteringBite(d6+d6TOX) Hideoushybridsofhuman,bat,andjackal..."
+  },
+  {
+    "name": "Copy Cat",
+    "printed_pages": "189",
+    "pdf_pages": "196",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d8"},
+      {"name": "Clone Cough", "damage": "Special, once per combat"}
+    ],
+    "special": [
+      "Pink-furred carnivore that reproduces exponentially, coughing up new copies like hairballs. Used as a biological weapon in a long-lost era.",
+      "Clone Cough: The Copy Cat coughs up two perfect copies of itself, with full HP."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Clone Cough (once per combat): produces two full-HP copies of itself.",
+    "confidence": "high",
+    "raw_excerpt": "CopyCat Biological LVL2(8HP)/AV13/ML+3/ENCd6 ATK:Claws(d8)/CloneCough(Special,oncepercombat) ... CloneCough:TheCopyCatcoughsuptwoperfectcopiesofitself,withfullHP."
+  },
+  {
+    "name": "Creedspeaker",
+    "printed_pages": "189-190",
+    "pdf_pages": "196-197",
+    "type": "Synthetic",
+    "level": 8,
+    "hp": 32,
+    "av": 12,
+    "morale": "+9",
+    "enc": "1 + Enthralled Synths (generate p.xx)",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "2d8"},
+      {"name": "Titancreed Command", "damage": "Special"}
+    ],
+    "special": [
+      "Titancreed was the language of the Titan AIs, a tongue that went mad and died along with its creators. Creedspeakers are foolish scholar-synths that have memorised a short snippet of Titancreed, enough to command their fellow synthetic beings and slowly erode their own Ego-Engine.",
+      "Command: targeted Synthetic-type creatures must EGO Save or become enthralled by the Creedspeaker, following their commands until the Creedspeaker is killed."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Synthetic type rule (p.192): immune suffocation/poison/radiation/fungal_spores; double electrical; vulnerable weaponised LogLang."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Creedspeaker Synthetic LVL8(32HP)/AV12/ML+9/ENC1+EnthralledSynths(generatep.xx) ATK:Claws(2d8)/TitancreedCommand(Special) ... Command:targetedSynthetic-typecreaturesmustEGOSaveorbecomeenthralledbytheCreedspeaker,followingtheircommandsuntiltheCreedspeakeriskilled."
+  },
+  {
+    "name": "Daggertrunk",
+    "printed_pages": "190",
+    "pdf_pages": "197",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+0",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Siphon", "damage": "d4 STR damage"}
+    ],
+    "special": [
+      "Dwarf vampire elephants. It is unclear if these pests were gene-sculpted for a purpose or simply as a jest, but they escaped into the wild and have become a viable Vaarnish species. Roughly the size of a goat, they feed on blood which their razor-tipped trunks drain from sleeping animals and the folk of Vaarn alike. Daggertrunks are highly intelligent, surprisingly stealthy, and very cowardly."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Daggertrunk Biological LVL1(4HP)/AV12/ML+0/ENC1 ATK:Siphon(d4STRdamage) Dwarfvampireelephants..."
+  },
+  {
+    "name": "Deathblight Husk",
+    "printed_pages": "190",
+    "pdf_pages": "197",
+    "type": "Fungal / Outsider",
+    "level": 3,
+    "hp": 12,
+    "av": 12,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Accursed Knife", "damage": "d4 + Deathblight"}
+    ],
+    "special": [
+      "The remnants of science-mystics who tried to weaponise Deathblight and instead fell victim to it.",
+      "Deathblight: targets afflicted mark an item slot with Deathblight. Each slot of Deathblight doubles damage taken and halves healing received. It fades at the rate of one slot a day."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": ["fire", "fungicide"], "half": ["kinetic"], "varies": true, "notes": "Has Fungal and Outsider types; per p.192 multi-type has all weaknesses/immunities. Fungal: half damage from kinetic (bludgeoning/stabbing etc.), double from fire or fungicide. Outsider: resistances/vulnerabilities vary wildly."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Deathblight on a target: each affected item slot doubles damage taken and halves healing; fades one slot/day.",
+    "confidence": "high",
+    "raw_excerpt": "DeathblightHusk Fungal/Outsider LVL3(12HP)/AV12/ML+3/ENCd6 ATK:AccursedKnife(d4+Deathblight) ... Deathblight:targetsafflictedmarkanitemslotwithDeathblight.EachslotofDeathblightdoublesdamagetakenandhalveshealingreceived.Itfadesattherateofoneslotaday."
+  },
+  {
+    "name": "Doppelgeller",
+    "printed_pages": "190",
+    "pdf_pages": "197",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 10,
+    "morale": "+12",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Clone Spawn", "damage": "Special"}
+    ],
+    "special": [
+      "Biotech blob. Spawn is jelly-clones of the PCs. It does so once per round. The clones are naked, insane, and homicidally attack the PC they were copied from. They have 5 HP, AV 10, and the ability scores of the PC they cloned."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological: no unusual resistances or weaknesses (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Spawns jelly-clones of PCs once/round (5 HP, AV 10, cloned PC's ability scores).",
+    "confidence": "high",
+    "raw_excerpt": "Doppelgeller Biological LVL5(20HP)/AV10/ML+12/ENC1 ATK:CloneSpawn(Special) Biotechblob.Spawnisjelly-clonesofthePCsItdoessoonceperround.Theclonesarenaked,insane,andhomicidallyattackthePCtheywerecopiedfrom.Theyhave5HP,AV10,andtheabilityscoresofthePCtheycloned."
+  },
+  {
+    "name": "Doomsinger",
+    "printed_pages": "190",
+    "pdf_pages": "197",
+    "type": "Biological / Psychic",
+    "level": 2,
+    "hp": 8,
+    "av": 11,
+    "morale": "+3",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Deathtouch", "damage": "d4 STR damage"},
+      {"name": "Doom Song", "damage": "Special"}
+    ],
+    "special": [
+      "Heralds of the End. Nihilist mystics who seek to hasten the black terminus of all living things. Their ghastly dirges are amplified by vocoders installed in their deaths-head masks.",
+      "Doom Song: While in earshot, all creatures are Deprived. All Saves and to-hit rolls are made with DIS."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Biological / Psychic; no resistance stated in stat block. Psychic type: may utilize Gifts and detect Psychic Gleam (type rule p.192)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Doom Song: all creatures in earshot are Deprived; Saves and to-hit rolls made with DIS.",
+    "confidence": "high",
+    "raw_excerpt": "Doomsinger Biological/Psychic LVL2(8HP)/AV11/ML+3/ENCd4 ATK:Deathtouch(d4STRdamage)/DoomSong(Special) ... DoomSong:Whileinearshot,allcreaturesareDeprived.AllSavesandto-hitrollsaremadewithDIS."
+  },
+  {
+    "name": "Drill Drone",
+    "printed_pages": "190",
+    "pdf_pages": "197",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 16,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Drill", "damage": "d6, target's armour loses -1 AV"}
+    ],
+    "special": [
+      "Tripedal synths with bright yellow exoskeletons. Usually found underground, boring long and meandering tunnels for their own amusement. Their diamond-tipped drills make short work of armour.",
+      "Miner: Drill Drones have ADV when attacking Mineral-type creatures."
+    ],
+    "resistances": {"immune": ["suffocation", "poison", "radiation", "fungal_spores"], "minimum": [], "double": ["electrical"], "half": [], "varies": false, "notes": "Synthetic type rule (p.192): immune suffocation/poison/radiation/fungal_spores; double electrical; vulnerable weaponised LogLang."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Drill reduces target armour by -1 AV. Miner: ADV vs Mineral-type creatures.",
+    "confidence": "high",
+    "raw_excerpt": "DrillDrone Synthetic LVL3(12HP)/AV16/ML+3/ENCd6 ATK:Drill(d6,target'sarmourloses-1AV) ... Miner:DrillDroneshaveADVwhenattackingMineral-typecreatures."
+  }
+]

@@ -1,0 +1,1017 @@
+{
+  "version": "3.0.0",
+  "source": "Crimson Hound printed p.121-126 (verified 2026-06-07 audit remediation)",
+  "notes": "Crimson Hound 2e Preview. '100 Exotica' d100 pre-generated table at printed p.121-124 (PDF 128-131). 'Exotica Generator' 4xd100 MATERIAL/FORM/THEME/ACTION at printed p.125-126 (PDF 132-133). Verified cell-by-cell 2026-06-07 audit: all 400 generator cells matched the prior ingestion exactly (0 corrections); the d100 table was newly added from the book.",
+  "exotica_d100": [
+    {
+      "d100": 1,
+      "name": "Active Camouflage Ring",
+      "description": "The user vanishes from visible spectrums of light, adding +10 to their AV. Creatures which do not use conventional means to see are unaffected.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 2,
+      "name": "Amaranthine Sugar",
+      "description": "A fabulously valuable substance, extracted through patient husbandry from the bodies of adult sandworms. Resembles reddish-purple sugar. If consumed, the sugar grants a random Mystic Gift (p.xx).",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 3,
+      "name": "Ansible",
+      "description": "Crystalline orb. Allows faster-than-light communication with a linked Ansible.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 4,
+      "name": "Bluescreen Dagger",
+      "description": "Synthetic creatures must EGO Save vs d20 EGO damage when struck. Does not damage other creature types.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 5,
+      "name": "C-Foam Puddings",
+      "description": "Resemble plastic wrapped, milk-coloured puddings. When thrown expand into blancmanges of highly adhesive, quick setting foam. Entrap human-sized creatures in a matter of seconds (DEX save vs paralysis). The foam loosens over a period of eight hours. Salt water shortens this disintegration.",
+      "slots_uses": "1 / x6 uses"
+    },
+    {
+      "d100": 6,
+      "name": "Desiccation Spike",
+      "description": "Vile biotech weapon. Deals d6 CON damage to Biological creatures and produces 1 ration of water per successful hit.",
+      "slots_uses": "1 / Ud10"
+    },
+    {
+      "d100": 7,
+      "name": "Empathy Bomb",
+      "description": "Target Biological creatures must EGO Save or be overcome with compassion for others. This effect last d4 hours.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 8,
+      "name": "Exotic Melee Weapon",
+      "description": "Generate an Exotic Melee Weapon using the tables on p.xx",
+      "slots_uses": "See p.xx"
+    },
+    {
+      "d100": 9,
+      "name": "Exotic Ranged Weapon",
+      "description": "Generate an Exotic Ranged Weapon using the tables on p.xx",
+      "slots_uses": "See p.xx"
+    },
+    {
+      "d100": 10,
+      "name": "Fortuitous Polyhedron",
+      "description": "20-sided polyhedral quantum anomaly. Allows user to enter a reality where they passed rather than failed a Save. Vanishes after use.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 11,
+      "name": "Fuligin Garb",
+      "description": "Fuligin is the colour that is darker than black. Fuligin clothing completely conceals the wearer when in shadows, with no Save required. Creatures which do not use conventional means to see are unaffected.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 12,
+      "name": "Hesitant Urn",
+      "description": "A hypergeometric pot, baked from pale green clay and engraved with the seals of master hypergeometers. The urn has an opening in the top and a small hole bored at the bottom. Any liquid poured into the urn vanishes from rational space-time, and will trickle out of the hole at the bottom after a delay of exactly seven minutes.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 13,
+      "name": "Lithifying Ray",
+      "description": "Experimental weapon shaped like a snake-haired maiden. The ray changes organic material into stone. For each round that the ray is held on a biological target, they permanently lose d6 DEX and gain +2 Armour. At 0 DEX they become a remarkably lifelike statue.",
+      "slots_uses": "2 / Ud6"
+    },
+    {
+      "d100": 14,
+      "name": "Mirror Armour",
+      "description": "Dazzling suit of lightweight mirror plate. Grants AV 16 and immunity from Beam attacks. Cannot hide in shadows.",
+      "slots_uses": "3 slots"
+    },
+    {
+      "d100": 15,
+      "name": "Oneiric Bridge",
+      "description": "A peculiar conflux of wires. Allows the user to enter the dreams of a sleeping creature and influence their thoughts.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 16,
+      "name": "Pacifying Glove",
+      "description": "Biological creatures touched with the glove must EGO Save or fall asleep for d6 hours.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 17,
+      "name": "Portable Hole",
+      "description": "Creates a six-inch hypergeometric borehole straight through any solid object. Causes no harm to the structure or creature. When you’re done using it, peel the Portable Hole off the surface and put it back in your pocket.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 18,
+      "name": "Serenity Sphere",
+      "description": "A sphere of polished neuroactive crystal, roughly the size and weight of a grapefruit. Resting the sphere in both hands produces the feeling of being immersed in a comforting warm bath, allowing the bearer to endure minor discomforts with ease.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 19,
+      "name": "Singularity Bomb",
+      "description": "A glass sphere that contains a miniature gravity singularity. When released the gravity singularity draws in all objects in the room. DEX Save vs instant death inside the singularity.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 20,
+      "name": "Sovereign Glue",
+      "description": "Unbreakably stick two objects together.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 21,
+      "name": "Stasis Bomb",
+      "description": "Any creatures caught in the blast are marooned outside space-time for 2d6 combat rounds. They cannot take any action, nor be harmed nor touched.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 22,
+      "name": "Ulfire Paint",
+      "description": "Ulfire is the ninth visible colour, and its light is visible through solid objects. Anything marked with ulfire paint can be seen through walls.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 23,
+      "name": "Ultra-kinetic Gel",
+      "description": "Green gel that temporarily amplifies kinetic energy on any surface it coats. Increase speed of mechanisms, create temporary jump-pads, create the world’s most dangerous frisbee, etc.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 24,
+      "name": "Ultravisor",
+      "description": "+1 AV. Heptaglass war-visor that encircles the wearer’s head. The wearer has ultravision and can never be blinded or ambushed. When the visor is activated, any attack the wearer makes with a ranged weapon automatically hits.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 25,
+      "name": "Wand of Annihilation",
+      "description": "A rod of golden plasteel, a hand’s span in length. Can be used, when one has line of sight to the sky, to call down an orbital laser strike from an ancient war satellite. This attack deals d100 beam damage to any target indicated with the golden wand.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 26,
+      "name": "Adamant Linen",
+      "description": "A robe of flowing linen that protects the wearer like it were hewn from steel. Grants AV 18 to the wearer.",
+      "slots_uses": "2 / Unlimited"
+    },
+    {
+      "d100": 27,
+      "name": "Apocalypse Glass",
+      "description": "Dark looking-glass which shows not your reflection, but an extra-solar culture consumed by unimaginable horror. Of interest to some collectors.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 28,
+      "name": "Ardar-Eld’s Grail",
+      "description": "Liquids poured into this golden goblet become drinking water.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 29,
+      "name": "Belligerent Paste",
+      "description": "If applied to a corpse, turns that corpse into an Exotic Weapon.The nature of the weapon depends upon the corpse used (the Referee should use p.xx as a starting point).",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 30,
+      "name": "Bounty Beacon",
+      "description": "Use under open sky to call down a supply package from an orbiting military satellite (generate as Large Supply Cache, p.xx)",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 31,
+      "name": "Cat Ring",
+      "description": "Antigravity device. Arrests wearer’s fall just above the ground, preventing fall damage.",
+      "slots_uses": "1 / x9 uses"
+    },
+    {
+      "d100": 32,
+      "name": "Compass of Origin",
+      "description": "A device that unerringly points towards the holder’s location of birth. Urth’s magnetic field is no longer what it was, so this is more useful than it might seem.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 33,
+      "name": "Cybernetic Cocoon",
+      "description": "Human-sized black cocoon. Installs a random Advanced Cybernetic Implant (p.xx).",
+      "slots_uses": "6 / x1 use"
+    },
+    {
+      "d100": 34,
+      "name": "Dopplegun",
+      "description": "Biotech pistol that births a rapidly-aging, dangerously insane clone of any Biological-type creature its bullets hit. The clone has their stats and abilities, and survives for d6 rounds before dying of cancer.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 35,
+      "name": "Fascinator Helm",
+      "description": "+1 AV. When activated, all Biological creatures in visual range must EGO save or be transfixed by the flickering patterns on this helmet. They cannot move until damaged or until the helm is out of view.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 36,
+      "name": "Friend Fabricator",
+      "description": "Matter fabricating cocoon. When activated, creates a randomly generated creature from the local encounter table. The creature is neurally altered so as to love the cocoon’s user (treat them as a Pet, see p.xx).",
+      "slots_uses": "3 / x1 use"
+    },
+    {
+      "d100": 37,
+      "name": "Hard Light Projector",
+      "description": "Projects a flat wide bridge of weightless hard light, with effective range of ten feet. Could be walked across.",
+      "slots_uses": "2 / Ud8"
+    },
+    {
+      "d100": 38,
+      "name": "Hover Boots",
+      "description": "Antigravity boots. Allow brief sojourns into thin air.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 39,
+      "name": "Hushboots",
+      "description": "Sable, supple footwear that utterly silence footsteps. ADV when sneaking or attacking blind creatures.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 40,
+      "name": "Instant Table",
+      "description": "An elegant dining table, compressed using hypergeometry to be the size of a matchbox. Unfurls when thrown to the ground. Cannot be folded up again.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 41,
+      "name": "Mirror Shield",
+      "description": "+1 AV. DEX Save to reflect beam attacks back at their source.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 42,
+      "name": "Mord-Red’s Grail",
+      "description": "Liquids poured into this silver goblet become deadly poison (d12 TOX).",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 43,
+      "name": "Moonbeast Carapace",
+      "description": "The flayed carapace of a vile Moonbeast (p.xx). The wearer has AV 16, and immunity to radiation. Once worn the carapace cannot be removed.",
+      "slots_uses": "3 / Unlimited"
+    },
+    {
+      "d100": 44,
+      "name": "Phase Cape",
+      "description": "Hypergeometric cloth; allows wearer to slip out of lucid reality for d4 rounds . You cannot be touched by anyone, but neither can you touch them. You are still visible.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 45,
+      "name": "Presence Drone",
+      "description": "Small floating sphere that announces one’s presence in a loud, pompous voice. DIS on encounter rolls. Impossible to hide. Once activated must be destroyed or traded away to stop it following you.",
+      "slots_uses": "None (floats nearby)"
+    },
+    {
+      "d100": 46,
+      "name": "Spirit Prison (Empty)",
+      "description": "Manifold crystal prison designed to trap paradoxical creatures. This example is empty. When thrown at Hypergeometric or Outsider-type creatures, they must EGO Save or be trapped forever inside the prison, to be released at the bearer’s pleasure.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 47,
+      "name": "Spirit Prison (Occupied)",
+      "description": "Manifold crystal prison designed to trap paradoxical creatures. This example is occupied: roll on the Paradoxical Outsiders table (p.xx) to determine which entity is imprisoned.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 48,
+      "name": "Sprayflesh",
+      "description": "Canister that sprays healing pseudoflesh over wounds. Remove 1 Wound from Biological target per use.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 49,
+      "name": "Starskin",
+      "description": "A biomechanioid space-suit, worn by voidfarers of antiquity. Grants AV 16, and immunity to suffocation. Move freely in antigravity.",
+      "slots_uses": "3 / Unlimited"
+    },
+    {
+      "d100": 50,
+      "name": "Ulfire Lantern",
+      "description": "Shines ulfire light. Can see through solid objects and be seen. Blocked by lead.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 51,
+      "name": "Universal Ration",
+      "description": "Thick white nutrient-cake containing everything a human body needs. Full heal for Biological creatures.",
+      "slots_uses": "1 / Feeds four PCs"
+    },
+    {
+      "d100": 52,
+      "name": "Ammunition Fabricator",
+      "description": "Use to refill the ammunition for any ranged weapon in your possession.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 53,
+      "name": "Ardent Maggots",
+      "description": "A gourd of strange synthetic grubs that can strip a corpse to the bone in seconds. Will not eat live flesh.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 54,
+      "name": "Autarch’s Fork",
+      "description": "Obsidian dining fork that glows green when it is stuck into poison.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 55,
+      "name": "Autarch’s Nectar",
+      "description": "Honeyed golden tonic containing gene-sculpting nanomachines. When drunk by a Biological creature, grants a permanent +1 boost to three Ability scores.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 56,
+      "name": "Babel Bomb",
+      "description": "Neuro-active hand grenade. All living creatures caught within the blast will find themselves unable to understand spoken or written language, and their own speech is likewise gibberish. The effect lasts for a day.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 57,
+      "name": "Bedazzling Blade",
+      "description": "Off-handed parrying sword (d6), forged in the Fallen Autarchy. Has an inbuilt trick - the blade can briefly glow as brightly as the sun. Oponnents DEX Save vs d6 rounds of Blindness.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 58,
+      "name": "Blue Rust",
+      "description": "Alchemical compound that turns any metal into rust within moments. D6 CON damage to Synthetic creatures per round.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 59,
+      "name": "Bottled Thicket",
+      "description": "Glass vial containing weaponised seeds. When the vial is broken, the seeds germinate and begin an astoundingly rapid life cycle, sprouting into a dense tangle of iridescent vines within seconds. Fills entire room, strangling all living creatures for d8 damage per round. STR Save to break free.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 60,
+      "name": "Ditto Gun",
+      "description": "Revolver that generates weaponised temporal anomalies when its bullets impact a target. These anomalies inflict a wound identical to the most recent injury suffered by the target, with a matching damage value.",
+      "slots_uses": "1 / Ud10"
+    },
+    {
+      "d100": 61,
+      "name": "Gecko Gloves",
+      "description": "Finely woven nano-cloth gloves. Allow the wearer’s hands to stick to any flat surface with a near-unbreakable grip. Can climb impossible distances.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 62,
+      "name": "Hedondroid",
+      "description": "Factory-sealed package containing a synthetic partycrasher. Crude android powered by alcohol, and can unerringly locate parties, orgies, weddings etc. within a five-day radius. Once activated, joins your party as a Follower (p.xx).",
+      "slots_uses": "5 / x1 use"
+    },
+    {
+      "d100": 63,
+      "name": "Lazarus Cap",
+      "description": "+1 AV. Grim necrotech helm. If applied to the head of a fresh corpse, will re-activate the brain. The effect only lasts while the cap is worn, and does nothing to arrest the decay of the flesh (wearer loses d4 CON per day).",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 64,
+      "name": "Magnetic Orb",
+      "description": "Large silver orb which emits powerful magnetic field when active. All nearby metal objects and Synthetic-type creatures are irresistibly drawn towards it.",
+      "slots_uses": "2 / Ud8"
+    },
+    {
+      "d100": 65,
+      "name": "Mind Shield",
+      "description": "+1 AV. Golden cage worn around head. Protects from psychic intrusion. Cannot use Mystic Gifts. Exempt from Gleam Tests (p.xx).",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 66,
+      "name": "Not-Sword",
+      "description": "A sword (d8) engraved with paradoxical LogLang glyphs. Synthetic creatures cannot recognise this weapon as a blade, nor can they recognise the bearer of the sword as a living being.",
+      "slots_uses": "2 / Unlimited"
+    },
+    {
+      "d100": 67,
+      "name": "Phase Grenades",
+      "description": "Every physical object caught in the blast becomes briefly de-synched with reality; others can pass through like mist. The effect does not last long and is not harmful.",
+      "slots_uses": "1 / x4 uses"
+    },
+    {
+      "d100": 68,
+      "name": "Philosopher’s Dirk",
+      "description": "Neuroactive dagger which deals d4 INT damage per stab. At 0 INT the victim adopts your point of view.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 69,
+      "name": "Prison Orb of the Miniature Beast",
+      "description": "A hypergeometric orb the size of a grapefruit, with a scarlet upper hemisphere and a pallid lower hemisphere. Used by the citizens of a long-faded civilisation to imprison a collection of tiny fighting-beasts, and compel them to do battle with other beast-masters. 4-in-6 chance the Orb still contains a Citrine-coated Volt Rat (p.xx), hungry and trained to kill without hesitation. 2-in-6 chance the Orb holds nothing but the desiccated corpse of a forgotten beast.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 70,
+      "name": "Psybernetic Helm",
+      "description": "+1 AV. When worn for first time, installs a random Mystic Gift (p.xx).",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 71,
+      "name": "Quantum Umbilical",
+      "description": "Strange device that links the destiny of two creatures. While one lives, the other cannot truly die.",
+      "slots_uses": "2 / Ud4"
+    },
+    {
+      "d100": 72,
+      "name": "Tech Wand",
+      "description": "Miraculous silver wand. Use to re-activate or deactivate a piece of arcane technology.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 73,
+      "name": "Tempest Cannon",
+      "description": "Creates localised, incredibly violent thunderstorms wherever its shells explode (d12, blast, electrical). Reload with 3 rations of water.",
+      "slots_uses": "3 / Ud4"
+    },
+    {
+      "d100": 74,
+      "name": "The Book of Sand",
+      "description": "Hypergeometric object that resembles a book with an infinite number of pages, each one containing an infinite number of tiny paragraphs written in illegible text. Decoding the book is impossible, although its infinite length could provide fuel for an endlessly burning fire.",
+      "slots_uses": "1 / Infinite"
+    },
+    {
+      "d100": 75,
+      "name": "The Crimson Cantos",
+      "description": "Small, unassuming volume of poetry, bound in crimson leather. The book’s contents are neuro-active, and always guaranteed to fling the reader into a murderous rage. Readers must EGO save or violently attack the nearest living creature.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 76,
+      "name": "Watchful Ferret",
+      "description": "A small golden synthetic ferret that sits on your shoulder. Nips you if it detects an unseen danger. Does not need to eat or breathe.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 77,
+      "name": "Anti-Gravity Field Generator",
+      "description": "A tetrahedron of lusterless black metal. When activated, excludes Urth’s gravity within throwing distance of the user. Creatures not adapted to zero gravity environments must DEX Save to move or else float helplessly.",
+      "slots_uses": "3 / Ud6"
+    },
+    {
+      "d100": 78,
+      "name": "Biotic Field Generator",
+      "description": "A golden beacon. When planted on the floor, emits a cloud of healing nanomachines for 6 rounds. All Biological creatures in melee range regain +d10 HP per round while in the cloud.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 79,
+      "name": "Black Cloud Bomb",
+      "description": "Releases a cloud of nanomachines that consume all biological material in the area, dealing d6 unblockable damage per round. With each kill, the cloud grows in size and deals an extra d6 of damage. The cloud expands until it cannot find more biological material to consume, at which point it hibernates.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 80,
+      "name": "Cybernetics Pack",
+      "description": "Contains a factory-sealed cybernetic implant (generate from p.xx).",
+      "slots_uses": "2 / x1"
+    },
+    {
+      "d100": 81,
+      "name": "Demiurge Crayon",
+      "description": "An hypergeometric artefact of unimaginable power, which resembles an unassuming child’s crayon. Any item, creature, or other object drawn with this crayon becomes real.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 82,
+      "name": "Disguise Ring",
+      "description": "Holographic disguise. Projects a hologram around the wearer. Can be programmed to show an image of any creature or entities that are nearby. Perfect visual replica but anyone attempting to touch the hologram shell will realise the decepiton. Comes pre-loaded with disguise patterned on a creature from the local encounter table.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 83,
+      "name": "Fate Inverter",
+      "description": "Peculiar paradox-device. When activated, all nearby failed Saves become successes, and all succesful Saves become failures. Likewise missed attacks hit, and attacks that hit will miss.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 84,
+      "name": "Horror Helm",
+      "description": "+2 AV. Autarch’s war-helm. When activated, the helm bellows terrifying neuroactive threats. All Biological foes in earshot must make a Morale Save or flee.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 85,
+      "name": "Huntsman Fly",
+      "description": "Cocoon containing tiny synth-fly. If given a drop of blood or other DNA sample, can unnerringly locate the target. Dies once mission is complete.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 86,
+      "name": "Quantum Daemon Horn",
+      "description": "Sound to draw the attention of a Greater Quantum Daemon (p.xx). They will arrive immediately and are bound to perform one boon for you.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 87,
+      "name": "Lithling Seed",
+      "description": "The corpse (and hence embryo) of a Lithling. If immersed in a bath of the correct chemicals, will slowly crystallize into an adult Lithling. Follow the character generation procedure on p.xx.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 88,
+      "name": "Manifold Box",
+      "description": "A hypergeometric box which is much larger on the inside than on the outside. The Manifold Box can hold 10 slots of items weightlessly within itself. Retreiving them during combat takes an action.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 89,
+      "name": "Pale Fire",
+      "description": "A wooden flask in which is held a hueless flame, kindled from some extradimensional anti-ember. Burns bitterly cold and consumes substances that would not usually burn: metal and water are favoured fuels. It can be extinguished with oil or another flammable liquid.",
+      "slots_uses": "1 / x1 use"
+    },
+    {
+      "d100": 90,
+      "name": "Philosopher’s Bridge",
+      "description": "A device which creates a pair of round hypergeometric portals on solid walls, one blue and one orange. The portals may be passed through like mundane apertures, with any objects that pass through retaining their momentum. The user may close both portals at will.",
+      "slots_uses": "2 / Ud6"
+    },
+    {
+      "d100": 91,
+      "name": "Scatter-Shoal Ring",
+      "description": "When activated, projects 9 hard-light holograms of the wearer which scatter like frightened fish in all directions. The holograms are solid and react when ‘hurt’, although they cannot speak. Opponents have a 1-in-10 chance of targeting the correct image of the wearer.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 92,
+      "name": "Snakemaker",
+      "description": "A gun that makes and fires synthetic snakes (Lvl 0, AV 11, d4 bite). They do not like or obey the wielder.",
+      "slots_uses": "1 / Ud8"
+    },
+    {
+      "d100": 93,
+      "name": "Stormcaller",
+      "description": "Accursed flute that disturbs the kingdoms of the upper air. When played beneath an open sky, a Prismatic Tempest (p.xx) will form overhead.",
+      "slots_uses": "1 / Ud6"
+    },
+    {
+      "d100": 94,
+      "name": "TALLHAT Amplifier",
+      "description": "A psionic amplifier system, hidden inside a black conical hat. When worn, +1 to all mental stats. Identifies one as a Witch of the Mooncradle Mountains.",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 95,
+      "name": "Thinking Cap",
+      "description": "+1 AV, +2 INT. If wearer was not previously sentient, it now becomes so.",
+      "slots_uses": "2 / Unlimited"
+    },
+    {
+      "d100": 96,
+      "name": "Titancreed Fragment: KILL",
+      "description": "A fragment of the language of the Titan AIs. When read aloud, all Syntehtic creatures in hearing range must EGO Save or fly into a killing frenzy.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 97,
+      "name": "Titancreed Fragment: OBEY",
+      "description": "A fragment of the language of the Titan AIs. When read aloud, all Syntehtic creatures in hearing range must EGO Save or obey one verbal command from the reader.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 98,
+      "name": "Titancreed Fragment: SLEEP",
+      "description": "A fragment of the language of the Titan AIs. When read aloud, all Syntehtic creatures in hearing range must EGO Save or fall into a resting state.",
+      "slots_uses": "1 / Ud4"
+    },
+    {
+      "d100": 99,
+      "name": "Vimana Map",
+      "description": "Small chunk of crystal. When activated, projects a holographic map guiding the user to the location of a lost Autarch’s Vimana (p.xx).",
+      "slots_uses": "1 / Unlimited"
+    },
+    {
+      "d100": 100,
+      "name": "Wind-up Haruspex",
+      "description": "Clockwork fortunte teller. When provided the entrails and stomach of a recently-butchered animal or person, it can discern the likely course of the future using the guts. Can only answer one question at a time. Can only give the answers YES, NO, or PERHAPS.",
+      "slots_uses": "3 / Unlimited"
+    }
+  ],
+  "tables": {
+    "material": [
+      "Coral",
+      "Bone",
+      "Magma",
+      "Bark",
+      "Onyx",
+      "Gold",
+      "Silver",
+      "Mercury",
+      "Ruby",
+      "Emerald",
+      "Snakeskin",
+      "Water",
+      "Ice",
+      "Smoke",
+      "Flame",
+      "Ashes",
+      "Bronze",
+      "Steel",
+      "Plastic",
+      "Acid",
+      "Sapphire",
+      "Wax",
+      "Honey",
+      "Silk",
+      "Polymer",
+      "Glass",
+      "Porcelain",
+      "Quicksilver",
+      "Hard Light",
+      "Resin",
+      "Ivory",
+      "Flesh",
+      "Cobalt",
+      "Oil",
+      "Tortoiseshell",
+      "Amethyst",
+      "Diamond",
+      "Turquoise",
+      "Nanoweave",
+      "Fur",
+      "Elastane",
+      "Rubber",
+      "Sand",
+      "Paper",
+      "Milk",
+      "Amber",
+      "Horn",
+      "Crystal",
+      "Obsidian",
+      "Slate",
+      "Chrome",
+      "Eggshell",
+      "Marble",
+      "Granite",
+      "Wire",
+      "Hologram",
+      "Chalk",
+      "Dust",
+      "Petal",
+      "Neurone",
+      "Fingernail",
+      "Plasteel",
+      "Greenstone",
+      "Limestone",
+      "Pearl",
+      "Ochre",
+      "Plaster",
+      "Lead",
+      "Root",
+      "Hair",
+      "Enamel",
+      "Gut",
+      "Fish-scale",
+      "Antler",
+      "Crab-shell",
+      "Wood",
+      "Spore",
+      "Concrete",
+      "Mosaic",
+      "Platinum",
+      "Ink",
+      "Plasma",
+      "Gas",
+      "Velvet",
+      "Grease",
+      "Muscle",
+      "Shadow",
+      "Cobweb",
+      "Foam",
+      "Gel",
+      "Slime",
+      "Moss",
+      "Lichen",
+      "Grass",
+      "Salt",
+      "Ambergris",
+      "Wool",
+      "Synthskin",
+      "Moon Rock",
+      "Antimatter"
+    ],
+    "form": [
+      "Anchor",
+      "Crown",
+      "Gloves",
+      "Diadem",
+      "Throne",
+      "Wheel",
+      "Sphere",
+      "Cube",
+      "Needle",
+      "Boot",
+      "Tablet",
+      "Screen",
+      "Mirror",
+      "Veil",
+      "Cloak",
+      "Book",
+      "Door",
+      "Lock",
+      "Urn",
+      "Rope",
+      "Dice",
+      "Crystal",
+      "Goblet",
+      "Knife",
+      "Shield",
+      "Helmet",
+      "Mask",
+      "Muzzle",
+      "Breastplate",
+      "Anvil",
+      "Hammer",
+      "Whetstone",
+      "Lantern",
+      "Bonfire",
+      "Ashes",
+      "Pyramid",
+      "Coin",
+      "Gemstone",
+      "Purse",
+      "Helix",
+      "Effigy",
+      "Eye",
+      "Beetle",
+      "Seed",
+      "Flower",
+      "Leaf",
+      "Spindle",
+      "Jug",
+      "Brooch",
+      "Typewriter",
+      "Watch",
+      "Shovel",
+      "Sickle",
+      "Abacus",
+      "Map",
+      "Key",
+      "Carpet",
+      "Bell",
+      "Harpoon",
+      "Disk",
+      "Drill",
+      "Clay",
+      "Amulet",
+      "Doll",
+      "Eyeglasses",
+      "Ring",
+      "Sarcophagus",
+      "Chalice",
+      "Chainmail",
+      "Hat",
+      "Candle",
+      "Lantern",
+      "Talisman",
+      "Wine",
+      "Sandal",
+      "Jawbone",
+      "Skull",
+      "Bread",
+      "Tent",
+      "Scroll",
+      "Chariot",
+      "Blood",
+      "Skin",
+      "Flesh",
+      "Horn",
+      "Drum",
+      "Honeycomb",
+      "Heart",
+      "Bird",
+      "Tongue",
+      "Pen",
+      "Basket",
+      "Saw",
+      "Telescope",
+      "Broom",
+      "Chalk",
+      "Hand",
+      "Feather",
+      "Banner",
+      "Meteorite"
+    ],
+    "theme": [
+      "Crystals",
+      "Memory",
+      "Stars",
+      "Darkness",
+      "Light",
+      "Fire",
+      "Water",
+      "Sand",
+      "Ice",
+      "Stone",
+      "Wind",
+      "Death",
+      "Clouds",
+      "Autarchs",
+      "Poison",
+      "Tempests",
+      "Life",
+      "Fungus",
+      "Dreams",
+      "The Promised Sun",
+      "Full Moon",
+      "Forgiveness",
+      "Infants",
+      "Twins",
+      "Psychics",
+      "The Titans",
+      "The Darkling Sun",
+      "Synths",
+      "Cacogen",
+      "Mycomorphs",
+      "Lithling Scholars",
+      "Faa Nomads",
+      "Vendettas",
+      "The Ocean",
+      "The Void",
+      "Opera",
+      "Gladiators",
+      "Dishonoured Dead",
+      "Crocodiles",
+      "Priests",
+      "Nuns",
+      "Sacred Puppets",
+      "Birds",
+      "Jackals",
+      "Scorpions",
+      "Oases",
+      "Sandstorms",
+      "Beams",
+      "Poison",
+      "Oracles",
+      "Eggs",
+      "Rebirth",
+      "Hypergeometry",
+      "Labyrinths",
+      "Flight",
+      "Mirrors",
+      "Libraries",
+      "Spiders",
+      "Sailors",
+      "Forests",
+      "Cacti",
+      "Silence",
+      "Torturers",
+      "Saints",
+      "Shadows",
+      "Poets",
+      "Earthquakes",
+      "Merchants",
+      "Cybernetics",
+      "Mutation",
+      "Moths",
+      "Octopi",
+      "Keys",
+      "Rust",
+      "Clockwork",
+      "Gemstones",
+      "Lizards",
+      "Metamorphosis",
+      "Night",
+      "Travellers",
+      "Flowers",
+      "Chaos",
+      "Decay",
+      "Beauty",
+      "Fog",
+      "Caves",
+      "Volcanoes",
+      "Singers",
+      "Owls",
+      "Wolves",
+      "Spies",
+      "Banquets",
+      "Law",
+      "Mutilation",
+      "Grace",
+      "Truth",
+      "Weddings",
+      "Alchemists",
+      "Quantum Daemons",
+      "Oaths"
+    ],
+    "action": [
+      "Absorbing",
+      "Armouring",
+      "Banishing",
+      "Bashing",
+      "Binding",
+      "Blinding",
+      "Burning",
+      "Choking",
+      "Concealing",
+      "Consuming",
+      "Corroding",
+      "Countering",
+      "Crushing",
+      "Curing",
+      "Cushioning",
+      "Dazzling",
+      "Deafening",
+      "Deflecting",
+      "Detonating",
+      "Disappearing",
+      "Disarming",
+      "Disguising",
+      "Disintegrating",
+      "Dividing",
+      "Draining",
+      "Electrifying",
+      "Entangling",
+      "Excruciating",
+      "Freezing",
+      "Fusing",
+      "Grasping",
+      "Guarding",
+      "Haunting",
+      "Healing",
+      "Hindering",
+      "Impaling",
+      "Imprisoning",
+      "Infecting",
+      "Inflating",
+      "Inverting",
+      "Invigorating",
+      "Liquefying",
+      "Mending",
+      "Nullifying",
+      "Shielding",
+      "Teleporting",
+      "Transmuting",
+      "Warding",
+      "Whispering",
+      "Withering",
+      "Achromatizing",
+      "Addicting",
+      "Adhering",
+      "Bewildering",
+      "Blackening",
+      "Blossoming",
+      "Concealing",
+      "Calming",
+      "Charming",
+      "Commanding",
+      "Dancing",
+      "Dissolving",
+      "Distracting",
+      "Dreaming",
+      "Duplicating",
+      "Encoding",
+      "Enraging",
+      "Enticing",
+      "Evolving",
+      "Extinguishing",
+      "Fixing",
+      "Flying",
+      "Folding",
+      "Horrifying",
+      "Hybridising",
+      "Maddening",
+      "Mesmerising",
+      "Mocking",
+      "Pulling",
+      "Pulsing",
+      "Reflecting",
+      "Repelling",
+      "Revealing",
+      "Reversing",
+      "Saddening",
+      "Scrying",
+      "Seeking",
+      "Shooting",
+      "Silencing",
+      "Slithering",
+      "Soaring",
+      "Sparking",
+      "Violating",
+      "Weaving",
+      "Weeping",
+      "Whirling",
+      "Whistling",
+      "Wrestling",
+      "Writing",
+      "Yearning"
+    ]
+  }
+}

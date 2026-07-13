@@ -1,0 +1,57 @@
+# Rubicon Seven MCP — Python dependencies
+#
+# CRITICAL — ChromaDB version is PINNED on purpose.
+# The live store at <campaign>/chroma-db was created and is maintained by
+# chromadb 1.3.7, running under the Windows venv: .venv/Scripts/python.exe
+# (this is the interpreter .mcp.json launches the server with).
+#
+# Do NOT open or write the live store with chromadb 1.5.x (the WSL default
+# `python3` ships 1.5.4). The on-disk format differs between 1.3.x and 1.5.x,
+# and the legacy `metadata={"hnsw:space": "cosine"}` creation call this codebase
+# uses is deprecated in 1.5 — opening the 1.3.x store with 1.5.x risks a one-way
+# migration or silently dropping the cosine space. Any live ingest/reindex MUST
+# run under the Windows venv (1.3.7), never WSL python3.
+chromadb==1.3.7
+
+# Cross-process write lock around the live store (server.py _chroma_write_lock).
+# Already present as a chromadb transitive dep; pinned explicitly because we now
+# depend on it directly. OS-native locks (msvcrt/fcntl), auto-release on death.
+filelock==3.20.1
+
+# The MCP framework the server is built on. fastmcp is a SEPARATE package from
+# `mcp` and is imported at server.py top-level (FastMCP, Context, ToolError,
+# FileResource, the caching/middleware classes). PINNED to the exact beta the
+# codebase targets — the middleware/caching API it uses is 3.x-specific, so an
+# unpinned/older fastmcp breaks the boot imports. (`mcp` rides along as fastmcp's
+# own dependency.) Was missing from this file before 2026-06-20 — a clean install
+# crashed at boot with `-32000` until added; caught by the MacNeo plugin test.
+fastmcp==3.0.0b1
+mcp
+
+# Data-model layer. Used DIRECTLY in tool signatures across ~6 modules (not just
+# transitively via fastmcp/chromadb), so it's declared explicitly.
+pydantic==2.12.5
+
+# PDF text extraction. Imported at server.py:15 (top-level) for rulebook ingest —
+# boot-critical, so it ships even though only one code path uses it.
+pdfplumber==0.11.8
+
+# Other direct deps (versions as installed in the Windows venv).
+anthropic
+numpy
+requests
+
+# RAG hardening sprint Task 4 — pure-Python BM25 for the lexical lane
+# (lexical_lane.py). Tiny, dependency-free; if it's ever unavailable at import
+# time, lexical_lane.py falls back to a documented minimal Okapi BM25
+# implementation rather than failing to import.
+rank_bm25==0.2.2
+
+# Companion dashboard (dashboard/app.py, scripts/dashboard.py) -- a read-only
+# Textual TUI for a second terminal pane. Optional extra: only needed to run
+# the dashboard itself, not the MCP server. Pinned to the version installed
+# and verified in the Windows venv.
+textual==7.3.0
+
+# Dev/test only:
+# pytest

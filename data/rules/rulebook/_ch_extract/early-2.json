@@ -1,0 +1,377 @@
+[
+  {
+    "name": "Hegemony Centurion",
+    "printed_pages": "88",
+    "pdf_pages": "95",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 16,
+    "morale": "+8",
+    "enc": "1 (+d8 Legionaries)",
+    "movement": "",
+    "attacks": [
+      {"name": "Rifle", "damage": "d8"},
+      {"name": "Rapier", "damage": "d8"}
+    ],
+    "special": [
+      "The Hegemony's officer caste are famed for their extravagant facial hair, their gaudy epaulettes, and their contempt for weakness.",
+      "Legionaries in presence of Centurion use the Centurion's morale score."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "HegemonyCenturion Biological LVL5(20HP)/AV16/ML+8/ENC1(+d8 Legionaries) ATK:Rifle(d8)+Rapier(d8). Legionaries in presence of Centurion use the Centurion's morale score."
+  },
+  {
+    "name": "Hegemony Legionary",
+    "printed_pages": "88",
+    "pdf_pages": "95",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 14,
+    "morale": "+5",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Rifle", "damage": "d8"},
+      {"name": "Grenade", "damage": "d10 blast, DEX save to throw back"}
+    ],
+    "special": [
+      "Resourceful true-kin soldiers, clad in red armour. The backbone of the Hegemon's occupying forces in Vaarn.",
+      "Reinforcements: If outnumbered, Legionaries fire a distress flare, summoning another d8 Legionaries."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "HegemonyLegionary Biological LVL2(8HP)/AV14/ML+5/ENCd8 ATK:Rifle(d8)/Grenade(d10blast,DEXsaveto throwback). Reinforcements:If outnumbered, Legionaries fire a distress flare, summoning another d8 Legionaries."
+  },
+  {
+    "name": "Faa Nomad",
+    "printed_pages": "90",
+    "pdf_pages": "97",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+4",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {"name": "Faa Rifle", "damage": "d8"},
+      {"name": "Curved Blade", "damage": "d6"}
+    ],
+    "special": [
+      "The travelling folk of the blue desert. Expert trackers, skilled at ambush and escapes.",
+      "A group of eight or more includes a Lvl 2 leader."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "FaaNomad Biological LVL1(4HP)/AV12/ML+4/ENCd10 ATK:FaaRifle(d8)/CurvedBlade(d6). A group of eight or more includes a Lvl2 leader."
+  },
+  {
+    "name": "Faa Sniper",
+    "printed_pages": "90",
+    "pdf_pages": "97",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 12,
+    "morale": "+6",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Headshot", "damage": "Special"},
+      {"name": "Curved Blade", "damage": "d6"}
+    ],
+    "special": [
+      "Headshot: at the start of each combat round, before initiative is determined, the Sniper picks one foe in line of sight for elimination. If at the end of the combat round the Sniper still has line of sight on the target, they are shot and reduced to 0 HP, with no Save possible. If the PC targeted has negative HP, this attack is instantly fatal. Creatures without heads suffer d10 damage instead.",
+      "Hidden: Snipers blend into the environment and cannot be targeted if they do not move. When they fire, the target can make an INT Save to pinpoint their location."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "FaaSniper Biological LVL3(12HP)/AV12/ML+6/ENC1 ATK:Headshot(Special)/CurvedBlade(d6). Headshot... shot and reduced to 0HP, with no Save possible... Creatures without heads suffer d10 damage instead. Hidden: ...cannot be targeted if they do not move."
+  },
+  {
+    "name": "Seeker of Eyeless Wisdom",
+    "printed_pages": "92",
+    "pdf_pages": "99",
+    "type": "Biological / Psychic",
+    "level": 2,
+    "hp": 8,
+    "av": 11,
+    "morale": "+5",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Brain Burster", "damage": "Special"},
+      {"name": "Telekinesis", "damage": "d6, STR save vs lifted and thrown"}
+    ],
+    "special": [
+      "Walkers of the Eyeless Path, who seek endarkenment within the subterranean halls of their hidden temples.",
+      "Brain Burster: an embolism catalysed by psychic malice. For each combat round that the Seeker focuses their attention on a target, the target takes unblockable damage, with no to-hit roll required. This damage starts at 2 and doubles each turn, unless the Seeker's focus is broken, or if they switch to a new target. Creatures without a brain cannot be harmed by this attack."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "SeekerofEyelessWisdom Biological/Psychic LVL2(8HP)/AV11/ML+5/ENCd4 ATK:BrainBurster(Special)/Telekinesis(d6, STRsavevsliftedandthrown). BrainBurster... starts at 2 and doubles each turn... Creatures without a brain cannot be harmed by this attack."
+  },
+  {
+    "name": "Master of Eyeless Wisdom",
+    "printed_pages": "92",
+    "pdf_pages": "99",
+    "type": "Biological / Psychic",
+    "level": 7,
+    "hp": 28,
+    "av": "Special",
+    "morale": "+7",
+    "enc": "1",
+    "movement": "levitate above the azure dust",
+    "attacks": [
+      {"name": "Mind Control", "damage": "EGO Save vs Controlled"},
+      {"name": "Telekinesis", "damage": "2d8, STR save vs lifted and thrown"}
+    ],
+    "special": [
+      "Masters of the Eyeless Path, who achieved endarkenment and now guide lesser minds upon the road. Self-blinded and legless, they levitate above the azure dust.",
+      "Prescience: Eyeless Masters telepathically predict the assaults of their opponents, always moving ahead of the blow. They cannot be harmed with any attack unless the attacker learns to shield their intentions, achieved with an opposed PSY Save. Stripped of their prescience, Eyeless Masters have AV11."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "AV listed as Special; AV11 once prescience is stripped via opposed PSY Save"},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Cannot be harmed by any attack until attacker wins an opposed PSY Save to shield intentions (per printed text).",
+    "confidence": "high",
+    "raw_excerpt": "MasterofEyelessWisdom Biological/Psychic LVL7(28HP)/AVSpecial/ML+7/ENC1 ATK:MindControl(EGOSavevsControlled)/ Telekinesis(2d8,STRsavevsliftedandthrown). Prescience: ...cannot be harmed with any attack unless the attacker learns to shield their intentions, achieved with an opposed PSY Save. Stripped of their prescience, Eyeless Masters have AV11."
+  },
+  {
+    "name": "Cacklemaw",
+    "printed_pages": "94",
+    "pdf_pages": "101",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+8",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Blade", "damage": "d8"},
+      {"name": "Bite", "damage": "d6"},
+      {"name": "Crossbow", "damage": "d8"}
+    ],
+    "special": [
+      "Lurking laughing hyena-women. Fight in packs, with little regard for their own safety. Snap at opponents' faces in close quarters with their powerful teeth.",
+      "A group of eight or more will include a Cacklemaw Virago (see below)."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "ATK printed as Blade(d8)+Bite(d6) / Crossbow(d8).",
+    "confidence": "high",
+    "raw_excerpt": "Cacklemaw Biological LVL2(8HP)/AV13/ML+8/ENC2d6 ATK:Blade(d8)+Bite(d6)/Crossbow(d8). A group of eight or more will include a Cacklemaw Virago."
+  },
+  {
+    "name": "Cacklemaw Virago",
+    "printed_pages": "94",
+    "pdf_pages": "101",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 15,
+    "morale": "Special",
+    "enc": "1 (with 2d6 Cacklemaw)",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Blade", "damage": "d8"},
+      {"name": "Bite", "damage": "d6"},
+      {"name": "Grenade Launcher", "damage": "d10, blast"}
+    ],
+    "special": [
+      "Virago is the title given to the largest, meanest, and most cunning Cacklemaw warriors. They lead their smaller sisters into battle, and must be seen to savour the violence lest they be challenged by one of their underlings. For this reason Virago will never retreat from combat if other Cacklemaw are alive to witness it."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Morale listed as Special: will never retreat from combat if other Cacklemaw are alive to witness it.",
+    "confidence": "high",
+    "raw_excerpt": "CacklemawVirago Biological LVL5(20HP)/AV15/MLSpecial/ENC1(with2d6 Cacklemaw) ATK::2xBlade(d8)+Bite(d6)/Grenade Launcher(d10,blast). Virago will never retreat from combat if other Cacklemaw are alive to witness it."
+  },
+  {
+    "name": "Jigsaw Courtier",
+    "printed_pages": "96",
+    "pdf_pages": "103",
+    "type": "Biological / Hypergeometric",
+    "level": 4,
+    "hp": 16,
+    "av": 13,
+    "morale": "+4",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Bladed Tesseract", "damage": "d6, hypergeometric"}
+    ],
+    "special": [
+      "Bearer of a figment of the Jigsaw Autarch. See d4 Autarch Figment table for the effects of the figment.",
+      "Autarch Figment (d4): 1 EYE - Bearer's eye becomes a hole of infinite depth. Bearer can cry lances of paradox energy (d10, beam, hypergeometric). Bearer gains the Hypergeometric creature type.",
+      "Autarch Figment (d4): 2 GUT - Bearer cradles the Autarch's paradoxical gut inside their body, boosting their resilience. Bearer gains +3 AV and +1 Level. Bearer gains the Hypergeometric creature type.",
+      "Autarch Figment (d4): 3 MAW - Bearer's flesh blossoms into a mouth of the Jigsaw Autarch. At close range they make an additional bite attack every round (d10, hypergeometric). Bearer gains the Hypergeometric creature type.",
+      "Autarch Figment (d4): 4 NERVES - Bearer's nerves are intertwined with the otherworldly neurons of the Jigsaw Autarch. Bearer gains +1 to INT, PSY and EGO. Bearer may extrude the Autarch's nerves to entangle an opponent (DEX Save vs -5 AV). Bearer gains the Hypergeometric creature type."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Stats vary by rolled Autarch Figment (e.g. +3 AV / +1 Level on a GUT result).",
+    "confidence": "high",
+    "raw_excerpt": "JigsawCourtier Biological/Hypergeometric LVL4(16HP)/AV13/ML+4/ENCd4 ATK:BladedTesseract(d6,hypergeometric). Bearer of a figment of the Jigsaw Autarch. d4 AUTARCHFIGMENT: 1 EYE / 2 GUT (+3AV,+1Level) / 3 MAW / 4 NERVES."
+  },
+  {
+    "name": "Lithling Scholar",
+    "printed_pages": "98",
+    "pdf_pages": "105",
+    "type": "Mineral",
+    "level": 6,
+    "hp": 24,
+    "av": 24,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Scholar's Staff", "damage": "d4"}
+    ],
+    "special": [
+      "Wandering scholar from the Lithic Lyceum. Generally pacifists, and have little desire to harm living beings. Will attempt to reason with their assailants, even during deadly combat."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "LithlingScholar Mineral LVL6(24HP)/AV24/ML+5/ENC1 ATK:Scholar'sStaff(d4). Wandering scholar from the Lithic Lyceum. Generally pacifists."
+  },
+  {
+    "name": "Lithling Warrior",
+    "printed_pages": "98",
+    "pdf_pages": "105",
+    "type": "Mineral",
+    "level": 8,
+    "hp": 36,
+    "av": 24,
+    "morale": "+8",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Lithifying Ray", "damage": "d8 DEX Damage, turn to stone at 0 DEX"}
+    ],
+    "special": [
+      "When the Lyceum has need of defense, it calls upon its rarely seen warrior-scholars. They fight to preserve rather than kill, their defeated foes carefully catalogued in the depths of the Inspiral Archive."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Lithifying Ray deals DEX damage; target turns to stone at 0 DEX.",
+    "confidence": "high",
+    "raw_excerpt": "LithlingWarrior Mineral LVL8(36HP)/AV24/ML+8/ENCd4 ATK:LithifyingRay(d8DEXDamage,turnto stoneat0DEX). They fight to preserve rather than kill."
+  },
+  {
+    "name": "Chromepriest",
+    "printed_pages": "100",
+    "pdf_pages": "107",
+    "type": "Synthetic",
+    "level": 4,
+    "hp": 16,
+    "av": 14,
+    "morale": "+4",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Arc-Thrower", "damage": "d10, electrical"},
+      {"name": "Prism Grenade", "damage": "2d6, blast, beam"}
+    ],
+    "special": [
+      "Synthetic priests of the Machine Gods, resplendent in scaled robes of argent (the colour purer than white). Crystalline diadems encircle their Ego-Engine housing.",
+      "Argent Robes: Chromepriests are immune to damage from beam weapons."
+    ],
+    "resistances": {"immune": ["beam"], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Argent Robes: immune to damage from beam weapons (stated in stat block)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Argent Robes grants immunity to beam-weapon damage.",
+    "confidence": "high",
+    "raw_excerpt": "Chromepriest Synthetic LVL4(16HP)/AV14/ML+4/ENCd4 ATK:Arc-Thrower(d10,electrical)/Prism Grenade(2d6,blast,beam). ArgentRobes:Chromepriests are immune to damage from beam weapons."
+  },
+  {
+    "name": "Titan Acolyte",
+    "printed_pages": "100",
+    "pdf_pages": "107",
+    "type": "Biological / Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 16,
+    "morale": "+5",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Vibro-Dagger", "damage": "d4, hits as if target has -5 AV"},
+      {"name": "Volt Crossbow", "damage": "d6, electrical"}
+    ],
+    "special": [
+      "Biological beings may hold the rank of acolyte only, forbidden from ascending the pyramid of wisdom. They assist the Chromepriests with their studies and slavishly augment themselves.",
+      "Cybernetics: all Titan Acolytes bear a randomly generated Cybernetic Implant, proof of their devotion to wire and chrome."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Vibro-Dagger hits as if target has -5 AV.",
+    "confidence": "high",
+    "raw_excerpt": "TitanAcolyte Biological/Synthetic LVL3(12HP)/AV16/ML+5/ENCd8 ATK:Vibro-Dagger(d4,hitsasiftargethas-5AV) /VoltCrossbow(d6,electrical). Cybernetics:all Titan Acolytes bear a randomly generated Cybernetic Implant."
+  },
+  {
+    "name": "Child of the Darkling Sun",
+    "printed_pages": "102",
+    "pdf_pages": "109",
+    "type": "Biological / Psychic",
+    "level": 3,
+    "hp": 12,
+    "av": 11,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Dagger", "damage": "d4"},
+      {"name": "Darkling Dream", "damage": "Special"}
+    ],
+    "special": [
+      "Dark-robed dreamers, hooded in black silk and blinded by their desire to transcend lucid reality.",
+      "Darkling Dream: the Child falls asleep. While they sleep, they manifest a nightmare into the waking world, with no Save possible. The nature of the nightmare varies: stairs may become slides into pits of razors, the sun may have your father's face, doors may seal shut or open into indescribable vistas. Waking the Child (either through damage or anything else that would wake a sleeper) ends their dream's impingement on our reality."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "ChildoftheDarklingSun Biological/Psychic LVL3(12HP)/AV11/ML+5/ENCd6 ATK:Dagger(d4)/DarklingDream(Special). DarklingDream: the Child falls asleep... manifest a nightmare into the waking world, with no Save possible... Waking the Child ends their dream's impingement on our reality."
+  },
+  {
+    "name": "Nightmare Herald",
+    "printed_pages": "102",
+    "pdf_pages": "109",
+    "type": "Outsider / Psychic",
+    "level": 5,
+    "hp": 20,
+    "av": 14,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Darkling Lullaby", "damage": "EGO Save vs Sleep"},
+      {"name": "Revelation", "damage": "d4 EGO damage"}
+    ],
+    "special": [
+      "The formless musicians who attend to the Daemon Sultan Azathoth in the dreaming chaos at the terminus of space and time. The Children summon these pipers and flautists into our reality to aid their rituals.",
+      "Sleep: targets fall into a nightmare-wracked sleep and cannot act. They can be woken by direct damage, or anything else that would wake a sleeper.",
+      "Feast of Dreams: at the start of the round, a Nightmare Herald regenerates d6 HP for each sleeping creature nearby, allied or enemy. This effect can resurrect the Herald from apparent 'death'."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Feast of Dreams regenerates d6 HP per nearby sleeper and can resurrect the Herald from apparent death.",
+    "confidence": "high",
+    "raw_excerpt": "NightmareHerald Outsider/Psychic LVL5(20HP)/AV14/ML+5/ENC1 ATK:DarklingLullaby(EGOSavevsSleep)/ Revelation(d4EGOdamage). FeastofDreams: regenerates d6HP for each sleeping creature nearby, allied or enemy. This effect can resurrect the Herald from apparent 'death'."
+  }
+]

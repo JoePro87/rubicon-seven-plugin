@@ -1,0 +1,475 @@
+{
+  "version": "2.0.0",
+  "source": "Vaarn 2e Preview",
+  "entries": [
+    {
+      "id": "item-auto-chariot",
+      "keywords": [
+        "auto-chariot",
+        "auto chariot",
+        "self-driving vehicle"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 8,
+        "av": 18,
+        "speed": 6,
+        "item_slots": 80,
+        "type": "Synthetic",
+        "crew": "No pilot needed, 5 passengers",
+        "attacks": [
+          {
+            "name": "Gauss Cannon",
+            "damage": "d12"
+          }
+        ]
+      },
+      "description": "Rugged wheeled synthetic conveyance. Drives itself, obeys simple instructions. Difficult to steal \u2014 will not accept a new master until the old has died.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.73 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-colossus",
+      "keywords": [
+        "colossus",
+        "mech",
+        "warrior-saint mech",
+        "giant robot"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 10,
+        "av": 20,
+        "speed": 3,
+        "item_slots": 100,
+        "type": "Synthetic",
+        "crew": "One pilot",
+        "attacks": [
+          {
+            "name": "Sword",
+            "damage": "d12"
+          },
+          {
+            "name": "Swarm Missiles",
+            "damage": "2d10",
+            "special": "blast"
+          }
+        ]
+      },
+      "description": "Mechanical effigy of a warrior-saint. Pilot suspended foetus-like in cushioning gels inside the belly. Rare; maintained by secretive monastic orders.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.73 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-dune-skuggy",
+      "keywords": [
+        "dune skuggy",
+        "skuggy",
+        "desert vehicle",
+        "buggy"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 5,
+        "av": 13,
+        "speed": 9,
+        "item_slots": 30,
+        "type": "Mechanical",
+        "crew": "1 driver, 1 gunner, 2 passengers",
+        "attacks": [
+          {
+            "name": "Flak Cannon",
+            "damage": "d10"
+          }
+        ]
+      },
+      "description": "Crude desert vehicle running on guzzeline. Roll-cage bolted to a smoky engine driving four wheels. Fast, rough, loud.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.74 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-ersatz-autarchs-robes",
+      "keywords": [
+        "Ersatz Autarch's Robes",
+        "robes"
+      ],
+      "categories": [
+        "equipment",
+        "exotica"
+      ],
+      "contexts": [
+        "inventory",
+        "npc_interaction"
+      ],
+      "description": "Heliotrope mantle decorated with Rappash-Ik's personal seal. Spun for the Autarch's shadows. Less valuable than Rappash-Ik's true mantle, but few observers would know the difference.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.287 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-ersatz-peacock-crown",
+      "keywords": [
+        "Ersatz Peacock Crown",
+        "Peacock Crown"
+      ],
+      "categories": [
+        "equipment",
+        "exotica"
+      ],
+      "contexts": [
+        "inventory"
+      ],
+      "description": "Polychrome halo that projects a dazzling nimbus of light around the wearer's head. Forged for the Autarch's shadows. Less valuable than Rappash-Ik's true Peacock Crown, but few would know the difference.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.287 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-iron-mule",
+      "keywords": [
+        "iron mule",
+        "pack synth",
+        "pack automaton"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "vehicle_stats": {
+        "hull": 1,
+        "av": 18,
+        "speed": 1,
+        "item_slots": 20,
+        "type": "Synthetic",
+        "crew": "Normally used as pack animals but can be ridden in extremis.",
+        "attacks": []
+      },
+      "description": "Boxy, crude four-legged automaton. Extremely enduring and hardy but clumsy, stupid, and nauseating to ride.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.74 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-motile-home",
+      "keywords": [
+        "motile home",
+        "living house",
+        "crab house"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 20,
+        "av": 22,
+        "speed": -1,
+        "item_slots": 200,
+        "type": "Biological / Synthetic",
+        "crew": "No pilot needed. Can house up to 20 comfortably.",
+        "attacks": [
+          {
+            "name": "Huge Claw",
+            "damage": "2d10"
+          }
+        ]
+      },
+      "description": "Self-aware motile dwelling. Half crab, half house, fully sentient. Extremely durable, slow, cramped.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.74 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-ornithopter",
+      "keywords": [
+        "ornithopter",
+        "flying machine",
+        "flapping aircraft"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 7,
+        "av": 18,
+        "speed": 12,
+        "item_slots": 70,
+        "type": "Mechanical",
+        "crew": "1 pilot, 1 gunner, up to 6 passengers",
+        "attacks": [
+          {
+            "name": "Laser Lance",
+            "damage": "3d6",
+            "special": "beam"
+          }
+        ]
+      },
+      "description": "Pre-Collapse flying machine beating artificial wings. Smaller models are hummingbird-like (single seat); Hegemony transports resemble dragonflies.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.75 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-purple-autarchy-keycard",
+      "keywords": [
+        "Purple Autarchy Keycard",
+        "keycard"
+      ],
+      "categories": [
+        "equipment",
+        "exotica"
+      ],
+      "contexts": [
+        "vault_exploration",
+        "inventory"
+      ],
+      "slots": 0,
+      "description": "Purple plastic rectangle emblazoned with Rappash-Ik's personal seal. Highest-level access to Fallen Autarchy military facilities. Only functions inside the Fount of Illustrious Flesh, but valuable to Exotica collectors.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.287 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-red-autarchy-keycard",
+      "keywords": [
+        "Red Autarchy Keycard",
+        "keycard"
+      ],
+      "categories": [
+        "equipment",
+        "exotica"
+      ],
+      "contexts": [
+        "vault_exploration",
+        "inventory"
+      ],
+      "slots": 0,
+      "description": "Scarlet plastic rectangle emblazoned with Rappash-Ik's military seal. Standard-level access to Fallen Autarchy military facilities. Only functions inside the Fount of Illustrious Flesh, but valuable to Exotica collectors.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.287 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-skiff",
+      "keywords": [
+        "skiff",
+        "hover bike",
+        "sky-seeking stone bike"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 2,
+        "av": 16,
+        "speed": 8,
+        "item_slots": 10,
+        "type": "Mechanical",
+        "crew": "1 driver, 1 passenger",
+        "attacks": [
+          {
+            "name": "Mounted Rifle",
+            "damage": "d8"
+          }
+        ]
+      },
+      "description": "Lightweight hover-bike built around a small sky-seeking stone, powered by a rear fan. Fast, nimble, frequently lethal when malfunctioning.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.75 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-stilt-strutter",
+      "keywords": [
+        "stilt strutter",
+        "walker",
+        "mechanised walker"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 4,
+        "av": 18,
+        "speed": 2,
+        "item_slots": 40,
+        "type": "Mechanical",
+        "crew": "1 Pilot, 1 Gunner, up to 4 passengers",
+        "attacks": [
+          {
+            "name": "Mounted Cannon",
+            "damage": "d12"
+          }
+        ]
+      },
+      "description": "Ponderous towering mechanised walker. Hardy, navigates treacherous ground. Hegemony uses for assaults on fortified positions.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.75 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-summerbalm",
+      "keywords": [
+        "Summerbalm",
+        "healing"
+      ],
+      "categories": [
+        "equipment",
+        "alchemy"
+      ],
+      "contexts": [
+        "combat_active",
+        "inventory"
+      ],
+      "description": "Healing dose carried by Priests of the Promised Sun. Heals d8 HP.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.251 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-touring-orb",
+      "keywords": [
+        "touring orb",
+        "tourist sphere",
+        "plastiglass orb"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "vehicle_stats": {
+        "hull": 2,
+        "av": 16,
+        "speed": 1,
+        "item_slots": 20,
+        "type": "Synthetic",
+        "crew": "Needs no pilot. Up to 4 passengers",
+        "attacks": []
+      },
+      "description": "Trundling reinforced plastiglass orb. Climate-controlled seats, beverage fabricators. Fabricates 1 ration of fizzy drink per day. Talks and lectures on local flora and fauna (read PCs the relevant bestiary entry).",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.76 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-vimana",
+      "keywords": [
+        "vimana",
+        "autarch throne",
+        "flying throne"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "vehicle_stats": {
+        "hull": 1,
+        "av": 20,
+        "speed": 10,
+        "item_slots": 10,
+        "type": "Hypergeometric / Mineral",
+        "crew": "1 sits the throne, 12 retainers may cling to the sides",
+        "attacks": [
+          {
+            "name": "Annihilation Ray",
+            "damage": "2d10",
+            "special": "beam"
+          }
+        ],
+        "special": [
+          "Damage Immunity: impervious to all damage; pilot immortal while seated (can be wrestled from throne). Only anti-paradox weapons unravel its construction, reverting it to inert crystal throne."
+        ]
+      },
+      "description": "Hovering throne of manifold crystal. Each was carved for a specific God-king. Flies like a comet at sitter's command. Wars have been fought over the right to sit atop one.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.76 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-warding-field",
+      "keywords": [
+        "Warding Field",
+        "Ancamulla"
+      ],
+      "categories": [
+        "equipment",
+        "exotica"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "description": "Ancient chassis-mounted field that renders most kinetic attacks harmless. Disrupted by EMP (reduces wearer to natural AV).",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.250 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "item-wind-barge",
+      "keywords": [
+        "wind barge",
+        "merchant barge",
+        "sky barge",
+        "cargo barge"
+      ],
+      "categories": [
+        "equipment",
+        "vehicle"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "vehicle_stats": {
+        "hull": 15,
+        "av": 18,
+        "speed": "d6 (roll each day)",
+        "item_slots": 200,
+        "type": "Mechanical",
+        "crew": "At least 4 crew to operate, can carry 50 passengers",
+        "attacks": [],
+        "special": [
+          "Unarmed by ancient custom. Crew typically includes 2d6 Level 2 guards."
+        ]
+      },
+      "description": "Wooden cargo ship built around a large sky-seeking stone. Used by Vaarnish merchant guilds. Ornate or utilitarian, never armed \u2014 guards travel onboard.",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.76 (verified 2026-06-07 audit remediation)"
+    }
+  ]
+}

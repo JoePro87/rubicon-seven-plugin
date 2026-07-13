@@ -1,0 +1,13 @@
+{
+  "canon_verified": false,
+  "canon_succeeded": false,
+  "session_started": false,
+  "context_reminded": false,
+  "force_all": false,
+  "turn_count": 0,
+  "scene_fingerprint": "",
+  "scene_changed": false,
+  "skip_canon_enforcement": false,
+  "session_type": "gameplay",
+  "session_vocabulary": []
+}

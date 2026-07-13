@@ -1,0 +1,705 @@
+[
+  {
+    "name": "Echopraxist",
+    "printed_pages": "191",
+    "pdf_pages": "198",
+    "type": "Outsider",
+    "level": null,
+    "hp": null,
+    "av": null,
+    "morale": "?",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [{"name": "?", "damage": ""}],
+    "special": [
+      "Peculiar extradimensional visitors, attempting to understand the world they have entered by mimicking its inhabitants. In their 'true' form Echopraxists resemble iridescent fog, but they are able to take the shape of any living creature that catches their attention.",
+      "Living Echo: When encountered, each Echopraxist choses one PC to perfectly mimic. They take on the appearance of the PC, as well as their Level, current HP, AV, and all other weapons and equipment. Damaging an Echopraxist causes equal damage to the PC they are echoing."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": true},
+    "combat_note": "Stat line printed with all values as '?' (LVL?(?HP)/AV?/ML?/ENCd4, ATK:?) — intentionally undefined; mirrors a chosen PC's Level/HP/AV/equipment via Living Echo.",
+    "confidence": "high",
+    "raw_excerpt": "Echopraxist Outsider LVL?(?HP)/AV?/ML?/ENCd4 ATK:? ... Living Echo: When encountered, each Echopraxist choses one PC to perfectly mimic. They take on the appearance of the PC, as well as their Level, current HP, AV, and all other weapons and equipment. Damaging an Echopraxist causes equal damage to the PC they are echoing."
+  },
+  {
+    "name": "Entropy Wight",
+    "printed_pages": "191",
+    "pdf_pages": "198",
+    "type": "Hypergeometric / Outsider",
+    "level": 5,
+    "hp": 20,
+    "av": 12,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [{"name": "Entropic Touch", "damage": "d3 Max HP reduction + AV damage"}],
+    "special": [
+      "Cursed revenants, the remains of those who thought to master entropy and instead became her servants. All things wither at their touch, ageing centuries beneath the Wight's sour grasp.",
+      "Entropic Touch: targets struck by the Wight lose d3 maximum HP, and lose d3 points of AV. Hit Points lost in this way are never regained, nor can armour eroded by the Wight be repaired. Melee weapons which strike the Wight lose one dice size of damage permanently."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "No damage resistance/immunity printed in stat block. (Entropic Touch is an attack effect, not a defensive resistance.)"},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Entropic Touch permanently reduces target max HP and AV; melee weapons striking the Wight permanently lose one die size of damage.",
+    "confidence": "high",
+    "raw_excerpt": "EntropyWight Hypergeometric/Outsider LVL5(20HP)/AV12/ML+10/ENC1 ATK:EntropicTouch(d3MaxHPreduction+AVdamage) ... Entropic Touch: targets struck by the Wight lose d3 maximum HP, and lose d3 points of AV. Hit Points lost in this way are never regained, nor can armour eroded by the Wight be repaired. Melee weapons which strike the Wight lose one dice size of damage permanently."
+  },
+  {
+    "name": "Eyeless Dog",
+    "printed_pages": "191",
+    "pdf_pages": "198",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+3",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [{"name": "Bite", "damage": "d6"}],
+    "special": [
+      "Cacogenic hounds, typically dark-coated, with lighter hairless flesh where their ancestor's eyes once resided. They lost their bond with humanity along with their eyes and use their acute hearing and sense of smell to hunt the unwary on moonless nights.",
+      "Pack Attack: gain +1 to hit and +1 damage for every other Eyeless Dog that has already attacked the target this round."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Pack Attack stacks with each prior Eyeless Dog attacking the same target this round.",
+    "confidence": "high",
+    "raw_excerpt": "EyelessDog Biological LVL1(4HP)/AV12/ML+3/ENC2d6 ATK:Bite(d6) ... Pack Attack: gain +1 to hit and +1 damage for every other Eyeless Dog that has already attacked the target this round."
+  },
+  {
+    "name": "Exemplar",
+    "printed_pages": "191",
+    "pdf_pages": "198",
+    "type": "Synthetic",
+    "level": 20,
+    "hp": 80,
+    "av": 20,
+    "morale": "RETREATS AT THE RIGHT TIME",
+    "enc": "1",
+    "movement": "",
+    "attacks": [{"name": "Perfect Strike", "damage": "d20, always hits"}],
+    "special": [
+      "The Exemplar are the impeccable children of the Titans, synthetic simulacra of living creatures constructed with such faultless panache that they outshine the originals.",
+      "Nonviolent: Exemplars will only strike in self-defence, after repeated attempts to negotiate.",
+      "Beauty is Terror: all PCs lose 1 point of EGO for each combat round spent in an unveiled Exemplar's presence. This loss is doubled if the Exemplar is modelled after their own species."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Perfect Strike always hits for d20. Beauty is Terror drains EGO each round in presence (doubled vs same species). Nonviolent unless self-defence.",
+    "confidence": "high",
+    "raw_excerpt": "Exemplar Synthetic LVL20(80HP)/AV20/MLRETREATSATTHERIGHTTIME/ENC1 ATK:PerfectStrike(d20,alwayshits) ... Nonviolent: Exemplars will only strike in self-defence... Beauty is Terror: all PCs lose 1 point of EGO for each combat round spent in an unveiled Exemplar's presence. This loss is doubled if the Exemplar is modelled after their own species."
+  },
+  {
+    "name": "Extradimensional Mystic Hunter",
+    "printed_pages": "191",
+    "pdf_pages": "198",
+    "type": "Outsider / Psychic",
+    "level": null,
+    "hp": null,
+    "av": null,
+    "morale": "+d10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Exotic Weapon (p.xx, always has Extradimensional tag)", "damage": ""},
+      {"name": "Mystic Gift (p.xx)", "damage": ""},
+      {"name": "Psychic Feedback", "damage": "Target's Gleam"}
+    ],
+    "special": [
+      "An esoteric huntsman from an unimaginable dimension adjacent to our own. With sight older than sight it seeks out psychic gleam, desiring to break open the skulls of Vaarn's mystics and subsume their power.",
+      "Gleam Seeker: the Mystic Hunter always senses the presence of Gifted PCs, even at enormous distances. It will seek them out relentlessly and attacks through walls or floors. It cannot be blinded.",
+      "Psychic Mirror: the Hunter is immune to damage or adverse effects caused by Mystic Gifts or Hypergeometry, which instead rebound on the user."
+    ],
+    "resistances": {"immune": ["Mystic Gifts (damage/adverse effects rebound on user)", "Hypergeometry (damage/adverse effects rebound on user)"], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Psychic Mirror: immune to damage or adverse effects from Mystic Gifts or Hypergeometry; these instead rebound on the user."},
+    "flags": {"mystic_gift_immune": true, "ranged_immune": false, "mimic": false},
+    "combat_note": "LVL/AV/HP all variable: LVL8+d8, AV12+d8, HP not stated. Senses and hunts Gifted PCs, attacks through walls/floors, cannot be blinded. Mystic Gifts/Hypergeometry rebound on caster.",
+    "confidence": "high",
+    "raw_excerpt": "ExtradimensionalMysticHunter Outsider/Psychic LVL8+d8/AV12+d8/ML+d10/ENC1 ATK:ExoticWeapon(p.xx,alwayshasExtradimensionaltag)+MysticGift(p.xx)/PsychicFeedback(damage=Target'sGleam) ... Gleam Seeker ... It cannot be blinded. Psychic Mirror: the Hunter is immune to damage or adverse effects caused by Mystic Gifts or Hypergeometry, which instead rebound on the user."
+  },
+  {
+    "name": "Faa Nomad",
+    "printed_pages": "191",
+    "pdf_pages": "198",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+4",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {"name": "Faa Rifle", "damage": "d8"},
+      {"name": "Curved Blade", "damage": "d6"}
+    ],
+    "special": [
+      "The travelling folk of the blue desert. Expert trackers, skilled at ambush and escapes. Parties who wrong the Faa will be subject to pursuit, night-time sabotage, hit-and-run attacks, and every other inconvenience imaginable.",
+      "A group of eight or more includes a Lvl 2 leader."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Groups of 8+ include a Lvl 2 leader.",
+    "confidence": "high",
+    "raw_excerpt": "FaaNomad Biological LVL1(4HP)/AV12/ML+4/ENCd10 ATK:FaaRifle(d8)/CurvedBlade(d6) ... A group of eight or more includes a Lvl 2 leader."
+  },
+  {
+    "name": "Face Dancer",
+    "printed_pages": "192",
+    "pdf_pages": "199",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 13,
+    "morale": "+4",
+    "enc": "d3",
+    "movement": "",
+    "attacks": [
+      {"name": "Poison Spur", "damage": "d8 TOX"},
+      {"name": "Silenced Pistol", "damage": "d6"}
+    ],
+    "special": [
+      "The Face Dancers once served the Autarch as spies. They are cacogenic abhumans, notable for the extreme plasticity of their skeletal systems and their conscious control over skin tone and hair colour.",
+      "Disguise: Face Dancers can replicate the face and body of any adult true-kin within hours of studying them. Cacogen and newbeasts are more challenging, although a passable mimicry can be achieved using prosthetics.",
+      "Malleable: the Dancer's skeleton is highly flexible. They take half damage from bludgeoning attacks, and can fit through any gap wider than their skull."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": ["bludgeoning"], "varies": false, "notes": "Malleable: takes half damage from bludgeoning attacks."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": true},
+    "combat_note": "Half damage from bludgeoning (Malleable); can fit through any gap wider than its skull. Poison Spur deals poison damage (TOX).",
+    "confidence": "high",
+    "raw_excerpt": "FaceDancer Biological LVL5(20HP)/AV13/ML+4/ENCd3 ATK:PoisonSpur(d8TOX)+SilencedPistol(d6) ... Malleable: the Dancer's skeleton is highly flexible. They take half damage from bludgeoning attacks, and can fit through any gap wider than their skull."
+  },
+  {
+    "name": "Faa Sniper",
+    "printed_pages": "192",
+    "pdf_pages": "199",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 12,
+    "morale": "+6",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Headshot", "damage": "Special"},
+      {"name": "Curved Blade", "damage": "d6"}
+    ],
+    "special": [
+      "The Faa are adept at ranged combat, training from childhood with their firearms. Those who show abnormal talent are inducted into the use of the sniper rifle, acting as support for Faa raids.",
+      "Headshot: at the start of each combat round, before initative is determined, the Sniper picks one foe in line of sight for elimination. If at the end of the combat round the Sniper still has line of sight on the target, they are shot and reduced to 0 HP, with no Save possible. If the PC targeted has negative HP, this attack is instantly fatal. Creatures without heads suffer d10 damage instead.",
+      "Hidden: Snipers blend into the environment and cannot be targeted if they do not move. When they fire, the target can make an INT Save to pinpoint their locaton."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Headshot reduces a line-of-sight target to 0 HP at end of round (no save); instantly fatal if target already at negative HP; headless creatures take d10 instead. Hidden: cannot be targeted unless they move.",
+    "confidence": "high",
+    "raw_excerpt": "FaaSniper Biological LVL3(12HP)/AV12/ML+6/ENC1 ATK:Headshot(Special)/CurvedBlade(d6) ... Headshot: at the start of each combat round... the Sniper picks one foe in line of sight for elimination... they are shot and reduced to 0 HP, with no Save possible... Creatures without heads suffer d10 damage instead. Hidden: Snipers blend into the environment and cannot be targeted if they do not move."
+  },
+  {
+    "name": "Famine-bearer",
+    "printed_pages": "192",
+    "pdf_pages": "199",
+    "type": "Hypergeometric / Outsider",
+    "level": 7,
+    "hp": 28,
+    "av": 14,
+    "morale": "+5",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Famishing Claws", "damage": "Special"},
+      {"name": "Devour", "damage": "STR save vs Devoured"}
+    ],
+    "special": [
+      "Towering wraiths, with blank eyeless faces and flesh the colour of burned wood. Their hands are black hooks, their voices wool-choked screams. Blind avatars of an infectious hunger, they unfurl their skin to reveal a hypergeometric mouth of infinite depth.",
+      "Famishing Claws: PCs hit by the Famine-bearer's claws become Deprived due to hunger. They must EGO Save or spend the next combat round eating a ration. If they cannot eat a ration they attack the nearest edible being, dealing d8 damage with their teeth.",
+      "Devour: the Famine-bearer swallows the target whole. While inside the creature's stomach the target takes 2d6 damage per round."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Famishing Claws inflict Deprived/hunger (EGO save or eat a ration / attack nearest edible being for d8). Devour swallows target whole: 2d6/round inside stomach.",
+    "confidence": "high",
+    "raw_excerpt": "Faminebearer Hypergeometric/Outsider LVL7(28HP)/AV14/ML+5/ENCd4 ATK:FamishingClaws(Special)/Devour(STRsavevsDevoured) ... Devour: the Famine-bearer swallows the target whole. While inside the creature's stomach the target takes 2d6 damage per round."
+  },
+  {
+    "name": "Feastbeast",
+    "printed_pages": "192",
+    "pdf_pages": "199",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 10,
+    "morale": "+0",
+    "enc": "d12",
+    "movement": "",
+    "attacks": [{"name": "Trample", "damage": "d6"}],
+    "special": [
+      "Placid, gene sculpted herd animals. Somewhat like a pig and somewhat like a cow, with a hint of human in their eyes and ears.",
+      "Organ Donor: Feastbeasts have spare internal organs, all of which can be transplanted into a human. True-kin will always accept the transplant; cacogen must roll 1d6 for each mutation. If any die shows a 1, the transplant is rejected."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Feastbeast Biological LVL2(8HP)/AV10/ML+0/ENCd12 ATK:Trample(d6) ... Organ Donor: Feastbeasts have spare internal organs... True-kin will always accept the transplant; cacogen must roll 1d6 for each mutation. If any die shows a 1, the transplant is rejected."
+  },
+  {
+    "name": "Fissile Glittersludge",
+    "printed_pages": "192-193",
+    "pdf_pages": "199-200",
+    "type": "Biological / Synthetic",
+    "level": 10,
+    "hp": 40,
+    "av": 10,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [{"name": "Engulf", "damage": "d8, number of targets = Glittersludge's Level"}],
+    "special": [
+      "A horrid cocktail of biotech enzymes and vicious, ravenous nanomachines. Resembles a quivering mass of black jelly, speckled with gold and silver flecks. Their flesh has a memory of sorts, adapting to perceived threats and moving to immunise itself against them.",
+      "Adaptive Fissile Material: When a Glittersludge is damaged, it births a new Glittersludge of half the parent's Level in response. The smaller Glittersludge is immune to the damage type that birthed it, as are all descendants.",
+      "Gelationous: takes minimum damage from bludgeoning attacks. Can move through tiny gaps and cracks."
+    ],
+    "resistances": {"immune": [], "minimum": ["bludgeoning"], "double": [], "half": [], "varies": true, "notes": "Gelationous: takes MINIMUM damage from bludgeoning attacks. Adaptive Fissile Material: spawned offspring (and all descendants) are IMMUNE to the specific damage type that birthed them — variable per encounter, so parent has no fixed immunity."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Minimum damage from bludgeoning. When damaged it splits into a half-Level offspring immune to the damage type that birthed it (and descendants inherit that immunity).",
+    "confidence": "high",
+    "raw_excerpt": "FissileGlittersludge Biological/Synthetic LVL10(40HP)/AV10/ML+10/ENC1 ATK:Engulf(d8,numberoftargets=Glittersludge'sLevel) ... Adaptive Fissile Material: When a Glittersludge is damaged, it births a new Glittersludge of half the parent's Level... The smaller Glittersludge is immune to the damage type that birthed it, as are all descendants. Gelationous: takes minimum damage from bludgeoning attacks. Can move through tiny gaps and cracks."
+  },
+  {
+    "name": "Fool's Pool",
+    "printed_pages": "193",
+    "pdf_pages": "200",
+    "type": "Biological",
+    "level": null,
+    "hp": null,
+    "av": 10,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [{"name": "Engulf", "damage": "d6 ongoing, STR Save to break free, targets = Pool's Level"}],
+    "special": [
+      "A huge amoeba, which resembles a pool of fresh water when in its camouflaged resting state. The creature remains motionless until an incautious animal approaches to drink. Beware of shallow ponds that do not ripple in the wind.",
+      "Gelationous: the Fool's Pool takes minimum damage from kinetic attacks. Thrown salt deals 2d8 damage per round."
+    ],
+    "resistances": {"immune": [], "minimum": ["kinetic"], "double": [], "half": [], "varies": false, "notes": "Gelationous: takes MINIMUM damage from kinetic attacks. Thrown salt deals 2d8 damage per round (a stated vulnerability/special-damage source)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "LVL printed as 'd6*' (variable, asterisk-noted); HP not given. Minimum damage from kinetic attacks; thrown salt deals 2d8/round.",
+    "confidence": "high",
+    "raw_excerpt": "Fool'sPool Biological LVLd6*/AV10/ML+10/ENC1 ATK:Engulf(d6ongoing,STRSavetobreakfree,targets=Pool'sLevel) ... Gelationous: the Fool's Pool takes minimum damage from kinetic attacks. Thrown salt deals 2d8 damage per round."
+  },
+  {
+    "name": "Flabmonger",
+    "printed_pages": "193",
+    "pdf_pages": "200",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 14,
+    "morale": "+2",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [{"name": "Lipoinduction", "damage": "Special"}],
+    "special": [
+      "Resembles a hairless, fleshy anteater. A Flabmonger's bite triggers a bizarre overproduction of lipids, causing tumorous bags of malignant fat to sprout from the afflicted creature. Once their prey has become too fat to move, a Flabmonger will slowly begin to feed.",
+      "Lipoinduction: Biological creatures bitten by a Flabmonger must fill one item slot with Flab. Filling more than ten slots with Flab is fatal. Flab is cured at the rate of one slot per week."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Lipoinduction fills item slots with Flab on bitten Biological creatures; >10 slots is fatal; cured 1 slot/week.",
+    "confidence": "high",
+    "raw_excerpt": "Flabmonger Biological LVL2(8HP)/AV14/ML+2/ENCd6 ATK:Lipoinduction(Special) ... Lipoinduction: Biological creatures bitten by a Flabmonger must fill one item slot with Flab. Filling more than ten slots with Flab is fatal. Flab is cured at the rate of one slot per week."
+  },
+  {
+    "name": "Fleshwarp",
+    "printed_pages": "193",
+    "pdf_pages": "200",
+    "type": "Biological",
+    "level": null,
+    "hp": null,
+    "av": 13,
+    "morale": "=LVL",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Fist Flurry", "damage": "LVL x d4"},
+      {"name": "Graft", "damage": "STR Save vs Special"}
+    ],
+    "special": [
+      "A cacogenic abhuman, consisting of an atrophied, vestigal torso and a multitude of questing limbs. Fleshwarps are blessed with rapid cellular regeneration, and can heal even mortal wounds within minutes. As they grow, more and more biomass is extruded into their limbs, creating skittering spiderlike abominations.",
+      "Limbs: the Fleshwarp has a number of limbs equal to its Level (2d6).",
+      "Regeneration: a Fleshwarp regenerates HP equal to its Level at the start of each round. Damage caused by fire or acid ignores this.",
+      "Graft: If the target fails an opposed STR save, the Fleshwarp attaches one of its limbs to the victim's torso. The Fleshwarp's Level and number of limbs are lowered by -1 (if this would reduce the Level below 1, the Fleshwarp dies). The victim fills an item slot with a Wound: Grafted Arm. The Grafted Arm is LVL1 and has the AV of its host. It makes an unarmed attack each round (d4) targeted at any one near its host. Damage dealt to the Grafted Arm is shared between the host and the limb."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Regeneration (HP = Level/round) is negated by fire and acid damage — these bypass its healing, but no formal resistance/immunity to a damage type is stated."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "LVL printed as '2d6*' (variable, asterisk-noted); HP not given. Limbs = Level. Regenerates HP = Level/round, but fire and acid ignore (bypass) the regeneration.",
+    "confidence": "high",
+    "raw_excerpt": "Fleshwarp Biological LVL2d6*/AV13/ML=LVL/ENC1 ATK:FistFlurry(LVLxd4)/Graft(STRSavevsSpecial) ... Regeneration: a Fleshwarp regenerates HP equal to its Level at the start of each round. Damage caused by fire or acid ignores this."
+  },
+  {
+    "name": "Fractalisk",
+    "printed_pages": "193",
+    "pdf_pages": "200",
+    "type": "Hypergeometric / Outsider",
+    "level": 5,
+    "hp": 20,
+    "av": 14,
+    "morale": "+8",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d8, hypergeometric"},
+      {"name": "Recursive Gaze", "damage": "Special"}
+    ],
+    "special": [
+      "An incursion from another fevered sphere of reality, a bizarre hypergeometric monster whose mere regard unwinds the warp and weft of space-time.",
+      "Recursive Gaze: Any PC fixed with the Recursive Gaze must repeat the action they took the turn before, with no save allowed. This effect is broken if the Fractalisk's gaze is interrupted, or if the creature dies.",
+      "Self Similar: Wounding a Fractalisk without the use of hypergeometric weaponry or anti-paradoxical normality gas causes the creature to spit into two identical Fractalisks."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Self Similar: wounding it WITHOUT hypergeometric weaponry or anti-paradoxical normality gas causes it to split into two identical copies (a splitting mechanic, not a damage resistance). Effectively only hypergeometric weaponry / normality gas can wound it without triggering a split."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Claws deal hypergeometric damage. Recursive Gaze forces target to repeat last action (no save). Self Similar: splits into two copies unless wounded by hypergeometric weaponry or anti-paradoxical normality gas.",
+    "confidence": "high",
+    "raw_excerpt": "Fractalisk Hypergeometric/Outsider LVL5(20HP)/AV14/ML+8/ENC1 ATK:Claws(d8,hypergeometric)+RecursiveGaze(Special) ... Self Similar: Wounding a Fractalisk without the use of hypergeometric weaponry or anti-paradoxical normality gas causes the creature to spit into two identical Fractalisks."
+  },
+  {
+    "name": "Gene Thief",
+    "printed_pages": "193",
+    "pdf_pages": "200",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+3",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [{"name": "Copy-Claws", "damage": "d6 + Special"}],
+    "special": [
+      "Skulking shunned descendants of the Autarch's feared Face Dancer spies. Paranoid cacogen whose malleable bodies take on the aspect of those they wound. They are only semi-intelligent and are no longer capable of convincingly impersonating those they mimic.",
+      "Copy-claws: A Gene Thief steals a trait from any biological creature it wounds with its claws. This may be a Mystic Gift, a mutation, a disease, or any other trait. Their bodies remain scrawny, pink, and hunched."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": true},
+    "combat_note": "Copy-Claws steal a trait (Mystic Gift, mutation, disease, etc.) from any wounded biological creature.",
+    "confidence": "high",
+    "raw_excerpt": "GeneThief Biological LVL1(4HP)/AV12/ML+3/ENCd8 ATK:Copy-Claws(d6+Special) ... Copy-claws: A Gene Thief steals a trait from any biological creature it wounds with its claws. This may be a Mystic Gift, a mutation, a disease, or any other trait."
+  },
+  {
+    "name": "Ghoul",
+    "printed_pages": "193-194",
+    "pdf_pages": "200-201",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 14,
+    "morale": "+5",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [{"name": "Agonising Claws", "damage": "d6 + CON save vs Agony"}],
+    "special": [
+      "On moonless nights, a certain breed of furtive autodidact visits battlefields and plague pits and tombs. It is not about the taste. It never has been. It is about knowledge. And where some see a graveyard, others see a library.",
+      "Agony: Biological characters inflicted with Agony take d6 damage for each combat action they make. Lying still neutralises the venom."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Agony: afflicted Biological characters take d6 damage per combat action; lying still neutralises it.",
+    "confidence": "high",
+    "raw_excerpt": "Ghoul Biological LVL3(12HP)/AV14/ML+5/ENCd8 ATK:AgonisingClaws(d6+CONsavevsAgony) ... Agony: Biological characters inflicted with Agony take d6 damage for each combat action they make. Lying still neutralises the venom."
+  },
+  {
+    "name": "Giant Azure Scorpion",
+    "printed_pages": "194",
+    "pdf_pages": "201",
+    "type": "Biological / Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 15,
+    "morale": "+7",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claw", "damage": "d10"},
+      {"name": "Laser Tail", "damage": "d8 beam"}
+    ],
+    "special": [
+      "Cyborg arachnid. Lies in ambush underneath the blue sands. If their laser-cannon tails are severed they can be used as d8 beam weapons."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Severed laser-cannon tail can be used as a d8 beam weapon.",
+    "confidence": "high",
+    "raw_excerpt": "GiantAzureScorpion Biological/Synthetic LVL3(12HP)/AV15/ML+7/ENCd4 ATK:2xClaw(d10)+LaserTail(d8beam) ... If their laser-cannon tails are severed they can be used as d8 beam weapons."
+  },
+  {
+    "name": "Gitchghast",
+    "printed_pages": "194",
+    "pdf_pages": "201",
+    "type": "Biological / Mineral",
+    "level": 1,
+    "hp": 4,
+    "av": 20,
+    "morale": "+0",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [{"name": "Bite", "damage": "d6 + CON save vs the Gitch"}],
+    "special": [
+      "Unfortunates who have succumbed to the Gitch (p.xx), and have lost their minds beneath the creeping weight of the crystals. Shunned by all living souls, they are expelled from their communities to wander the blue margins of the world."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Very high AV (20) for a Level 1 creature due to crystal encrustation. Bite forces CON save vs the Gitch (a crystalline affliction, p.xx).",
+    "confidence": "high",
+    "raw_excerpt": "Gitchghast Biological/Mineral LVL1(4HP)/AV20/ML+0/ENCd6 ATK:Bite(d6+CONsavevstheGitch,)"
+  },
+  {
+    "name": "Glass Tiger",
+    "printed_pages": "194",
+    "pdf_pages": "201",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 14,
+    "morale": "+8",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [{"name": "2x Claw", "damage": "d6; + Maul (d10) if both claws hit same target"}],
+    "special": [
+      "Translucent extrasolar predators, transported to Urth during the reign of the Autarchs. Body like a tiger with a head like an orchid. Very difficult to spot when they're not moving."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "If both claws hit the same target, adds a Maul (d10). Hard to spot while motionless.",
+    "confidence": "high",
+    "raw_excerpt": "GlassTiger Biological LVL4(16HP)/AV14/ML+8/ENCd4 ATK:2xClaw(d6)+Maul(d10)ifbothclawshitsametarget ... Very difficult to spot when they're not moving."
+  },
+  {
+    "name": "Gladiator Synth",
+    "printed_pages": "194",
+    "pdf_pages": "201",
+    "type": "Synthetic",
+    "level": 6,
+    "hp": 24,
+    "av": 16,
+    "morale": "+9",
+    "enc": "d3",
+    "movement": "",
+    "attacks": [{"name": "Advanced Melee Weapon (Generate on p.xx)", "damage": ""}],
+    "special": [
+      "Gladiators cast from synthskin and plasteel, their bodies armoured with the chrome bones of the inferior models they defeated. Each wields a signature weapon. The arenas they fought in have long crumbled to dust and they wander Vaarn in search of applause.",
+      "Pugilist's Shield: the synth is protected by a forcefield which negates all ranged attacks. The forcefield admits melee attacks only.",
+      "Finish Him: when the synth brings an opponent to 0 HP, it seizes them and begins a showy, glorious finishing blow. This takes one combat round to execute and kills the target at the end of that round. The finishing blow can be interrupted by damaging the Gladiator Synth, knocking them off balance, etc."
+    ],
+    "resistances": {"immune": ["ranged attacks (Pugilist's Shield forcefield negates all ranged attacks; melee only)"], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Pugilist's Shield: forcefield negates ALL ranged attacks; admits melee attacks only."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": true, "mimic": false},
+    "combat_note": "Immune to all ranged attacks (Pugilist's Shield forcefield); melee only. Finish Him: kills a 0-HP target over one round unless interrupted.",
+    "confidence": "high",
+    "raw_excerpt": "GladiatorSynth Synthetic LVL6(24HP)/AV16/ML+9/ENCd3 ATK:AdvancedMeleeWeapon(Generateonp.xx) ... Pugilist's Shield: the synth is protected by a forcefield which negates all ranged attacks. The forcefield admits melee attacks only. Finish Him: when the synth brings an opponent to 0 HP, it seizes them and begins a showy, glorious finishing blow."
+  },
+  {
+    "name": "Gorgon",
+    "printed_pages": "194-195",
+    "pdf_pages": "201-202",
+    "type": "Biological",
+    "level": 9,
+    "hp": 32,
+    "av": 16,
+    "morale": "+12",
+    "enc": "1 + d10 Harem Members",
+    "movement": "",
+    "attacks": [
+      {"name": "Constrict", "damage": "d10"},
+      {"name": "2x Venom Spit", "damage": "d8 TOX"},
+      {"name": "Captivating Gaze", "damage": "All foes EGO save vs Beguiled"}
+    ],
+    "special": [
+      "A monstrous creature with the head of a ferociously beautiful woman and the body of a writhing mass of snakes. She is believed to be a pursuant of the Path Renewed, who sought eternal youth in the image of the Ouroboros, the world-serpent without end or beginning.",
+      "Beguiled: Characters who have been Beguiled cannot harm the Gorgon, believing her to be the most beautiful creature they have ever seen. They may make an EGO save each round to attempt to fight off this insidious devotion. While Beguiled, they grovel and compete with one another for the Gorgon's favour.",
+      "Harem: The Gorgon is accompanied by d10 personages of exceptional charm and comeliness; these are her favoured suitors, who have so far been spared the Gorgon's appetites and make every attempt possible to please her. Stats as Bandits (p.xx)."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Venom Spit deals poison (TOX) damage. Captivating Gaze / Beguiled prevents Beguiled characters from harming the Gorgon (EGO save each round to break). Accompanied by d10 Harem members (stats as Bandits).",
+    "confidence": "high",
+    "raw_excerpt": "Gorgon Biological LVL9(32HP)/AV16/ML+12/ENC1+d10HaremMembers ATK:Constrict(d10)+2xVenomSpit(d8TOX)/CaptivatingGaze(AllfoesEGOsavevsBeguiled) ... Harem: The Gorgon is accompanied by d10 personages... Stats as Bandits (p.xx)."
+  },
+  {
+    "name": "Gravity Tyrant",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Outsider / Mineral",
+    "level": 9,
+    "hp": 32,
+    "av": 15,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Invert Weight", "damage": "Special"},
+      {"name": "Weight of Worlds", "damage": "Special"}
+    ],
+    "special": [
+      "An extra-dimensional being. A spiny kernel of sentient hyperdense matter, which vaguely resembles a crowned head. Stones and other debris orbit the creature's obscured form.",
+      "Accretion: each round, all creatures must DEX save or lose the item in their lowest inventory slot. Lost items are drawn into the Tyrant's orbit and crushed into their component parts. Each Accretion adds +1 to the Tyrant's AV.",
+      "Invert Weight: the Tyrant inverts the weight of an opponent, sending them tumbling into the sky. This effect lasts until the Tyrant is killed; allow 12 combat rounds before the character is considered lost forever in the sky. For each combat round a target spends falling skywards, the victim takes d10 damage when they finally fall to Urth.",
+      "Weight of Worlds: the Tyrant doubles the weight of an opponent and all gear they carry. The PC's maximum Item Slots are halved, and the slot size of each item is doubled. This effect lasts until the Tyrant is killed."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Accretion strips an item each round (DEX save) and raises the Tyrant's AV by +1 each time. Invert Weight and Weight of Worlds persist until the Tyrant is killed.",
+    "confidence": "high",
+    "raw_excerpt": "GravityTyrant Outsider/Mineral LVL9(32HP)/AV15/ML+10/ENC1 ATK:InvertWeight(Special)/WeightofWorlds(Special) ... Accretion: each round, all creatures must DEX save or lose the item in their lowest inventory slot... Each Accretion adds +1 to the Tyrant's AV."
+  },
+  {
+    "name": "Greenguard",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": 4,
+    "av": 13,
+    "morale": "+5",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [{"name": "Rifle", "damage": "d8"}],
+    "special": [
+      "Combat synths. Green plastic-fleshed homunculi. Attack from the wastes without warning, seemingly following ancient orders. They take and hold settlements at random, apparently waiting for reinforcements that never arrive."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Greenguard Synthetic LVL1(4HP)/AV13/ML+5/ENCd8 ATK:Rifle(d8)"
+  },
+  {
+    "name": "Grey Cricket",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+3",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [{"name": "Claws", "damage": "d4; + Noxious Spit (CON save vs vomiting)"}],
+    "special": [
+      "Creepy gangly giant insects. Normally scavengers, but will attack humans if they think they can get away with it. Their spit forces a CON save. Failure results in DIS on all saves for one round due to vomiting."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Noxious Spit: failed CON save = DIS on all saves for one round (vomiting).",
+    "confidence": "high",
+    "raw_excerpt": "GreyCricket Biological LVL2(8HP)/AV13/ML+3/ENCd8 ATK:Claws(d4)+NoxiousSpit(CONsavevsvomiting) ... Failure results in DIS on all saves for one round due to vomiting."
+  },
+  {
+    "name": "Grimpet",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Synthetic",
+    "level": null,
+    "hp": null,
+    "av": null,
+    "morale": "",
+    "enc": "",
+    "movement": "",
+    "attacks": [{"name": "Latch", "damage": "STR save vs Special"}],
+    "special": [
+      "Small, spider-like robots with a thick plasteel shell on their backs. Attempt to capture intruders by latching onto their bodies and emitting a piercing shriek to alert other security forces. Grimpets will not pursue beyond the boundaries of the ruin they guard.",
+      "Latch: Afflicted PCs must fill one item slot with a Wound: 'Grimpet'. While latched to an intruder, the Grimpet emits a horrid wail, which attracts the attention of all monsters within earshot. The Grimpet will resist attempts to prise it off, and requires surgical attention."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Stat line not present on these pages — the Grimpet header and its full stat block appear on the next page (PDF 203 / printed 196); only the name, type 'Synthetic', and ATK Latch are partially printed here, with descriptive text. LVL/HP/AV/ML/ENC not visible in this range.",
+    "confidence": "low",
+    "raw_excerpt": "Grimpet Synthetic [stat line continues on next page] ... ATK: Latch(STRsavevsSpecial) ... Latch: Afflicted PCs must fill one item slot with a Wound: 'Grimpet'. While latched to an intruder, the Grimpet emits a horrid wail, which attracts the attention of all monsters within earshot. The Grimpet will resist attempts to prise it off, and requires surgical attention."
+  },
+  {
+    "name": "Grimweaver",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 16,
+    "morale": "+10",
+    "enc": "d3 + d10 Grimpets",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d8"},
+      {"name": "Web Shot", "damage": "Entangled + d4 STR drain"}
+    ],
+    "special": [
+      "A larger, more powerful cousin of the Grimpet. Grimweavers were created as sentinels for ancient sites. They spit a nanofibre web that can ensnare even the strongest of creatures, immobilising an intruder and draining their strength. Grimweavers will not pursue beyond the boundaries of the ruin they guard.",
+      "Entangled: an Entangled creature has AV9, and cannot move freely. The target must make a DEX save to break free."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Web Shot Entangles (target reduced to AV9, cannot move freely, DEX save to break free) plus d4 STR drain. Accompanied by d10 Grimpets.",
+    "confidence": "high",
+    "raw_excerpt": "Grimweaver Synthetic LVL3(12HP)/AV16/ML+10/ENCd3+d10Grimpets ATK:Bite(d8)/WebShot(Entangled+d4STRdrain) ... Entangled: an Entangled creature has AV9, and cannot move freely. The target must make a DEX save to break free."
+  },
+  {
+    "name": "Hagfluke",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+7",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [{"name": "Siphon", "damage": "d6 + Special"}],
+    "special": [
+      "Sinuous parasites with the faces of fanged crones.",
+      "Siphon: with each succesful attack on a Biological target, the Hagfluke gains 1 Level (Max 7) and regains HP equal to the damage caused."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Siphon: each successful hit on a Biological target gains the Hagfluke 1 Level (max 7) and heals it for damage dealt.",
+    "confidence": "high",
+    "raw_excerpt": "Hagfluke Biological LVL1(4HP)/AV12/ML+7/ENCd6 ATK:Siphon(d6+Special) ... Siphon: with each succesful attack on a Biological target, the Hagfluke gains 1 Level (Max 7) and regains HP equal to the damage caused."
+  },
+  {
+    "name": "Harlequin Serpent",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 15,
+    "morale": "+7",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d8"},
+      {"name": "Venom Spray", "damage": "CON Save vs Hysteria"}
+    ],
+    "special": [
+      "Large desert snakes, with colouration on their heads that resembles the makeup worn by sacred fools.",
+      "Hysteria: A convulsive laughter-like reaction to the serpent's neurotoxins. Afflicted creatures laugh for d6 hours; they cannot speak until the venom wears off."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Venom Spray inflicts Hysteria (CON save): afflicted laugh for d6 hours, cannot speak until venom wears off.",
+    "confidence": "high",
+    "raw_excerpt": "HarlequinSerpent Biological LVL3(12HP)/AV15/ML+7/ENC1 ATK:Bite(d8)/VenomSpray(CONSavevsHysteria) ... Hysteria: ... Afflicted creatures laugh for d6 hours; they cannot speak until the venom wears off."
+  },
+  {
+    "name": "Hegemony Centurion",
+    "printed_pages": "195",
+    "pdf_pages": "202",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 16,
+    "morale": "+10",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [{"name": "", "damage": ""}],
+    "special": [],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Only the header and partial stat line are printed at the very bottom of this page (LVL1(4HP)/AV16/ML+10/ENCd10); the ATK line and description continue on the next page (PDF 203 / printed 196), outside this range.",
+    "confidence": "low",
+    "raw_excerpt": "HegemonyCenturion Biological LVL1(4HP)/AV16/ML+10/ENCd10 [continues on next page]"
+  }
+]

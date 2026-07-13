@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Silas, an Archivist",
+    "printed_pages": "280",
+    "pdf_pages": "287",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": null,
+    "av": 14,
+    "morale": "+4",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Cranial Bore Fingers",
+        "damage": "d4 INT damage"
+      }
+    ],
+    "special": [
+      "A synthetic archivist, sworn to serve the Seekers of Eyeless Wisdom (p.xx).",
+      "Draining memories from the crystals. Uninterested in the PCs: they are interrupting its work. Will defend itself if attacked.",
+      "If treated with respect: Silas responds in kind. Warns PCs about the creatures that have spawned from the infected canopic jars, in a hoarse whispering voice."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Will only fight in self-defence; non-hostile if respected.",
+    "confidence": "high",
+    "raw_excerpt": "Silas, an Archivist | Synthetic | Level 3 AV 14 Morale +4 | Attack: Cranial Bore Fingers (d4 INT damage) | A synthetic archivist, sworn to serve the Seekers of Eyeless Wisdom (p.xx)."
+  },
+  {
+    "name": "Guard Mummy",
+    "printed_pages": "280",
+    "pdf_pages": "287",
+    "type": "Fungal",
+    "level": 0,
+    "hp": 1,
+    "av": 14,
+    "morale": "+0",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Autarchy Blade",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Slow and witless. Drawn towards light and heat. Only attack to defend themselves.",
+      "If left alive they have a 1-in-6 chance per day of gestating into a Fungal Horror (see p.xx).",
+      "Reanimated by fungus. Move slowly, like sleepwalkers."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Level 0 (1 HP). Only attack to defend; drawn to light and heat.",
+    "confidence": "high",
+    "raw_excerpt": "Guard Mummy | Fungal | Level 0 (1HP) AV 14 Morale +0 | Attack: Autarchy Blade (d6) | Slow and witless. Drawn towards light and heat. Only attack to defend themselves. If left alive they have a 1-in-6 chance per day of gestating into a Fungal Horror (see p.xx)."
+  }
+]

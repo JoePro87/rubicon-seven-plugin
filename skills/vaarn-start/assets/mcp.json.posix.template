@@ -1,0 +1,19 @@
+{
+  "//": "TEMPLATE for macOS / Linux (POSIX). /vaarn-start writes this to <CAMPAIGN_DIR>/.mcp.json after replacing the placeholders. STRIP these '//' comment keys before writing.",
+  "//ENGINE_DIR": "{{ENGINE_DIR}} = engine folder, POSIX path, e.g. /home/you/rubicon-seven-mcp or /Users/you/rubicon-seven-mcp.",
+  "//CAMPAIGN_DIR": "{{CAMPAIGN_DIR}} = THIS campaign folder, POSIX path.",
+  "//VENV": "POSIX venv layout is bin/python (NOT Scripts/python.exe). No WSLENV — nothing crosses a WSL boundary.",
+  "mcpServers": {
+    "rubicon-seven": {
+      "command": "{{ENGINE_DIR}}/.venv/bin/python",
+      "args": ["{{ENGINE_DIR}}/server.py"],
+      "cwd": "{{ENGINE_DIR}}",
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "PYTHONUTF8": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "RUBICON_CAMPAIGN_DIR": "{{CAMPAIGN_DIR}}"
+      }
+    }
+  }
+}

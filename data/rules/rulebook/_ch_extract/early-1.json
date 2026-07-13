@@ -1,0 +1,461 @@
+[
+  {
+    "name": "Bonsai Triffid",
+    "printed_pages": "65",
+    "pdf_pages": "72",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 11,
+    "morale": "+1",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Vines", "damage": "d4"},
+      {"name": "Blinding Spit", "damage": "DEX Save vs Blinded for 1 round"}
+    ],
+    "special": [
+      "A walking carnivorous plant, pruned into reluctant obedience over many years. Like its larger siblings, can spit a toxic liquid that blinds the unwary.",
+      "Blinded: blinded opponents cannot make ranged attacks, and have DIS on melee attacks."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "BonsaiTriffid Biological Level 1 AV 11 Morale +1 Attack:Vines(d4)/BlindingSpit(DEXSavevsBlindedfor1round) ... Blinded:blindedopponentscannotmakerangedattacks,andhaveDISonmeleeattacks."
+  },
+  {
+    "name": "Citrine-Coated Volt Rat",
+    "printed_pages": "65",
+    "pdf_pages": "72",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 13,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Jolt", "damage": "d6, electrical"}
+    ],
+    "special": [
+      "A yellow-furred rodent, able to generate bioelectric charges from its forked tail. Traditionally held inside a prison orb and released only to fight other small beasts."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Citrine-CoatedVoltRat Biological Level 1 AV 13 Morale +3 Attack:Jolt(d6,electrical)"
+  },
+  {
+    "name": "Companion Ooze",
+    "printed_pages": "66",
+    "pdf_pages": "73",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 9,
+    "morale": "+5",
+    "enc": "10 item slots",
+    "movement": "",
+    "attacks": [
+      {"name": "Engulf", "damage": "d4 ongoing, STR save to break free"}
+    ],
+    "special": [
+      "A friendly ooze, which loves to hold shiny things inside its body. A good place to store excess valuables if you don't mind them getting sticky.",
+      "Gelatinous: the Ooze is immune to bludgeoning or crushing damage. Given time, it can work its way through any fissure or keyhole."
+    ],
+    "resistances": {"immune": ["bludgeoning"], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Gelatinous: immune to bludgeoning/crushing damage (crushing mapped to bludgeoning)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "CompanionOoze Biological Level 1 AV 9 Morale +5 ItemSlots 10 Attack:Engulf(d4ongoing,STRsavetobreakfree) ... Gelatinous:theOozeisimmunetobludgeoningorcrushingdamage."
+  },
+  {
+    "name": "Exultant's Hawk",
+    "printed_pages": "66",
+    "pdf_pages": "73",
+    "type": "Biological / Synthetic",
+    "level": 0,
+    "hp": 1,
+    "av": 16,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d4"}
+    ],
+    "special": [
+      "A cybernetic hunting hawk, enhanced with subtle flesh-machine interfaces. Generally only bred for the Exultants of the New Hegemony; this example was presumably stolen.",
+      "Hunter: the Hawk brings its owner 1 ration of bird meat per day, as long as they travel beneath open skies."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Stat block lists Level as '0 (1HP)'.",
+    "confidence": "high",
+    "raw_excerpt": "Exultant'sHawk Biological/Synthetic Level 0(1HP) AV 16 Morale +3 Attack:Claws(d4) ... Hunter:theHawkbringsitsowner1rationofbirdmeatperday..."
+  },
+  {
+    "name": "Glue Worm",
+    "printed_pages": "66",
+    "pdf_pages": "73",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 11,
+    "morale": "+1",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Nip", "damage": "d4"},
+      {"name": "Glue Spit", "damage": "STR save vs Entangled"}
+    ],
+    "special": [
+      "A tiny, tamer variant of the predatory Leopard Worms of Vaarn. Absurdly aggressive, must be fed raw meat.",
+      "Entangled: the target makes opposed STR save or is caught in the worm's spit for d2 turns. While Entangled their AV is lowered by -5, and they cannot move freely."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "GlueWorm Biological Level 1 AV 11 Morale +1 Attack:Nip(d4)/GlueSpit(STRsavevsEntangled) ... Entangled:thetargetmakesopposedSTRsaveoriscaughtintheworm'sspitford2turns.WhileEntangledtheirAVisloweredby-5..."
+  },
+  {
+    "name": "Little Torino",
+    "printed_pages": "67",
+    "pdf_pages": "74",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 15,
+    "morale": "+5",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Little Horn", "damage": "d6"}
+    ],
+    "special": [
+      "The ancients delighted in making pets of all Urth's inhabitants. The Little Torino is a toy species of rhino, roughly the size of a french bulldog."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "LittleTorino Biological Level 1 AV 15 Morale +5 Attack:LittleHorn(d6)"
+  },
+  {
+    "name": "Mycomastiff",
+    "printed_pages": "67",
+    "pdf_pages": "74",
+    "type": "Fungal",
+    "level": 1,
+    "hp": null,
+    "av": 12,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d4"},
+      {"name": "Spores", "damage": "d4 poison, Blast"}
+    ],
+    "special": [
+      "Most mycomorphic fungal strains were designed to resurrect human cadavers only, and are incompatible with other species. However, a rare substrain exclusively reanimates canine corpses.",
+      "Spores: after each spore attack, the Mycomastiff must CON Save. On failure, no more spores can be expelled without a Long Rest."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Spores damage tagged TOX in source (mapped to poison).",
+    "confidence": "high",
+    "raw_excerpt": "Mycomastiff Fungal Level 1 AV 12 Morale +3 Attack:Bite(d4)/Spores(d4TOX,Blast) ... Spores:aftereachsporeattack,theMycomastiffmustCONSave.Onfailure,nomoresporescabeexpelledwithoutaLongRest."
+  },
+  {
+    "name": "Pet Rock",
+    "printed_pages": "67",
+    "pdf_pages": "74",
+    "type": "Mineral",
+    "level": 1,
+    "hp": null,
+    "av": 20,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Thrown", "damage": "d4 (may be thrown; innocent of violence)"}
+    ],
+    "special": [
+      "A humble bluestone of Vaarn, granted sentience and mobility by powers unknown. It rolls after its master in the manner of some lithic supplicant, eager to help however it can. It cannot make a sound but will warn of danger by bumping politely into one's shin.",
+      "Living Stone: the Pet Rock does not need to eat, drink, or breathe. It cannot regain HP by any means."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Cannot regain HP by any means (Living Stone) — not a damage-type resistance."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Attack line reads: 'The Pet Rock is innocent of violence but may be thrown for d4 damage.'",
+    "confidence": "high",
+    "raw_excerpt": "PetRock Mineral Level 1 AV 20 Morale +10 Attack:ThePetRockisinnocentofviolencebutmaybethrownford4damage. ... LivingStone:thePetRockdoesnotneedtoeat,drink,orbreathe.ItcannotregainHPbyanymeans."
+  },
+  {
+    "name": "Ray Cat",
+    "printed_pages": "68",
+    "pdf_pages": "75",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 13,
+    "morale": "+4",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d4"},
+      {"name": "Laser Eyes", "damage": "d4 beam"}
+    ],
+    "special": [
+      "One of the delicate blue cats of Vaarn. Ray Cats are bred to absorb ambient radiation from the atmosphere and emit it in beautiful searing rays.",
+      "Geiger Kitty: a Ray Cat changes colour in the presence of hazardous radiation levels, its fur shifting from blue towards red."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "RayCat Biological Level 1 AV 13 Morale +4 Attack:Claws(d4)/LaserEyes(d4beam) ... GeigerKitty:aRayCatchangescolourinthepresenceofhazardousradiationlevels..."
+  },
+  {
+    "name": "Skunkey",
+    "printed_pages": "68",
+    "pdf_pages": "75",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 12,
+    "morale": "+1",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Thrown Rock", "damage": "d4"},
+      {"name": "Stench Spray", "damage": "CON Save vs vomiting"}
+    ],
+    "special": [
+      "A lithe black-furred primate with a bold white stripe down its back. The Skunkey defends itself with a repulsive chemical spray, so pungent that prospective predators sometimes die from vomiting.",
+      "Stench Spray: Biological targets must CON Save. On failure they are wracked by convulsive vomiting, taking DIS on all Saves and attack rolls during the next turn. Creatures without noses or digestive tracts are immune."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Stench Spray only affects Biological targets; creatures without noses/digestive tracts are immune to that ability (status effect, not a damage type)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Skunkey Biological Level 1 AV 12 Morale +1 Attack:ThrownRock(d4)/StenchSpray(CONSavevsvomiting) ... StenchSpray:BiologicaltargetsmustCONSave...Creatureswithoutnosesordigestivetractsareimmune."
+  },
+  {
+    "name": "Synthhound",
+    "printed_pages": "68",
+    "pdf_pages": "75",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": null,
+    "av": 13,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d4"}
+    ],
+    "special": [
+      "A synthetic hound, programmed to display suicidal loyalty to its owner. Pants to cool its Ego-Engines.",
+      "Watchdog Protocol: if a physical attack would kill the Synthhound's owner, it kills the Synthhound instead."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Synthhound Synthetic Level 1 AV 13 Morale +10 Attack:Bite(d4) ... WatchdogProtocol:ifaphysicalattackwouldkilltheSynthhound'sowner,itkillstheSynthhoundinstead."
+  },
+  {
+    "name": "Burden Bird",
+    "printed_pages": "69",
+    "pdf_pages": "76",
+    "type": "Biological",
+    "level": 2,
+    "hp": null,
+    "av": 12,
+    "morale": "+2",
+    "enc": "20 item slots",
+    "movement": "",
+    "attacks": [
+      {"name": "Peck", "damage": "d6"}
+    ],
+    "special": [
+      "A large flightless bird, trained to bear either cargo or a rider. Usually kept blinkered, as they spook easily. They will eat almost anything, but are fondest of honeyed grubs."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "BurdenBird Biological Level 2 AV 12 Morale +2 ItemSlots 20 Attack:Peck(d6)"
+  },
+  {
+    "name": "Crysteed",
+    "printed_pages": "69",
+    "pdf_pages": "76",
+    "type": "Mineral",
+    "level": 7,
+    "hp": null,
+    "av": 22,
+    "morale": "+5",
+    "enc": "70 item slots",
+    "movement": "",
+    "attacks": [
+      {"name": "Kick (x3)", "damage": "d6"}
+    ],
+    "special": [
+      "The tripedal steeds favoured by scholars of the Lithic Lyceum. Resemble crystalline thrones with three sharp and gleaming legs. Do not eat or drink.",
+      "Inevitable: the Crysteed cannot recover HP by any means, natural or supernatural. At 0 HP it shatters into gleaming dust."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Inevitable: cannot recover HP by any means — not a damage-type resistance."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Crysteed Mineral Level 7 AV 22 Morale +5 ItemSlots 70 Attack:3xKick(d6) ... Inevitable:theCrysteedcannotrecoverHPbyanymeans,naturalorsupernatural.At0HPitshattersintogleamingdust."
+  },
+  {
+    "name": "Destrier",
+    "printed_pages": "70",
+    "pdf_pages": "77",
+    "type": "Biological",
+    "level": 10,
+    "hp": null,
+    "av": 18,
+    "morale": "+10",
+    "enc": "20 item slots",
+    "movement": "150 mph on flat ground",
+    "attacks": [
+      {"name": "Bite", "damage": "d8"},
+      {"name": "Kick", "damage": "d10"},
+      {"name": "Charge", "damage": "DEX save vs 3d8 damage, needs run-up"}
+    ],
+    "special": [
+      "Gene-sculpted equine-derivatives able to achieve speeds of 150mph on flat ground. Bred for battle, more akin to giant greyhounds than horses, with long-fanged muzzles and running spikes supplanting the obsolete hoof. Few lines of gunmen on Urth can stand firm against a Destrier charge."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Attack line: 'Bite(d8)+Kick(d10)/Charge(DEX save vs 3d8 damage, needs run-up)'.",
+    "confidence": "high",
+    "raw_excerpt": "Destrier Biological Level 10 AV 18 Morale +10 ItemSlots 20 Attack:Bite(d8)+Kick(d10)/Charge(DEXsavevs3d8damage,needsrun-up)"
+  },
+  {
+    "name": "Striding Fool",
+    "printed_pages": "70",
+    "pdf_pages": "77",
+    "type": "Biological",
+    "level": 4,
+    "hp": null,
+    "av": 12,
+    "morale": "+4",
+    "enc": "40 item slots",
+    "movement": "",
+    "attacks": [
+      {"name": "Fists (x2)", "damage": "d6"}
+    ],
+    "special": [
+      "An eight-foot tall hominid, heavily gene-sculpted to act as a mount. Descended from human stock but lack wit and language, being simian in their aspect. Prodigiously strong and tireless. The Hegemony outlaws these mounts, but the newbeasts of Vaarn are known to ride such creatures.",
+      "Abomination: while riding a Striding Fool, reaction rolls when encountering true-kin characters are made with DIS."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Stridingfool Biological Level 4 AV 12 Morale +4 ItemSlots 40 Attack:2xFists(d6) ... Abomination:whileridingaStridingfool,reactionrollswhenencounteringtrue-kincharactersaremadewithDIS."
+  },
+  {
+    "name": "Thin Mare",
+    "printed_pages": "71",
+    "pdf_pages": "78",
+    "type": "Hypergeometric",
+    "level": 5,
+    "hp": null,
+    "av": 12,
+    "morale": "+5",
+    "enc": "Special (up to 100 item slots in hypergeometric belly)",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d8, hypergeometric"}
+    ],
+    "special": [
+      "A strange hypergeometric mount. Less a horse and more the suggestion of one, like a child's charcoal sketch that came to life.",
+      "Thin: the Thin Mare is 2D, and can slide through even the narrowest of gaps. When it stands sideways, it is invisible except for its shadow.",
+      "Internal Storage: up to 100 item slots exist within the Thin Mare's hypergeometric belly. However, they are invisible and items must be located by touch alone. Roll d100 and compare it with the desired item's slot number. If the dice roll is higher than the slot number, you find the item easily. If the roll is lower, you pull out whatever item is indicated by the d100 roll instead."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "ThinMare Hypergeometric Level 5 AV 12 Morale +5 ItemSlots Special Attack:Bite(d8,hypergeometric) ... Thin:theThinMareis2D...InternalStorage:upto100itemslotsexistwithintheThinMare'shypergeometricbelly."
+  },
+  {
+    "name": "War Camel",
+    "printed_pages": "72",
+    "pdf_pages": "79",
+    "type": "Biological",
+    "level": 4,
+    "hp": null,
+    "av": 15,
+    "morale": "+4",
+    "enc": "40 item slots",
+    "movement": "",
+    "attacks": [
+      {"name": "Hump-Mounted Turret", "damage": "d10"},
+      {"name": "Kick", "damage": "d6"}
+    ],
+    "special": [
+      "Camels are still considered an excellent choice of desert mount. War camels, fitted with mirror-AV and implanted flechette cannons, are used by Faa nomad raiders and Hegemony troops alike, and camel trains are one of the cheapest ventures a Vaarnish merchant can finance."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "WarCamel Biological Level 4 AV 15 Morale +4 ItemSlots 40 Attack:Hump-MountedTurret(d10)+Kick(d6)"
+  },
+  {
+    "name": "Weeping Lizard",
+    "printed_pages": "72",
+    "pdf_pages": "79",
+    "type": "Biological",
+    "level": 3,
+    "hp": null,
+    "av": 16,
+    "morale": "+3",
+    "enc": "30 item slots",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d8"},
+      {"name": "Tear Spray", "damage": "CON Save vs Blindness"}
+    ],
+    "special": [
+      "For journeys in the Lazul mountains of Vaarn, where flickering lattices of hard light make flight untenable, the Weeping Lizard is favoured as a steed. Named for the toxin they extrude from their tear ducts when enraged, these truculent black pseudo-geckos carry their passengers up surfaces as sheer as glass."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "WeepingLizard Biological Level 3 AV 16 Morale +3 ItemSlots 30 Attack:Bite(d8)+TearSpray(CONSavevsBlindness)"
+  },
+  {
+    "name": "Zorse",
+    "printed_pages": "72",
+    "pdf_pages": "79",
+    "type": "Biological",
+    "level": 5,
+    "hp": null,
+    "av": 13,
+    "morale": "+4",
+    "enc": "50 item slots",
+    "movement": "",
+    "attacks": [
+      {"name": "Kick", "damage": "d8"}
+    ],
+    "special": [
+      "The dominant equine strain remaining on Urth. The zorse boasts a handsome bevy of stripes on its flanks, and is bred in a variety of hues. Zorses are intolerant of extreme heat and deprivation and are rarely ridden in the Interior deserts, but are far from unknown in the badlands or mountainous regions."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Zorse Biological Level 5 AV 13 Morale +4 ItemSlots 50 Attack:Kick(d8)"
+  }
+]

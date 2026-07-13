@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "rubicon-seven": {
+      "command": "C:\\path\\to\\rubicon-seven-mcp\\.venv\\Scripts\\python.exe",
+      "args": ["C:\\path\\to\\rubicon-seven-mcp\\server.py"],
+      "env": {
+        "RUBICON_CAMPAIGN_DIR": "C:\\path\\to\\your-campaign"
+      }
+    }
+  }
+}

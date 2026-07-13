@@ -1,0 +1,453 @@
+[
+  {
+    "name": "Household Guard",
+    "printed_pages": "245",
+    "pdf_pages": "252",
+    "type": "Biological",
+    "level": 3,
+    "hp": null,
+    "av": 14,
+    "morale": "+4",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Pulse Rifle", "damage": "d8"}
+    ],
+    "special": [
+      "Well-equipped and trained, but not as numerous as the Legionaries or the Baron's militiamen."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "HouseholdGuard Biological Level AV Morale Enc 3 14 +4 d6 Attack:PulseRifle(d8) Well-equippedandtrained,butnotasnumerousas theLegionariesortheBaron'smilitiamen."
+  },
+  {
+    "name": "Consul's Lictor",
+    "printed_pages": "245",
+    "pdf_pages": "252",
+    "type": "Biological",
+    "level": 5,
+    "hp": null,
+    "av": 18,
+    "morale": "+7",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Anbaric Pike", "damage": "d10, electrical"}
+    ],
+    "special": [
+      "When Consul Larke would take lethal damage, a Lictor can choose to die instead."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Consul'sLictor Biological Level AV Morale Enc 5 18 +7 d8 Attack:AnbaricPike(d10,electrical) WhenConsulLarkewouldtakelethaldamage,a Lictorcanchoosetodieinstead."
+  },
+  {
+    "name": "Larke Xan Lonrot, Hegemony Consul",
+    "printed_pages": "246",
+    "pdf_pages": "253",
+    "type": "Biological",
+    "level": 4,
+    "hp": null,
+    "av": 16,
+    "morale": "+2",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Monofilament Sword", "damage": "2d8"}
+    ],
+    "special": [
+      "Accompanied by d8 Lictors at all hours of the day.",
+      "Lonrot is a competent enough duelist, but will not have any interest in risking his life in battle.",
+      "If cornered he will use the active camouflage rig inside his robes to become invisible and attempt to escape."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Faction leader (Hegemony Consul).",
+    "confidence": "high",
+    "raw_excerpt": "LarkeXanLonrot,HegemonyConsul Biological Level AV Morale 4 16 +2 Attack:MonofilamentSword(2d8) Accompaniedbyd8Lictorsatallhoursoftheday. ...Ifcorneredhewillusetheactivecamouflageriginside hisrobestobecomeinvisibleandattempttoescape."
+  },
+  {
+    "name": "Commander Eldwall Loonflower, Hegemony Commander",
+    "printed_pages": "248",
+    "pdf_pages": "255",
+    "type": "Biological",
+    "level": 6,
+    "hp": null,
+    "av": 16,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Hegemony Sidearm", "damage": "d6"}
+    ],
+    "special": [
+      "Unlikely to fight alone; he will be accompanied by four Hegemony Centurions.",
+      "Hegemony troops will never fail Morale Saves while Loonflower is alive and fighting with them."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Faction leader (Hegemony Commander of the Fifth Legion).",
+    "confidence": "high",
+    "raw_excerpt": "CommanderEldwallLoonflower Biological Level AV Morale 6 16 +10 Attack:HegemonySidearm(d6) Unlikelytofightalone;hewillbeaccompaniedbyfour HegemonyCenturions.Hegemonytroopswillnever failMoraleSaveswhileLoonflowerisaliveandfighting withthem."
+  },
+  {
+    "name": "Baron's Militiaman",
+    "printed_pages": "249",
+    "pdf_pages": "256",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 13,
+    "morale": "+3",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Short Blade", "damage": "d6"},
+      {"name": "Crossbow", "damage": "d6"}
+    ],
+    "special": [
+      "Swaggering bullies who will only attack if they outnumber their opponents."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Baron'sMilitiaman Biological Level AV Morale Enc 1 13 +3 d8 Attack:ShortBlade(d6)/Crossbow(d6) Swaggeringbullieswhowillonlyattackifthey outnumbertheiropponents."
+  },
+  {
+    "name": "Militia Captain",
+    "printed_pages": "249",
+    "pdf_pages": "256",
+    "type": "Biological",
+    "level": 3,
+    "hp": null,
+    "av": 13,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Assault Laser", "damage": "d8, beam"}
+    ],
+    "special": [
+      "Commands a group of militiamen; will always be found guarding a public fountain."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "MilitiaCaptain Biological Level AV Morale Enc 3 13 +5 1 Attack:AssaultLaser(d8,beam) Commandsagroupofmilitiamen;willalwaysbe foundguardingapublicfountain."
+  },
+  {
+    "name": "Ancamulla the Water Baron",
+    "printed_pages": "250",
+    "pdf_pages": "257",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": null,
+    "av": 24,
+    "morale": "+1",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Feeble Swipe", "damage": "d4"}
+    ],
+    "special": [
+      "Ancamulla does not expect to fight; he has mercenaries for that. If in mortal danger he will likely flee or try to bargain using his wealth.",
+      "His chassis is fitted with an ancient Warding Field, which renders most kinetic attacks against his person harmless.",
+      "A well-timed EMP would disrupt the warding field, reducing him to his natural AV of 11."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Stat block lists AV as '24(11)'. The Warding Field renders most kinetic attacks against his person harmless (AV 24); an EMP disrupts the field, dropping him to his natural AV of 11. This is an AV/defense mechanic stated as armour, not a damage-type immunity table; text says 'most kinetic attacks ... harmless'."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Faction leader. AV printed as 24(11): 24 with Warding Field, 11 natural after EMP.",
+    "confidence": "high",
+    "raw_excerpt": "AncamullatheWaterBaron Synthetic Level AV Morale 3 24(11) +1 Attack:FeebleSwipe(d4) ...Hischassisis fittedwithanancientWardingField,whichrenders mostkineticattacksagainsthispersonharmless.A well-timedEMPwoulddisruptthewardingfield, reducinghimtohisnaturalAVof11."
+  },
+  {
+    "name": "Temple Guard",
+    "printed_pages": "251",
+    "pdf_pages": "258",
+    "type": "Biological",
+    "level": 3,
+    "hp": null,
+    "av": 15,
+    "morale": "+7",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {"name": "Heavy Club", "damage": "d10"}
+    ],
+    "special": [
+      "Will do everything they can to avoid spilling red blood inside the Temple."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "TempleGuard Biological Level AV Morale Enc 3 15 +7 d10 Attack:HeavyClub(d10) Willdoeverythingtheycantoavoidspillingred bloodinsidetheTemple."
+  },
+  {
+    "name": "Priest of the Promised Sun",
+    "printed_pages": "251",
+    "pdf_pages": "258",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 10,
+    "morale": "+1",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Staff", "damage": "d6"}
+    ],
+    "special": [
+      "Carry doses of Summerbalm (heals for d8 HP)."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "PriestofthePromisedSun Biological Level AV Morale Enc 1 10 +1 d6 Attack:Staff(d6) CarrydosesofSummerbalm(healsford8HP)"
+  },
+  {
+    "name": "Abbess Faunia, Apostle of the Sun",
+    "printed_pages": "252",
+    "pdf_pages": "259",
+    "type": "Biological / Psychic",
+    "level": 3,
+    "hp": null,
+    "av": 11,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Unarmed", "damage": "d4"}
+    ],
+    "special": [
+      "Faunia is no warrior, but her ambient psychic powers mean that she is impossible to surprise.",
+      "If attacked, she will activate her most precious artefact: a hard-light projector that creates seven solid-state holograms of her, which will scatter in all directions. In the confusion she will attempt to escape. Note these holograms are physical objects, and can be restrained by the PCs."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Faction leader (Church of the Promised Sun).",
+    "confidence": "high",
+    "raw_excerpt": "AbbessFaunia,ApostleoftheSun Biological/Psychic Level AV Morale 3 11 +3 Attack:Unarmed(d4) Fauniaisnowarrior,butherambientpsychicpowers meanthatsheisimpossibletosurprise. ...hard-lightprojectorthatcreatessevensolid-state hologramsofher..."
+  },
+  {
+    "name": "Smuggler",
+    "printed_pages": "253",
+    "pdf_pages": "260",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 12,
+    "morale": "+2",
+    "enc": "d12",
+    "movement": "",
+    "attacks": [
+      {"name": "Club", "damage": "d6"}
+    ],
+    "special": [
+      "Lightly-armed layabouts, more used to vandalism and intimidation than pitched battle with competent adversaries."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Smuggler Biological Level AV Morale Enc 1 12 +2 d12 Attack:Club(d6) Lightly-armedlayabouts,moreusedtovandalism andintimidationthanpitchedbattlewith competentadversaries."
+  },
+  {
+    "name": "Hired Killer",
+    "printed_pages": "253",
+    "pdf_pages": "260",
+    "type": "Biological",
+    "level": 3,
+    "hp": null,
+    "av": 14,
+    "morale": "+4",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Knife", "damage": "d6"},
+      {"name": "Grenade", "damage": "d8, blast"}
+    ],
+    "special": [
+      "Assassination technique involves bombing targets' homes with ancient grenades."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "HiredKiller Biological Level AV Morale Enc 3 14 +4 d6 Attack:Knife(d6)/Grenade(d8,blast) Assassinationtechniqueinvolvesbombingtargets' homeswithancientgrenades."
+  },
+  {
+    "name": "Prieval Prise",
+    "printed_pages": "254",
+    "pdf_pages": "261",
+    "type": "Biological",
+    "level": 5,
+    "hp": null,
+    "av": 13,
+    "morale": "See Below",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Handcannon", "damage": "d10"},
+      {"name": "Bite", "damage": "d6"}
+    ],
+    "special": [
+      "If combat breaks out, the referee should roll to determine which drug Prieval is high on.",
+      "Even numbers designate amphetamines; Prieval is twitchy and fast, and acts twice before the PCs do. However, he will bug out and run as soon as the fight goes against him.",
+      "Odd numbers designate opiates; Prieval is disassociating and will always attack last. However, he has no concept of the danger he is in, cannot feel pain, and will never run away."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Faction leader (Prieval's Crew). Morale is 'See Below' (drug-dependent behaviour, not a numeric value).",
+    "confidence": "high",
+    "raw_excerpt": "PrievalPrise Biological Level AV Morale 5 13 SeeBelow Attack:Handcannon(d10)+Bite(d6) Evennumbersdesignateamphetamines... Oddnumbersdesignateopiates..."
+  },
+  {
+    "name": "Aspirant Ghoul Cultist",
+    "printed_pages": "255",
+    "pdf_pages": "262",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 12,
+    "morale": "+2",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {"name": "Dagger", "damage": "d6"}
+    ],
+    "special": [
+      "Robed and hooded when it is time to gather. They use Jak's morale score if she is present."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "AspirantGhoulCultist Biological Level AV Morale Enc 1 12 +2 d10 Attack:Dagger(d6) Robedandhoodedwhenitistimetogather.They useJak'smoralescoreifsheispresent."
+  },
+  {
+    "name": "Exalted Ghoul Cultist",
+    "printed_pages": "255",
+    "pdf_pages": "262",
+    "type": "Biological",
+    "level": 4,
+    "hp": null,
+    "av": 14,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claws", "damage": "d8"}
+    ],
+    "special": [
+      "The advanced stages of the transformation brought about by Jak's rituals elongate the limbs and teeth."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "ExaltedGhoulCultist Biological Level AV Morale Enc 4 14 +5 d6 Attack:2xClaws(d8) Theadvancedstagesofthetransformationbrought aboutbyJak'sritualselongatethelimbsandteeth."
+  },
+  {
+    "name": "Longtooth Jak, Alzabo Matriarch",
+    "printed_pages": "256",
+    "pdf_pages": "263",
+    "type": "Biological",
+    "level": 6,
+    "hp": null,
+    "av": 15,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claw", "damage": "d8"},
+      {"name": "Bite (follow-up)", "damage": "2d6"}
+    ],
+    "special": [
+      "If both of Jak's claws hit the same target, she will follow up with a bite attack that deals 2d6 damage, with no to-hit roll required.",
+      "She will deal another automatic 2d6 damage to the target she has grabbed each turn, unless they pass a STR save to wrestle her off."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Faction leader (Friends of Jak). Alzabo: extra-solar predator that retains the memories of the humans it devours.",
+    "confidence": "high",
+    "raw_excerpt": "LongtoothJak,AlzaboMatriarch Biological Level AV Morale 6 15 +10 Attack:2xClaw(d8) Ifbothof Jak'sclawshitthesametarget,shewillfollowupwithabiteattackthatdeals2d6damage,withnoto-hitrollrequired.Shewilldealanother automatic2d6damage...unlesstheypassaSTRsavetowrestleheroff."
+  },
+  {
+    "name": "Advocate",
+    "printed_pages": "257",
+    "pdf_pages": "264",
+    "type": "Biological",
+    "level": 2,
+    "hp": null,
+    "av": 14,
+    "morale": "+4",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {"name": "Shock Baton", "damage": "d8, electrical"}
+    ],
+    "special": [
+      "Dressed in dark red armour and featureless shadow-helms."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Raw damage tag printed as 'd8.electrical' (period likely a typo for comma).",
+    "confidence": "high",
+    "raw_excerpt": "Advocate Biological Level AV Morale Enc 2 14 +4 d10 Attack:ShockBaton(d8.electrical) Dressedindarkredarmourandfeatureless shadow-helms."
+  },
+  {
+    "name": "Bailiff of the Crimson Court",
+    "printed_pages": "257",
+    "pdf_pages": "264",
+    "type": "Biological",
+    "level": null,
+    "hp": null,
+    "av": null,
+    "morale": "",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Advanced Melee Weapon (see p.xx)", "damage": ""}
+    ],
+    "special": [
+      "Each Advocate uses unique fighting styles and weaponry. This stat-block should be considered a starting point."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Stat block columns are garbled/transposed. The header row reads 'Level AV Morale Enc' but the value row reads '2d6 d8+10 +d12 1'. These look like randomized stat-block generation values (e.g. Level=2d6, AV=d8+10, Morale=+d12, Enc=1) rather than fixed numbers, consistent with the note that this is a 'starting point'. Specific fixed Level/AV/Morale NOT clearly stated; left null.",
+    "confidence": "low",
+    "raw_excerpt": "BailiffoftheCrimsonCourt Biological Level AV Morale Enc 2d6 d8+10 +d12 1 Attack: AdvancedMeleeWeapon(seep.xx) EachAdvocateusesuniquefightingstylesand weaponry.Thisstat-blockshouldbeconsidereda startingpoint."
+  },
+  {
+    "name": "Nyxia, the Wall Shadow",
+    "printed_pages": "258",
+    "pdf_pages": "265",
+    "type": "Hypergeometric",
+    "level": 8,
+    "hp": null,
+    "av": 11,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {"name": "Freezing Touch", "damage": "d8 CON damage"}
+    ],
+    "special": [
+      "Nyxia cannot be injured by regular weapons or by Mystic Gifts. Only hypergeometric weapons have any hope of harming her.",
+      "She attacks by latching onto an opponent and draining the energy from their body. When their CON is reduced to 0, they are dead."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Stat block states: cannot be injured by regular weapons or by Mystic Gifts; only hypergeometric weapons have any hope of harming her. This is a stated invulnerability to all non-hypergeometric weapons and to Mystic Gifts."},
+    "flags": {"mystic_gift_immune": true, "ranged_immune": false, "mimic": false},
+    "combat_note": "Faction leader (Crimson Court). Planeywoman / hypergeometric being. Freezing Touch deals d8 CON damage; CON to 0 = death.",
+    "confidence": "high",
+    "raw_excerpt": "Nyxia,theWallShadow Hypergeometric Level AV Morale 8 11 +10 Attack:FreezingTouch(d8CONdamage) Nyxiacannotbeinjuredbyregularweaponsorby MysticGifts.Onlyhypergeometricweaponshaveany hopeofharmingher. ...WhentheirCONisreducedto0,theyaredead."
+  }
+]

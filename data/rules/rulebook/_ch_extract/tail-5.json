@@ -1,0 +1,1365 @@
+[
+  {
+    "name": "Fungal Horror",
+    "printed_pages": "281",
+    "pdf_pages": "288",
+    "type": "Fungal",
+    "level": 4,
+    "hp": null,
+    "av": 11,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Crush",
+        "damage": "d8"
+      },
+      {
+        "name": "Acid Spit",
+        "damage": "d8"
+      }
+    ],
+    "special": [
+      "Orange fungal mass surrounding An-Rah's skeleton.",
+      "Regenerates 3 HP every round unless damaged by fire or acid.",
+      "Sensitive to noise. Breaks out of anti-entropy sphere if it hears movement.",
+      "Defeating the Horror allows the looting of Nassak An-Rah's skeleton."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": "Regenerates 3 HP every round unless damaged by fire or acid (regeneration is negated by fire or acid damage). No immunity or resistance stated."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Regeneration only stops when hit with fire or acid; otherwise heals 3 HP/round.",
+    "confidence": "high",
+    "raw_excerpt": "FungalHorror Fungal Level AV Morale 4 11 +10 Attack:Crush(d8)/AcidSpit(d8) OrangefungalmasssurroundingAn-Rah's skeleton. Regenerates3HPeveryroundunlessdamagedbyfire oracid."
+  },
+  {
+    "name": "Glass Centipede",
+    "printed_pages": "281",
+    "pdf_pages": "288",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 12,
+    "morale": "+5",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "d6 poison"
+      }
+    ],
+    "special": [
+      "Four-foot centipede with translucent flesh.",
+      "Strikes from ambush unless target passes a PSY Save."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Ambush predator; target may avoid surprise with a PSY save.",
+    "confidence": "high",
+    "raw_excerpt": "GlassCentipede Biological Level AV Morale 1 12 +5 Attack:Bite(d6TOX) Four-footcentipedewithtranslucentflesh.Strikes fromambushunlesstargetpassesaPSYSave."
+  },
+  {
+    "name": "Spawn of An-Rah's Guts",
+    "printed_pages": "282",
+    "pdf_pages": "289",
+    "type": "Fungal",
+    "level": 2,
+    "hp": null,
+    "av": 13,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Lash",
+        "damage": "d6"
+      },
+      {
+        "name": "Acid Spit",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Octopus-like creature, formed from fungus and An-Rah's intestines.",
+      "Wears the remains of its canopic jar like a hat."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "SpawnofAn-Rah'sGuts Fungal Level AV Morale 2 13 +10 Attack:Lash(d6)/AcidSpit(d6) Octopus-likecreature,formedfromfungusandAn-Rah'sintestines.Wearstheremainsofitscanopicjar likeahat."
+  },
+  {
+    "name": "Spawn of An-Rah's Brain",
+    "printed_pages": "282",
+    "pdf_pages": "289",
+    "type": "Fungal",
+    "level": 2,
+    "hp": null,
+    "av": 13,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Mind Control",
+        "damage": "EGO Save to resist"
+      }
+    ],
+    "special": [
+      "Fungal brain that walks on two tiny legs. Wears the remains of its canopic jar like a hat.",
+      "Attempts to psychically dominate opponents, Opposed EGO save to resist mind control.",
+      "Dominated PCs are forced to make attacks against their fellow vault-raiders."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Opposed EGO save to resist domination; dominated PCs attack their allies.",
+    "confidence": "high",
+    "raw_excerpt": "SpawnofAn-Rah'sBrain Fungal Level AV Morale 2 13 +10 Attack:MindControl(EGOSavetoresist) Fungalbrainthatwalksontwotiny legs.Wearstheremainsofitscanopicjarlike ahat.Attemptstopsychicallydominateopponents,OpposedEGOsavetoresistmindcontrol.DominatedPCsareforcedtomakeattacks againsttheirfellowvault-raiders."
+  },
+  {
+    "name": "Dogsbody",
+    "printed_pages": "284",
+    "pdf_pages": "291",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "An amalgam of Rappash-Ik's DNA with that of his favourite hunting dog.",
+      "Black-furred hounds with the face of the dead Autarch.",
+      "Speak in repetitive parroted phrases and follow Janus devotedly.",
+      "If Janus dies they will accept his killer as their pack leader, showing their bellies in submission."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Dogsbody Biological LVL1(4HP)/AV12/ML+3/ENCd6 Attack:Bite(d6)"
+  },
+  {
+    "name": "Janitor Synth",
+    "printed_pages": "284",
+    "pdf_pages": "291",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+10",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "n/a",
+        "damage": ""
+      }
+    ],
+    "special": [
+      "Boxy trundling cleaning synth.",
+      "Will attempt to dispose of any dead bodies within the facility and take them to the incinerator.",
+      "Cannot speak, uninterested in living beings."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Attack listed as n/a; non-combatant.",
+    "confidence": "high",
+    "raw_excerpt": "JanitorSynth Synthetic LVL1(4HP)/AV12/ML+10/ENCd6 Attack:n/a Boxy trundling cleaning synth."
+  },
+  {
+    "name": "Janus",
+    "printed_pages": "284",
+    "pdf_pages": "291",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 14,
+    "morale": "+8",
+    "enc": "Unique",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "2x Bite",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Towering, heavily-muscled cannibal. One cunning 'old' head and one foolish new one, created by grafting the head of an elderly clone onto a fresh Weekling.",
+      "Begrudgingly subservient towards Mimir; each believes they are the 'true' Autarch.",
+      "Styles himself 'Autarch' and will fly into a rage if not addressed as such.",
+      "Eats only the flesh of Weeklings.",
+      "Carries the Red Keycard and would die before giving it up.",
+      "Able to pass through the Laser Hallways without triggering the trap, and will use this to escape from battles that have gone poorly."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Physically strong and aggressive; attacks with Dogsbody support, attempts to capture PCs alive for meat.",
+    "confidence": "high",
+    "raw_excerpt": "Janus Biological LVL4(16HP)/AV14/ML+8/ENCUNIQUE Attack:2xBite(d6)"
+  },
+  {
+    "name": "Mimir",
+    "printed_pages": "284",
+    "pdf_pages": "291",
+    "type": "Biological / Synthetic",
+    "level": 2,
+    "hp": 8,
+    "av": 11,
+    "morale": "+0",
+    "enc": "Unique",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Wild Flailing",
+        "damage": "d4"
+      }
+    ],
+    "special": [
+      "A severed head, with the features and voice of Rappash-Ik. Suspended in a vat of biotic gel. Moves on slender mechanical limbs.",
+      "Believes himself to be the actual head of Rappash-Ik (untrue); is the experiment of a previous Autarch clone.",
+      "Master of the Fount; has extended his lifespan by preserving himself in his contraption.",
+      "Must recharge his tank in his Laboratory once per day or become immobilised and perish.",
+      "Carries the Purple Keycard and would die before giving it up.",
+      "No match for the PCs in combat; will seek to bargain, outwit, and use the Fount's traps against them."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Avoids direct combat; bargains, flees to control room, sends Janus and Dogsbodies.",
+    "confidence": "high",
+    "raw_excerpt": "Mimir Biological/Synthetic LVL2(8HP)/AV11/ML+0/ENCUnique Attack:WildFlailing(d4)"
+  },
+  {
+    "name": "Weekling",
+    "printed_pages": "284",
+    "pdf_pages": "291",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 10,
+    "morale": "+0",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Unarmed",
+        "damage": "d4"
+      }
+    ],
+    "special": [
+      "Emaciated, mindless clones of Rappash-Ik. Naked, with the minds of feral, unlettered beasts.",
+      "Farmed for meat by Janus and Mimir.",
+      "The Weeklings hate their captors and will kill them if they can."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Weekling Biological LVL1(4HP)/AV10/ML+0/ENCd10 Attack:Unarmed(d4)"
+  },
+  {
+    "name": "Mayor Zuljan Afi",
+    "printed_pages": "293",
+    "pdf_pages": "300",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Unarmed",
+        "damage": "d4"
+      }
+    ],
+    "special": [
+      "Cacogen patriarch of the House of Circumspect Navigators, and Mayor of Caeba. Short, affable, bearded with carp-like tendrils.",
+      "Possesses an item of Exotica: a Compass of Origin."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "MayorZuljanAfi Biological LVL1(4HP)/AV12/ML+3 Attack:Unarmed(d4)"
+  },
+  {
+    "name": "Iriyah Afi",
+    "printed_pages": "293",
+    "pdf_pages": "300",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Unarmed",
+        "damage": "d4"
+      }
+    ],
+    "special": [
+      "Cacogen. Zuljan's wife. Matron of the House of Circumspect Navigators.",
+      "One incredibly long arm, with flesh the texture of dough. Practical and profit-minded."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "IriyahAfi Biological LVL1(4HP)/AV12/ML+3 Attack:Unarmed(d4)"
+  },
+  {
+    "name": "Warden Stoll",
+    "printed_pages": "293",
+    "pdf_pages": "300",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 16,
+    "morale": "+8",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Horns",
+        "damage": "2d8"
+      }
+    ],
+    "special": [
+      "Cacogen. Bondsman of the Afi family. Vigilant enforcer. Dour, centaur-like warrior. Smokes cigarillos."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "WardenStoll Biological LVL5(20HP)/AV16/ML+8 Attack:Horns(2d8)"
+  },
+  {
+    "name": "Crumbhornet",
+    "printed_pages": "293",
+    "pdf_pages": "300",
+    "type": "Fungal",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+4",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Club",
+        "damage": "d6"
+      },
+      {
+        "name": "Spores",
+        "damage": "d6 poison, blast"
+      }
+    ],
+    "special": [
+      "Mycomorph. Bondsman of the Afi family. Friendly and adventurous; will be eager to explore the Grandfather's guts alongside the PCs.",
+      "Born from the corpse of a condemned kin-slayer. On the run from the Hegemony, as it is illegal to resurrect anyone who was sentenced to death."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Targeted by bounty hunter Blotte with a fungicide-coated spear.",
+    "confidence": "high",
+    "raw_excerpt": "Crumbhornet Fungal LVL2(8HP)/AV13/ML+4 Attack:Club(d6)/Spores(d6TOX,blast)"
+  },
+  {
+    "name": "Petrichor",
+    "printed_pages": "293",
+    "pdf_pages": "300",
+    "type": "Mineral",
+    "level": 2,
+    "hp": 8,
+    "av": 22,
+    "morale": "+5",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Staff",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Scholar from the Lithic Lyceum. Quiet, cautious, pedantic. Crystalline flesh the colour of apricots.",
+      "Studying stone-eating lithophage worms. Glad to be accompanied into the Grandfather's guts by research assistants."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Petrichor Mineral LVL2(8HP)/AV22/ML+5 Attack:Staff(d6)"
+  },
+  {
+    "name": "The Marvellous Incandenza",
+    "printed_pages": "293",
+    "pdf_pages": "300",
+    "type": "Synthetic",
+    "level": 2,
+    "hp": 8,
+    "av": 14,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Stage Pistol (but bullets are real)",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Travelling synthetic con-artist and stage magician. Boastful, flamboyant and immoral.",
+      "Has a large glass head, full of bulbs that light up as he thinks.",
+      "Planning to rob Mayor Zuljan of his Compass."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "TheMarvellousIncandenza Synthetic LVL2(8HP)/AV14/ML+3 Attack:StagePistol(butbulletsarereal,d6)"
+  },
+  {
+    "name": "Dimbulb",
+    "printed_pages": "293",
+    "pdf_pages": "300",
+    "type": "Synthetic",
+    "level": 2,
+    "hp": 8,
+    "av": 14,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Stage Sword (floppy plastic)",
+        "damage": "1 damage"
+      }
+    ],
+    "special": [
+      "Incandenza's assistant. Same model as Incandenza, but can only think at half the speed due to broken processors.",
+      "The bulbs in his head are visibly duller. Monosyllabic and obedient."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Stage Sword deals a flat 1 damage.",
+    "confidence": "high",
+    "raw_excerpt": "Dimbulb Synthetic LVL2(8HP)/AV14/ML+3 Attack:StageSword(floppyplastic,1damage)"
+  },
+  {
+    "name": "Blotte",
+    "printed_pages": "294",
+    "pdf_pages": "301",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 16,
+    "morale": "+8",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Spear",
+        "damage": "d8"
+      },
+      {
+        "name": "Pistol",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "A bumbling, overconfident true-kin bounty hunter, mounted on Thunder.",
+      "Arrives at Caeba a day after the PCs, seeking to kill Crumbhornet with a spear coated in fungicide."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Carries a fungicide-coated spear (anti-fungal); relevant vs Crumbhornet.",
+    "confidence": "high",
+    "raw_excerpt": "Blotte Biological LVL3(12HP)/AV16/ML+8 Attack:Spear(d8)/Pistol(d6)"
+  },
+  {
+    "name": "Thunder",
+    "printed_pages": "294",
+    "pdf_pages": "301",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 14,
+    "morale": "+6",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Beak",
+        "damage": "d8"
+      },
+      {
+        "name": "Claws",
+        "damage": "2d6"
+      }
+    ],
+    "special": [
+      "A jet-black, merciless elephant bird.",
+      "Constantly saves Blotte's life, without her master ever being aware of this fact.",
+      "Item Slots 50."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Stat line also lists Item Slots 50.",
+    "confidence": "high",
+    "raw_excerpt": "Thunder Biological LVL5(20HP)/AV14/ML+6/ItemSlots50 Attack:Beak(d8)+Claws(2d6)"
+  },
+  {
+    "name": "Lanchra, the Pale Shadow",
+    "printed_pages": "294",
+    "pdf_pages": "301",
+    "type": "Hypergeometric",
+    "level": 6,
+    "hp": 24,
+    "av": 18,
+    "morale": "+8",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Hair Strand",
+        "damage": "2d6, hit as though target AV = 10"
+      }
+    ],
+    "special": [
+      "Ruthless planeywoman assassin, dispatched to kill Blotte by a former client he ripped off.",
+      "Looks like a cubist painting of a gaunt, battle-scarred woman wearing white.",
+      "Fights by pulling out her hair and throwing it at her victims; the 2D filaments slice through armour and flesh like cheese-wire.",
+      "Arrives six hours after Blotte and Thunder, aboard a seemingly-empty skiff."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": "Hair Strand attack hits as though the target's AV = 10 (bypasses/ignores most armour); this is an attack mechanic, not a defensive resistance of Lanchra."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Hair Strand resolves against AV 10 regardless of target's actual AV (armour-piercing).",
+    "confidence": "high",
+    "raw_excerpt": "Lanchra,thePaleShadow Hypergeometric LVL6(24HP)/AV18/ML+8 Attack:HairStrand(2d6,hitasthoughtargetAV =10)"
+  },
+  {
+    "name": "Lithophage Worm",
+    "printed_pages": "295",
+    "pdf_pages": "302",
+    "type": "Biological",
+    "level": 3,
+    "hp": null,
+    "av": 14,
+    "morale": "+6",
+    "enc": "d6 (encounter group)",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Drill-beak",
+        "damage": "d8"
+      }
+    ],
+    "special": [
+      "Will only attack to consume stone."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Passive unless consuming stone; appears as d6 in encounter table and 4 in Ballast Stomach Major.",
+    "confidence": "high",
+    "raw_excerpt": "d6LithophageWorms (Bio,Lvl3,AV14,ML+6,Atk:d8Drill-beak) Willonlyattacktoconsumestone."
+  },
+  {
+    "name": "Iridium Vulture",
+    "printed_pages": "295",
+    "pdf_pages": "302",
+    "type": "Synthetic",
+    "level": 2,
+    "hp": null,
+    "av": 16,
+    "morale": "+3",
+    "enc": "d6 (encounter group)",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Claws",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Synthetic scavengers who float through Urth's atmosphere in pursuit of the scent of death.",
+      "Feasting on sandworm flesh. Territorial, but easily appeased with meat."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "d6IridiumVultures (Synth,Lvl2,AV16,ML+3,Atk:d6Claws) Feastingonsandwormflesh.Territorial,but easilyappeasedwithmeat."
+  },
+  {
+    "name": "Lost Caeba Worker",
+    "printed_pages": "295",
+    "pdf_pages": "302",
+    "type": "Biological",
+    "level": 1,
+    "hp": null,
+    "av": 11,
+    "morale": "+0",
+    "enc": "d4 (encounter group)",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Tools",
+        "damage": "d4"
+      }
+    ],
+    "special": [
+      "Terrified and thirsty. Demand a share of your rations."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "d4LostCaebaWorkers, (Bio,Lvl1,AV11,ML+0,Atk:d4Tools) Terrifiedandthirsty.Demandashareofyour rations."
+  },
+  {
+    "name": "Buzzblade Drone",
+    "printed_pages": "295",
+    "pdf_pages": "302",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": null,
+    "av": 14,
+    "morale": "+10",
+    "enc": "d8 (encounter group)",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Saw",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Like plasteel toddlers with chainsaw arms. Listlessly searching for something to cut up."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "d8BuzzbladeDrones (Synth,Lvl1,AV14,ML+10,Atk:d6Saw) Likeplasteeltoddlerswithchainsawarms. Listlesslysearchingforsomethingtocutup."
+  },
+  {
+    "name": "Bacteria Gestalt Colony",
+    "printed_pages": "295",
+    "pdf_pages": "302",
+    "type": "Biological / Psychic",
+    "level": 4,
+    "hp": null,
+    "av": 10,
+    "morale": "+12",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Absorb",
+        "damage": "d8"
+      }
+    ],
+    "special": [
+      "Targets absorbed take d8 damage each round until they make an opposed STR save.",
+      "The colony takes minimum damage from physical attacks.",
+      "Vulnerable to fungal spores or other sources of antibiotics.",
+      "Aware of the Grandfather's demise and now in the early stages of devouring one another (three colonies: Alpha, Theta, Omega).",
+      "All are psychic and communicate in staccato bursts of telepathic imagery. Slow-moving and quick to turn against one another."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [
+        "kinetic",
+        "bludgeoning",
+        "slashing",
+        "piercing"
+      ],
+      "double": [
+        "fungal_spores",
+        "fungicide"
+      ],
+      "half": [],
+      "varies": false,
+      "notes": "Text states it 'takes minimum damage from physical attacks' (mapped physical -> kinetic/bludgeoning/slashing/piercing). 'Vulnerable to fungal spores or other sources of antibiotics' recorded as a stated weakness (mapped to fungal_spores; fungicide as antibiotic synonym). No other resistance stated."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Minimum damage from physical attacks; vulnerable to fungal spores/antibiotics; ongoing absorb damage until opposed STR save.",
+    "confidence": "high",
+    "raw_excerpt": "BacteriaGestaltColony (Bio/Psy,Lvl4,AV10,ML+12,Atk:d8Absorb) Targetsabsorbedtaked8damageeachround untiltheymakeanopposedSTRsave.The colonytakesminimumdamagefromphysical attacks.Vulnerabletofungalsporesorother sourcesofantibiotics."
+  },
+  {
+    "name": "Oviraptor Beetle",
+    "printed_pages": "295",
+    "pdf_pages": "302",
+    "type": "Biological",
+    "level": 2,
+    "hp": null,
+    "av": 16,
+    "morale": "+3",
+    "enc": "d6 (encounter group)",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Pincers",
+        "damage": "d8"
+      }
+    ],
+    "special": [
+      "Plated egg-eating beetles. Aggressive and stupid.",
+      "Fanatically attack anything egg-shaped."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "d6OviraptorBeetles (Bio,Lvl2,AV16,ML+3,Atk:d8Pincers) Platedegg-eatingbeetles.Aggressiveandstupid. Fanaticallyattackanythingegg-shaped."
+  },
+  {
+    "name": "Megacilia",
+    "printed_pages": "297",
+    "pdf_pages": "304",
+    "type": "Biological",
+    "level": null,
+    "hp": null,
+    "av": 20,
+    "morale": "+15",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Nonlethal Grasp",
+        "damage": ""
+      }
+    ],
+    "special": [
+      "Symbiotic creatures that aided in the filtration of the Grandfather's ingested sand.",
+      "Slowly dying but remain vital.",
+      "Grasp moving objects and identify them; biological or metallic objects are carried towards the Metal Stomach, minerals towards the Ballast Stomach Minor.",
+      "Resisting the Megacilia requires an opposed STR save."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": "Stat block uses 'HD 10' rather than a Level value; recorded HD in raw_excerpt. Morale printed as '15' (no sign)."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Stat line gives HD 10 (not Level); nonlethal grasp lists no damage value. Morale shown as 15.",
+    "confidence": "medium",
+    "raw_excerpt": "symbioticMegacilia(Bio,HD10,AV20, ML15,Atk:NonlethalGrasp) ... Theygraspmovingobjectsandidentifythem. Resistingthe Megacilia,inordertogotothe 'wrong'stomachorclimbbackupthroughthis area,requiresan opposedSTRsave."
+  },
+  {
+    "name": "Mereth",
+    "printed_pages": "298",
+    "pdf_pages": "305",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": null,
+    "av": 12,
+    "morale": "+0",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Fists",
+        "damage": "d4"
+      }
+    ],
+    "special": [
+      "A synthetic alchemist who entered the Grandfather centuries ago to gather bile.",
+      "Has become stuck in the Major Bile Gland's wall, and the flesh is beginning to encyst her.",
+      "Believes herself to have become one with 'the Godflesh' and will violently resist attempts to rescue her.",
+      "Her screams draw a guaranteed Encounter.",
+      "Carries a bottle of Doppeldraught in her robes."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": "Stat block uses 'HD 1' rather than a Level value."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Stat line gives HD 1 (not Level).",
+    "confidence": "medium",
+    "raw_excerpt": "RestingplaceofMereth(Synth,HD1,AV12,ML +0,Atk:d4fists),asyntheticalchemistwho enteredtheGrandfathercenturiesagotogather bile."
+  },
+  {
+    "name": "Kander New-Ocelot",
+    "printed_pages": "300",
+    "pdf_pages": "307",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 14,
+    "morale": "+7",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "2x Revolver",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Long dark coat and wide-brimmed hat. Two gaudy guns. Cautious, cunning, cruel. Leader of the bandits.",
+      "If Kander dies, all other bandits must make a Morale Save.",
+      "Carries a Wand of Annihilation, although he values it for its gaudy appearance and does not know how to use it."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Bandit leader; brawler. Death triggers Morale Save for the rest of the gang.",
+    "confidence": "high",
+    "raw_excerpt": "KanderNew-Ocelot Biological LVL3(12HP)/AV14/ML+7 Attack:2xRevolver(d6)"
+  },
+  {
+    "name": "Plandysour New-Wolf",
+    "printed_pages": "300",
+    "pdf_pages": "307",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 12,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Sniper Rifle",
+        "damage": "d10"
+      },
+      {
+        "name": "Bite",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Sniper and lookout. Engages at range.",
+      "In close quarters she will deploy a smoke bomb (blast, d4 rounds of blindness) and attempt to retreat.",
+      "Will attempt to flank from a side angle and use her powerful rifle to pick off distracted opponents."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Smoke bomb causes blast blindness for d4 rounds.",
+    "confidence": "high",
+    "raw_excerpt": "PlandysourNew-Wolf Biological LVL2(8HP)/AV12/ML+3 Attack:SniperRifle(d10)/Bite(d6)"
+  },
+  {
+    "name": "Marturo New-Raven",
+    "printed_pages": "300",
+    "pdf_pages": "307",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 16,
+    "morale": "+10",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Chaingun",
+        "damage": "d10, blast"
+      },
+      {
+        "name": "Peck",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Brash, fearless, physically imposing. Will spearhead any attack with his chaingun.",
+      "If the bandits are losing a fight, Marturo will cover the others while they escape."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Front-line brawler with blast chaingun.",
+    "confidence": "high",
+    "raw_excerpt": "MarturoNew-Raven Biological LVL4(16HP)/AV16/ML+10 Attack:Chaingun(d10,blast)/Peck(d6)"
+  },
+  {
+    "name": "Oskandre New-Python",
+    "printed_pages": "306-310",
+    "pdf_pages": "307",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 14,
+    "morale": "+7",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Pistol",
+        "damage": "d6"
+      },
+      {
+        "name": "Constrict",
+        "damage": "d10 ongoing, STR Save to break free"
+      }
+    ],
+    "special": [
+      "Lazy, greedy, bloated from eating dead Faa.",
+      "Brawler; will seek to engage foes head-on."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Constrict deals d10 ongoing; victim escapes with a STR save.",
+    "confidence": "high",
+    "raw_excerpt": "OskandreNew-Python Biological LVL3(12HP)/AV14/ML+7 Attack: Pistol (d6) / Constrict (d10 ongoing, STR Savetobreakfree)"
+  },
+  {
+    "name": "Nadimir New-Mantis",
+    "printed_pages": "306-310",
+    "pdf_pages": "307",
+    "type": "Biological / Psychic",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+3",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Telekinesis",
+        "damage": "d8"
+      },
+      {
+        "name": "Force Bubble",
+        "damage": "Special"
+      }
+    ],
+    "special": [
+      "A chitinous mystic. Outside of combat he is soft-spoken and dreamy.",
+      "Force Bubble: Nadimir projects a psychic barrier around another creature, raising their AV to 20. He must renew this effect each round.",
+      "Will stay behind the brawlers and use his Force Bubble to protect Marturo or Oskandre."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Force Bubble raises an ally's AV to 20, renewed each round.",
+    "confidence": "high",
+    "raw_excerpt": "NadimirNew-Mantis Biological/Psychic LVL1(4HP)/AV11/ML+3 Attack:Telekinesis(d8)/ForceBubble(Special) ForceBubble:Nadimirprojectsapsychicbarrier around another creature, raising theirAV to 20."
+  },
+  {
+    "name": "Corpser New-Octopus",
+    "printed_pages": "300",
+    "pdf_pages": "307",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+0",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Tentacle Choke",
+        "damage": "d6"
+      }
+    ],
+    "special": [
+      "Can perfectly match the colour of his surroundings, rendering him invisible so long as he is not moving.",
+      "Prefers to attack from ambush; will always run if he is spotted.",
+      "Can deploy a Porta-warden turret to cover his escape or catch opponents in crossfire."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Camouflage invisibility while stationary; ambusher.",
+    "confidence": "high",
+    "raw_excerpt": "CorpserNew-Octopus Biological LVL1(4HP)/AV11/ML+0 Attack:TentacleChoke(d6) Corpser can perfectly match the colour of his surroundings, rendering him invisible so long as heisnotmoving."
+  },
+  {
+    "name": "Porta-Warden",
+    "printed_pages": "300",
+    "pdf_pages": "307",
+    "type": "Synthetic",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "-",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Autorifle",
+        "damage": "d8"
+      }
+    ],
+    "special": [
+      "Motion-sensor tripod with mounted weapon.",
+      "Recognises its master via DNA locking. This could be subverted if the Porta-warden were provided with new DNA from blood or hair."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": "Morale printed as '-' (none/not applicable)."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "DNA-locked turret; can be subverted with new DNA from blood or hair.",
+    "confidence": "high",
+    "raw_excerpt": "Porta-Warden Synthetic LVL2(8HP)/AV13/ML- Attack:Autorifle(d8) Motion-sensor tripod with mounted weapon. RecognisesitsmasterviaDNAlocking."
+  }
+]

@@ -1,0 +1,800 @@
+[
+  {
+    "name": "Hegemony Legionary",
+    "printed_pages": "196",
+    "pdf_pages": "203",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 14,
+    "morale": "+5",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Rifle", "damage": "d8"},
+      {"name": "Grenade", "damage": "d10 blast, DEX save to throw back"}
+    ],
+    "special": [
+      "Reinforcements: If outnumbered, Legionaries fire a distress flare, summoning another d8 Legionaries."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Resourceful true-kin soldiers, clad in red armour. The backbone of the Hegemon's occupying forces in Vaarn. Legionaries in presence of Centurion use the Centurion's morale score.",
+    "confidence": "high",
+    "raw_excerpt": "HegemonyLegionary Biological LVL2(8HP)/AV14/ML+5/ENCd8 ATK:Rifle(d8)/Grenade(d10blast,DEXsaveto throwback) Reinforcements:Ifoutnumbered,Legionariesfireadistressflare,summoninganotherd8Legionaries."
+  },
+  {
+    "name": "Hegemony Myrmidon",
+    "printed_pages": "196",
+    "pdf_pages": "203",
+    "type": "Biological",
+    "level": 6,
+    "hp": 24,
+    "av": 19,
+    "morale": "Special",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Scattergun", "damage": "3d4 close, d4 far"},
+      {"name": "Concussion Grenade", "damage": "Blast, d4 DEX damage, DEX save to throw back"}
+    ],
+    "special": [
+      "Battle Trance: Myrmidons enter a hypnotic dream-state before an engagement, which renders their fear instinct obsolete. They will never break in combat, nor will they surrender an inch of ground during their grinding assaults."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Siegebreakers, shock troopers, the Hegemon's Hammer. Used against fortified positions or to contain heavily armed foes. A small, elite unit, recognisable by their black ferroplate armour and ritual facial scars.",
+    "confidence": "high",
+    "raw_excerpt": "HegemonyMyrmidon Biological LVL6(24HP)/AV19/MLSpecial/ENCd4 ATK:Scattergun(3d4close,d4far)/Concussion Grenade(Blast,d4DEXdamage,DEXsaveto throwback) BattleTrance:..."
+  },
+  {
+    "name": "Hegemony Ordinator",
+    "printed_pages": "196",
+    "pdf_pages": "203",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 16,
+    "morale": "+8",
+    "enc": "1 (+d8 Legionaries)",
+    "movement": "",
+    "attacks": [
+      {"name": "Rifle", "damage": "d8"},
+      {"name": "Rapier", "damage": "d8"}
+    ],
+    "special": [],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "The Hegemony's officer caste are famed for their extravagant facial hair, their gaudy epaulettes, and their contempt for weakness. Legionaries in presence of Centurion use the Centurion's morale score.",
+    "confidence": "high",
+    "raw_excerpt": "HegemonyOrdinator LVL5(20HP)/AV16/ML+8/ENC1(+d8 Legionaries) ATK:Rifle(d8)+Rapier(d8) TheHegemony'sofficercaste..."
+  },
+  {
+    "name": "Hegemony Conscript",
+    "printed_pages": "196",
+    "pdf_pages": "203",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+0",
+    "enc": "2d10 (+1 Ordinator)",
+    "movement": "",
+    "attacks": [
+      {"name": "Spear", "damage": "d6"}
+    ],
+    "special": [
+      "Bomb Collar: Conscripts who fail Morale checks and flee in view of their Ordinator are detonated, dealing 2d6 blast damage to all in melee range. Conscripts without an Ordinator always surrender or flee."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "The Hegemon's penal battalions are the only mercy the thief or forger can expect. Far from well-trained or equipped, but there is tactical value in every warm body. Minefields, vaults, and other hazardous environments are first explored by conscripts.",
+    "confidence": "high",
+    "raw_excerpt": "HegemonyConscript Biological LVL1(4HP)/AV11/ML+0/ENC2d10(+1 Ordinator) ATK:Spear(d6) BombCollar:..."
+  },
+  {
+    "name": "Hegemony Ranger",
+    "printed_pages": "196-197",
+    "pdf_pages": "203-204",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 15,
+    "morale": "+8",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Boltcaster", "damage": "d10"},
+      {"name": "Dagger", "damage": "d6"},
+      {"name": "Smoke Grenade", "damage": "Blast, Blindness, DEX save to throw back"}
+    ],
+    "special": [
+      "Skiff: A squad has one Skiff (p.xx) for each Ranger.",
+      "Blindness: Characters blinded by smoke make melee attacks with DIS. They cannot use ranged weapons."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "The vanguard of the Hegemon's Legions in Vaarn. They eschew the scarlet uniforms of their peers, instead dressing in the blue robes favoured by Faa nomads. Trained in desert survival and sandworm husbandry, and speak the Faa tongue fluently. Operate far from Hegemony bases, spending months in the deep deserts.",
+    "confidence": "high",
+    "raw_excerpt": "HegemonyRanger Biological LVL4(16HP)/AV15/ML+8/ENCd6 ATK:Boltcaster(d10)+Dagger(d6)/Smoke Grenade(Blast,Blindness,DEXsavetothrow back) Skiff:... Blindness:..."
+  },
+  {
+    "name": "Hegemony Suppressor",
+    "printed_pages": "197",
+    "pdf_pages": "204",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 18,
+    "morale": "+8",
+    "enc": "1 (with d8 Legionaries + Centurion)",
+    "movement": "",
+    "attacks": [
+      {"name": "Suppression Rifle", "damage": "d12 vs all exposed targets, one turn to spin up"},
+      {"name": "Acid Grenade", "damage": "d4, Acidic, Blast, DEX save to throw back"}
+    ],
+    "special": [],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "The backbone of a Legionary assault. Suppressors stay in the rear of a Hegemony unit, laying down withering covering fire while their comrades advance or retreat.",
+    "confidence": "high",
+    "raw_excerpt": "HegemonySuppressor Biological LVL5(20HP)/AV18/ML+8/ENC1(withd8 Legionaries+Centurion) ATK:SuppressionRifle(d12vsallexposed targets,oneturntospinup)/AcidGrenade(d4, Acidic,Blast,DEXsavetothrowback)"
+  },
+  {
+    "name": "Hiveyman",
+    "printed_pages": "197",
+    "pdf_pages": "204",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 12,
+    "morale": "+8",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Bludgeon", "damage": "d8"},
+      {"name": "Swarm Damage", "damage": "d6, auto-hit"}
+    ],
+    "special": [
+      "The angry bees deal d6 unblockable damage per round to everyone in reach."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Human corpses that have been infested by fearsome colonies of Sable Bees. They crawl across the sands, their bellies swollen with a throbbing hive structure.",
+    "confidence": "high",
+    "raw_excerpt": "Hiveyman Biological LVL3(12HP)/AV12/ML+8/ENCd6 ATK:Bludgeon(d8)+SwarmDamage(d6,auto-hit) ...Theangrybeesdeald6unblockabledamageperroundtoeveryoneinreach."
+  },
+  {
+    "name": "Hollow Maiden",
+    "printed_pages": "197",
+    "pdf_pages": "204",
+    "type": "Hypergeometric",
+    "level": 3,
+    "hp": 12,
+    "av": 13,
+    "morale": "+9",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d8"},
+      {"name": "Grab", "damage": "d6 CON damage, STR save to break free"}
+    ],
+    "special": [
+      "Embrace grabbed victims and pull them into the hypergeometric rift in their bodies. While inside, the victim takes d6 CON damage per round as their body dissolves. Must make STR save to pull themselves out.",
+      "Unreal Flesh: Hollow Maidens ignore all even-numbered damage rolls."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Unreal Flesh: ignores all even-numbered damage rolls (stat-block special ability)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Spectral women in elegant attire, with wounds in their chests that bleed un-Urthly colours.",
+    "confidence": "high",
+    "raw_excerpt": "HollowMaiden Hypergeometric LVL3(12HP)/AV13/ML+9/ENCd4 ATK:Claws(d8)/Grab(d6CONdamage,STRsave tobreakfree) ...UnrealFlesh:HollowMaidensignorealleven-numbereddamagerolls."
+  },
+  {
+    "name": "Indigo Servitor",
+    "printed_pages": "197",
+    "pdf_pages": "204",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "-",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Fists", "damage": "d4"}
+    ],
+    "special": [
+      "Obeys the wearer of a Dominion Ring without question. Mute, obedient, fearless."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "An indigo-robed corpse, re-animated by the necrotech implants of the College of Indigo Tigers.",
+    "confidence": "high",
+    "raw_excerpt": "IndigoServitor Biological LVL1(4HP)/AV11/ML-/ENCd8 ATK:Fists(d4) Anindigo-robedcorpse,re-animated...ObeysthewearerofaDominionRingwithoutquestion.Mute,obedient,fearless."
+  },
+  {
+    "name": "Iridium Vulture",
+    "printed_pages": "197",
+    "pdf_pages": "204",
+    "type": "Synthetic",
+    "level": 2,
+    "hp": 8,
+    "av": 16,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d6"},
+      {"name": "Corpse shuck", "damage": "takes one round, instant death when target at 0 HP"}
+    ],
+    "special": [
+      "Corpse shuck: Iridium Vultures fanatically attack biological PCs who fall to 0 HP, attempting to break their bodies open and drain out the innards. This lethal attack takes a whole combat round to execute, and can be interrupted by damaging the Vulture or knocking it off balance."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Silvery synthetic carrion eaters that ride the air currents above the blue sands, scent-sensors attuned for the slightest hint of decay. Not interested in living beings, but will attack to defend a carcass.",
+    "confidence": "high",
+    "raw_excerpt": "IridiumVulture Synthetic LVL2(8HP)/AV16/ML+3/ENCd6 ATK:Claws(d6)/Corpseshuck(takesoneround, instantdeathwhentargetat0HP) Corpseshuck:..."
+  },
+  {
+    "name": "Jollyhoss",
+    "printed_pages": "197",
+    "pdf_pages": "204",
+    "type": "Hypergeometric",
+    "level": 4,
+    "hp": 16,
+    "av": 14,
+    "morale": "+4",
+    "enc": "1 Head and 1 Hindquarters",
+    "movement": "",
+    "attacks": [
+      {"name": "Head: Bifurcating Bite", "damage": "Special"},
+      {"name": "Hindquarters: 2x Kick", "damage": "d8, hypergeometric"}
+    ],
+    "special": [
+      "Bifurcating Bite: the Hoss's bite deals damage equal to half the target's current HP (minimum of 1 damage).",
+      "Two Are One: the Jollyhoss's Head and Hindquarters move and attack as two separate Level 4 creatures, each with 16 HP. If one half of the Jollyhoss is killed, it will resurrect with full HP at the start of the next combat round. Only the swift death of the companion half can prevent this."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "A bizarre hypergeometric predator, which resembles a fanged stallion fashioned from brightly-coloured paper. Comprised of front- and back-halves which move independently, but nonetheless are proven to be the same animal.",
+    "confidence": "high",
+    "raw_excerpt": "Jollyhoss Hypergeometric LVL4(16HP)/AV14/ML+4/ENC1Headand1 Hindquarters HEADATK:BifurcatingBite(Special) HINDQUARTERSATK:2xKick(d8,hypergeometric) BifurcatingBite:... TwoAreOne:..."
+  },
+  {
+    "name": "Juggernaut",
+    "printed_pages": "197",
+    "pdf_pages": "204",
+    "type": "Synthetic",
+    "level": 8,
+    "hp": 32,
+    "av": 22,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Crush", "damage": "d12"}
+    ],
+    "special": [
+      "Notes: Colossal sentient spinning wheel of ferrosteel, which rumbles through the blue wastelands bellowing resonant hymns of loneliness. What it sees it covets, but lacking limbs the Juggernaut can only express affection by attempting to crush the object of its desire, and in so doing make them one with its ever-roving axis."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Juggernaut Synthetic LVL8(32HP)/AV22/ML+10/ENC1 ATK:Crush(d12) Notes:Colossalsentientspinningwheelofferrosteel..."
+  },
+  {
+    "name": "Kalopede",
+    "printed_pages": "198",
+    "pdf_pages": "205",
+    "type": "Biological",
+    "level": 13,
+    "hp": 52,
+    "av": 18,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Mandibles", "damage": "2d6"},
+      {"name": "Kalotoxin Sting", "damage": "Special"}
+    ],
+    "special": [
+      "Kalotoxin: targets stung by the Kalopede's quicksilver tongue must CON Save or undergo rapid transformations into works of Fine Art (p.xx) which vaguely resemble the victim. This metamorphosis is lethal and permanent."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "A large and hauntingly beautiful centipede-like creature, noted for its polychrome carapace and voracious appetite for fine art objects. Rarely seen on the surface.",
+    "confidence": "high",
+    "raw_excerpt": "Kalopede Biological LVL13(52HP)/AV18/ML+10/ENC1 ATK:2xMandibles(2d6)+KalotoxinSting (Special) Kalotoxin:..."
+  },
+  {
+    "name": "Kronophage",
+    "printed_pages": "198",
+    "pdf_pages": "205",
+    "type": "Outsider / Mineral",
+    "level": 7,
+    "hp": 28,
+    "av": 22,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Borrowed Time", "damage": "Special"},
+      {"name": "Out of Time", "damage": "Auto-hit, blast, Damage = Kronophage's LVL"}
+    ],
+    "special": [
+      "Borrowed Time: the Kronophage drains years from its victim's past, present, and future. The target loses a Level. They must roll 1d8 and subtract the result from their maximum HP, and subtract three points from their maximum ability defences. The Kronophage gains a Level permanently. PCs reduced below Level 0 by the Kronophage are worse than dead; they never existed at all, and their equipment vanishes with them. Slaying the monster restores all lost time to those it fed upon. PCs regain their lost Levels."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Manifold crystals orbit a nucleus of collapsing space-time. A paradox made sentient, an ulcer on causality that steals the past from those it beholds.",
+    "confidence": "high",
+    "raw_excerpt": "Kronophage Outsider/Mineral LVL7(28HP)/AV22/ML+10/ENC1 ATK:BorrowedTime(Special)/OutofTime (Auto-hit,blast,Damage=Kronophage'sLVL) BorrowedTime:..."
+  },
+  {
+    "name": "Knight Mordicant",
+    "printed_pages": "198",
+    "pdf_pages": "205",
+    "type": "Biological",
+    "level": 7,
+    "hp": 28,
+    "av": 16,
+    "morale": "Never Flees",
+    "enc": "1 + STEED (p.xx)",
+    "movement": "",
+    "attacks": [
+      {"name": "Advanced Melee Weapon", "damage": "generate on p.xx"}
+    ],
+    "special": [
+      "Steed: Mordicant Knights ride a Destrier (p.xx)."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Sworn swords of the Church of the Everbleeding Wound (p.xx), armoured in blood-red plasteel and bone-white enamel.",
+    "confidence": "high",
+    "raw_excerpt": "KnightMordicant Biological LVL7(28HP)/AV16/MLNeverFlees/ENC1+ STEED(P.XX) ATK:AdvancedMeleeWeapon(generateonp.xx) ...Steed:MordicantKnightsrideaDestrier(p.xx)."
+  },
+  {
+    "name": "Knight Peregrine",
+    "printed_pages": "198",
+    "pdf_pages": "205",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 15,
+    "morale": "+7",
+    "enc": "1 + STEED (p.xx)",
+    "movement": "",
+    "attacks": [
+      {"name": "Advanced Weapon", "damage": "generate on p.xx"}
+    ],
+    "special": [
+      "Steed: Knights Peregrine ride a steed, usually a Weeping Lizard or Zorse. See p.xx for details."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "The blue wastelands have no shortage of roaming gallants, whose claim to nobility is tenuous and who own little but the clothes on their back and the weapon they have dedicated their life to mastering. Strangers to most and salvation to some.",
+    "confidence": "high",
+    "raw_excerpt": "KnightPeregrine Biological LVL5(20HP)/AV15/ML+7/ENC1+STEED(P.XX) ATK:AdvancedWeapon(generateonp.xx) ...Steed:KnightsPeregrinerideasteed,usuallyaWeepingLizardorZorse."
+  },
+  {
+    "name": "Lambent Lynx",
+    "printed_pages": "198",
+    "pdf_pages": "205",
+    "type": "Biological / Synthetic",
+    "level": 4,
+    "hp": 16,
+    "av": 13,
+    "morale": "+6",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d6, electrical"},
+      {"name": "Blinding Pelt", "damage": "Blast, DEX Save vs d6 rounds of Blindness"}
+    ],
+    "special": [
+      "Blindness: PCs blinded make melee attacks with DIS. They cannot use ranged weapons."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Lurid cyborg feline. Feeds on sources of electrical power, including synths. Can ignite every filament in its synthetic pelt like a flash-bang.",
+    "confidence": "high",
+    "raw_excerpt": "LambentLynx Biological/Synthetic LVL4(16HP)/AV13/ML+6/ENCd6 ATK:Claws(d6,electrical)/BlindingPelt(Blast, DEXSavevsd6roundsofBlindness) Blindness:..."
+  },
+  {
+    "name": "Laser Shrimp",
+    "printed_pages": "198",
+    "pdf_pages": "205",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": 4,
+    "av": 10,
+    "morale": "+1",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Laser", "damage": "d4, beam"}
+    ],
+    "special": [],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Shrimp-like synths that fire lasers from their claws. Once used as cheap, expendable sentries.",
+    "confidence": "high",
+    "raw_excerpt": "LaserShrimp Synthetic LVL1(4HP)/AV10/ML+1/ENC2d6 ATK:Laser(d4,beam) Shrimp-likesynthsthatfirelasersfromtheirclaws."
+  },
+  {
+    "name": "Lazarus Guard",
+    "printed_pages": "198-199",
+    "pdf_pages": "205-206",
+    "type": "Biological / Synthetic",
+    "level": 6,
+    "hp": 24,
+    "av": 14,
+    "morale": "-",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claws", "damage": "d6"}
+    ],
+    "special": [
+      "Resurrection: Lazarus Guards will resurrect after d3 combat rounds if slain, the black cyborg hearts within their breasts unwilling to let their hosts die. These hearts must be cut from the guard's body and destroyed in order to stop the resurrection. Once the secret is known, players may wish to target the guard's heart directly. The cyborg organ has 1 HP and AV 20."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "A desiccated human corpse, filled with necrotech implants that preserve a sort of life-in-death for the unlucky host. So-called 'Lazarus Regiments' were created from the corpses of criminals to guard the tombs of Autarchy nobles. Veins of black gallium pulse beneath parchment-like skin, and their despairing eyes resemble sable stones.",
+    "confidence": "high",
+    "raw_excerpt": "LazarusGuard Biological/Synthetic LVL6(24HP)/AV14/ML-/ENCd6 ATK:2xClaws(d6) Resurrection:...Thecyborgorganhas1HPandAV20."
+  },
+  {
+    "name": "Leopard Worm",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Biological",
+    "level": 6,
+    "hp": 24,
+    "av": 15,
+    "morale": "+9",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d8"},
+      {"name": "Glue Spit", "damage": ""}
+    ],
+    "special": [
+      "Sinuous ambush predators. The worm's gluey spit is highly adhesive; when covered in spit all physical Saves and attack rolls have DIS. The spit is dissolved by salt water."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Sinuous ambush predators.",
+    "confidence": "high",
+    "raw_excerpt": "LeopardWorm Biological LVL6(24HP)/AV15/ML+9/ENCd4 ATK:Bite(d8)+GlueSpit ...Thewormsgluey spitishighlyadhesive;whencoveredinspitall physicalSavesandattackrollshaveDIS.Thespit isdissolvedbysaltwater."
+  },
+  {
+    "name": "Lithling Scholar",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Mineral",
+    "level": 6,
+    "hp": 24,
+    "av": 24,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Scholar's Staff", "damage": "d4"}
+    ],
+    "special": [
+      "Will attempt to reason with their assailants, even during deadly combat."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Wandering scholar from the Lithic Lyceum. Generally pacifists, and have little desire to harm living beings.",
+    "confidence": "high",
+    "raw_excerpt": "LithlingScholar Mineral LVL6(24HP)/AV24/ML+5/ENC1 ATK:Scholar'sStaff(d4) ...Willattempttoreasonwiththeirassailants,evenduringdeadlycombat."
+  },
+  {
+    "name": "Lizard Lion",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 16,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d8"}
+    ],
+    "special": [],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Frill-necked reptiles. Ill-tempered, territorial, like a crocodile that can sprint. Their skin is highly prized as a material for boots.",
+    "confidence": "high",
+    "raw_excerpt": "LizardLion Biological LVL2(8HP)/AV16/ML+5/ENCd6 ATK:Bite(d8) Frill-neckedreptiles."
+  },
+  {
+    "name": "Luxfoe Beetle",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 13,
+    "morale": "+1",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d4"}
+    ],
+    "special": [
+      "A nocturnal insect, enraged by artificial light. Relentlessly attacks any lantern or torch-bearing hand it comes across."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Sometimes called 'helldiver bugs', due to their ill-fated penchant for assaulting the embers of a campfire.",
+    "confidence": "high",
+    "raw_excerpt": "LuxfoeBeetle Biological LVL1(4HP)/AV13/ML+1/ENCd8 ATK:Bite(d4) Anocturnalinsect,enragedbyartificiallight."
+  },
+  {
+    "name": "Magneticrab",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Synthetic",
+    "level": 8,
+    "hp": 32,
+    "av": 15,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claws", "damage": "d8"},
+      {"name": "Magnetic Field", "damage": "Special"}
+    ],
+    "special": [
+      "Magnetic Field: the Magneticrab's shell can emit a powerful magnetic field. Each round, nearby PCs with metal weapons or items equipped must STR Save or lose hold of their items. They become stuck to the Magneticrab's shell and cannot be retrieved until the creature is dead. Additionally, PCs wearing metal armour or who are Synthetic are forcibly drawn into melee range."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "A strange crustacean-like synth, which dwells inside a magnetised shell. The creature emits strong magnetic fields in order to prey upon other synths.",
+    "confidence": "high",
+    "raw_excerpt": "Magneticrab Synthetic LVL8(32HP)/AV15/ML+5/ENC1 ATK:2xClaws(d8)+MagneticField(Special) MagneticField:..."
+  },
+  {
+    "name": "Maladaptor",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Synthetic",
+    "level": 5,
+    "hp": 20,
+    "av": 15,
+    "morale": "+5",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Lash", "damage": "d8 + CON save vs Nanomachine Infection"},
+      {"name": "Feedback", "damage": "d8, blast, electrical"}
+    ],
+    "special": [
+      "Infection: anyone damaged by a Maladaptor's attack must CON save or be infected with malignant nanomachines (p.xx). As these beings are host to numerous infections, the Referee should roll 1d6 to determine what infection has been transmitted: 1 The Gitch, 2 Golden cough, 3 Fabricator Stoma, 4 Usurper Arm, 5 Dreamcage, 6 Janus Lenses."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Formed from the broken husks of synths, reanimated by malignant swarms of nanomachines. Move erratically through the blue ruins, seeking fresh hosts for their infestations. A subsonic dirge heralds their approach.",
+    "confidence": "high",
+    "raw_excerpt": "Maladaptor Synthetic LVL5(20HP)/AV15/ML+5/ENCD4 ATK:Lash(d8+CONsavevsNanomachine Infection)/Feedback(d8,blast,electrical) Infection:...roll1d6...1 TheGitch 2 Goldencough 3 FabricatorStoma 4 UsurperArm 5 Dreamcage 6 JanusLenses"
+  },
+  {
+    "name": "Master of Eyeless Wisdom",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Biological / Psychic",
+    "level": 7,
+    "hp": 28,
+    "av": null,
+    "morale": "+7",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Mind Control", "damage": "EGO Save vs Controlled"},
+      {"name": "Telekinesis", "damage": "2d8, STR save vs lifted and thrown"}
+    ],
+    "special": [
+      "Prescience: Eyeless Masters telepathically predict the assaults of their opponents, always moving ahead of the blow. They cannot be harmed with any attack unless the attacker learns to shield their intentions, achieved with an opposed PSY Save. Stripped of their prescience, Eyeless Masters have AV 11."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "AV listed as Special. Prescience: cannot be harmed by any attack unless attacker shields intentions via an opposed PSY Save; stripped of prescience, AV becomes 11."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Masters of the Eyeless Path, who achieved endarkenment and now guide lesser minds upon the road. Self-blinded and legless, they levitate above the azure dust, resembling emaciated puppets that hang from unseen strings.",
+    "confidence": "high",
+    "raw_excerpt": "MasterofEyelessWisdom Biological/Psychic LVL7(28HP)/AVSpecial/ML+7/ENC1 ATK:MindControl(EGOSavevsControlled)/ Telekinesis(2d8,STRsavevsliftedandthrown) Prescience:...StrippedoftheirprescienceEyelessMastershaveAV11."
+  },
+  {
+    "name": "Memory Eater",
+    "printed_pages": "199",
+    "pdf_pages": "206",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 15,
+    "morale": "+6",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Cranial-Bore Proboscis", "damage": "d6 INT damage"}
+    ],
+    "special": [],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Biomechanical memory vampire. Like a giant mosquito cast from living steel.",
+    "confidence": "high",
+    "raw_excerpt": "MemoryEater Synthetic LVL3(12HP)/AV15/ML+6/ENCd8 ATK:Cranial-BoreProboscis(d6INTdamage) Biomechanicalmemoryvampire."
+  },
+  {
+    "name": "Metamorphic Sludge",
+    "printed_pages": "199-200",
+    "pdf_pages": "206-207",
+    "type": "Fungal",
+    "level": 4,
+    "hp": 16,
+    "av": 10,
+    "morale": "+1",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Metamorphic Pseudopod", "damage": "d4 CON damage, Bio targets CON Save vs mutation"}
+    ],
+    "special": [
+      "A protean mass of primal slurry, in which the stuff of life is devoured and recast. The sludge's digestive enzymes induce rapid mutation in the cells they bond with."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "MetamorphicSludge Fungal LVL4(16HP)/AV10/ML+1/ENC1 ATK:2xMetamorphicPseudopod(d4CON damage,BiotargetsCONSavevsmutation)"
+  },
+  {
+    "name": "Moonbeast (Imago)",
+    "printed_pages": "200",
+    "pdf_pages": "207",
+    "type": "Outsider / Psychic",
+    "level": 5,
+    "hp": 20,
+    "av": 16,
+    "morale": "+8",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Lunatic Gaze", "damage": "d4 EGO damage"},
+      {"name": "Radioactive Vomit", "damage": "Blast, d4 CON damage"}
+    ],
+    "special": [
+      "Sun Scourged: Moonbeasts suffer d10 damage per round if exposed to Urth's red sunlight."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Sun Scourged: suffers d10 damage per round if exposed to Urth's red sunlight (environmental weakness stated in stat block)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Squamous pallid monstrosities from Luna. Inimical to humanity, hated interlopers that dwell in flooded caverns below Luna's surface. Somewhat like a toad and somewhat like an insect. Descend to Vaarn on moonless nights in search of victims, travelling in void-boats made from black stone.",
+    "confidence": "high",
+    "raw_excerpt": "Moonbeast(Imago) Outsider/Psychic LVL5(20HP)/AV16/ML+8/ENCd4 ATK:LunaticGaze(d4EGOdamage)/ RadioactiveVomit(Blast,d4CONdamage) SunScourged:Moonbeastssufferd10damageperroundifexposedtoUrth'sredsunlight."
+  },
+  {
+    "name": "Moonbeast (Nymph)",
+    "printed_pages": "200",
+    "pdf_pages": "207",
+    "type": "Outsider",
+    "level": 2,
+    "hp": 8,
+    "av": 12,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Vampiric Tendrils", "damage": "d8, heals HP equal to damage"}
+    ],
+    "special": [
+      "Sun Scourged: Moonbeasts suffer d10 damage per round if exposed to Urth's red sunlight."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Sun Scourged: suffers d10 damage per round if exposed to Urth's red sunlight (environmental weakness stated in stat block)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "The immature form of a Moonbeast. Lacking psychic powers or the projectile vomiting of their parents, they instead swarm over their prey and drain the life from their bodies with questing tendrils.",
+    "confidence": "high",
+    "raw_excerpt": "Moonbeast(Nymph) Outsider LVL2(8HP)/AV12/ML+5/ENCd6 ATK:VampiricTendrils(d8,healsHPequalto damage) ...SunScourged:Moonbeastssufferd10damageperroundifexposedtoUrth'sredsunlight."
+  },
+  {
+    "name": "Mycomorph",
+    "printed_pages": "200",
+    "pdf_pages": "207",
+    "type": "Biological / Fungal",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+3",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Weapon", "damage": "d6"},
+      {"name": "Spores", "damage": "d8 poison, blast"}
+    ],
+    "special": [
+      "Human corpses, reanimated by mycomorphic fungal spores. They name themselves the 'twice-born' and can be found throughout Vaarn."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Mycomorph Biological/Fungal LVL1(4HP)/AV12/ML+3/ENCd8 ATK:Weapon(d6)/Spores(d8TOX,blast) Humancorpses,reanimatedbymycomorphicfungalspores."
+  },
+  {
+    "name": "Mystic",
+    "printed_pages": "200",
+    "pdf_pages": "207",
+    "type": "Biological / Psychic",
+    "level": 2,
+    "hp": 8,
+    "av": 11,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Dagger", "damage": "d4"},
+      {"name": "Mystic Gift", "damage": "Special"}
+    ],
+    "special": [
+      "Notes: The mystics of Vaarn hail from many sects.",
+      "Mystic Gift: each Mystic is the master of a Gift, which should be generated randomly from the tables on p.xx. The Mystic may teach this Gift to students who appease them."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Mystic Biological/Psychic LVL2(8HP)/AV11/ML+5/ENC1 ATK:Dagger(d4)/MysticGift(Special) Notes:ThemysticsofVaarnhailfrommanysects. MysticGift:..."
+  },
+  {
+    "name": "Negativfolk",
+    "printed_pages": "200",
+    "pdf_pages": "207",
+    "type": "Outsider",
+    "level": 2,
+    "hp": 8,
+    "av": 12,
+    "morale": "+5",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Hug", "damage": "d6"},
+      {"name": "Knife", "damage": "+d6 HP"}
+    ],
+    "special": [
+      "Opposite Day: Negativfolk always do the opposite of what you ask them, and make every action in reverse. They eject un-chewed food back onto empty plates, blue negativ blood flows back into their wounds. They react poorly to compliments, hugging or shaking the hand of their foes with lethal results. Hurling abuse at a Negativ man may earn you a healing bullet between the eyes. Negativfolk can only be harmed with healing items, and will be healed by damage."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Opposite Day: can only be harmed with healing items, and will be HEALED by damage (stat-block special). Knife attack listed as '+d6 HP' (heals target)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Inverted, photonegative-hued people who walk and speak backwards. They wander the blue dunes in family groups, receding from their point of origin in strange halting meanders.",
+    "confidence": "high",
+    "raw_excerpt": "Negativfolk Outsider LVL2(8HP)/AV12/ML+5/ENCd8 ATK:Hug(d6)/Knife(+d6HP) OppositeDay:...Negativfolkcanonlybeharmedwithhealingitems,andwillbehealedbydamage."
+  },
+  {
+    "name": "Neobloom",
+    "printed_pages": "200",
+    "pdf_pages": "207",
+    "type": "Biological",
+    "level": null,
+    "hp": null,
+    "av": 12,
+    "morale": "+4",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Vines", "damage": "d6"},
+      {"name": "Bloomboon", "damage": "see p.xx"}
+    ],
+    "special": [
+      "A sentient plant, which enjoys the rights and privileges of any other ensouled citizen of Vaarn."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Level listed as 'LVL d6' (variable, rolled); HP not stated as a fixed value.",
+    "confidence": "high",
+    "raw_excerpt": "Neobloom Biological LVLd6/AV12/ML+4/ENCd6 ATK:Vines(d6)+Bloomboon(seep.xx) Asentientplant,whichenjoystherightsandprivilegesofanyotherensouledcitizenofVaarn."
+  }
+]

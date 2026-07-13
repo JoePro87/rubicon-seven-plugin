@@ -1,0 +1,88 @@
+{
+  "//": "TEMPLATE: <CAMPAIGN_DIR>/.claude/settings.json. /vaarn-start replaces {{ENGINE_DIR}} with the absolute engine path (POSIX form on WSL/mac/Linux: e.g. /mnt/c/path/to/rubicon-seven-mcp), replaces {{HOOK_PY}} with the per-OS hook interpreter, strips ALL '//' comment keys, and resolves the prose-coaching block per Step 1. {{HOOK_PY}} = 'python3' on macOS/Linux/WSL; 'python' on native Windows (no 'python3' alias). Native Windows requires Git for Windows installed — it provides the bash the plugin bootstrap and the Bash tool rely on (the Desktop app requires it anyway). See references/platform-*.md.",
+
+  "//hooks": "The PreToolUse gate, the check_canon spoiler check, the verify_save check, turn_reset, the Stop runner, and post_compact are CORE — always present. They are the canon/save spine, not prose coaching.",
+
+  "//prose-coaching": "OPTIONAL prose-discipline layer. DEFAULT OFF. If the player said YES in Step 1, ADD the phrase_reminder.py entry to UserPromptSubmit (it goes second, after turn_reset). consolidated_stop_check.py is always present but runs prose checks in silent-log mode regardless; leaving it in is harmless when coaching is off. If coaching is OFF (default), OMIT the phrase_reminder entry entirely.",
+
+  "//model": "The measured DM sweet spot (2026-07-08 burn study): Opus 4.6 with the 1M context window + a fixed thinking cap burns ~30-60% less context per exchange than newer adaptive-reasoning models, with prose quality the coaching layer keeps competitive. 4.6 is the last model whose thinking budget is user-controllable; MAX_THINKING_TOKENS and the DISABLE_ADAPTIVE_THINKING env are harmless no-ops on adaptive-only models. If the player's plan doesn't offer Opus (Claude Code will say so at launch), DELETE the model line — everything else still applies safely on their default model.",
+  "model": "claude-opus-4-6[1m]",
+
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__rubicon-seven__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_PY}} {{ENGINE_DIR}}/hooks/gate_check.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__rubicon-seven__check_canon",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_PY}} {{ENGINE_DIR}}/hooks/spoiler_check.py"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__rubicon-seven__prepare_save_state",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_PY}} {{ENGINE_DIR}}/hooks/verify_save.py",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_PY}} {{ENGINE_DIR}}/hooks/turn_reset.py"
+          }
+        ]
+      }
+    ],
+    "//UserPromptSubmit-prose-coaching": "If prose coaching is ON, ADD this object to the UserPromptSubmit array (second position): { \"matcher\": \"\", \"hooks\": [ { \"type\": \"command\", \"command\": \"{{HOOK_PY}} {{ENGINE_DIR}}/hooks/phrase_reminder.py\" } ] }",
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_PY}} {{ENGINE_DIR}}/hooks/consolidated_stop_check.py"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_PY}} {{ENGINE_DIR}}/hooks/post_compact.py"
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "MAX_THINKING_TOKENS": "4500",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "PYTHONUTF8": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "enableAllProjectMcpServers": true,
+  "outputStyle": "Rubicon Seven DM",
+  "showThinkingSummaries": false
+}

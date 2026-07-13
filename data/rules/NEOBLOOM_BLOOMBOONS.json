@@ -1,0 +1,208 @@
+{
+  "1": {
+    "name": "Plated Bark",
+    "effect": "Gain +2 base AV",
+    "engine_effects": {
+      "av_base_bonus": 2
+    }
+  },
+  "2": {
+    "name": "Mirrored Leaves",
+    "effect": "DEX save to reflect Beam attacks back at source. DIS when hiding",
+    "engine_effects": {
+      "trigger": {
+        "name": "Mirrored Leaves",
+        "when": "beam_attack_hit",
+        "effect": "reflect_save",
+        "save": "DEX",
+        "note": "DEX save to reflect Beam attacks back at the source. DIS when hiding - leaves catch light.",
+        "source": "Bloomboon #2 (CH p.049)"
+      }
+    }
+  },
+  "3": {
+    "name": "Barbed Bark",
+    "effect": "Opponents who miss melee attacks against you suffer d4 damage",
+    "engine_effects": {
+      "trigger": {
+        "name": "Barbed Bark",
+        "when": "melee_missed",
+        "effect": "retaliate",
+        "damage": "d4",
+        "damage_type": "kinetic",
+        "note": "Opponents who miss melee attacks against you suffer d4 damage.",
+        "source": "Bloomboon #3 (CH p.049)"
+      }
+    }
+  },
+  "4": {
+    "name": "Shield Vines",
+    "effect": "Spend 2 DEX to grow Shield Vine (+1 Armour). DEX loss can't heal until vines shed",
+    "engine_effects": {
+      "dm_levers": [
+        "Spend 2 DEX to grow a Shield Vine (+1 Armour); DEX loss cannot heal until the vines are shed. Apply: character(action=\"update_stat\", name=\"<pc>\", stat=\"DEX\", value=<current-2>) and raise the sheet AV base by 1."
+      ]
+    }
+  },
+  "5": {
+    "name": "Lashing Vines",
+    "effect": "Spend 2 STR to grow Lashing Vine (+1 melee attack, d6). STR loss can't heal until vines shed",
+    "engine_effects": {
+      "dm_levers": [
+        "Spend 2 STR to grow a Lashing Vine (+1 melee attack, d6); STR loss cannot heal until the vines are shed. Apply: character(action=\"update_stat\", name=\"<pc>\", stat=\"STR\", value=<current-2>) and add the d6 melee entry to attacks."
+      ]
+    }
+  },
+  "6": {
+    "name": "Vantablooms",
+    "effect": "Light-absorbing blooms create shadow cloud. Ranged attacks have DIS to hit you. ADV to hide from pursuers",
+    "engine_effects": {
+      "dm_levers": [
+        "Shadow cloud: ranged attacks against this PC roll at DISADVANTAGE; the PC hides at ADVANTAGE. DM adjudicates on the combat rolls."
+      ]
+    }
+  },
+  "7": {
+    "name": "Empathogen Pollen",
+    "effect": "Once per day, release pollen cloud. Biological creatures EGO save or become friendly/harmless for d6 rounds",
+    "engine_effects": {
+      "daily_use": {
+        "name": "Empathogen Pollen",
+        "note": "Once per day, release pollen cloud. Biological creatures EGO save or become friendly/harmless for d6 rounds."
+      }
+    }
+  },
+  "8": {
+    "name": "Soporific Pollen",
+    "effect": "Once per day, release pollen cloud. Biological creatures EGO save or fall asleep for d6 rounds",
+    "engine_effects": {
+      "daily_use": {
+        "name": "Soporific Pollen",
+        "note": "Once per day, release pollen cloud. Biological creatures EGO save or fall asleep for d6 rounds."
+      }
+    }
+  },
+  "9": {
+    "name": "Neurotoxic Pollen",
+    "effect": "Once per day, release pollen cloud. Biological creatures CON save or reduced to 1 HP",
+    "engine_effects": {
+      "daily_use": {
+        "name": "Neurotoxic Pollen",
+        "note": "Once per day, release pollen cloud. Biological creatures CON save or reduced to 1 HP."
+      }
+    }
+  },
+  "10": {
+    "name": "Toxic Sap",
+    "effect": "Emit 1 dose poisonous sap per day (d10 TOX). Creatures who bite/eat you must CON save vs d10 TOX",
+    "engine_effects": {
+      "trigger": {
+        "name": "Toxic Sap",
+        "when": "bitten",
+        "effect": "tox_attack",
+        "tox_die": "d10",
+        "note": "Also emits one harvestable dose of d10 TOX sap per day - a TOXIN, not a poison (R-C1d); harvest/application DM-adjudicated until B2.",
+        "source": "Bloomboon #10 (CH p.049)"
+      },
+      "attack": {
+        "name": "Toxic Sap",
+        "damage": "d10 TOX",
+        "type": "defensive",
+        "trigger": "creatures that bite or eat any part of the Neobloom (CON save vs d10 TOX)"
+      }
+    }
+  },
+  "11": {
+    "name": "Vampiric Roots",
+    "effect": "Root on Biological creatures, dealing d4 damage/round. Heal HP equal to damage. Target STR save to tear you off",
+    "engine_effects": {
+      "dm_levers": [
+        "Rooted on a Biological creature: d4 damage/round via combat(action=\"damage\", target=\"<target>\", amount=<d4>, damage_type=\"kinetic\"), heal the Neobloom the same amount; target STR save to tear free."
+      ]
+    }
+  },
+  "12": {
+    "name": "Luftpods",
+    "effect": "Sprout lighter-than-air gas pods. Can fly slowly/predictably. Can act as parachute for one other character",
+    "engine_effects": {
+      "dm_levers": [
+        "Lighter-than-air gas pods: slow, predictable flight; can act as a parachute for one other character. DM adjudicates in the fiction."
+      ]
+    }
+  },
+  "13": {
+    "name": "Tesla Blossom",
+    "effect": "Spend 2 CON to grow Tesla Blossom (extra ranged electrical attack d6/round, ADV vs Synths). CON loss can't heal until shed",
+    "engine_effects": {
+      "dm_levers": [
+        "Spend 2 CON to grow a Tesla Blossom (extra ranged electrical attack d6/round, ADV vs Synths); CON loss cannot heal until shed. Apply: character(action=\"update_stat\", name=\"<pc>\", stat=\"CON\", value=<current-2>) and add the attack entry."
+      ]
+    }
+  },
+  "14": {
+    "name": "Seed Cannon",
+    "effect": "Spend 2 DEX to grow Seed Cannon (extra ranged attack d6/round). DEX loss can't heal until shed",
+    "engine_effects": {
+      "dm_levers": [
+        "Spend 2 DEX to grow a Seed Cannon (extra ranged attack d6/round); DEX loss cannot heal until shed. Apply: character(action=\"update_stat\", name=\"<pc>\", stat=\"DEX\", value=<current-2>) and add the attack entry."
+      ]
+    }
+  },
+  "15": {
+    "name": "Medicinal Fruit",
+    "effect": "Daily golden fruit. Eaten as food ration, heals d10 + CON bonus HP. Max fruit = your Level. Can't eat own fruit",
+    "engine_effects": {
+      "daily_use": {
+        "name": "Medicinal Fruit",
+        "note": "Daily golden fruit. Eaten as a food ration, heals d10 + CON bonus HP. Max fruit in existence = the Neobloom's Level; cannot eat own fruit."
+      }
+    }
+  },
+  "16": {
+    "name": "Sticky Sap",
+    "effect": "Emit 1 dose glutinous sap per day. Spreads as strong contact glue. Creatures STR save or stuck fast. Saltwater dissolves",
+    "engine_effects": {
+      "daily_use": {
+        "name": "Sticky Sap",
+        "note": "Emit 1 dose of glutinous sap per day. Spreads as strong contact glue; creatures STR save or stuck fast. Saltwater dissolves it."
+      }
+    }
+  },
+  "17": {
+    "name": "Sapling Retainers",
+    "effect": "Spend d4 CON to create equal number Sapling Retainers (L.VL 1, AV 12, ML +1, ATK d6). Serve rest of day then wither",
+    "engine_effects": {
+      "dm_levers": [
+        "Spend d4 CON to create that many Sapling Retainers (LVL 1, AV 12, ML +1, ATK d6); they serve until end of day then wither. CON spend is real ability loss - DM applies and runs the retainers."
+      ]
+    }
+  },
+  "18": {
+    "name": "Blast Pods",
+    "effect": "Daily explosive pod (d10 blast). Max pods = your Level",
+    "engine_effects": {
+      "daily_use": {
+        "name": "Blast Pods",
+        "note": "Daily explosive pod (d10 blast damage). Max pods in existence = the Neobloom's Level."
+      }
+    }
+  },
+  "19": {
+    "name": "Grafting",
+    "effect": "Graft Biological creature part to branches/trunk. Gain appropriate attack/bonus. For each day grafted part alive, lose 1 CON",
+    "engine_effects": {
+      "dm_levers": [
+        "Graft a Biological creature part onto branches/trunk for an appropriate attack/bonus; lose 1 CON per day the graft stays alive. DM adjudicates the gain and applies the daily CON loss."
+      ]
+    }
+  },
+  "20": {
+    "name": "Puppeteer Roots",
+    "effect": "Burrow roots into Biological creature's nervous system. Target EGO save vs control. Damage split between both entities",
+    "engine_effects": {
+      "dm_levers": [
+        "Burrow roots into a Biological creature's nervous system: target EGO save vs control; damage is split between both entities. DM adjudicates the contest and the damage split."
+      ]
+    }
+  }
+}

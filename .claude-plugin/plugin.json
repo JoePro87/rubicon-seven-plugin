@@ -1,0 +1,9 @@
+{
+  "name": "rubicon-seven",
+  "version": "0.10.1",
+  "description": "Rubicon Seven — an autonomous solo-TTRPG dungeon master engine for Vaults of Vaarn. Bundles the MCP engine (~50 tools), seven skills (/vaarn-start onboarding, session lifecycle, the /menu table menu, location generation), the DM output style, narrative-quality hooks, a companion terminal dashboard, and the Vaarn rules data (CC BY 4.0). Run /vaarn-start once: it builds the Python environment and wires your campaign (cross-platform, including native Windows — no bash required).",
+  "author": {
+    "name": "JoePro87"
+  },
+  "homepage": "https://github.com/JoePro87/rubicon-seven-plugin"
+}

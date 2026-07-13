@@ -1,0 +1,30 @@
+# Normalize line endings: repo-canonical LF, auto-detect text vs binary.
+# Kills the recurring CRLF phantom-diff hazard (Windows-side sessions rewrite
+# LF<->CRLF across the tree; seen post-wounds-merge 2026-06-10).
+* text=auto
+
+# Source and config: always LF in the repo
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+*.js text eol=lf
+
+# Windows scripts keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binaries: never touch
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.sqlite3 binary
+*.db binary
+*.bin binary

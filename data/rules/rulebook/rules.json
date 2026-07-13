@@ -1,0 +1,2182 @@
+{
+  "version": "2.0.0",
+  "source": "Vaarn 2e Preview",
+  "entries": [
+    {
+      "id": "rule-abilities",
+      "keywords": [
+        "ability",
+        "stats",
+        "str",
+        "dex",
+        "con",
+        "int",
+        "psy",
+        "ego"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Six abilities: Strength (STR), Dexterity (DEX), Constitution (CON), Intellect (INT), Psyche (PSY), Ego (EGO). At creation: roll 3d6 per ability in order. Lowest of the three dice = that ability's bonus. May swap scores after rolling.",
+      "source": "Crimson Hound printed p.6 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-ability-scores",
+      "keywords": [
+        "ability scores",
+        "abilities",
+        "stat generation",
+        "roll 3d6"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [],
+      "rule": "PCs have six abilities: STR, DEX, CON, INT, PSY, EGO. Roll 3d6 for each, in order. The lowest of the three dice on each roll is that ability's bonus. After rolling, you may swap the scores of two abilities. Abilities have a bonus usually between +1 and +10. Bonuses may go negative via enemy attacks. Abilities may never be raised higher than +10.",
+      "source": "Crimson Hound printed p.6 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-ability-usage",
+      "keywords": [
+        "which ability",
+        "stat uses",
+        "what does str do"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [],
+      "rule": "STR: melee attacks, physical power saves (lifting, bending). DEX: ranged attacks, poise/speed/reflex saves (dodging, climbing, sneaking, balancing). CON: resist poison/sickness/cold saves; CON bonus added to healing rolls; item slots = 10 + CON bonus. INT: concentration/precision (recall, foraging, repair, reading Hypergeometric Codices). PSY: perception/intuition (detect ambush, dreams, psychic comms); PSY bonus added to Mystic Gift damage. EGO: willpower/charm (persuade, deceive, intimidate, resist domination); EGO bonus determines max followers.",
+      "source": "Crimson Hound printed p.27 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-advancement",
+      "keywords": [
+        "level up",
+        "xp",
+        "advancement"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "All PCs start at Level 1. Trading Exotica at settlements/oases grants 1 XP. When XP tally equals current Level, Level increases by one and XP resets to zero. On level-up: increase three Abilities by +1 each (max +10); roll 1d8 and add to max HP. At Level 10, character is complete — each subsequent level grants only +1 HP, no further ability increases.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-advantage-disadvantage",
+      "keywords": [
+        "advantage",
+        "disadvantage",
+        "adv",
+        "dis"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [],
+      "rule": "ADV: roll 2d20, use the better die. DIS: roll 2d20, use the worse die. Sources of ADV and DIS cancel one another out.",
+      "source": "Crimson Hound printed p.27 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-alchemy-antidote",
+      "keywords": [
+        "antidote",
+        "cure toxin",
+        "brew antidote"
+      ],
+      "categories": [
+        "alchemy"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Antidotes use the toxic creature's venom as Component. Antidote Potency matches toxin strength: d6 TOX = POT 1, d8 TOX = POT 2, d10 TOX = POT 3, d12 TOX = POT 4, d20 TOX = POT 5.",
+      "source": "Crimson Hound printed p.51-52 (alchemy) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-alchemy-brew-elixir",
+      "keywords": [
+        "brew elixir",
+        "brewing",
+        "make elixir",
+        "alchemy"
+      ],
+      "categories": [
+        "alchemy"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Brewing requires three elements: a heat source, an Alchemical Crucible, and a receptacle. The brewing process lasts a number of Exploration Turns equal to the Elixir's POT and cannot be truncated; interruption spoils the Elixir. Ingredients: one Component (directly related to intended effect) + Essences equal to Potency. Essences used must all be different types (e.g., POT 3 uses 1 Blood + 1 Supercoolant + 1 Mycelium, not 3 Blood).",
+      "source": "Crimson Hound printed p.51-52 (alchemy) (brew time re-verified 2026-07-05 vs CRIMSON HOUND 07-05-26 PDF)"
+    },
+    {
+      "id": "rule-alchemy-components",
+      "keywords": [
+        "component",
+        "harvest component",
+        "elixir ingredient"
+      ],
+      "categories": [
+        "alchemy"
+      ],
+      "contexts": [
+        "downtime",
+        "combat_active"
+      ],
+      "rule": "A Component is a body part harvested from a dead creature (eye, claw, tongue, heart, liver, etc.). Only one Component may be harvested per creature. Harvester makes INT save vs 10 + creature's Level; failure spoils the Component. Components take 1 item slot and do not stack. The Elixir's effect must tie to the nature of the creature the Component derives from.",
+      "source": "Crimson Hound printed p.51-52 (alchemy) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-alchemy-crucible",
+      "keywords": [
+        "crucible",
+        "alchemy tool",
+        "alchemical vessel"
+      ],
+      "categories": [
+        "alchemy",
+        "inventory"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "The primary tool of a Vaarnish alchemist. A Crucible is hollow, fire-proof, and reasonably resistant to corrosion. Weighs 1 item slot. Required to brew Elixirs and Antidotes.",
+      "source": "Crimson Hound printed p.51-52 (alchemy) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-alchemy-essences",
+      "keywords": [
+        "essence",
+        "blood",
+        "supercoolant",
+        "mycelium",
+        "psychespinal fluid",
+        "manifold marrow",
+        "living dust",
+        "paradox bile"
+      ],
+      "categories": [
+        "alchemy"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Essences are generic ingredient types rendered from dead creatures. No INT save required. Up to 10 of the same Essence stack in one item slot. Types by creature: Blood (Biological); Supercoolant / Blue Ikor (Synthetic, also in pre-Collapse computers) [REFEREE RULING (homebrew, 2026-06-07): Supercoolant and Blue Ikor are the SAME synthetic-creature coolant essence on a quality gradient — Blue Ikor is the high-quality Titan-era grade of Supercoolant. The book itself uses both terms (the essence list names it Blue Ikor on printed p.51; the brewing example uses Supercoolant on printed p.52). Either name refers to the same essence; do not delete either term.]; Mycelium (Fungal, also in non-sentient mold/fungi); Psychespinal Fluid (Psychic); Manifold Marrow (Hypergeometric); Living Dust (Mineral, also carried by Lithlings as sacrament); Paradox Bile (Outsider). If a creature has two or more types, PCs choose which is extracted; the other potential dose is lost.",
+      "source": "Crimson Hound printed p.51-52 (verified 2026-06-07 audit remediation); Supercoolant=Blue Ikor clause is a homebrew referee ruling"
+    },
+    {
+      "id": "rule-alchemy-potency",
+      "keywords": [
+        "potency",
+        "elixir potency",
+        "pot"
+      ],
+      "categories": [
+        "alchemy"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Elixirs have POT 1-5, set by Referee. POT 1: minor effect comparable to a mundane item (vomit a rope, briefly see in dark). POT 3: comparable to an Exotica in effect but not duration (teleport once, invisible for an hour). POT 5: permanent consequence (new body part, new Mystic Gift, permanent ability score increase, perfect cloning). Most Elixirs fall in 1-3 range.",
+      "source": "Crimson Hound printed p.51-52 (alchemy) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ambush",
+      "keywords": [
+        "ambush",
+        "surprise",
+        "sneak attack"
+      ],
+      "categories": [
+        "combat",
+        "stealth"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Targets PSY Save vs ambusher's DEX. If >half group fails, ambush succeeds. Ambush round: all attackers have ADV. Normal initiative follows.",
+      "source": "Crimson Hound printed p.29 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-ambush-pursuit",
+      "keywords": [
+        "faa ambush",
+        "pursuit",
+        "sniper"
+      ],
+      "categories": [
+        "combat",
+        "npc"
+      ],
+      "contexts": [
+        "combat_active",
+        "overworld_travel"
+      ],
+      "rule": "Faa Sniper Headshot: at start of each combat round, before initiative, Sniper picks one foe in line of sight for elimination. If at end of round Sniper still has line of sight, target is shot and reduced to 0 HP with no Save possible. Target at negative HP: instantly fatal. Headless creatures: d10 damage instead. Hidden: Snipers cannot be targeted if they do not move. When they fire, target may make INT Save to pinpoint location.",
+      "source": "Crimson Hound printed p.90 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-ancestry-cacklemaw-biter",
+      "keywords": [
+        "biter",
+        "cacklemaw bite",
+        "fang damage"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Cacklemaw Exile: On a successful melee hit, may add an extra d6 of fang damage to the damage roll.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-cacklemaw-more",
+      "keywords": [
+        "more",
+        "cacklemaw extra attack",
+        "kill chain"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Cacklemaw Exile: When you kill a foe with a melee attack, you may immediately make another melee attack against a nearby target.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-cacklemaw-no-quarter",
+      "keywords": [
+        "no quarter",
+        "cacklemaw mercy",
+        "cacklemaw retreat"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Cacklemaw Exile: Must make an EGO save to show mercy to a defeated foe, or to retreat from a fight.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-cacogen-corrupted-blood",
+      "keywords": [
+        "cacogen mutation",
+        "corrupted blood",
+        "starting mutations"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Cacogen: At character creation, roll d100 three times on the mutation table. If effects contradict, the more recent mutation takes precedence.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-cacogen-proteus",
+      "keywords": [
+        "proteus",
+        "cacogen level up",
+        "mutation save"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Cacogen: On level up, may roll for another mutation instead of increasing HP and ability scores. DIS on Saves to resist mutation and other metamorphic effects.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-faa-desert-metabolism",
+      "keywords": [
+        "desert metabolism",
+        "faa water",
+        "faa thirst"
+      ],
+      "categories": [
+        "character",
+        "travel"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Faa Nomad: Body adapted to long periods without water; can recycle moisture from own sweat. Become Deprived from thirst after three days without drinking. Three weeks without drinking before death.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-faa-worm-rider",
+      "keywords": [
+        "worm rider",
+        "summon sandworm",
+        "faa dance"
+      ],
+      "categories": [
+        "character",
+        "travel"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Faa Nomad: In deep desert, may summon a Sandworm by rhythmic dance. Arrives within one hour; 2-in-6 chance of being juvenile. On a positive Reaction Roll, you can mount and ride the worm. It carries you for d6 days in a direction of your choice before tiring.",
+      "source": "Crimson Hound printed p.19 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-lithling-crystalline-flesh",
+      "keywords": [
+        "crystalline flesh",
+        "lithling av",
+        "lithling immune"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Lithling: Made of living crystal. Base AV = 10 + Level (maximum 20). Do not need to eat or drink. Do not take damage from fire, cold, poison, radiation, electricity, fungal spores, or suffocation. Suffer DOUBLE damage from bludgeoning attacks.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-lithling-inevitable",
+      "keywords": [
+        "inevitable",
+        "lithling hp",
+        "lithling no heal"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Lithling: At character generation, roll 10d8. This is starting AND maximum HP. CANNOT heal lost HP through any means. Do not add to max HP on level up. When HP reaches zero, the Lithling crumbles into iridescent dust, leaving a pebble-sized lithling seed.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-mycomorph-detritivore",
+      "keywords": [
+        "detritivore",
+        "rotting food",
+        "mycomorph poison"
+      ],
+      "categories": [
+        "character",
+        "rest"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Mycomorph: Can consume organic matter in any state of decay. Heal DOUBLE HP from Short Rests if the meal is rotting. ADV on all Saves vs poison and toxins.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-mycomorph-spores",
+      "keywords": [
+        "spores",
+        "mycomorph release",
+        "spore cloud"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Mycomorph: Make a CON save to release spores. Affect a number of Biological targets equal to your Level. On failed save, cannot release more spores that day. Spore type determined by character creation (Soporific, Berserk, Toxic, Fellowship, or Leeching).",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-mycomorph-twice-born",
+      "keywords": [
+        "twice born",
+        "mycomorph memory",
+        "pre-collapse recall"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Mycomorph: Formed from fungus and a human corpse. May make INT saves to recall information the original body knew, including knowledge otherwise lost during the Great Collapse.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-neobloom-bloomboons",
+      "keywords": [
+        "bloomboon",
+        "neobloom boon",
+        "level up bloom"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Neobloom: Start play with one Bloomboon (roll d20 on Bloomboon list). On level up, may roll for a Bloomboon instead of gaining HP and ability increases. On repeat result, take the next Bloomboon down.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-neobloom-flammable",
+      "keywords": [
+        "flammable",
+        "neobloom fire",
+        "burning"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Neobloom: Take DOUBLE damage from flames and heat-based attacks. Once hit, suffer d8 burning damage per round until extinguished.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-neobloom-photosynthesis",
+      "keywords": [
+        "photosynthesis",
+        "neobloom heal",
+        "rooted"
+      ],
+      "categories": [
+        "character",
+        "rest"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Neobloom: Regain d8 + CON HP per hour spent rooted in damp soil under Urth's sun. Artificial lighting does NOT suffice. If you do not photosynthesise for three days in a row, you perish.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-newbeast-beasthood",
+      "keywords": [
+        "beasthood",
+        "animal nature",
+        "newbeast adv"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Newbeast: ADV on saves when animal nature would provide it. Referee may impose DIS when animal nature is unhelpful.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-newbeast-kinship",
+      "keywords": [
+        "kinship",
+        "speak to animals",
+        "newbeast communication"
+      ],
+      "categories": [
+        "character",
+        "npc"
+      ],
+      "contexts": [
+        "npc_interaction"
+      ],
+      "rule": "Newbeast: Can speak to all creatures that share their underlying animal form, even those that would not normally communicate (e.g., New-Cat speaks to cats, cat-like monsters, cat-mimics). They do not always like you.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-planeyfolk-attune",
+      "keywords": [
+        "attune with matter",
+        "planeyfolk inventory",
+        "flat object"
+      ],
+      "categories": [
+        "character",
+        "inventory"
+      ],
+      "contexts": [],
+      "rule": "Planeyfolk: Struggle to hold 3D objects — must make a DEX save to do so. With one hour of quiet concentration, may attune with an item and add it to inventory (drawing it into flattened reality).",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-planeyfolk-flat",
+      "keywords": [
+        "flat",
+        "planeyfolk 2d",
+        "planeyfolk damage"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Planeyfolk: Lack a third dimension; resemble a living painting. Can slip through cracks and under doors. Cannot be seen from the side. Take HALVED damage from bludgeoning attacks, DOUBLED damage from slashing or piercing attacks.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-synth-repairs",
+      "keywords": [
+        "synth repair",
+        "synth parts",
+        "synth healing"
+      ],
+      "categories": [
+        "character",
+        "rest",
+        "inventory"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Synth: Cannot regain HP by consuming rations. Must repair using Synth Parts. Start play with 3 spare Synth Parts (stack in one slot). A repair takes one hour, uses one part, heals d8 + CON HP. If HP full, heal one Wound. To extract parts from dead synthetic creatures, make an INT save: success = parts equal to creature's Level; failure = 1 part.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-synth-synthetic-flesh",
+      "keywords": [
+        "synthetic flesh",
+        "synth immunities",
+        "electrical damage"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Synth: Being of metal and plastic. Do not need to eat or breathe. Immune to suffocation, drowning, toxins, extreme temperatures, and spores. Suffer DOUBLE damage from electrical weapons. When taking Wounds, use Synthetic Wounds table.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-synth-synthetic-mind",
+      "keywords": [
+        "synthetic mind",
+        "basilisk",
+        "infoglyph",
+        "loglang"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Synth: Vulnerable to attacks targeting LogLang syntax — strobing basilisk patterns, malicious infoglyphs, ancient Titan-era language viruses. Suffer d6 INT damage per round from magnetic fields.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-true-kin-inheritor",
+      "keywords": [
+        "inheritor",
+        "true-kin security",
+        "guard synth"
+      ],
+      "categories": [
+        "character",
+        "npc"
+      ],
+      "contexts": [
+        "vault_exploration",
+        "npc_interaction"
+      ],
+      "rule": "True-kin: When encountering pre-Collapse security systems or guard synths, make an opposed EGO save. On success, the machine is convinced you are its new master and serves you as able. On failure, machine becomes implacably hostile.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-ancestry-true-kin-pure-of-blood",
+      "keywords": [
+        "pure of blood",
+        "true-kin reaction",
+        "true-kin persuasion"
+      ],
+      "categories": [
+        "character",
+        "npc"
+      ],
+      "contexts": [
+        "npc_interaction"
+      ],
+      "rule": "True-kin: ADV on reaction and persuasion rolls when encountering other true-kin. Lost if visibly mutated.",
+      "source": "Crimson Hound printed p.7-26 (ancestries) (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "rule-attack-roll",
+      "keywords": [
+        "attack",
+        "strike",
+        "swing",
+        "shoot",
+        "hit",
+        "roll to hit"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Roll d20 + STR (melee) or DEX (ranged). If total > defender AV, hit. Melee requires adjacency. Ranged cannot be used if engaged in melee. Unmodified 1: weapon dropped/jams (retrieve or fix before use). Unmodified 20: damage doubled.",
+      "source": "Crimson Hound printed p.29 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-carousing",
+      "keywords": [
+        "carouse",
+        "carousing",
+        "drink",
+        "spend xp"
+      ],
+      "categories": [
+        "downtime"
+      ],
+      "contexts": [
+        "downtime",
+        "npc_interaction"
+      ],
+      "rule": "When PCs return to a settlement to trade Exotica for XP, they may choose to carouse, automatically awarding a single extra XP. When carousing, roll d20 + EGO bonus per PC and consult the carousing table. Results range from <1 (Firestarter, burned down tavern) to 30 (Exotica gained).",
+      "source": "Crimson Hound printed p.142 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-creature-attacks",
+      "keywords": [
+        "creature attacks",
+        "atk",
+        "multi-attack"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "ATK is the number of attacks a creature can make per round and damage dice for each. Attacks separated by / are mutually exclusive (use one or the other). Attacks joined by + are multi-attacks (all in same round).",
+      "source": "Crimson Hound printed p.185 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-creature-av",
+      "keywords": [
+        "armour value",
+        "creature av",
+        "monster av"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "AV is the number a PC's attack roll must exceed to damage the creature.",
+      "source": "Crimson Hound printed p.185 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-creature-encountered",
+      "keywords": [
+        "encountered",
+        "enc",
+        "group size",
+        "how many"
+      ],
+      "categories": [
+        "combat",
+        "npc"
+      ],
+      "contexts": [
+        "combat_active",
+        "overworld_travel"
+      ],
+      "rule": "ENC is the variance in encountered group size. Roll the indicated die when generating encounters to determine how many are present.",
+      "source": "Crimson Hound printed p.185 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-creature-level",
+      "keywords": [
+        "creature level",
+        "monster hp",
+        "creature stats",
+        "level"
+      ],
+      "categories": [
+        "combat",
+        "npc"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Creature Level (LVL) determines HP and ability bonuses. Average HP = LVL x 4 (or x 5 for mean). Randomised HP = xd8, where x = LVL. Ability bonuses = Level (cap +10 even for very high levels). If creature is unsuited for a task (e.g. zombie making INT save), bonus = 0.",
+      "source": "Crimson Hound printed p.187 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-creature-morale",
+      "keywords": [
+        "creature morale",
+        "monster morale",
+        "ml save"
+      ],
+      "categories": [
+        "combat",
+        "npc"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "When creatures/NPCs face more danger than expected, Referee may require Morale Save: d20 + ML bonus. Result under 16 = creature flees, hides, or attempts to parley.",
+      "source": "Crimson Hound printed p.80 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-creature-types",
+      "keywords": [
+        "creature type",
+        "biological",
+        "synthetic",
+        "psychic",
+        "fungal",
+        "mineral",
+        "hypergeometric",
+        "outsider"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Creatures have one or more types, each with resistances/immunities. Biological: living flesh, no unusual resistances. Synthetic: metal/plastic/ego-engine; immune to suffocation/poison/radiation/fungal spores; DOUBLE damage from electrical; vulnerable to weaponised LogLang syntax. Psychic: may use Gifts, detects Psychic Gleam. Fungal: HALF damage from kinetic (bludgeoning/stabbing); DOUBLE damage from fire or fungicide. Mineral: immune to suffocation/poison/radiation/electricity/extreme temp/fungal spores; DOUBLE damage from bludgeoning. Hypergeometric: exists outside Euclidean geometry; DOUBLE damage from hypergeometric weaponry. Outsider: alien to reality; resistances and vulnerabilities vary.",
+      "source": "Crimson Hound (printed) - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-damage",
+      "keywords": [
+        "damage",
+        "rolls damage",
+        "weapon die"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "On a hit, the attacker rolls their weapon's damage die; the defender loses that many HP. The damage result may be DOUBLED if the ideal weapon was used against an enemy type (e.g. a fungicide bomb vs a mycomorph). Unarmed or improvised attacks deal d4.",
+      "source": "Crimson Hound (printed) - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-deprivation",
+      "keywords": [
+        "deprived",
+        "starvation",
+        "thirst",
+        "exhausted"
+      ],
+      "categories": [
+        "travel",
+        "rest"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "downtime"
+      ],
+      "rule": "Deprived character cannot heal HP or benefit from Rests. Most common causes: starvation, thirst.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-disease-virulence",
+      "keywords": [
+        "disease",
+        "infection",
+        "virulence",
+        "save vs disease"
+      ],
+      "categories": [
+        "character",
+        "rest"
+      ],
+      "contexts": [
+        "downtime",
+        "overworld_travel"
+      ],
+      "rule": "All afflictions have a Virulence rating. Add 10 to this number to find the target number for Saves to resist and treat the infection. Synths and Lithlings are immune to biological diseases unless otherwise noted.",
+      "source": "Crimson Hound printed p.227 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-encounter-checks",
+      "keywords": [
+        "encounter",
+        "encounter check",
+        "random encounter"
+      ],
+      "categories": [
+        "travel",
+        "encounter"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Referee rolls d6 once during travel day and once per night. 1 = Encounter (roll local table). 2 = Omen (footprint, distant flying creature, etc.). 3-6 = Nothing. If PCs travel in extremely slow/noisy/obvious manner, roll 2d6 or 3d6 and use lowest.",
+      "source": "Crimson Hound printed p.103 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-escape-vault",
+      "keywords": [
+        "escape vault",
+        "get out",
+        "retreat to surface"
+      ],
+      "categories": [
+        "vault"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "If players wish to leave immediately, each PC rolls d20 on Vault Escape table. 1 = Trapped, must be rescued next session. 2 = Grievously Wounded (roll Wounds with DIS). 3 = Wounded (roll Wounds). 4 = Lost an item (roll d20 for slot). 5-9 = Got lost (consume one food/water ration, roll again). 10-15 = Skin of your teeth (reach surface, lose half current HP). 16-20 = Escape.",
+      "source": "Crimson Hound printed p.104 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-esoteric-arts",
+      "keywords": [
+        "esoteric arts",
+        "mystic",
+        "hypergeometry",
+        "alchemy"
+      ],
+      "categories": [
+        "mystic",
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Three esoteric arts: (1) Mystic Gifts — freeform supernatural powers defined by loose thematic keywords, paid for with HP. (2) Hypergeometric Equations — rote-learned powers recited from codexes, scaling with INT. (3) Alchemical Elixirs — single-use potions brewed from creature components.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-exotica-identification",
+      "keywords": [
+        "exotica",
+        "identify item",
+        "appraise"
+      ],
+      "categories": [
+        "inventory"
+      ],
+      "contexts": [
+        "vault_exploration",
+        "downtime"
+      ],
+      "rule": "When new Exotica is found, GM asks for an INT save to determine function. On failure, the PCs do not understand it. They can have it appraised at a settlement, or use it and hope for the best.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-exploration-turn",
+      "keywords": [
+        "exploration turn",
+        "vault turn",
+        "dungeon turn"
+      ],
+      "categories": [
+        "vault"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "Time in vaults abstracted into Exploration Turns. In one turn PCs may: travel from one location to another, search the current location, take a Short Rest, or conduct another appropriate action. Time-consuming actions require multiple turns.",
+      "source": "Crimson Hound printed p.103 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-faction-reputation",
+      "keywords": [
+        "reputation",
+        "rep",
+        "faction standing",
+        "hero",
+        "friend",
+        "enemy",
+        "nemesis"
+      ],
+      "categories": [
+        "npc",
+        "faction"
+      ],
+      "contexts": [
+        "npc_interaction"
+      ],
+      "rule": "PCs have REP with each faction, ranged -10 to +10. Gain REP by helping faction goals, hindering enemies, protecting members. Lose REP by opposing goals, threatening existence, harming members. Opposed factions: gaining REP with one loses equal REP with the other. Standings: 10+ Hero (members die to assist), 4-9 Friend (aid freely, never attack without cause), 1-3 Liked (reaction roll ADV), 0 Neutral (standard reaction table), -1 to -3 Disliked (reaction roll DIS), -4 to -9 Enemy (always attack/hinder/lie), -10 or lower Nemesis (hunted by committed members or hired third party).",
+      "source": "Crimson Hound printed p.85 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-fleeing",
+      "keywords": [
+        "flee",
+        "run away",
+        "escape combat",
+        "retreat"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "DEX Save vs total used item slots. Fail = opponents attack with ADV as PC flees.",
+      "source": "Crimson Hound printed p.30 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-followers",
+      "keywords": [
+        "follower",
+        "recruit follower",
+        "apprentice"
+      ],
+      "categories": [
+        "npc",
+        "character"
+      ],
+      "contexts": [
+        "downtime",
+        "npc_interaction"
+      ],
+      "rule": "Followers are sentient NPCs who pledge to serve a PC, loyal unless mistreated. Combined Level of all Followers under a PC cannot exceed that PC's EGO bonus. Each requires 1 ration of food and water per adventuring day; not fed 3 days in a row = desert at first opportunity. Combat: follow orders from leader; make Morale Save (use own Morale bonus or leader's EGO bonus, whichever is higher) first time injured and upon witnessing an allied character's death. Fail = flee and hide rest of combat. Item slots = 10 + Level. Advancement: leader may give XP; advance at PC rate; gain d8 HP per Level.",
+      "source": "Crimson Hound printed p.61 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-foraging",
+      "keywords": [
+        "forage",
+        "foraging",
+        "find food",
+        "find water"
+      ],
+      "categories": [
+        "travel"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Rather than travelling, the party may stay put for the day and rest. Each forager assigned rolls d100 on the Desert Foraging table. Duplicate results treated as shared discovery.",
+      "source": "Crimson Hound printed p.153 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-forced-march",
+      "keywords": [
+        "push",
+        "forced march",
+        "travel faster",
+        "exhaustion"
+      ],
+      "categories": [
+        "travel"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "At any point during a travel day, players may declare they are pushing to travel faster. Party travels double normal distance that day and must fill an inventory slot with Exhaustion. Exhaustion is removed when the party camps in one place for an entire day and night. If a PC has no spare slots, they must discard an item to make room. A PC who fills all inventory slots with Exhaustion dies.",
+      "source": "Crimson Hound printed p.151 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-gambits",
+      "keywords": [
+        "gambit",
+        "stunt",
+        "disarm",
+        "trick"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "If attack total >20 after bonuses, attacker may attempt a stunt in addition to damage. Examples: disarm (STR save), damage armor (STR save vs -1 AV), extra movement, forced movement (STR save), blinding (DEX save vs Blinded 1 turn), theft (DEX save), dismount (STR save). Target may save; attacker may forgo damage to deny save.",
+      "source": "Crimson Hound printed p.29 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-getting-lost",
+      "keywords": [
+        "lost",
+        "navigation",
+        "sandstorm",
+        "disoriented"
+      ],
+      "categories": [
+        "travel"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Assume PCs are competent navigators and do not get lost as long as they can see sun and stars. In circumstances that prevent this (e.g., sandstorm), roll d6 and add that many days to the travel schedule.",
+      "source": "Crimson Hound printed p.151 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-healing",
+      "keywords": [
+        "heal",
+        "healing",
+        "recover hp",
+        "bandage"
+      ],
+      "categories": [
+        "combat",
+        "rest"
+      ],
+      "contexts": [
+        "combat_active",
+        "downtime"
+      ],
+      "rule": "HP recovers from 0 (not from negative). Short Rest: sit-down + ration of water/food, restores d8 + CON bonus HP. Long Rest: ration + meal + full night's sleep in safe place, restores all HP. If full, heal one Wound or restore one ability bonus point.",
+      "source": "Crimson Hound printed p.30 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-hypergeometry-codex",
+      "keywords": [
+        "codex",
+        "hypergeometric equation",
+        "hypergeometry"
+      ],
+      "categories": [
+        "mystic",
+        "inventory"
+      ],
+      "contexts": [
+        "vault_exploration",
+        "combat_active"
+      ],
+      "rule": "A codex is a reserve of one hypergeometric equation. Takes 1 item slot. Cannot be created or copied by PCs.",
+      "source": "Crimson Hound printed p.57 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-hypergeometry-read-equation",
+      "keywords": [
+        "read equation",
+        "recite equation",
+        "cast hypergeometry",
+        "use codex"
+      ],
+      "categories": [
+        "mystic"
+      ],
+      "contexts": [
+        "combat_active",
+        "vault_exploration"
+      ],
+      "rule": "Reciting a hypergeometric equation requires an INT save. On success, the equation has the desired effect. On failure, the reader becomes muddled: the equation does not work and the PC cannot read any more equations until a Long Rest. On a natural 1, consult the Hypergeometric Mishaps table. An equation's power level equals the reader's INT bonus — substitute [INT] in the codex text. Converted spells with a fixed level higher than the reader's INT bonus: INT save made with DIS.",
+      "source": "Crimson Hound printed p.57 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-infected-berserker",
+      "keywords": [
+        "infected",
+        "berserker",
+        "wrathworm",
+        "rage infection"
+      ],
+      "categories": [
+        "combat",
+        "character"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Infected creatures (Wrathworm) fight with wild abandon. They take and receive doubled damage. They attack on sight and will never retreat from combat. Tell-tale blood-red eyes.",
+      "source": "Crimson Hound printed p.187 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-initiative",
+      "keywords": [
+        "initiative",
+        "who goes first",
+        "turn order"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Side-based: 1d6, even = PCs first, odd = enemies first. Re-rolled each round. Ties favor PCs. Alternative systems: Encumbrance (PCs roll d20 > used slots to go first), Goliath (highest HP first), David (fewest members first).",
+      "source": "Crimson Hound printed p.29 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-inventory-slots",
+      "keywords": [
+        "inventory",
+        "slots",
+        "encumbrance",
+        "carry",
+        "item slots"
+      ],
+      "categories": [
+        "inventory"
+      ],
+      "contexts": [
+        "downtime",
+        "overworld_travel"
+      ],
+      "rule": "Item slots = 10 + CON bonus. Items must fit in available slots or PC is Encumbered. Most items = 1 slot. Some take more. Small items can bundle into a single slot.",
+      "source": "Crimson Hound printed p.27 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-item-slots",
+      "keywords": [
+        "item slots",
+        "inventory",
+        "encumbrance",
+        "encumbered"
+      ],
+      "categories": [
+        "inventory",
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Item slots = 10 + CON bonus. Most items take 1 slot; heavy/bulky items (armour, medium+ weapons) take more. Groups of small identical items may be bundled into a single slot at referee's discretion. Encumbered (slots exceeded) = DIS on all STR, DEX, CON saves. Impossible to carry more than 20 slots worth.",
+      "source": "Crimson Hound printed p.27 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-mercenaries",
+      "keywords": [
+        "mercenary",
+        "hired gun",
+        "hire mercenary"
+      ],
+      "categories": [
+        "npc",
+        "character"
+      ],
+      "contexts": [
+        "downtime",
+        "npc_interaction"
+      ],
+      "rule": "Mercenaries are professional killers motivated by wealth. Combined Level of Mercenaries under a PC cannot exceed that PC's EGO bonus. Each requires 1 ration of food and water per adventuring day; not fed 3 days in a row = desert. Must be paid an item of Exotica (or equivalent value) from each expedition; unpaid Mercenaries leave and become sworn foes. Combat: follow orders but refuse obviously suicidal ones; Morale Save only in extreme circumstances (e.g., all PCs incapacitated). Not porters — will not carry baggage. Do not gain Levels in service.",
+      "source": "Crimson Hound printed p.63 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-merchant-reaction",
+      "keywords": [
+        "merchant reaction",
+        "haggle",
+        "convince trader"
+      ],
+      "categories": [
+        "npc"
+      ],
+      "contexts": [
+        "npc_interaction"
+      ],
+      "rule": "Roll d20 + highest party EGO bonus on table-merchant-reaction. 1-3 enraged to violence; 4-8 time-waster, dismissed; 9-12 shrug; 13-15 want different item; 16-19 willing to trade; 20+ throw something extra in.",
+      "source": "Crimson Hound (full book — trade/reaction rules, not in preview) (2026-06-07 cert)"
+    },
+    {
+      "id": "rule-morale",
+      "keywords": [
+        "morale",
+        "flee",
+        "break",
+        "surrender",
+        "give up"
+      ],
+      "categories": [
+        "combat",
+        "npc"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "NPCs roll d20 + ML when facing unexpected danger. <16 = flee, hide, or parley. Triggered by: half the group defeated, leader defeated, or comparable shock.",
+      "source": "Crimson Hound printed p.29 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-mystic-gifts",
+      "keywords": [
+        "gift",
+        "mystic gift",
+        "psychic power",
+        "psy ability"
+      ],
+      "categories": [
+        "mystic"
+      ],
+      "contexts": [
+        "combat_active",
+        "vault_exploration",
+        "npc_interaction"
+      ],
+      "rule": "Gifts always work — no attack roll, bypass AV. Baseline HP cost: d6. Die size chosen = cost AND magnitude (d8/d10/d12/d20 for greater effect). Result rolled IS HP paid. Damage/healing: roll same die size paid in HP + PSY bonus. Extended use (mind control, barriers): d6 HP per 10-minute period. Gifts cannot heal user's own HP. Must be actively sought — not earned by leveling.",
+      "source": "Crimson Hound printed p.47 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-nanomachine-infection",
+      "keywords": [
+        "nanomachine",
+        "cybernetic infection",
+        "malignant implant"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Nanomachine infections are caused by synthetic microbes. They infect all creature types and are essentially malignant cybernetic implants. They occupy an Ability slot, overwriting any pre-existing implant in that slot. Synths and characters with cybernetic implants Save to resist nanomachine infestations with DIS.",
+      "source": "Crimson Hound printed p.229 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-night-watch",
+      "keywords": [
+        "night watch",
+        "watch",
+        "camp",
+        "surprise attack"
+      ],
+      "categories": [
+        "rest",
+        "combat"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "rule": "Camped PCs may elect a watcher. The watcher cannot benefit from a Long Rest; regains only d8 + CON bonus HP. If a hostile approaches at night, watcher makes PSY save opposed to creature's DEX. Failure grants monsters a surprise round: aggressors strike with ADV and players cannot respond. After surprise round, roll initiative normally.",
+      "source": "Crimson Hound printed p.152 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-npc-generation",
+      "keywords": [
+        "generate npc",
+        "make an npc",
+        "create npc"
+      ],
+      "categories": [
+        "generation",
+        "npc"
+      ],
+      "contexts": [
+        "generation",
+        "npc_interaction"
+      ],
+      "rule": "1) Roll Basic NPC table: ancestry, manner, voice, drive (d20 each column). 2) Roll further details: attire, bond, faith, faction (d20 each). 3) Consult ancestry pages for appearance. 4) Generate name (d100, four columns). 5) Generate career (d100) — yields items carried. 6) Generate one virtue + one vice (d20 row + d6 column). For extremely admirable/villainous characters, generate multiple virtues or vices (more than three of each is too hard to track).",
+      "source": "Crimson Hound printed p.143 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-optional-player-facing-av",
+      "keywords": [
+        "player facing",
+        "armour bonus",
+        "defensive save"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Optional rule: to make all combat rolls player-facing, subtract 10 from AV to get Armour Bonus. When attacked, PC makes a Save using Armour Bonus, attempting to beat 10 + attacker's STR or DEX.",
+      "source": "Crimson Hound printed p.6 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-pets",
+      "keywords": [
+        "pet",
+        "tame animal",
+        "companion animal"
+      ],
+      "categories": [
+        "npc",
+        "character"
+      ],
+      "contexts": [
+        "downtime",
+        "combat_active"
+      ],
+      "rule": "Tame animals under direct PC control. Take actions at player's behest. If ordered to do something they were not trained for and are terrified by, Referee calls a Morale Save. Combined Level of all pets/steeds/followers cannot exceed PC's EGO bonus. A singular pet whose Level exceeds EGO bonus is defiant and unreliable. Level 0 creatures do not count toward the limit but must still be fed. Levelling: PC may give their XP to the pet; pet gains +d8 HP and adds one slot to carrying capacity per Level. Damage, morale, and AV remain the same.",
+      "source": "Crimson Hound printed p.67 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-pursuit",
+      "keywords": [
+        "pursuit",
+        "chase",
+        "flee",
+        "run away overland"
+      ],
+      "categories": [
+        "travel",
+        "combat"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "rule": "When a party chooses flight over fight, resolve as three opposed CON saves (or DEX if terrain warrants). Pursuers winning 2 of 3 catch up and immediately win initiative in a combat round. Fleeing party winning 2 of 3 escapes decisively. Only use if there is reasonable doubt as to outcome.",
+      "source": "Crimson Hound printed p.152 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-quantum-daemon-debt",
+      "keywords": [
+        "daemon debt",
+        "pay daemon",
+        "owe daemon"
+      ],
+      "categories": [
+        "mystic",
+        "npc"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "After a period (often seven days), the Daemon manifests and demands recompense. Settle by: building a shrine; embarking on a quest; creating a body for the Daemon; feeding the Daemon (lose 1 max HP, gain a long-healed bite scar). Refusing risks curses: Jinxed (referee picks d20 number, all rolls of that number count as natural 1); Possessed (daemon takes body, wake with new Wound and enemies); Evil Twins (d6 daily, on 1 a parallel-self with your stats and gear catches you).",
+      "source": "Crimson Hound printed p.232 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-quantum-daemon-killing",
+      "keywords": [
+        "kill daemon",
+        "harm daemon",
+        "ontological anchor"
+      ],
+      "categories": [
+        "combat",
+        "mystic"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Quantum Daemons are Incorporeal: do not actually exist, cannot be harmed nor harm others unless forced to manifest. Conventional weaponry is useless. Weaponised Normality or other ontological anchoring devices may make the Daemon corporeal and allow combat.",
+      "source": "Crimson Hound printed p.232 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-quantum-daemon-summon",
+      "keywords": [
+        "summon daemon",
+        "quantum daemon",
+        "summoning ritual"
+      ],
+      "categories": [
+        "mystic"
+      ],
+      "contexts": [
+        "downtime",
+        "vault_exploration"
+      ],
+      "rule": "Requires psychedelic mushrooms, ritual salt, ulfire candles, octarine oil, a golden bowl, and an Aspect of Uncertainty. Summoner makes EGO save. On failure, nothing happens. On success, a Daemon appears. Roll 3d20 on table-quantum-daemon for details. Seven commonly proffered Boons are enumerated in rule-quantum-daemon-boons. Each Boon costs one point of Daemon Debt.",
+      "source": "Crimson Hound printed p.231 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-quantum-daemon-boons",
+      "keywords": [
+        "daemon boon",
+        "daemon boons",
+        "quantum daemon boon",
+        "metamorphosis boon",
+        "far-seeing",
+        "far-speaking",
+        "augury",
+        "memento mori",
+        "quantum link"
+      ],
+      "categories": [
+        "mystic"
+      ],
+      "contexts": [
+        "downtime",
+        "vault_exploration"
+      ],
+      "rule": "Commonly proffered Daemon Boons (each costs one point of Daemon Debt): Metamorphosis - the Daemon reaches into the summoner's tangled pasts and picks out a cacogenic path not taken during conception; the summoner gains a Mutation (either random or chosen). Gifted - the Daemon imparts the mystic wisdom of the myriad realities beyond our own; the summoner gains a Mystic Gift (either random or chosen). Far-Seeing - due to their unique subject-position to our reality, Daemons can easily answer questions about current events in faraway places, see what's contained inside a locked lead-lined strongbox, etc. Far-Speaking - the Daemon can be charged with bringing a message to another place (or time); it crosses great distances in an instant and is impossible to intercept or detain. Augury - the Daemon projects itself into the roiling ocean of the future, attempting to divine your fate; there is no guarantee its prophecy will be intelligible, but it will do its best. Memento Mori - the Daemon locates a nearby timeline where an alternate version of you has just died and shows you a spectral image of the corpse; the nature of the death gives a warning of nearby dangers. Quantum Link - the Daemon links an object with its twin in a nearby alternate universe; whatever happens to one will happen to the other (commonly linked: a wax tablet for trans-universe communication, a box or chest whose contents have a 50% chance to be present and 50% to be replaced with something else, or a betrothal ring - no practical use, but seen as a symbol of everlasting love).",
+      "source": "Crimson Hound printed p.232 (ingested + verified 2026-07-05 vs CRIMSON HOUND 07-05-26 PDF)"
+    },
+    {
+      "id": "rule-rations",
+      "keywords": [
+        "rations",
+        "food",
+        "water",
+        "eat",
+        "drink"
+      ],
+      "categories": [
+        "travel",
+        "inventory"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "downtime"
+      ],
+      "rule": "Rations measure food and water carried. Three days of either type fit in a single item slot. Unless Ancestry exempts them, PCs must consume one ration of food and one of water per day. Rations of food or water can be processed from dead Biological-type creatures: dead creatures grant rations equal to double their Level.",
+      "source": "Crimson Hound printed p.151 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-reactions",
+      "keywords": [
+        "reaction",
+        "first impression",
+        "how they react"
+      ],
+      "categories": [
+        "npc"
+      ],
+      "contexts": [
+        "npc_interaction"
+      ],
+      "rule": "When NPC/creature reaction is ambiguous: d20 + PC EGO bonus (if communication possible). See table-reaction for result bands.",
+      "source": "Crimson Hound printed p.29 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-region-creation",
+      "keywords": [
+        "generate region",
+        "make a region",
+        "hex map",
+        "region creation"
+      ],
+      "categories": [
+        "generation"
+      ],
+      "contexts": [
+        "generation"
+      ],
+      "rule": "1) Take blank A4 paper. 2) Drop 5-6 dice (up to d20) to create a region. 3) Circle each die, record the number; consult Regional Feature chart (d20 LOCATION TYPE). 4) Connect locations with lines (2-3 connections each) = travel routes. Close dice = d6 days, moderate = 2d6, far = 3d6 (on foot). 5) Routes between two even-numbered locations are safe; routes between two odd-numbered locations have a Route Hazard (d20). 6) Flesh out each location using sub-tables. 7) Optional: roll d20 landscape type and 'region named for' for flavour. 8) Build region-specific encounter table. 9) Place NPCs with goals.",
+      "source": "Crimson Hound printed p.157 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-resurrection-ego-engine",
+      "keywords": [
+        "ego engine",
+        "synth resurrection",
+        "transplant"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "If body reasonably intact, dead Synth's Ego-Engine can be extracted and inserted into a new synthetic body. Resurrected Synth restarts at Level 1 and rerolls STR, DEX, CON. Maintains old INT, PSY, EGO scores.",
+      "source": "Crimson Hound (printed) Death & Resurrection - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-resurrection-mycomorph-spores",
+      "keywords": [
+        "resurrect",
+        "mycomorph spores",
+        "twice-born",
+        "revive"
+      ],
+      "categories": [
+        "character",
+        "mystic"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Any Mycomorph character can resurrect a dead biological creature by imbuing them with spores. The dead creature is reborn as a mycomorph within d4 days. Resurrected PC INT saves: success retains Level, Gifts, ability scores; failure means newly rolled Level 1 mycomorph carrying same items.",
+      "source": "Crimson Hound (printed) Death & Resurrection - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-resurrection-pseudowomb",
+      "keywords": [
+        "pseudowomb",
+        "clone",
+        "vat"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "A pseudo-womb vat clones a dead biological PC from scrap of flesh or blood. Process takes seven days. Cloned PC CON saves: success means exact copy; failure means roll two new mutations.",
+      "source": "Crimson Hound (printed) Death & Resurrection - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-resurrection-spirit",
+      "keywords": [
+        "become spirit",
+        "ghost",
+        "wandering spirit",
+        "die return"
+      ],
+      "categories": [
+        "character",
+        "mystic"
+      ],
+      "contexts": [
+        "downtime",
+        "combat_active"
+      ],
+      "rule": "Dead PCs of any type may attempt to become a wandering spirit. Roll d20 + PC's Level. On 16+, success. Spirits are incorporeal, appear as luminous golden-blue projection, can pass through walls. Spend d6 HP to manipulate a physical object. Spend d6 + target's Level HP to possess a living creature for one exploration turn. At 0 HP, fade until next sunrise.",
+      "source": "Crimson Hound (printed) Death & Resurrection - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-resurrection-necrotech",
+      "keywords": [
+        "necrotech",
+        "resurrect",
+        "nanomachine",
+        "cybernetic resurrection",
+        "revive"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Necrotech (cybernetic implants and nanomachine infections) can resurrect a body after death, usually with severe downsides: it may restore the mind but fail to prevent the flesh decaying, or restore the flesh but fail to prevent the slow decay of the mind. Any biological character resurrected this way is now ALSO considered a Synthetic-type creature.",
+      "source": "Crimson Hound (printed) Death & Resurrection - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-saves",
+      "keywords": [
+        "save",
+        "saving throw",
+        "resist",
+        "dc",
+        "dice challenge",
+        "beat 15",
+        "opposed save"
+      ],
+      "categories": [
+        "combat",
+        "character"
+      ],
+      "contexts": [
+        "combat_active",
+        "vault_exploration"
+      ],
+      "rule": "Roll d20 + relevant ability bonus. Beat 15 to succeed. Specific saves: STR (force, grip), DEX (reflex, balance), CON (endure, poison), INT (reason, memory), PSY (perception, mystic), EGO (willpower, social).",
+      "source": "Crimson Hound printed p.27 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-saving-throws",
+      "keywords": [
+        "save",
+        "saving throw",
+        "opposed save"
+      ],
+      "categories": [
+        "character",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active",
+        "vault_exploration"
+      ],
+      "rule": "Roll d20 + relevant ability bonus. Total > 15 = success. Natural 20 always succeeds; natural 1 always fails, regardless of bonuses. Opposed save: rolling side must beat 10 + opposing character's ability bonus. If they fail, the opposing side succeeds. Either side may roll — odds are equivalent.",
+      "source": "Crimson Hound printed p.27 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-settlement-generation",
+      "keywords": [
+        "generate settlement",
+        "make a town",
+        "new settlement"
+      ],
+      "categories": [
+        "generation"
+      ],
+      "contexts": [
+        "generation"
+      ],
+      "rule": "Roll: size (d6), water source (d8) + complication, majority/minority population (2d6 each), location/houses/industry (d20 across three columns), government type A adjective + type B form (d20 each), dominant faith (d20), what settlement praises/despises/lacks (d20 each), in-fashion / annual festival / local entertainment (d20 each). Consult relevant sub-tables.",
+      "source": "Crimson Hound printed p.131 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-settlement-mapping",
+      "keywords": [
+        "map settlement",
+        "generate settlement map",
+        "draw town"
+      ],
+      "categories": [
+        "generation"
+      ],
+      "contexts": [
+        "generation"
+      ],
+      "rule": "1) Take A4 sheet. Drop 2d6 (contrasting colours): black = seat of power, white = water source. 2) Connect seat-of-power to water with pencil line (major road). 3) Drop 1d20 + 4d6: d20 = major asset (see assets table), each d6 = notable building (d6: 1 Disreputable/Abandoned, 2 Residential, 3 Industrial/Workshop, 4 Commercial, 5 Religious, 6 Minor Government). 4) Drop 1d20 for local landmark. 5) Connect all buildings/assets with at least one other via straight or curved lines (minor roads); intersections = markets/courtyards. 6) Dotted perimeter = outer wall. 7) Fill in smaller details (dwellings, tents, farmland, etc.). 8) Use NPC tables to attach an NPC to each marked location; ignore clashes. For larger settlements: up to two more assets (d20s), up to six more buildings (d6s).",
+      "source": "Crimson Hound printed p.132 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-spending-reputation",
+      "keywords": [
+        "spend reputation",
+        "call in favor",
+        "cash in rep"
+      ],
+      "categories": [
+        "npc",
+        "faction"
+      ],
+      "contexts": [
+        "npc_interaction",
+        "downtime"
+      ],
+      "rule": "Referee may treat positive REP as currency. REP can be spent for material goods, access to privileged information, recruitment of faction members as followers, use of special faction assets, or tutoring in mystical secrets. Spent REP is lost.",
+      "source": "Crimson Hound printed p.85 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-starting-equipment",
+      "keywords": [
+        "starting equipment",
+        "starting gear",
+        "begin play"
+      ],
+      "categories": [
+        "character",
+        "inventory"
+      ],
+      "contexts": [],
+      "rule": "Start with 3 rations of water and 3 rations of food. For your weapon, choose EITHER the melee or the ranged weapon table, then roll once (d20) on the chosen table (referee clarification 2026-06-07: the book's 'basic weapon table' is the melee/ranged base tables; pick one category, then roll). Roll once on the basic armour table, and twice on the explorer's gear table. Armour has an AV; no armour = AV 10. Also choose or roll 1d6 for starting Boon: 1 Advanced Weapon, 2 Alchemist's Crucible + Elixir, 3 Cybernetic Implant, 4 Exotica, 5 Hypergeometric Codex, 6 Mystic Gift.",
+      "source": "Crimson Hound printed p.6 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-starting-hp",
+      "keywords": [
+        "starting hp",
+        "hit points",
+        "level 1 hp"
+      ],
+      "categories": [
+        "character"
+      ],
+      "contexts": [],
+      "rule": "Roll 1d8 to determine starting and maximum HP. CON bonus is NOT added to HP rolls. Healing rate is 1d8 + CON bonus. Referee option: allow PCs to take 5 HP rather than rolling at Level 1.",
+      "source": "Crimson Hound printed p.6 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-steeds",
+      "keywords": [
+        "steed",
+        "mount",
+        "ride"
+      ],
+      "categories": [
+        "travel",
+        "character"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "rule": "Each PC may ride one steed, which carries items per its slot limit. Steed consumes 1 ration per day (nature of ration depends on steed). Steeds not fed for 7 days run away at first chance.",
+      "source": "Crimson Hound printed p.72 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-toxin-dice",
+      "keywords": [
+        "toxin",
+        "poison",
+        "venom",
+        "radiation",
+        "tox",
+        "toxin die"
+      ],
+      "categories": [
+        "combat",
+        "character"
+      ],
+      "contexts": [
+        "combat_active",
+        "overworld_travel"
+      ],
+      "rule": "A TOX attack inflicts a Toxin die on CON save failure. Save DC = 10 + TD size (e.g., d6 TOX = CON save vs 16, d10 TOX = vs 20). Dice chain: Cured < d4 < d6 < d8 < d10 < d12 < d20. Each combat round (or exploration turn out of combat), before acting, PC rolls TD and subtracts result from HP. On a 1-2, TD depletes one step down the chain. A PC has only one TD at a time; a new TOX attack only increases TD size if new attack's die is larger than current TD. Cures depend on source; locals typically know methods. Pre-Collapse medgel pods, surgeon synths, and alchemical antidotes can help. Referee may allow amputation.",
+      "source": "Crimson Hound printed p.55 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-trade-exotica",
+      "keywords": [
+        "trade",
+        "merchant",
+        "barter"
+      ],
+      "categories": [
+        "inventory",
+        "npc"
+      ],
+      "contexts": [
+        "npc_interaction"
+      ],
+      "rule": "Merchants trade an item slot's worth of goods for similar. Fresh water and Exotica command a premium. No set price list — deals depend on context, merchant disposition, and persuasion.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-trade-local-fluctuation",
+      "keywords": [
+        "local prices",
+        "settlement value",
+        "prized goods"
+      ],
+      "categories": [
+        "npc",
+        "inventory"
+      ],
+      "contexts": [
+        "npc_interaction"
+      ],
+      "rule": "Each settlement has prized/undesirable/despised types and qualities. Prized = x2 base value; undesirable = half base value; despised = cannot give away. Local modifiers override generic modifiers. If repeat results rolled, take next option down.",
+      "source": "Crimson Hound printed p.129 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-trade-value",
+      "keywords": [
+        "trade",
+        "barter",
+        "value",
+        "exchange items"
+      ],
+      "categories": [
+        "inventory",
+        "npc"
+      ],
+      "contexts": [
+        "npc_interaction",
+        "downtime"
+      ],
+      "rule": "Vaarn has no central currency. All trade is barter. Any object that occupies one item slot has a Trade Value of 1 and can be exchanged for any other 1-Value item. Vehicles/steeds/animals: Trade Value = Level or current Hull Points x 10. Exotica are not fungible — unique and priceless, only relinquished by force.",
+      "source": "Crimson Hound printed p.129 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-travel-days",
+      "keywords": [
+        "travel",
+        "overland",
+        "journey",
+        "days",
+        "distance"
+      ],
+      "categories": [
+        "travel"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Vaarn is not well-mapped; distances are approximations given by NPCs in days (e.g., 'five days of travel to the circular ruins'). These estimates apply to speed on foot. With a vehicle, halve travel days. Under normal conditions PCs travel half a day's distance in morning and half in afternoon; at night they eat a meal and rest.",
+      "source": "Crimson Hound printed p.151 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-usage-dice",
+      "keywords": [
+        "usage die",
+        "ud",
+        "ammunition",
+        "depleting",
+        "consumable"
+      ],
+      "categories": [
+        "inventory",
+        "combat"
+      ],
+      "contexts": [
+        "combat_active",
+        "overworld_travel"
+      ],
+      "rule": "Notation: Udx. After use, roll die. On 1-2, deplete one step: d20 → d12 → d10 → d8 → d6 → d4 → Expended. Ranged weapons: roll ONCE after combat ends (not per shot). Exotica with Usage Die: roll AFTER each use. Consumables: roll when used.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-usage-die",
+      "keywords": [
+        "usage die",
+        "ud",
+        "ammunition",
+        "deplete"
+      ],
+      "categories": [
+        "combat",
+        "inventory"
+      ],
+      "contexts": [
+        "combat_active",
+        "inventory"
+      ],
+      "rule": "Usage die abstracts supply. Notation Udx. On use, roll the die; on a 1 or 2, it depletes one step down the chain: Expended < d4 < d6 < d8 < d10 < d12 < d20. Ranged weapons with a usage die roll once after combat. Exotica with a usage die roll after each use.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vault-doors",
+      "keywords": [
+        "door",
+        "listen at door",
+        "force door",
+        "locked door"
+      ],
+      "categories": [
+        "vault"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "Listening at a closed door takes 1 Exploration Turn; yields vague info (living creatures, active machinery). Stuck/locked doors: explosives or gunfire break them immediately at cost of an Encounter roll. Forcing with brute strength takes 10 Exploration Turns minus PC's STR bonus (minimum 1). Some doors require special tools like keycards.",
+      "source": "Crimson Hound printed p.103 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vault-encounter-check",
+      "keywords": [
+        "encounter check",
+        "vault encounter",
+        "wandering monster"
+      ],
+      "categories": [
+        "vault",
+        "encounter"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "Each Exploration Turn, roll d6. 1 = encounter (roll on current area's encounter table). 2 = omen (shed skin, footprint, distant sound). 3-6 = nothing. If PCs are over-encumbered or making lots of noise, Referee may roll 2 or 3d6 and take the lowest single result.",
+      "source": "Crimson Hound printed p.103 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vault-hidden-features",
+      "keywords": [
+        "search",
+        "hidden",
+        "secret",
+        "perception"
+      ],
+      "categories": [
+        "vault"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "Hidden features: concealed but not obscure, always found by spending 1 Exploration Turn searching (e.g., switch behind curtain, submerged orb). Secret features: require engaging with vault and describing specific PC actions, not generic search or 'perception checks'. May require knowledge from elsewhere in the vault (e.g., door opens only when specific statue is prayed to). Referee may grant hints (draft of air near secret door).",
+      "source": "Crimson Hound printed p.104 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vault-light",
+      "keywords": [
+        "light",
+        "darkness",
+        "torch",
+        "no light"
+      ],
+      "categories": [
+        "vault"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "Vaarn's vaults are mostly lightless. Without a light source, PCs take 3 Exploration Turns to move between locations, cannot effectively search, encounters always surprise, ranged attacks impossible, melee has DIS.",
+      "source": "Crimson Hound printed p.104 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vault-merchant-retribution",
+      "keywords": [
+        "kill merchant",
+        "extort merchant",
+        "rob vault merchant"
+      ],
+      "categories": [
+        "npc",
+        "economy"
+      ],
+      "contexts": [
+        "vault_exploration",
+        "npc_interaction"
+      ],
+      "rule": "PCs may kill/extort vault merchants to take wares by force. Remove the killed merchant from future merchant rolls. After two such outrages, all vault merchants stop appearing for the party. Word gets around.",
+      "source": "Crimson Hound printed p.117 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vault-resting",
+      "keywords": [
+        "long rest",
+        "camp",
+        "sleep in vault"
+      ],
+      "categories": [
+        "vault",
+        "rest"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "Vaults are dangerous to camp in. For a Long Rest inside a vault, PCs must find a secure campsite in a room with easily barred entrances. Failure: 3-in-6 chance to be surprised during the night by an encounter.",
+      "source": "Crimson Hound printed p.104 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vault-running",
+      "keywords": [
+        "run",
+        "flee through vault",
+        "sprint"
+      ],
+      "categories": [
+        "vault"
+      ],
+      "contexts": [
+        "vault_exploration"
+      ],
+      "rule": "Running through a vault allows PCs to traverse ten locations in a single Exploration Turn. Referee describes only scattered impressions without detail. Any traps trigger automatically. Encounters always surprise the PCs.",
+      "source": "Crimson Hound printed p.103 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vehicle-attacks",
+      "keywords": [
+        "vehicle attack",
+        "synthetic vehicle"
+      ],
+      "categories": [
+        "combat",
+        "travel"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Synthetic vehicles can attack of their own accord, using current Hull Points as their to-hit bonus. Non-sentient vehicles cannot attack without a weapon operator.",
+      "source": "Crimson Hound printed p.73 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vehicle-hull-points",
+      "keywords": [
+        "hull points",
+        "vehicle damage",
+        "vehicle hp"
+      ],
+      "categories": [
+        "combat",
+        "travel"
+      ],
+      "contexts": [
+        "combat_active",
+        "overworld_travel"
+      ],
+      "rule": "Hull Points reduce at a 10:1 damage ratio. Damage under 10 from a single attack does not reduce Hull Points. Multiple sources do not stack (6 + 8 damage from separate attacks = 0 HP lost). A single 19-damage attack = 1 HP lost.",
+      "source": "Crimson Hound printed p.73 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vehicle-repair",
+      "keywords": [
+        "repair vehicle",
+        "fix vehicle"
+      ],
+      "categories": [
+        "travel",
+        "downtime"
+      ],
+      "contexts": [
+        "downtime"
+      ],
+      "rule": "Damaged vehicles can be repaired using appropriate spare parts. One day of work per Hull Point regained.",
+      "source": "Crimson Hound printed p.73 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vehicle-speed",
+      "keywords": [
+        "vehicle speed",
+        "pursuit",
+        "race",
+        "chase"
+      ],
+      "categories": [
+        "travel",
+        "combat"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "combat_active"
+      ],
+      "rule": "Use vehicle Speed stats for pursuits and races. Opposed Speed Save catches or outruns another vehicle.",
+      "source": "Crimson Hound printed p.73 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-vigilance-die",
+      "keywords": [
+        "vigilance",
+        "spot enemy first",
+        "watch"
+      ],
+      "categories": [
+        "travel",
+        "encounter"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "At start of each day, when rolling encounters, players may collectively roll a Vigilance Die: a single d6, no modifiers. On 6, party is guaranteed to spot next Encounter before the opposing entity spots them. On 1, next Encounter spots them first. Resets at end of day whether used or not.",
+      "source": "Crimson Hound printed p.152 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-water-debt-gnomon",
+      "keywords": [
+        "water debt",
+        "gnomon water",
+        "water tax"
+      ],
+      "categories": [
+        "travel",
+        "rest"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "downtime"
+      ],
+      "rule": "In Gnomon, all water belongs to Water Baron Ancamulla. Bringing water from outside city is forbidden. Players must drink daily (unless synthetic) or become Deprived. Trade an item slot's worth of equipment for one water-debt token at the Baron's banks; one token = one day of drinking water for one person.",
+      "source": "Crimson Hound printed p.242 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-water-ration",
+      "keywords": [
+        "water",
+        "ration",
+        "drink",
+        "thirst"
+      ],
+      "categories": [
+        "travel",
+        "inventory"
+      ],
+      "contexts": [
+        "overworld_travel",
+        "downtime"
+      ],
+      "rule": "Up to three rations of water carry in one item slot. Biological PCs must drink one ration/day or become Deprived. Deprived from thirst three days in a row = death.",
+      "source": "Crimson Hound printed p.28 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-weather-effects",
+      "keywords": [
+        "weather",
+        "sandstorm",
+        "dust storm",
+        "heatwave",
+        "rain",
+        "prismatic tempest"
+      ],
+      "categories": [
+        "travel",
+        "weather"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Still: visibility good. Hazy: visibility impaired; Vigilance checks DIS. Dust Storm: visibility badly impaired; travel at half speed; Vigilance DIS. Sand Storm: no travel; must shelter; any rolled encounters also sheltering nearby. Heatwave: PCs consume double water rations to travel. Worm-pollen: half speed; pollen provides d4 rations per player. Rain: collect 2d6 days of water rations per member. Prismatic Tempest: no travel; 3d6 electrical damage per hour spent aboveground.",
+      "source": "Crimson Hound printed p.155 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-weather-hex",
+      "keywords": [
+        "weather",
+        "climate",
+        "hex chart weather"
+      ],
+      "categories": [
+        "travel",
+        "weather"
+      ],
+      "contexts": [
+        "overworld_travel"
+      ],
+      "rule": "Place a marker at centre of the weather hex-chart. Roll d6 at start of each desert day, move marker in indicated direction, record weather. If marker moves off edge, wrap to opposite side. Exception: edges marked with X cannot be crossed — marker stays for that day.",
+      "source": "Crimson Hound printed p.155 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-wounds",
+      "keywords": [
+        "wound",
+        "below zero hp",
+        "negative hp",
+        "dying"
+      ],
+      "categories": [
+        "combat",
+        "character"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "When HP drops below 0, character takes Wound from the appropriate chart (biological or synthetic). Wounds occupy item slots. All slots filled with Wounds = death. Any ability bonus reduced below -10 = death. See table-biological-wounds, table-synthetic-wounds.",
+      "source": "Crimson Hound printed p.30 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-saves-complete",
+      "keywords": [
+        "save",
+        "saves",
+        "saving throw",
+        "dc",
+        "dice challenge",
+        "difficulty",
+        "opposed",
+        "target number",
+        "beat 15",
+        "standard save",
+        "opposed save",
+        "ability check",
+        "resolution",
+        "d20"
+      ],
+      "categories": [
+        "core",
+        "combat",
+        "resolution"
+      ],
+      "contexts": [],
+      "rule": "ALL uncertain outcomes use saves. Standard Save: d20 + ability bonus, beat 15. Natural 20 = auto-success, Natural 1 = auto-fail. Opposed Save: d20 + ability bonus, beat 10 + opponent's ability bonus. Attack Roll: d20 + STR (melee) or DEX (ranged), beat target AV. Special targets: Toxin save (CON) beats 10 + TD size (d6=16, d8=18, d10=20). Disease save (CON) beats 10 + Virulence. Hypergeometric opposed effects beat 10 + caster's INT bonus. ADV: roll 2d20, take better. DIS: roll 2d20, take worse. ADV and DIS cancel. Ability applications: STR (force, grip), DEX (reflexes, balance, climbing, sneaking), CON (endurance, poison, disease), INT (knowledge, technical, deciphering), PSY (psychic resistance, sensing), EGO (social, intimidation, mind control resistance). Do NOT roll when: outcome is certain, no meaningful consequence, or using Mystic Gifts (always work).",
+      "source": "Crimson Hound printed p.27 (certified 2026-06-07)"
+    },
+    {
+      "id": "rule-damage-types",
+      "keywords": [
+        "damage type",
+        "damage types",
+        "kinetic",
+        "beam",
+        "blast",
+        "flame",
+        "electrical damage",
+        "tox",
+        "common damage"
+      ],
+      "categories": [
+        "combat"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Common Damage Types: KINETIC (physical; the default for all weapons unless stated). BEAM (energy beam; deflected by mirrored surfaces, ineffective during sandstorms). BLAST (hits multiple targets; roll to-hit once vs every nearby target's AV, all take equal damage). FLAME (fire damage; ignites flammables; cannot be used underwater or vs submerged foes). ELECTRICAL (double damage to Synthetic creatures, metal-armoured foes, and submerged foes). TOX (Biological targets must CON save vs a Toxin Die). There is NO magical/non-magical damage category in Vaarn.",
+      "source": "Crimson Hound (printed) - VERIFIED 2026-06-07"
+    },
+    {
+      "id": "rule-weapon-tags",
+      "keywords": [
+        "weapon tag",
+        "weapon tags",
+        "weapon property",
+        "anti-paradoxical",
+        "eroding",
+        "psyche-suppressant",
+        "hypergeometric weapon",
+        "vibroactive",
+        "vampiric",
+        "mauling",
+        "corrosive",
+        "nano-edged",
+        "aegis-bearing"
+      ],
+      "categories": [
+        "combat",
+        "equipment"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Weapon tags modify attacks. TYPE-DOUBLING tags (double damage vs a creature type): Anti-Paradoxical->Outsider; Eroding->Mineral/vehicles/structures; Hypergeometric->Hypergeometric; Electrical->Synthetic/metal-armoured/submerged; Psyche-Suppressant->Psychic (and wielder cannot use Mystic Gifts). AV-CONDITIONAL: Mauling (+1 die vs AV<=13, half vs AV>=16); Piercing (+1 die vs AV>=16, half vs AV<=13); Vibroactive (hits as though target unarmoured). DAMAGE-BOOST: Heavy/Strong (double base dmg), Colossal (triple), Nano-edged (+2 dice), Autarch's (+4 dice). AV/DEFENCE: Corrosive/Ultra-Corrosive (degrade AV), Aegis-Bearing (+5 AV), Reflecting (missed attacks hit attacker). BIOLOGICAL-ONLY: Vampiric/Blood-Rapturous (heal from kills), Necrotic (d6 STR), Neurotoxic (CON save vs death). STATUS: Agonising, Entangling, Concussive, Blinding, Freezing, Lithifying, Annihilating. Exotic: Extra-Dimensional (= Hypergeometric + Anti-Paradoxical), Hard Light (0 slots), Psionic (PSY to-hit), Stim-Boosting (+1 action), Heat-Seeking, Indestructible, Polymorphic, Rocket Boosted, Parasitic, Unstable. Full text: docs/CRIMSON_HOUND_DAMAGE_RULES_VERIFIED.md.",
+      "source": "Crimson Hound (printed) - VERIFIED 2026-06-07"
+    }
+  ]
+}

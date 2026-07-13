@@ -1,0 +1,20 @@
+{
+  "//": "TEMPLATE for Windows + WSL (the owner's rig class). /vaarn-start writes this to <CAMPAIGN_DIR>/.mcp.json after replacing the two placeholders. STRIP these '//' comment keys before writing (JSON has no real comments).",
+  "//ENGINE_DIR_WIN": "{{ENGINE_DIR_WIN}} = the engine folder in WINDOWS form, e.g. C:\\path\\to\\rubicon-seven-mcp. Use double backslashes in the JSON string.",
+  "//CAMPAIGN_DIR_WIN": "{{CAMPAIGN_DIR_WIN}} = THIS campaign folder in WINDOWS form, e.g. C:\\my-vaarn-game.",
+  "//WSLENV": "WSLENV is MANDATORY on WSL. Without it RUBICON_CAMPAIGN_DIR does NOT cross the WSL->Windows boundary and the engine binds to the wrong (default sibling) folder.",
+  "mcpServers": {
+    "rubicon-seven": {
+      "command": "{{ENGINE_DIR_WIN}}\\.venv\\Scripts\\python.exe",
+      "args": ["{{ENGINE_DIR_WIN}}\\server.py"],
+      "cwd": "{{ENGINE_DIR_WIN}}",
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "PYTHONUTF8": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "RUBICON_CAMPAIGN_DIR": "{{CAMPAIGN_DIR_WIN}}",
+        "WSLENV": "RUBICON_CAMPAIGN_DIR:PYTHONUNBUFFERED"
+      }
+    }
+  }
+}

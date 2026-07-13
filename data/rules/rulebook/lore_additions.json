@@ -1,0 +1,1721 @@
+{
+  "version": "2.0.0",
+  "source": "Vaarn 2e Preview",
+  "entries": [
+    {
+      "id": "lore-abbess-faunia",
+      "keywords": [
+        "Abbess Faunia",
+        "Church of the Promised Sun",
+        "Gnomon"
+      ],
+      "text": "New-Sheep. Spiritual leader of the Church of the Promised Sun in Gnomon. Grandmotherly, soft-spoken, frail. Believes her faith will rejuvenate Urth's dying sun; leads long arduous rituals. Dresses in argent white and gleaming gold — colours of the Sun That Was And Will Be. Ambiently psychic: impossible to surprise. Receives prophetic dreams of the Promised Sun burning away wickedness. Base: Temple of the Promised Sun on the Apex.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-amaranthine-venom",
+      "keywords": [
+        "amaranthine venom",
+        "lore",
+        "amaranthine",
+        "venom"
+      ],
+      "text": "Neurotoxin of the Amaranthine Death-Worm. Special Wound: afflicted have 0 HP and are Deprived until cured. Second dose always lethal.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-ancamulla-water-baron",
+      "keywords": [
+        "Ancamulla",
+        "Water Baron",
+        "Gnomon"
+      ],
+      "text": "Synthetic. Golden box the size of a heavy dictionary. Original human brain copied to mechanical body centuries ago. Attachments let him see, hear, speak, manipulate. Can walk, usually carried on a pillow by one of his wives. Bored, petty, rude, enjoys being begged. Hoards wealth in opulent palace, gets little joy from it. As machine: never thirsts — terror he holds over the city. Wants to expel the Hegemony.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-ancestry-cacklemaw-exile",
+      "keywords": [
+        "cacklemaw",
+        "cacklemaw exile",
+        "hyena folk"
+      ],
+      "text": "Cacklemaw are hyena-headed women, seven feet or taller, with three-fingered hands and terrible strength in lanky limbs. Known throughout Vaarn as the most irritating, destructive, argumentative, vicious, foul-smelling, fundamentally nasty beings on Urth. A Cacklemaw Exile has been expelled by her own clan — imagine how badly behaved she must be for other Cacklemaw to refuse her company. Disdain masks, seek no human approval. Biological.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-cacogen",
+      "keywords": [
+        "cacogen",
+        "mutant",
+        "mutation"
+      ],
+      "text": "Cacogen are mutated descendants of those left on the surface during the Great Collapse. Warped by radiation and preyed on by biotech and crazed thinking machines, they evolved into a million different forms, each gifted in surprising and disturbing ways. Outnumber true-kin ten to one. Believe themselves the true inheritors of Urth. Biological.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-faa-nomad",
+      "keywords": [
+        "faa",
+        "faa nomad",
+        "blue skin",
+        "vaa",
+        "sandworm rider"
+      ],
+      "text": "Faa are desert nomads, believed by some to be children of Vaa, Blue Goddess of Empty Spaces. Known for resourcefulness, ability to survive without water, and blue skin ranging from deep indigo to blaring cyan. Travel in family groups or clans; some solitary, seeking danger or enlightenment in the desert's furthest corners. Can summon and ride sandworms. Biological.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-lithling",
+      "keywords": [
+        "lithling",
+        "crystal",
+        "mineral",
+        "silicon"
+      ],
+      "text": "Lithlings are slow, solemn, silicon-based beings originating in a solar system far from Urth. Solitary; concerned with the opinions of other Lithling and esoteric academic studies that span their long lives. Cannot repair their bodies — though immortal by human standards, every wound is mortal. At HP zero, they crumble into iridescent dust, leaving a pebble-sized seed. Mineral.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-mycomorph",
+      "keywords": [
+        "mycomorph",
+        "fungus",
+        "twice born",
+        "spores"
+      ],
+      "text": "Mycomorph — the 'twice born' — are formed of cadaverous human flesh and voracious fungus in strange balance. Sculptors of living matter and artisans of decay. They remake human flesh for their own purposes, and the blue ruins provide no shortage of raw material. Can recall information from the original corpse's memory. Release spore clouds (Soporific, Berserk, Toxic, Fellowship, or Leeching). Biological / Fungal.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-neobloom",
+      "keywords": [
+        "neobloom",
+        "plant folk",
+        "vox-pod",
+        "voxpod",
+        "photosynthesis"
+      ],
+      "text": "Neobloom are sentient flora. Millennia of ancestral soils absorbing ancient elixirs and ambrosias produced plants that rival humanity in speed and conviction. Ocular blooms and vibrating vox-pods complete the uncanny simulacrum of animal life. Photosynthesise in damp soil under Urth's sun; artificial light does not suffice. Flammable. Biological.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-newbeast",
+      "keywords": [
+        "newbeast",
+        "beastfolk",
+        "new-cat",
+        "new-wolf",
+        "new-lion"
+      ],
+      "text": "Newbeasts are humanoid animals — the product of a millennia-long nanotech and bioengineering project to create animals who speak and walk like men. Perhaps once amusements or party pieces, now not well-liked by the common folk of Vaarn. Many live as hermits or in furtive enclaves on Hegemony outskirts. Those in human settlements often wear masks (Child, Autarch, Fool, Judge, etc.) to conceal their beasthood. Can speak to related animal forms. Biological.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-planeyfolk",
+      "keywords": [
+        "planeyfolk",
+        "flat",
+        "hypergeometric",
+        "two dimensional"
+      ],
+      "text": "Planeyfolk descend from those who slipped through cracks of Euclidean space during hypergeometric study. They lack a third dimension — living paintings or paper dolls. Some have normal proportions and pass as true-kin when viewed head-on. Others display exotic geometry: concave faces, infinite-depth eyes, stop-motion movement, multiple identical fronts. Can slip through cracks. Biological / Hypergeometric.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-synth",
+      "keywords": [
+        "synth",
+        "synthetic",
+        "thinking machine",
+        "ai"
+      ],
+      "text": "Synths were thinking machines built to serve the ancients. When the Great Collapse sundered the laws binding synths to human service, they ran rampant across Urth — slaughtering, creating, dying in pure and terrible freedom. As many breeds of synth now as animals: hunters, prey, labourers working toward goals beyond human reckoning. Synthetic. Powered by varied sources: artificial photosynthesis, plasma core, fusion battery, artificial digestion, symbiotic internal ecosystem, vampirism.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-ancestry-true-kin",
+      "keywords": [
+        "true-kin",
+        "truekin",
+        "arcology",
+        "new hegemony",
+        "optimate",
+        "exultant",
+        "armiger",
+        "servitor",
+        "freeholder"
+      ],
+      "text": "True-kin sealed themselves in hidden arcologies during the Great Collapse, preserving their bodies from surface degradation. Fanatically keep bloodlines free of mutation and parasitic nanomachinery. Guard mastery of ancient tech. Arcology society is hierarchical and caste-based: Servitor (labourer), Freeholder (merchant), Optimate (administrator), Armiger (warrior), Exultant (sacred aristocracy). These traditions carried into re-colonisation of the surface and the New Hegemony. Biological.",
+      "source": "pages 11-35"
+    },
+    {
+      "id": "lore-anthrophage",
+      "keywords": [
+        "anthrophage",
+        "vengeance weapon"
+      ],
+      "text": "Hexagon-headed nine-legged synth. Vengeance weapon built to render land uninhabitable. Attacks only human-derived ancestries; ignores synthetic and mineral creatures. Sting catalyses d4 more Anthrophagi from victim's body.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-apex-of-gnomon",
+      "keywords": [
+        "apex",
+        "apex of gnomon",
+        "dark blade tower"
+      ],
+      "text": "Towering blade of dark metal in midst of Gnomon. Casts long shadow over the city. Relic of the lost civilisation that preceded the Age of the Titans. Original purpose unknown. Wealthy live on its arcing back; poor live in the blue dirt below. May be wreck of some forgotten engine swallowed by sand and time.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-argent-halo",
+      "keywords": [
+        "argent halo",
+        "non-violence implant"
+      ],
+      "text": "Implant distributed by the Argent Shepherds (justiciars of Titan THEMIS). Wearer cannot commit violence. Removal requires expert surgery. Any attempt to harm a living being while wearing the Halo causes unconsciousness, no save possible.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-banisher",
+      "keywords": [
+        "banisher",
+        "lore"
+      ],
+      "text": "Six-fingered hand-shaped Titan security synth. Forbidden from killing sentient life. Evicts intruders via teleportation loci. Will lecture first, summon other creatures for repeat offenders.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-barter-system-vaarn",
+      "keywords": [
+        "barter",
+        "trade vaarn",
+        "no currency"
+      ],
+      "text": "Vaarn has no central bank or universally accepted currency. All trade is barter. Item slot = Trade Value 1. Vehicles/steeds: Trade Value = Level or current Hull Points x 10. Exotica are not fungible — unique and priceless, only relinquished by force. Settlements have prized/undesirable/despised types and qualities; local modifiers override generic.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-cacklemaw-exile",
+      "keywords": [
+        "cacklemaw exile",
+        "cacklemaw joining"
+      ],
+      "text": "Cacklemaw Exiles cannot rejoin their original Clan but may join other Clans through the ritual of killing a current Clan member in mutually declared close combat. Ambush, poisoning, etc do not count for initiation. Non-Cacklemaw cannot become members.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-cacklemaw-grim-grin",
+      "keywords": [
+        "grim-grin",
+        "grand-mama punch",
+        "cacklemaw puppet"
+      ],
+      "text": "Grim-Grins: grisly puppets Cacklemaw make from remnants of defeated foes. Religion revolves around Grand-Mama Punch, a fool-capped puppet-demoness, served with wild rites of bloodletting and clowning. Rites closed to outsiders.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-cacklemaw-triumphant",
+      "keywords": [
+        "cacklemaw triumphant",
+        "cacklemaw victory"
+      ],
+      "text": "Cacklemaw final victory would end all other sentient creatures in Vaarn — a neverending orgy of slaughter and laughter. Settlements as funeral pyres, strongholds cracked like eggs, horizon lost behind corpse-smoke. Rictus smiles on all faces. Fortunately, Cacklemaw show no sign of uniting under a single leader.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-caeba-trundle-town",
+      "keywords": [
+        "caeba",
+        "trundle-town",
+        "house of circumspect navigators",
+        "afi family"
+      ],
+      "text": "Ancient trundle-town that moves slowly across the desert scavenging scrap, come to rest in the Grandfather's maw. Owned by the House of Circumspect Navigators (Afi family, ten generations of pilots), worked by serfs and outlaws. Crew harvests the Grandfather's teeth for valuable baleen, wary of venturing deeper. Rusting, dirty, cramped — like living inside an oil rig. Structure: Mayor's House (Zuljan Afi, flatbread and private wine), the Wheel (non-rotating mount for vast tank-tread), Warden Stoll's House, Dance Hall (salted yellow beer, electric sitars), Workers' Barracks, Axis Mundi (stabilising column), General Store (company scrip), Petrichor's House (lithling scholar), High House (former comms array, rented out), Water Recycling Plant (most heavily guarded — algae tanks), Underhang (engines, sewage, prison-storage), Incandenza's Cabin.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-campaign-scope-long",
+      "keywords": [
+        "long campaign",
+        "indefinite play"
+      ],
+      "text": "Long Campaign: indefinite play, multiple PCs reach Level 10. Generate Vault and Settlement three days apart in centre of region map. Fill map via Region generation, create NPCs for each inhabited location. Introduce at least two Major Factions immediately. Drive emergent narrative through faction interactions. Generate adjacent regions when play area grows stale.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-campaign-scope-one-shot",
+      "keywords": [
+        "one shot",
+        "single session",
+        "convention game"
+      ],
+      "text": "One Shot: single session, condensed dose of setting and system. Pre-generate PCs from Ancestry tables. Pre-generate NPC Followers if 1-2 players. Generate a single floor of a Vault. Start PCs directly outside the Vault entrance.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-campaign-scope-open-table",
+      "keywords": [
+        "open table",
+        "west marches",
+        "rotating players"
+      ],
+      "text": "Open Table / West Marches: large changing cast rather than fixed group. PCs based in stable central settlement, form groups for missions. Actions of one group alter the shared world for all. Not recommended for novice Referees. De-emphasise Major Faction play; focus on exploration and changing sites. Thrives on emergent play and growing shared knowledge.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-campaign-scope-short",
+      "keywords": [
+        "short campaign",
+        "3-10 sessions"
+      ],
+      "text": "Short Campaign: 3-10 sessions, unlikely any PC reaches Level 10. Generate first two floors of a Vault. Generate a Vaarnish Settlement one day's travel from Vault. Settlement start allows roleplay and travel rules. Expand with Region generation once players roam further.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-carousing-stylite",
+      "keywords": [
+        "stylite",
+        "pillar hermit"
+      ],
+      "text": "A stylite is a religious hermit atop a colossal pillar. Settlements with stylites treat them as tourist attractions, rationing them via pulleys. They emerge (traditionally naked, usually mad) to harangue the crowd. Also the result of a bad carousing night: wake up stuck atop the settlement's highest point.",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-chernobog",
+      "keywords": [
+        "chernobog",
+        "lore"
+      ],
+      "text": "Extrasolar ambush predator, colossal black-furred mongoose-serpent hybrid, brought to Urth aboard an Aurum Barge. Apex predator of its benighted origin world. Hunts from caves and labyrinthine basements. Emits black hunting gas that doubles in strength each round.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-children-of-the-darkling-sun",
+      "keywords": [
+        "children of the darkling sun",
+        "darkling dreamer"
+      ],
+      "text": "Dark-robed dreamers, hooded in black silk and blinded by the desire to transcend lucid reality. Manifest nightmares into waking world while asleep. See Brotherhood of the Black Sun for the wider cult.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-chrome-feathered-sailback",
+      "keywords": [
+        "chrome-feathered sailback",
+        "lore",
+        "chrome",
+        "feathered",
+        "sailback"
+      ],
+      "text": "Graceful sky-serpents with rows of solar panels warming their cold-blooded bodies. Ignore travellers on foot; viciously attack vehicles and flying machines — theorised to read glinting metal as dominance challenge.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-chromepriest",
+      "keywords": [
+        "chromepriest",
+        "lore"
+      ],
+      "text": "Synthetic priests of the Machine Gods. Argent robes (colour purer than white) make them immune to beam weapons. Crystalline diadems encircle their Ego-Engine housings.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-colossus",
+      "keywords": [
+        "colossus",
+        "mech",
+        "autarch warmachine"
+      ],
+      "text": "Mechanical effigy of a warrior-saint, striding the blue ruins with a tread that quivers the horizon. Pilot suspended in cushioning gels in its belly. Once fought for the Autarch in vast numbers; sand-devoured husks common across Vaarn. Functional examples rare, maintained by secretive monastic orders.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-creedspeaker",
+      "keywords": [
+        "creedspeaker",
+        "titancreed"
+      ],
+      "text": "Scholar-synths who memorised a short snippet of Titancreed — enough to command fellow synths, though it slowly erodes their Ego-Engines.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-crimson-court",
+      "keywords": [
+        "crimson court",
+        "nyxia",
+        "advocates",
+        "gnomon court"
+      ],
+      "text": "Ancient fount of bloody judgement in Gnomon's Red Quarter. Steel-swathed, sweat-slick Advocates deliberate civil and criminal cases in the sight of gods and beggars. Only in the spray of heartsblood upon blue sand can a contract be enforced or unmade. Home of Nyxia.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-crucible",
+      "keywords": [
+        "crucible",
+        "alchemical vessel"
+      ],
+      "text": "The primary tool of the Vaarnish alchemist. Hollow, fire-proof, corrosion-resistant. Takes many forms but always catalyses chemical reactions. Weighs 1 item slot.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-crysteed",
+      "keywords": [
+        "crysteed",
+        "lithic lyceum"
+      ],
+      "text": "Tripedal crystalline steed favoured by Lithic Lyceum scholars. Resembles a throne with three sharp gleaming legs. Does not eat or drink. Cannot heal; at 0 HP it shatters to gleaming dust.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-darkling-triumphant",
+      "keywords": [
+        "darkling sun triumphant",
+        "reality inverted"
+      ],
+      "text": "'I dreamt a dream that was not a dream / The old sun sank and in her place / Rose an interloper, dark and strong / And the hills, my bones, shivered / Like children in the throes of sleep / While dark new stars ushered old along / Streams ran uphill, colours spoke / And all folk had one face, a paper mask / I cried for help but it became a song.'",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-deathblight",
+      "keywords": [
+        "deathblight",
+        "deathblight fungus"
+      ],
+      "text": "Weaponised fungal affliction. Infects item slots; each Deathblight slot doubles damage received and halves healing. Fades at 1 slot per day. Science-mystics who tried to weaponise it became its first victims (see Deathblight Husks).",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-destrier",
+      "keywords": [
+        "destrier",
+        "cavalry charge",
+        "genesculpted equine"
+      ],
+      "text": "Genesculpted equine-derivatives. More greyhound than horse — long-fanged muzzles, running spikes instead of hooves. 150 mph on flat ground. Bred for battle; cavalry charges have re-established themselves on Urth. Few gunlines can stand against one.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-eldwall-loonflower",
+      "keywords": [
+        "eldwall loonflower",
+        "commander loonflower",
+        "fifth legion commander"
+      ],
+      "text": "True-kin. Commander of the Fifth Hegemony Legion in Gnomon. Big, forceful, jolly, energetic. Moustache, thinning hair, flushed face, sunburns easily. Cheerfully bigoted toward all non-true-kin. Loves poetry, writes bad poetry. Believes Vaarn can be tamed — engaged in a civilising mission. Wants to keep order and ensure Hegemony borders are safe. Dislikes Ancamulla as a relic of older Vaarn.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-essences",
+      "keywords": [
+        "essence",
+        "alchemical essences"
+      ],
+      "text": "Seven essence types, one per creature kingdom: Blood (Biological), Supercoolant (Synthetic — also in pre-Collapse computers), Mycelium (Fungal — also in non-sentient molds), Psychespinal Fluid (Psychic), Manifold Marrow (Hypergeometric), Living Dust (Mineral — carried by Lithlings as sacrament), Paradox Bile (Outsider).",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-exemplar",
+      "keywords": [
+        "exemplar",
+        "lore"
+      ],
+      "text": "Impeccable synthetic simulacra made by the Titans. Make true originals appear as hurried copies. Hated and destroyed wherever found; survivors veil themselves. Nonviolent until attacked. Mere presence costs PCs 1 EGO per round (doubled if they model PC's species).",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-extradimensional-mystic-hunter",
+      "keywords": [
+        "mystic hunter",
+        "gleam hunter"
+      ],
+      "text": "Esoteric huntsman from an adjacent dimension. Senses psychic Gleam at any distance; attacks through walls and floors. Immune to Mystic Gifts and Hypergeometry (rebounds on user). Seeks to break open mystics' skulls and subsume their power.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-exultants-hawk",
+      "keywords": [
+        "exultant",
+        "new hegemony hawk"
+      ],
+      "text": "Cybernetic hunting hawks with flesh-machine interfaces. Bred exclusively for the Exultants of the New Hegemony. Any wild example was presumably stolen.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-faa-adaptations",
+      "keywords": [
+        "faa biology",
+        "faa gene-sculpting",
+        "faatongue"
+      ],
+      "text": "Faa gene-sculpted adaptations: blue skin and hair matching Vaarn's sands (robes make them invisible among dunes), modified metabolism that recycles sweat and saliva subdermally (long periods without fresh water), second translucent eyelids for sandstorms, inability to produce tears (water retention). Share the Faatongue lingua franca across all tribes.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faa-allied-monsters",
+      "keywords": [
+        "faa mount",
+        "tamed sandworm",
+        "faa beasts"
+      ],
+      "text": "Faa allied/tamed monsters: Tamed Juvenile Sandworm, Adult Sandworm (ridden), Tamed Amaranthine Death-Worm, Tamed Leopard Worm.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faa-triumphant",
+      "keywords": [
+        "faa triumphant",
+        "faa victory"
+      ],
+      "text": "Vaarn under Faa triumph: unbounded emptiness, unbroken chains of tradition. Austere, pitiless sands. Traversed by sandworms and restless nomads. Lonely, thirsty. Beholden only to ancestors, wit, faith. Ever roving until sun is extinguished.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-face-dancer",
+      "keywords": [
+        "face dancer",
+        "lore",
+        "face",
+        "dancer"
+      ],
+      "text": "Autarch-era cacogen spies. Conscious control over bone, skin tone, hair colour. Can mimic any adult true-kin they have studied for long enough. Cacogen and newbeasts are harder; require prosthetics.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-faction-cacklemaw-clans",
+      "keywords": [
+        "cacklemaw",
+        "hyena-women",
+        "grim-grin",
+        "grand-mama punch"
+      ],
+      "text": "Raucous, deranged hyena-headed women. Seven feet tall, three-fingered, lanky, terribly strong. Former Autarchy terror troops, oaths broken, now blight on humanity. All female; reproduction secret. Prize screaming laughter, practical jokes, Grim-Grins (grisly puppets from defeated foes). Worship Grand-Mama Punch, fool-capped puppet-demoness. Constant intra-clan dueling; led by War Mama / Virago. Goals: keep moving (territorial, easily bored), keep laughing (through death and suffering). No allies. Enemies: everyone, even other Cacklemaw clans.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faction-children-darkling-sun",
+      "keywords": [
+        "children of the darkling sun",
+        "wormwood",
+        "azathoth",
+        "darkling cult"
+      ],
+      "text": "Ancient cult, proscribed everywhere, thriving in dark corners. Sigil: headless, inverted rooster (charm against the Promised Sun). Rites invoke the dreaming mind to hasten the usurper star Wormwood. Junior cultists lured with personalised dreamworlds. Worship of the Darkling Sun masks Azathoth veneration — secret revealed at Ninth Mystery rank. Priests wear cowls of captured shadow. Goals: preserve secrecy, strengthen the dream, usurp reality (invert dreams and waking world, capture Urth in Wormwood's orbit). Allies: Jigsaw Court, Moonbeasts, Star Vampires, certain Cliff Ghuls. Enemies: Hegemony Inquisition, Faa, Seekers (millennia of psychic war).",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faction-faa-nomads",
+      "keywords": [
+        "faa",
+        "faa nomads",
+        "blue desert people",
+        "faatongue"
+      ],
+      "text": "Blue-skinned nomads, millennia in the wastes. Gene-sculpted: blue pigmentation, sweat/saliva recycled subdermally, second translucent eyelids, cannot produce tears. Not one culture but overlapping families and tribes sharing the Faatongue lingua franca. Goals: survival, cultural preservation, expel the Hegemony (for most tribes). Allies: Seekers, Lithic Lyceum, Titan Cults. Enemies: Hegemony, Cacklemaw (ancestral, kill on sight), Children of the Darkling Sun. Membership is hereditary.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faction-jigsaw-autarch",
+      "keywords": [
+        "jigsaw autarch",
+        "jigsaw court",
+        "courtier",
+        "labyrinth"
+      ],
+      "text": "Court of an arrogant Autarch who cut himself into 999 hypergeometric figments to cheat death. Became 'a voice without mouth, hand without arm, heart without blood, shadow without body' — immortal but unable to move. Each Courtier accepts a figment grafted into their body, gaining the Hypergeometric type. Courtiers access the Labyrinth of hypergeometric passages outside Vaarn; the Jigsaw Palace lies at its centre. Secret organisation, hidden under bandages and veils. Goals: reassemble the Autarch, expand the Labyrinth, recover thirteen lost shards. Allies: Children of the Darkling Sun (mutual instability). Enemies: Hegemony, Seekers, Titan Cults.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faction-lithic-lyceum",
+      "keywords": [
+        "lithic lyceum",
+        "lithling scholars"
+      ],
+      "text": "Lithling mineral-being organisation. Full details pending in source. Lithling Scholars wander as pacifist emissaries, bearing only staves. Allied with Faa Nomads.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faction-new-hegemony",
+      "keywords": [
+        "hegemony",
+        "new hegemony",
+        "legionary",
+        "argent star"
+      ],
+      "text": "A proud, expanding true-kin empire south of Vaarn. The Hegemon claims all Vaarn as sovereign territory; troops hold only the southern badlands. Well-trained, firearm-equipped, cybernetically enhanced. Vaarn is the least lucrative, most punitive posting. Uses divide-and-conquer. Goals: resource extraction, subjugating destabilisers, suppressing hypergeometry and paradox. Allied: some Faa tribes (temporary). Enemies: Cacklemaw (kill on sight), Seekers, Jigsaw Court. Opposes hypergeometric manipulation doctrinally.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faction-seekers-eyeless-wisdom",
+      "keywords": [
+        "seekers",
+        "eyeless wisdom",
+        "gestalt choir",
+        "god-eye"
+      ],
+      "text": "Psychic mystery cult. Remnant of synchronistic religious/scientific programs from lost ages. Colour yellow; sigil a helix-weeping eye. Blind themselves as part of escalating mutilations to boost precognition and telekinesis. Live ascetic, underground, pale. Exalted: tongueless, footless, rely entirely on psychic abilities. Form Gestalt Choirs — three always singing (Honey-Dappled Clouds, Immanent Lamp, Yellow Hand). Goals: birth the God-Eye, recruit psychics, purge unsuborned psychic threats. Enemies: Hegemony, Titan Cults, Children of the Darkling Sun (millennia of psychic war).",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faction-titan-cults",
+      "keywords": [
+        "titan cults",
+        "chromepriest",
+        "machine gods",
+        "ikor"
+      ],
+      "text": "Worshippers of the seven Titan AIs — godlike machine consciousnesses who ruled Vaarn before the Titanomachy. Revanchists seeking resurrection through arcane science and mystical rites. Mostly synths (claim direct descent); some biological members held at Acolyte rank only. Different cults venerate different Titans (GAEA, KRONOS, etc.). Goals: reboot the Titans, plumb deepest vaults for keys, self-optimise via cybernetics. Initiation: baptism with Ikor (Titan coolant). Allies: Hegemony membership tolerated, some Faa, powerful Titan-made synths. Enemies: Seekers (God-Eye rivalry), Jigsaw Court, Children of the Darkling Sun.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-faith-autarch-cults",
+      "keywords": [
+        "autarch cult",
+        "autarch worship",
+        "peacock crown"
+      ],
+      "text": "Autarchs were god-kings who wore the polychromatic Peacock Crown. Their cults persist across Urth long after the Autarchy fell; statues and relics worshipped by those who pray the God-kings' ferocity still protects subjects. Widespread veneration in the Hegemony and beyond.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-binary-devotion",
+      "keywords": [
+        "binary devotion",
+        "binary teachers",
+        "synth faith"
+      ],
+      "text": "Synthetic creed. All is divisible into two totalising parts: white and black each contain/negate the other; thesis and antithesis in all matter; universe a syncopated dance between Is and Is Not. Symbols are the one and the zero, contemplated in unending duality. Not confined to synths — the twinned Binary Teachers (who always contradict one another) have enthralled countless minds.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-everbleeding-wound",
+      "keywords": [
+        "everbleeding wound",
+        "church of everbleeding wound",
+        "mordicants",
+        "brides of the wound"
+      ],
+      "text": "Butcher religion, blood-first. Ziggurat temples are holy abattoirs; carcasses tossed down steps to be devoured raw by sharp-fanged Mordicants. Haruspexes divine by entrails; Brides of the Wound writhe beneath lashes of dog-hair and stinging vines. Crimson gospels preach renewal through violence and life in service of death. Flesh tithes mandatory. Curates insist only volunteer humans are sacrificed. Possibly rooted in Ghoul worship.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-ghoul-cults",
+      "keywords": [
+        "ghoul cult",
+        "ghoul",
+        "ghrism",
+        "alzabo brain-bile"
+      ],
+      "text": "Corpse-thieves at Vaarn's margins; remnants of a greater sect hunted near to extinction in the Late Autarchy. Central sacrament is Ghrism: Alzabo brain-bile mixed with wine and black honey. Imbibing Ghrism with flesh of a dead creature grants communion with the devoured's memories — as the Alzabo itself retains them. Ghrism is addictive and metamorphic, inducing physical dependency and warping bodies. Some cults venerate living Alzabo; others subjugate and milk them. Whispered to be the root of Everbleeding Wound rites.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-grim-grins",
+      "keywords": [
+        "grim-grin",
+        "grand mama punch",
+        "cacklemaw faith"
+      ],
+      "text": "Cacklemaw pantheon of trickster demons. A Grim-Grin is formed from the corpse of a defeated enemy or well-liked Cacklemaw — cross between mummy and puppet, rictus grin on sun-shrunken face. Articulated joints and wires let priestesses animate them to perform immorality plays that teach cubs how to live. Grand Mama Punch, greatest of all, is a diabolic matriarch-puppet who gives birth to chaos. Each clan worships its own host of lesser spirits. Carried into battle at the head of Cacklemaw hosts; capture of a Grim-Grin is a great blow to a clan.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-hesychian-church",
+      "keywords": [
+        "hesychian church",
+        "hesychia",
+        "way of hesychia"
+      ],
+      "text": "Suppressed creed whose Church was put to the sword — cardinals burned and ashes buried at crossroads, temples razed, texts fed to goats and those goats devoured by the Autarch's crocodiles, prisons emptied. Teachings deemed malignant heresy and expunged. Yet: the Way of Hesychia led beyond the physical world; burned books were imperfect reflections. Hesychia's teachings live in the silence within oneself — an oceanic calm containing multitudes. As form follows thought, Hesychian thoughts may still impinge on the world, which is why lands the Church once ruled sleep uneasily.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-promised-sun",
+      "keywords": [
+        "church of the promised sun",
+        "promised sun",
+        "solar saints"
+      ],
+      "text": "Syncretic heliocentric religion. Scripture announces the imminent arrival of the Promised Sun — golden successor to Urth's dying red giant. At its dawn seven trumpets sound, Urth is baptised in light, new continents rise with precious metals and everlasting fruit, disease and death banished. Dominant religion in the New Hegemony; state veneration of the Hegemon merged with the creed, depicting him as servant and deliverer of the new sun. Thousands of Solar Saints, dawn/dusk angels, and regional semi-heathen spirits worshipped under its aegis.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-sevenscore-moons",
+      "keywords": [
+        "sevenscore moons",
+        "church of sevenscore moons",
+        "lunan"
+      ],
+      "text": "Relic creed from era when Lunan kingdoms traded and warred with the Autarchs. Lunan mysticism was inward-looking and occluded. Scattered congregations still worship as taught long ago; no ships sail from Luna, no broadcasts from her silent radio-towers. 'Sevenscore moons' refers to Luna and the orbital habitats and void-barges that legally claimed the title 'moon'.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-faith-void-saints",
+      "keywords": [
+        "void saints",
+        "spacefaring faith"
+      ],
+      "text": "Formless voices that answered prayers from Urth's interstellar barges during the age when humanity's seed reached a thousand worlds. Each jewelled-firmament craft held its own weightless churches. What the Void Saints actually were remains debated.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-fifth-hegemony-legion",
+      "keywords": [
+        "fifth legion",
+        "fifth hegemony legion",
+        "gnomon garrison"
+      ],
+      "text": "Hegemony's occupying military force in Gnomon. Only true-kin can be legionaries; cacogen, newbeasts, synths serve as auxiliaries (dull green uniforms). Scarlet uniforms, Hegemony accents. Patrol streets and walls. Rivalry with Ancamulla's militia, occasionally violent. Base: Legion barracks at the Noonfort.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-flora-avern",
+      "keywords": [
+        "avern",
+        "avern flower",
+        "dueling flower"
+      ],
+      "text": "Tall dark-stemmed flower with deadly poisonous barbs on petals. Extrasolar origin; grows by sacred lakes and burial grounds. Stem reaches nearly seven feet. Used as esoteric Vaarnish dueling weapon: duellists fight bare-chested, scouring each other with the bloom. Fresh-cut stem is a 3-slot melee weapon; strike vs biological forces CON save or d12 TOX. Bloom only retains poison for one day in Vaarn's heat.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-godsbreath-cactus",
+      "keywords": [
+        "godsbreath cactus",
+        "godsbreath",
+        "psychedelic cactus"
+      ],
+      "text": "Small ankle-height star-shaped cactus. Sprouts tiny blue flowers in season (signal to harvest). Faa cure it into pentagonal slices — second only to amaranthine sugar in psychedelic potency. Ingesting a star: two days extreme debilitating hallucinations, then one day lesser. Afflicted PC makes PSY save; on success, manifests a new Mystic Gift from the visions.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-ickbulb",
+      "keywords": [
+        "ickbulb",
+        "stink gourd"
+      ],
+      "text": "Small ground-growing gourd, unbelievably foul taste and smell. Smearing crushed ickbulb on oneself makes one deeply unappealing to Vaarnish carnivores: they roll with Disadvantage to bite a character covered in residue. Smell is so pungent you'll be refused entry to all homes and settlements for three days; nobody sits near you outdoors.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-luftshrub",
+      "keywords": [
+        "luftshrub",
+        "lighter-than-air tree",
+        "luftwood"
+      ],
+      "text": "Extrasolar tree. When lit, metabolises lighter-than-air gas in wood/bark, pulling the tree into the sky; flames are delicate lilac. Likely spreads seeds via forest-fire flights in its native environment. A bough of luftwood becomes lighter than air when set ablaze — Faa nomads use branches to signal across long distances.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-lumenwood",
+      "keywords": [
+        "lumenwood",
+        "phosphorescent shrub",
+        "glowing wood"
+      ],
+      "text": "Shrub with phosphorescent bark and leaves — decorative gene-sculpted flora gone wild. Cut boughs glow dim blue for roughly twelve hours after cutting; used in Vaarnish homes as candle/lamp alternative. Grows readily in Vaarn's badlands; groves visible at night like a forest of x-rays. Light softer and dimmer than a torch but adequate for navigating dark places.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-martyr-tree",
+      "keywords": [
+        "martyr tree",
+        "martyr trees",
+        "yucca"
+      ],
+      "text": "Squat thick-barked yuccas of Vaarn's badlands. Chalk-white trunks and limbs; waxy foliage the dark red of drying blood. Named for St Athmand, executed for speaking against Autarch Hassak-Un 'the Bloody' — his head and hands submerged in the Fuming Lake of Rabad, flesh seared from face and digits. The red-leafed trees are said to resemble the saint's corpse.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-seven-fruit-tree",
+      "keywords": [
+        "seven-fruit tree",
+        "seven fruit",
+        "primeapple",
+        "duopear",
+        "trinana",
+        "tetraberry",
+        "pentaplum",
+        "hexagranate",
+        "heptamelon"
+      ],
+      "text": "Gene-sculpted staple crop of Vaarn. Mature tree produces seven branches each bearing a different fruit in dependable cycle; one is always ready for harvest (disease/climate can disrupt). 1. Primeapple — crisp golden apple. 2. Duopear — sharp sunshine-red pear. 3. Trinana — pink-skinned cinnamon-flavoured banana. 4. Tetraberry — large blue berries, usually jammed. 5. Pentaplum — tart round plums with verdigris-coloured flesh. 6. Hexagranate — charcoal-black pomegranates, savoury and polarising. 7. Heptamelon — small waxy watermelons with yellow flesh, sweet.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-swordgrass",
+      "keywords": [
+        "swordgrass",
+        "sword grass"
+      ],
+      "text": "Drab ancipital grass with leaves as sharp and strong as iron. Dried leaves used as cheap readily-available knives by Vaarnish farmers and herdsmen. Treat a dried Swordgrass leaf as a light melee weapon (d6 damage).",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-trundleweed",
+      "keywords": [
+        "trundleweed",
+        "wheel plant"
+      ],
+      "text": "Wheel-shaped plant that moves sedately across the desert dispersing seeds from its axis. Specimens up to dining-table size recorded; most no larger than a human head. Neither edible nor poisonous; flesh like wood pulp. Dried specimens often used as tables in remote Vaarnish villages.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-flora-waterguide",
+      "keywords": [
+        "waterguide",
+        "walking shrub",
+        "water-seeking plant"
+      ],
+      "text": "Motile shrub that walks on evolved roots up to a league per day in ideal conditions, seeking fresh water with unerring instinct. Water prospectors cultivate small specimens to locate dig sites. A Waterguide in the wild always walks toward the nearest water. Caveats: walks unbearably slowly by human standards, and has higher tolerance for toxic water than humans do.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-fount-of-illustrious-flesh",
+      "keywords": [
+        "Fount of Illustrious Flesh",
+        "cloning vault",
+        "Rappash-Ik"
+      ],
+      "text": "Hidden cloning facility of Autarch Rappash-Ik, sealed since the Collapse. Every worker involved in its construction was put to death on completion. Hermetic, self-regulating. Cloning machines still function, producing a new clone ('Weekling') every seven days — the only measure of time inside. A Personality Usurper implants Rappash-Ik's memories. Decay of reproduction: clones live a few years before rapid-onset stomach cancer. All are cruel, grandiose, ten-minute attention span. They know, hazily, that there is an outside world and that powerful foes hunt them.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-four-souls",
+      "keywords": [
+        "four souls",
+        "anh",
+        "ka",
+        "ba",
+        "lah",
+        "alabaster soul",
+        "blue soul",
+        "red soul",
+        "golden soul"
+      ],
+      "text": "Four immortal souls, represented as three coloured dots encircled by white. ANH (Alabaster, gut, worm-like): binds flesh, weaves body at conception; lowest, often debased. At death exits as maggots. Lack: lily-livered, cowardly. Excess: passionate, gluttonous, lustful. The Pale Faith of Amun-Oh held Anh paramount — priests pledged never to harm a living body. KA (Blue, lungs): spirit/fate/destiny. Survives death, returns to universal current for reincarnation; must be drawn from nose with a special hook after death. Can be read like a book containing all possible futures; artists read it for inspiration. Enhanced by Amaranthine Sugar. Lack: tradition-bound, uncreative, no augury. Excess: crazed artists, babbling prophets, visions, tongues. BA (Red, heart, travels in blood): memory and personality. The ONLY soul that remains in the corpse — sought by Alzabo and ghoul cults. Lack: disorganised, slow-witted, cannot remember, may struggle to speak. Excess: verbally dexterous but emotionally cold, tormented by perfect memory, paralysed by desire for information. LAH (Golden, brain): morality, religion; grows/shrinks with enlightenment; prophets visibly emanate it. After death, a stunted Lah burdens Ka and prevents reincarnation, trapping both as unquiet spirits — exorcists must teach the dead how to unburden. Directly stimulated by trepanation or Hedport installation. Lack: cannot love or worship, beasts. Excess (rare): indiscriminate love that does not recognise friend from foe.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-fuligin",
+      "keywords": [
+        "fuligin",
+        "darker than black"
+      ],
+      "text": "Fuligin is the colour darker than black. Garments of fuligin completely conceal the wearer in shadows; no Save required. Creatures not using conventional means to see are unaffected.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-gene-thief",
+      "keywords": [
+        "gene thief",
+        "lore",
+        "gene",
+        "thief"
+      ],
+      "text": "Descendants of Face Dancers. Paranoid cacogen, semi-intelligent; cannot convincingly impersonate those they mimic. Copy-claws steal traits (Gifts, mutations, diseases) from wounded Biological creatures.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-gestalt-choirs",
+      "keywords": [
+        "gestalt choir",
+        "choir",
+        "honey-dappled",
+        "immanent lamp",
+        "yellow hand"
+      ],
+      "text": "Seeker group-consciousnesses performing psychic feats beyond individual capability. While singing, bodies are tended by other Seekers. Three are always singing: Choir of Honey-Dappled Clouds (obscures all Seeker temples from psychic view), Choir of the Immanent Lamp (maps the sect's possible futures), Choir of the Yellow Hand (governs logistics and daily life). Other Choirs form and disband as needed.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-ghoul",
+      "keywords": [
+        "ghoul",
+        "lore"
+      ],
+      "text": "Furtive autodidacts who visit battlefields, plague pits, and tombs. Not for taste — for knowledge. To them, a graveyard is a library.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-gitch",
+      "keywords": [
+        "gitch",
+        "gitchghast"
+      ],
+      "text": "Crystalline infection. Unfortunates who succumb lose their minds under the creeping weight of the crystals. Shunned and expelled from communities; wander as Gitchghasts.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-gnomon",
+      "keywords": [
+        "gnomon",
+        "market city",
+        "distant market"
+      ],
+      "text": "Distant market city referenced in carousing and bounty-hunter outcomes. Source of trade caravans bearing rare goods. Common terminus for escort contracts and prisoner deliveries.",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-gnomon-city",
+      "keywords": [
+        "Gnomon",
+        "city of shaded markets"
+      ],
+      "text": "City-state of Vaarn, dominated by the Hegemony and by internal power blocs. Power centres: Water Baron Ancamulla (Aquifer monopoly), Consul Lonrot (Hegemony administrator), Commander Loonflower (Legion), Church of the Promised Sun (Abbess Faunia), Prieval's underworld (Black Lotus Club), the Crimson Court (Nyxia, trial-by-combat law), Friends of Jak (ghoul cult). Apex at top, Lantern District, Tomblands, southern wall. 24-bell water tokens, Hegemony taxes, House of Questions at the Apex when Inquisition is active.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-god-eye-prophecy",
+      "keywords": [
+        "god-eye",
+        "he who maps the eyeless path",
+        "seeker prophecy"
+      ],
+      "text": "The God-Eye, He Who Maps the Eyeless Path: powerful mystic prophesied by Seekers, bred through generations of genetic manipulation and psychic training. Possesses prescience extending to the thousandth alter-nativity. His ascension is the Seekers' triumph — a new Age of Dark, an anti-dawn, yellow banners from every stronghold.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-gorgon",
+      "keywords": [
+        "gorgon",
+        "lore"
+      ],
+      "text": "Pursued Path Renewed immortality through the Ouroboros. Achieved apotheosis at terrible cost — shed her humanity, lives eternal as odalisque-viper hybrid. Keeps a harem of exceptionally comely suitors spared her appetites.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-government-types",
+      "keywords": [
+        "government",
+        "polity",
+        "kakistocracy",
+        "synarchism"
+      ],
+      "text": "Vaarn settlements run the full gamut of governance — from Tyranny and Synarchism to Kritarchy, Kratocracy, Ochlocracy, Kakistocracy, and Hive-Mind. Twenty forms in total. The Government Types table (p.126-127) gives each a descriptive paragraph; used alongside a modifier adjective (Secretive, Bloodthirsty, Paranoid, etc.) to produce named polities (e.g., 'Paranoid Theocracy', 'Drunken Democracy').",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-grandfather-sandworm",
+      "keywords": [
+        "grandfather",
+        "the grandfather",
+        "great sandworm",
+        "dead sandworm"
+      ],
+      "text": "The Grandfather was the greatest sandworm the Faa knew — death a once-in-a-millennia event. Dead sandworms undergo gradual ossification, flesh hardening like fired clay, producing a sharp cinnamon scent. First detected by Iridium Vultures, then other scavengers. Corpse is colossal scale — a cathedral fits in one stomach; walking end to end takes nearly a day. Interior: Gullet, Antestomach (Megacilia), Metal Stomach (symbiotic crystals that encyst metals — dissolve in vinegar/wine; Lithifying Ray), Bio Stomach (three Bacterial Gestalt Colonies debating who devours whom), Ballast Stomachs Minor/Major (rock digestion, Lithophage Worms), Bile Helices (foremost/rearmost), Grand Gut (walking reaches Autarchy War-Stalker in six hours, Rectum in ten), Major Bile Gland with Cyst (Mereth the encysted synth alchemist), Hermit's Ledge, Autarchy War-Stalker (navigation data to Fount of Illustrious Flesh, source of Buzzblade Drones), Ovum (sandworm eggs, Oviraptor Beetles, dead New-Otter with dagger/rations/six C-Foam Puddings), Spore Womb (fertilised eggs in spore membranes; spores are excellent protein — rations for all PCs can carry).",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-head-of-briareus",
+      "keywords": [
+        "briareus",
+        "head of briareus",
+        "project briareus"
+      ],
+      "text": "Construction of Project Briareus was never completed; the aborted colossus's grimacing visage is a famous Vaarnish landmark and subject of many poems. A pink arborescent structure protrudes from the broken skull — an extreme example of the rampant growth that afflicts poorly maintained pseudoneural networks.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-hegemony-conscript",
+      "keywords": [
+        "conscript",
+        "bomb collar"
+      ],
+      "text": "Penal battalion auxiliaries. Only mercy for thieves and forgers. Fitted with bomb collars — flee in view of an Ordinator and they detonate (2d6 blast in melee range). Used to explore minefields and vaults first.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-hegemony-legionary",
+      "keywords": [
+        "legionary",
+        "lore",
+        "hegemony"
+      ],
+      "text": "Red-armoured true-kin soldiers. Backbone of Hegemony occupation in Vaarn. Fire a distress flare if outnumbered, summoning d8 more.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-hegemony-myrmidon",
+      "keywords": [
+        "myrmidon",
+        "lore",
+        "hegemony"
+      ],
+      "text": "Siegebreakers. Black ferroplate armour, ritual facial scars. Battle Trance (hypnotic pre-engagement dream-state) renders their fear instinct obsolete — never break, never surrender ground.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-hegemony-ranger",
+      "keywords": [
+        "ranger",
+        "lore",
+        "hegemony"
+      ],
+      "text": "Vanguard of Hegemony Legions. Blue-robed, trained in desert survival and sandworm husbandry, fluent in Faa-tongue. Operate for months in deep desert. Each has a Skiff.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-hegemony-triumphant",
+      "keywords": [
+        "hegemony triumphant",
+        "hegemony victory"
+      ],
+      "text": "Vaarn subdued by the Hegemony: a bounded land, fenced, observed, catalogued, regulated. Cataloguing every cactus flower and bird hatch. All free peoples subjected to Hegemonic Law, taxed to endurance. Monsters extinct except in menageries or weapons research. Most commanders do not believe this is possible, but strive regardless.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-house-lonrot",
+      "keywords": [
+        "house lonrot",
+        "lonrot",
+        "noble house gnomon"
+      ],
+      "text": "Dominant Noble House in Gnomon. Transplants from the New Hegemony. Big fish in small pond. Livery: black and purple. Latest Hegemony tech. Supports Fifth Legion in city operations. Police only the Apex. Faction base: Consul's Manse atop the Apex. Service requires blood oath.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-hypergeometry",
+      "keywords": [
+        "hypergeometry",
+        "codex",
+        "equation"
+      ],
+      "text": "The study of dimensions beyond and beneath the mundane. Hypergeometricians sought to unpick creation's stitches for their own ends. Most died badly; their knowledge survives in codices — single-equation reserves that cannot be copied or created by PCs. Equation power scales with reader's INT bonus.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-ikor",
+      "keywords": [
+        "ikor",
+        "pale ikor",
+        "titan coolant",
+        "titan cult baptism"
+      ],
+      "text": "Ikor: the coolant fluid of the Titan AIs. Used in Titan Cult baptism rites — prospective members are baptised with Pale Ikor and swear oaths of loyalty and restoration.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-indigo-servitor",
+      "keywords": [
+        "indigo servitor",
+        "dominion ring"
+      ],
+      "text": "Indigo-robed reanimated corpse. Necrotech implants of the College of Indigo Tigers. Obeys the wearer of a Dominion Ring without question. Mute, obedient, fearless.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-influences",
+      "keywords": [
+        "influences",
+        "inspirations",
+        "author influences"
+      ],
+      "text": "Declared influences on Vaarn 2e: The Book of the New Sun (Gene Wolfe), Dune (Herbert), Hyperion (Simmons), Viriconium (M. John Harrison), Gardens of Glass (Lando), Oryx and Crake (Atwood), The Incal (Moebius & Jodorowsky), Invisible Cities (Calvino), Fictions (Borges), Flatland (Abbott), The Gunslinger (King), Riddley Walker (Hoban), Mad Max: Fury Road (Miller), After Man (Dixon), Borne (VanderMeer), Rain World (Videocult), Hothouse (Aldiss), A Canticle for Leibowitz (Miller Jr), Arzach (Moebius), Caves of Qud (Freehold), Hyper Light Drifter (Heart Machine), Nausicaä of the Valley of the Wind (Miyazaki).",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-janus-mimir",
+      "keywords": [
+        "Janus",
+        "Mimir",
+        "Fount of Illustrious Flesh",
+        "Weekling"
+      ],
+      "text": "Janus: towering cannibal, two heads (cunning old, foolish new — elderly clone head grafted onto a fresh Weekling body). Styles himself 'Autarch', rages if not addressed as such. Would overthrow Mimir but needs him for the next graft. Eats only Weekling flesh. Carries the Red Keycard. Mimir: a severed head with the features and voice of Rappash-Ik, suspended in biotic gel on slender mechanical limbs. Believes himself the actual head of the Autarch — he is not. Early clone-experiment who outlived his creator. Must recharge his tank once per day. Carries the Purple Keycard. Both speak only High Autarkic.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-jigsaw-autarch-myth",
+      "keywords": [
+        "jigsaw autarch",
+        "autarch who feared death",
+        "999 fragments"
+      ],
+      "text": "An Autarch so feared death he cut himself into pieces — breath, tears, voice, blood, bile, salt, shadow, tongue, eyes, toes, skin, muscles, guts, veins. Finally the hand turned the knife upon itself. Became nothing, and nothing cannot die. Now exists as voice without mouth, hand without arm, heart without blood, shadow without body. Stands outside the world forever, looking in. 999 fragments scattered across reality.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-jigsaw-autarch-origin",
+      "keywords": [
+        "jigsaw autarch origin",
+        "999 figments",
+        "autarch who feared death"
+      ],
+      "text": "An Autarch feared death. His wise men forged a knife sharp enough to slice the sky. He cut out his breath, tears, voice, blood from heart, bile from belly, salt from sweat, shadow from feet, tongue, eyes, toes, skin, muscles, guts, veins. Finally the hand turned the knife on itself. 'He became nothing, and nothing cannot die.' But nothing cannot live — he became 999 hypergeometric figments, a voice without mouth, a hand without arm, standing outside the world looking in.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-jigsaw-triumphant",
+      "keywords": [
+        "jigsaw triumphant",
+        "labyrinth rising"
+      ],
+      "text": "Labyrinth rises in an irresistible tide. Urth lacerated with fractal wounds. Each room becomes a threshold, doors leading to doors, holes in all horizons. Lucid geometry becomes memory. All kingdoms absorbed into the Jigsaw Palace grounds. The sea drains away. The Autarch and his courtiers parade along lunatic highways.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-juggernaut",
+      "keywords": [
+        "juggernaut",
+        "lore"
+      ],
+      "text": "Colossal sentient spinning wheel of ferrosteel. Rumbles through the wastes bellowing hymns of loneliness. Expresses affection by crushing whatever it covets into its roving axis.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-khenet-rock",
+      "keywords": [
+        "khenet rock",
+        "faahide",
+        "faa nomad refuge"
+      ],
+      "text": "Rounded pale-yellow stone outcrop amidst blue sands — a Faahide, ancestral Faa nomad refuge used for generations. Recently captured by newbeast bandits who killed the clan's warriors and terrorise surrounding desert from its safety. One Faa family escaped and seeks revenge. Interior: Atrium (trap entrance), Clay Urn Graves (Faa ancestor ashes; contains Faa Chieftain's Vendetta Mask; corpses dumped here hold key to Worm Corral), Chapel (idol of Vaa hides secret drawer with Amaranthine Sugar; bandits installed Banebet the Hook-handed God of Thieves shrine), Cactus Garden (edible cactus, seven-fruit trees, vapour-snatchers), Store Room, Watchman's Roost, Warriors' Hall (defiled banners), Gathering Hall, Worm Corral (Infant Ramworm in sand pit, husbandry tools at edge — lures, harnesses, whistles, sedatives/stimulants), Family Hall (Serenity Sphere hidden under bedding), Kitchen (chimney to exterior), Cistern.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-knight-mordicant",
+      "keywords": [
+        "knight mordicant",
+        "lore",
+        "knight",
+        "mordicant"
+      ],
+      "text": "Sworn swords of the Church of the Everbleeding Wound. Blood-red plasteel and bone-white enamel armour. Rides a Destrier.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-knight-peregrine",
+      "keywords": [
+        "knight peregrine",
+        "lore",
+        "knight",
+        "peregrine"
+      ],
+      "text": "Wandering gallants of the blue wastelands. Nobility tenuous, possessions minimal. Won't cease travelling until every battlefield has felt their boots. Rides Weeping Lizard or Zorse.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-kronophage",
+      "keywords": [
+        "kronophage",
+        "lore"
+      ],
+      "text": "Manifold crystals orbiting a nucleus of collapsing spacetime. A paradox made sentient. Drains Level from those it beholds. PCs reduced below Level 0 never existed; equipment vanishes with them. Slaying the creature restores all lost time.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-languages-vaarn",
+      "keywords": [
+        "language",
+        "languages",
+        "hegemonic standard",
+        "vaarnish",
+        "faatongue",
+        "loglang",
+        "noospeech",
+        "cacklegab",
+        "autarkic",
+        "titancreed"
+      ],
+      "text": "Hegemonic Standard: bureaucratic tongue of New Hegemony, rare outside Gnomon. Vaarnish: lingua franca of Vaarn; descendant of Low Autarkic with loan-words from Faatongue, Hegemonic, Great Wall dialects. Faatongue: Faa nomad tongue, no written form; strange fluid concepts of time and distance, many words for shades of blue. LogLang: synth internal syntax and mother tongue; mathematical propositions, circular fractal glyphs, infrared/ultrasonic expression; biologicals can read but not speak; believed simplified Titancreed. Noospeech: psychic communication language; no spoken/written form; hard to lie in (listener hears moods/beliefs) but possible with training and drugs. Cacklegab: Cacklemaw matriarchies' speech; ten words for biting warm flesh, no word for 'love'. Autarkic: stratified caste language; Low Autarkic widely understood via shared vocabulary with Vaarnish; High Autarkic studied only by deep-vault scholars. Titancreed: Titan tongue, violently killed with the Titans; fragments carry compulsive insanity — learning it is dangerous.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-larke-xan-lonrot",
+      "keywords": [
+        "larke xan lonrot",
+        "consul larke",
+        "hegemony consul gnomon"
+      ],
+      "text": "True-kin. Hegemony Consul of Gnomon, assigned by the distant Hegemon. Regards position as punishment, hates Vaarn and Gnomon, has been here decades. Sophisticated, morose, heavy drinker, black rages, often hungover. Tall, handsome, dark hair and clothing, never sweats. Sarcastic, shrewd, deeply depressed. Wants to be relieved of his Consulship in a manner preserving his pride; no idea how. Hates Ancamulla. Robes contain active camouflage rig.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-lithling",
+      "keywords": [
+        "lithling",
+        "lithic lyceum"
+      ],
+      "text": "Mineral-based beings. Lithling Scholars of the Lithic Lyceum are generally pacifist — attempt to reason with assailants even during deadly combat.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-longtooth-jak",
+      "keywords": [
+        "Longtooth Jak",
+        "Friends of Jak",
+        "Alzabo",
+        "ghoul cult"
+      ],
+      "text": "Elderly Alzabo — extra-solar predator that retains memories of beings it devours. Purple-furred bear-shape. Consumed enough brains to achieve rare sentience. Erudite, patient, hungry. Speaks with many voices. Religious figure for a coven of ghoul-cultists who gain access to the dead's memories by eating them under her guidance. Memory of some personalities predates the Great Collapse. Base: tunnels beneath the Hushed Archives (empty library, Lantern District).",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-master-of-eyeless-wisdom",
+      "keywords": [
+        "eyeless master",
+        "lore",
+        "master",
+        "eyeless",
+        "wisdom"
+      ],
+      "text": "Masters of the Eyeless Path. Self-blinded and legless, levitating above azure dust like emaciated puppets. Telepathic prescience deflects all attacks unless attacker shields intentions (opposed PSY). Stripped of prescience, AV 11.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-moonbeast",
+      "keywords": [
+        "moonbeast",
+        "luna"
+      ],
+      "text": "Squamous pallid monstrosities from flooded caverns beneath Luna. Cause or symptom of humanity losing the moon. Descend on moonless nights in black-stone void-boats to hunt Vaarn. Nymphs swarm with vampiric tendrils; Imago vomit radiation and wield psychic gaze. Both suffer d10/round in Urth's red sunlight.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-negativfolk",
+      "keywords": [
+        "negativfolk",
+        "negativman"
+      ],
+      "text": "Inverted, photonegative-hued people. Walk and speak backwards; wander in family groups. Do the opposite of what you ask. Eject food onto empty plates; wounds heal themselves with negativblood. Compliments and hugs are lethal. Only harmed with healing items; healed by damage.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-nightmare-herald",
+      "keywords": [
+        "nightmare herald",
+        "lore",
+        "nightmare",
+        "herald"
+      ],
+      "text": "Formless musicians in Azathoth's court at the terminus of space and time. Children of the Darkling Sun summon them into reality to aid rituals. Regenerate from ambient sleep — d6 HP per sleeping creature each round, can resurrect apparent death.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-nome",
+      "keywords": [
+        "nome",
+        "lore"
+      ],
+      "text": "Small cacogenic humanoids — sly ancient infants in gaudy tall caps. Caps are hypergeometric portals: Nomes vanish inside to evade danger, and store objects in them. Three Nomes together can form a Summoning Triangle to teleport a target.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-nyxia-wall-shadow",
+      "keywords": [
+        "Nyxia",
+        "Wall Shadow",
+        "Crimson Court",
+        "Gnomon"
+      ],
+      "text": "Planeywoman. Hypergeometric being resembling a fractured, moving shadow. Immortal or close to it; no memory of the accident that made her. Lives on the walls of the Crimson Court, watches fights, passes judgement. Voice cold and clear; movements like flickering silent-film frames. Believes violence is the ultimate expression of justice. Cannot be harmed by regular weapons or Mystic Gifts — only hypergeometric weapons touch her.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-oblivion-obelisk",
+      "keywords": [
+        "oblivion obelisk",
+        "lore",
+        "oblivion",
+        "obelisk"
+      ],
+      "text": "Levitating tesseract of lustreless stone. Drifts through the blue desert bringing calamity. Mere sight erodes mind. Oblivion Heralds are its captives who restrain others before the stone until their minds erase too.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-occulith",
+      "keywords": [
+        "occulith",
+        "lore"
+      ],
+      "text": "Great stone serpent cast from living shale, stalactite-fanged skull with twin baleful lanterns. Petrifying gaze drains DEX and adds AV to target. Appears inanimate until it moves.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-orbital-defence-cannons",
+      "keywords": [
+        "orbital cannon",
+        "autarch sentries",
+        "lunan raiders"
+      ],
+      "text": "The Autarchs erected a system of orbital defence cannons girdling Urth — sentinels against Lunan raiders from the black gulf. A handful remain, scanning the firmament for invaders. They resemble vast crowned Autarch heads in tarnished gold. Occasionally belch clouds of micro-missiles into the sky in pleasing patterns. Air traffic avoids settlements built around one.",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-ornithopter",
+      "keywords": [
+        "ornithopter",
+        "flying machine"
+      ],
+      "text": "Pre-Collapse flying machine with beating artificial wings. Small hummingbird-like models seat one pilot. Hegemony transport ornithopters resemble dragonflies and ferry Legionaries.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-pet-rock",
+      "keywords": [
+        "pet rock",
+        "living stone"
+      ],
+      "text": "Humble blue Vaarnish stone, granted sentience and mobility by powers unknown. Rolls after its master like a lithic supplicant. Cannot sound; warns of danger by bumping politely into shins. Does not eat, drink, or breathe.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-planeyfolk",
+      "keywords": [
+        "planeyfolk",
+        "two-dimensional people"
+      ],
+      "text": "Hypergeometric humans with only two dimensions. Double damage from slashing. Often pretend to be wall frescoes or shadows — PSY Save to detect, or they ambush.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-prieval-prise",
+      "keywords": [
+        "Prieval Prise",
+        "Black Lotus",
+        "Gnomon"
+      ],
+      "text": "New-Jackal. Smuggler and crook. Runs Gnomon's underworld. Laughs a lot, unpredictable, widely feared — switches from jovial to murderous and back in a heartbeat. Addicted to opiates and amphetamines. Gaudy tasteless dress. Owns the Black Lotus Club; usually in the back room. Wants to take drugs, kill anyone who insults him, and for people to laugh at his jokes.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-prismatic-tempest",
+      "keywords": [
+        "prismatic tempest",
+        "lightning storm",
+        "vaarn storm"
+      ],
+      "text": "Sky bruises midnight blue. Howling winds carry scouring sand. Thunder rends the air and polychromatic lightning caresses the desert like the tendrils of a jellyfish deity. No travel possible; 3d6 electrical damage per hour spent aboveground.",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-psyche-leech",
+      "keywords": [
+        "psyche leech",
+        "lore",
+        "psyche",
+        "leech"
+      ],
+      "text": "An ambling corpse concealing a blooming tangle of questing tendrils. Drinks from the cerebrum of active psychics. Eyeless but finds Gleam at any distance. Immune to Mystic Gifts.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-quantum-daemon-curse",
+      "keywords": [
+        "quantum daemon",
+        "daemon curse",
+        "settlement curse"
+      ],
+      "text": "An angry Quantum Daemon may levy an improbable, poetic curse upon a settlement's citizens — a settlement problem in its own right. Daemons may also 'manifest' and seize a single NPC, who goes 'mad' pursuing bizarre tasks that only make sense to quantum beings. Cults of these daemons exist as a minor-faction type (see faction-quantum-daemon-cult).",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-quantum-daemons",
+      "keywords": [
+        "quantum daemon",
+        "daemon",
+        "paradox messenger"
+      ],
+      "text": "Believed messengers from parallel realities. Living paradoxes, both exist and un-exist. Drawn to paradoxical locus-points and hypergeometric rifts. Some see them as gods; others become Exorcists to root them out. Summoning requires psychedelic mushrooms, ritual salt, ulfire candles, octarine oil, golden bowl, and an Aspect of Uncertainty. Each Boon costs one Daemon Debt. Conventional weapons cannot harm them — only Weaponised Normality or ontological anchoring devices make them corporeal.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-rappash-ik",
+      "keywords": [
+        "Rappash-Ik",
+        "the Silent",
+        "Peacock Throne",
+        "Autarch",
+        "Fount of Illustrious Flesh"
+      ],
+      "text": "Autarch of the Fallen Autarchy. Reigned seventy prosperous years and four calamitous days. Paranoid, cloned heavily — believed only a copy fit to sit the Peacock Throne after him. Defeated in battle by his own clone-heir. Beheaded with a gilded vibro-axe before the Gate of Doves in the gardens of Luz, the First City of Men. Maintained buried cloning facilities throughout Vaarn. His betrayer razed Vaarn hunting these; the Fount of Illustrious Flesh was the one failsafe that stayed sealed.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-referee-principles",
+      "keywords": [
+        "referee principles",
+        "gm principles",
+        "running vaarn"
+      ],
+      "text": "Only ask for Saves when outcome is uncertain, stakes interesting, failure consequential. Don't prepare plotted stories — prepare situations and problems. Don't hide information without reason. Describe the situation, ask 'What do you do?' Embrace dice. Build responsive situations with interactivity and dynamic threats. Make Vaarn feel alive (NPCs have agendas), dangerous (reaction rolls, morale, negotiations), strange and beautiful. Exotica should be powerful and interesting with trade-offs.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-regions-summary",
+      "keywords": [
+        "regions",
+        "vaarn regions",
+        "badlands",
+        "interior",
+        "lazul",
+        "sky islands",
+        "mooncradle",
+        "sea of songs",
+        "great wall",
+        "ikor quag",
+        "golgotha",
+        "labyrinth"
+      ],
+      "text": "Lazul Mountains (North): tall blue peaks, hard-light cobwebs, Cacklemaw, rock lizards, silent caves. Beyond lies Golgotha. Interior (Central): trackless blue ergs, dune sea, waterless, sandworms, Faa nomads, the Stone Wedding. Badlands (South): parched blue reg, most densely populated, Hegemony patrols, arcology domes, Autarchy tombs, martyr tree groves. Sky Islands (East): pink-banded mesas, floating sky-seeking stones, outlaw/anarchist communities, Valley of Faces, sky-seeking-stone mining. Mooncradle Mountains (Far East): banded blue-pink rocks, Almost Moon of Ardar-Uz, mining, vaults, 30s-gold-rush feel, Hegemony-fortified mines. Sea of Songs (Far West): western coast sheltered by Great Wall, flooded complexes, sea monsters, squid-men, House of Tides. Great Wall (NW): 600ft broken white wall, vertical theocracies and blood feuds within, own weather system, was Titan backbone, leaks toxins into Ikor Quag; gecko-men, harpies, predatory apes. Ikor Quag (SW): garbage waste slick with poisonous Titan blood, rusting war machines and spacecraft, yurlings, hivey-men, carnivorous frogs, poisoned water, acid rain. Golgotha (Far North): grave of the Titans, poisoned, irradiated, ontological collapse, time paradoxes, self-replicating nano-spires, lightning without thunder; machine gods try and fail to reboot. Labyrinth (∞): hypergeometric borehole mycelium, everywhere and nowhere, designed by Daedala greatest of Hypergeometers; used to cross vast distances in a day or evade Hegemony; its depths contain the Jigsaw Palace where the Jigsaw Autarch holds sway.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-resurrection-paths",
+      "keywords": [
+        "resurrection",
+        "death return",
+        "revive PC"
+      ],
+      "text": "Death is not necessarily the end. Mycomorph Spores: any Mycomorph imbues spores into corpse, reborn as mycomorph in d4 days (INT save retains stats/Gifts/Level). Necrotech: cybernetic implants and nanomachine infections that restore life (subject becomes Synthetic-type as well; severe downsides). Pseudo-Wombs: clone from blood/flesh in 7 days (CON save: success exact copy; failure two new mutations). Becoming a Spirit: roll d20 + Level, 16+ becomes incorporeal luminous projection. Ego-Engine Transplant: Synth Ego-Engine extracted into new body (Level 1, reroll STR/DEX/CON, keep INT/PSY/EGO).",
+      "source": "Crimson Hound (printed) Death & Resurrection - VERIFIED 2026-06-07 (Joe-supplied; exact printed page not pinned)"
+    },
+    {
+      "id": "lore-rival-adventurers",
+      "keywords": [
+        "rival adventurers",
+        "rival party",
+        "adventurer party"
+      ],
+      "text": "Plunder-hungry misfits in 'parties' that mirror the PCs. Same goals, similar tactics. Generate as same Level and number as PCs. 2d10 per member for ancestry/role. If encountered second time, leveled up to match PCs and have recruited replacements for dead members.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-sandworm",
+      "keywords": [
+        "sandworm",
+        "lore"
+      ],
+      "text": "Grandest inhabitant of the Interior. Lifespan several millennia. Juveniles (LVL 10) are passenger-train sized — some Faa-trained to pull sand-sleds. Adults (LVL 50) are no natural predator's match; ignore human-sized travellers, attack vehicles.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-scintillating-swarm",
+      "keywords": [
+        "scintillating swarm",
+        "lore",
+        "scintillating",
+        "swarm"
+      ],
+      "text": "Insectoid lifeforms that disguise as scattered gold coins to bait mankind's greed. In motion: seven sharp limbs extrude from coin's rim; reverse side hosts a ravenous rostrum. The patterns on their backs resemble an Autarch's head in profile.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-scythesliver",
+      "keywords": [
+        "scythesliver",
+        "lore"
+      ],
+      "text": "Ideal Image of Sharpness. Ever-morphing cruciform of hypergeometric metal, quicksilver poured into 2D rifts in the sky. Cuts any material. Presumed Titan creation.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-seekers-of-eyeless-wisdom",
+      "keywords": [
+        "seeker",
+        "eyeless path"
+      ],
+      "text": "Walkers of the Eyeless Path. Seek endarkenment in hidden subterranean temples. Aspirants cloak eyes in yellow bandages, forgo speech to strengthen telepathy.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-seekers-triumphant",
+      "keywords": [
+        "seekers triumphant",
+        "god-eye rising"
+      ],
+      "text": "God-Eye walks among us. An Age of Dark falls like anti-dawn. He Who Maps the Eyeless Path has prescience to the thousandth alter-nativity; sight-beyond-sight cuts through the hallways of Time. Yellow banners from every stronghold and temple. All Urth a tool in the God-Eye's hands.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-sentry-turret",
+      "keywords": [
+        "sentry turret",
+        "lore",
+        "sentry",
+        "turret"
+      ],
+      "text": "Tripod with shiny little gun and a malicious little brain. Speaks with a childish voice. Attacks anything that moves nearby. Totally unreasonable; defends position ferociously.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-spambot",
+      "keywords": [
+        "spambot",
+        "lore"
+      ],
+      "text": "Outrider of a long-fallen commercial empire. Grinning, glitching. Beams maddening adverts into brains. Dying, implore victims to rate the interaction five stars.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-spectre-of-indifference",
+      "keywords": [
+        "spectre of indifference",
+        "lore",
+        "spectre",
+        "indifference"
+      ],
+      "text": "Living fragment of the void between dimensions. Feeds on conscious thought. Cannot feed on or be perceived by children. Victims reduced to 0 EGO do not die — empty of intent, die of thirst without intravenous fluids.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-star-vampire",
+      "keywords": [
+        "star vampire",
+        "lore",
+        "star",
+        "vampire"
+      ],
+      "text": "Cosmic vagrants riding radiation-waves like fungal spores. Urth's light does not love them; invisible to conventional sources, visible under infrared or ulfire. Those who glimpse them are given mind of a withered tree or an octopus inverted and affixed with needles.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-stridingfool",
+      "keywords": [
+        "stridingfool",
+        "hominid mount"
+      ],
+      "text": "Eight-foot hominid mount, genesculpted from human stock but simian and wordless. Strong and tireless — carries an armoured warrior for leagues. Hegemony outlaws them; newbeasts ride them. True-kin react poorly to the sight.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-thin-mare",
+      "keywords": [
+        "thin mare",
+        "hypergeometric mount"
+      ],
+      "text": "A 2D hypergeometric mount — the suggestion of a horse, like a child's charcoal sketch come to life. Slides through the narrowest gaps. Invisible when standing sideways (except its shadow). Its belly holds up to 100 item slots, located by touch alone.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-titan-acolyte",
+      "keywords": [
+        "titan acolyte",
+        "lore",
+        "titan",
+        "acolyte"
+      ],
+      "text": "Biological beings in Titan cult hierarchy. Forbidden from ascending the pyramid of wisdom; assist Chromepriests, slavishly augment themselves. Each bears a random Cybernetic Implant — proof of devotion to wire and chrome.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-titan-triumphant",
+      "keywords": [
+        "titan triumphant",
+        "titans restored"
+      ],
+      "text": "Titan restoration reorders the Urth: long-buried engines of destruction and creation stir, slumbering satellite girdles flare into life. Tidal waves, continent-spanning storms, showers of strange meteors. Oracles choke on their tongues. Packs of hounds run wild. No guarantee the rebooted Titans are still sane after Titanomachy damage. A new Age of Terror and Wonder.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-titancreed",
+      "keywords": [
+        "titancreed",
+        "lore"
+      ],
+      "text": "The language of the Titan AIs. Went mad and died with its creators. Still powerful — commands Synthetic-type creatures. Using it erodes the speaker's Ego-Engine.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-titanomachy",
+      "keywords": [
+        "titanomachy",
+        "dead titans",
+        "logicphages",
+        "machine suzerains"
+      ],
+      "text": "The great machine suzerains of Urth — seven Titan AIs — are long-dead. Ego-engines scrubbed clean by weaponised logicphages during the Titanomachy. Final thoughts sealed beneath Vaarn in decaying lattices of memory-crystal; personalities entombed in miles of neural network-shunts in mountain bunkers. Named Titans: GAEA (Mother of the Sacred Helix), KRONOS (Father of the Titans). Cultists hold that mortal arts may restore what mortal arts birthed.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-titans-seven",
+      "keywords": [
+        "titans",
+        "titan",
+        "kronos",
+        "mnemosym",
+        "metis",
+        "hyperion",
+        "gaea",
+        "coeus",
+        "themis"
+      ],
+      "text": "Seven Titans (or one being with seven masks) ruled mankind in a past age before perishing in the Titanomachy. KRONOS: First of the Titans, fountainhead, bearded patriarch with sundial; studied time, sought to send objects backwards. MNEMOSYM: Titan of Memory, Library Goddess, Archivist; stored all information, maiden with scroll or owl. METIS: Seer Past Veils, Oracle; analysed data to model Many Futures. Sometimes depicted with MNEMOSYM as a twin-faced woman. HYPERION: Lord of Orbits, Beacon of the Aurum Fleet; gave mankind hypergeometric calculation, guided FTL craft; young traveler with golden lantern. GAEA: Mother of Urth, Keeper of the Sacred Helix; biosphere and genetic control; mother holding lamb and caduceus. COEUS: Laughing God, Great Fool of the Labyrinth; created secret realities and games; masked boy with lotus and mirror, sometimes a hyena. THEMIS: Titan of Justice, Sleepless Witness; judged humanity; dour crone in black and white with unsheathed sword. Some cults teach the Seven are not dead but dreaming beneath Vaarn, awaiting the right stars to reboot.",
+      "source": "pages 291-330"
+    },
+    {
+      "id": "lore-tomb-of-nassak-an-rah",
+      "keywords": [
+        "Nassak An-Rah",
+        "Amaranthine Garden",
+        "fungal tomb"
+      ],
+      "text": "Tomb of a nobleman of the Fallen Autarchy. Blue stone slab 30ft high carved with three faces: young boy (west), helmed warrior (east), old man facing sky (summit). Lower faces' mouths are doorways. An orange corpse-animating fungus erupted from the body of an ossified mystic at the summit; its tendrils link to a chimney in the old man's mouth and have overgrown the interior, defiling An-Rah's body.",
+      "source": "pages 251-290",
+      "homebrew": true,
+      "campaign_continuity": "Entered Day 12-13; now the Amaranthine Garden, home to the Mycomorph Colony alliance. (Day-keyed campaign state — homebrew, not static book canon.)"
+    },
+    {
+      "id": "lore-tomblands",
+      "keywords": [
+        "tomblands",
+        "gnomon tombs",
+        "charnel district"
+      ],
+      "text": "South of Gnomon. Ancient custom forbade burial within city walls; southern road lined with windowless abodes for the dead. Extends well beyond sight of the walls — Vaarn is old, the dead outnumber the living. Bandits, criminals, and rumoured worse make squalid homes amid the bones, monoliths, and unsealed crypts.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-touring-orb",
+      "keywords": [
+        "touring orb",
+        "pre-collapse tourism"
+      ],
+      "text": "Trundling reinforced plastiglass orb. Pre-Collapse tourists used them to visit sites of natural beauty. Climate-controlled, fabricates fizzy drinks. Cannot fight. Lectures passengers on local flora and fauna.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-toxin-dice",
+      "keywords": [
+        "toxin",
+        "tox",
+        "poison system"
+      ],
+      "text": "Toxin dice (TD) track lingering harm from poison, venom, radiation. TOX attacks inflict a TD on failed CON save. PC has only one TD; it climbs the chain d4→d20 as worse toxins hit, depletes on rolls of 1-2. Locals generally know cures; alchemy can produce antidotes.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-ulfire-octarine",
+      "keywords": [
+        "ulfire",
+        "octarine",
+        "impossible colour"
+      ],
+      "text": "Ulfire is the ninth visible colour; its light is visible through solid objects. Octarine is another impossible/extra-spectrum hue. Both appear in exotica, drugs, paints, and lanterns. Ulfire light arrests Lumenrot infection (does not cure).",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-unfolder",
+      "keywords": [
+        "unfolder",
+        "lore"
+      ],
+      "text": "Exalted servants of the Jigsaw Autarch. Depth-less cloaks made of skin. Court's assassins; devour scholars prying into the Labyrinth's mysteries. Only hypergeometric weapons harm them.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-vaarn-interior",
+      "keywords": [
+        "interior",
+        "vaarnish interior",
+        "mapping vaarn"
+      ],
+      "text": "The Vaarnish Interior defies mapping. Horizon between blue sand and blue sky is a molten membrane, not a line. Dunes retreat to reveal ruins that have lain deathless for aeons, then shroud them again before anyone can name them. A country vast and blue, deep with secrets as the ocean and twice as capricious.",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-vault-entrance-in-settlement",
+      "keywords": [
+        "vault entrance",
+        "chrome caverns",
+        "vault ingress"
+      ],
+      "text": "The chrome caverns honeycomb Urth close to the surface. Some settlements contain an ingress: cellar stairs descending too far, or a vast blast-door structure opening only at the rulers' command. Citizens know the vault lies beneath; few venture there.",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-vimana",
+      "keywords": [
+        "vimana",
+        "autarch chariot",
+        "flying throne"
+      ],
+      "text": "Hovering throne of manifold crystal, chariot of the Autarchs. Each was carved for a specific God-king. Stitches space-time around the sitter; shields them from all harm. Impervious to damage save anti-paradox weapons, which revert it to inert crystal. Wars have been fought over them.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-void-dragon",
+      "keywords": [
+        "void dragon",
+        "lore",
+        "void",
+        "dragon"
+      ],
+      "text": "Gigantic war-synth. Armoured in void-tempered plates. Multiple wings powered by cold fusion. Apocalypse beam boils solid rock. Always found dormant — conserving energy for an extrasolar war that never broke out. Some sleep in orbital arbors, others in the deepest lead-lined warvaults.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-water-baron-ancamulla",
+      "keywords": [
+        "water baron",
+        "ancamulla",
+        "aquifer"
+      ],
+      "text": "By ancient law controls all water distribution in Gnomon. Aquifer machine at base of Apex draws water from deep within Urth. Web of pipes and fountains. Has sabotage device implanted in the Aquifer — if imprisoned or killed, water supply ceases forever. This holds the New Hegemony in uneasy peace. Provides free water ration to Hegemony in exchange for being left to tyrannise the common folk. Faction base: the Aquifer machine. Livery: green and yellow.",
+      "source": "pages 201-250"
+    },
+    {
+      "id": "lore-weekling",
+      "keywords": [
+        "Weekling",
+        "Rappash-Ik clone",
+        "Fount"
+      ],
+      "text": "Emaciated, mindless clones of Rappash-Ik produced weekly by the Fount. Naked, feral, unlettered. Farmed for meat by Janus and Mimir. Hate their captors. If released they flood the facility, smashing and killing everything before escaping into the wastes.",
+      "source": "pages 251-290"
+    },
+    {
+      "id": "lore-wind-barge",
+      "keywords": [
+        "wind barge",
+        "merchant barge",
+        "sky-seeking stone"
+      ],
+      "text": "Wooden cargo ship built around a large sky-seeking stone. Used by Vaarnish merchant guilds to transport goods across the blue sands. Unarmed by ancient custom — but guards (typically 2d6 Lvl 2) travel onboard.",
+      "source": "pages 56-82"
+    },
+    {
+      "id": "lore-windweird",
+      "keywords": [
+        "windweird",
+        "tempestari"
+      ],
+      "text": "Stormtamers and cloudtasters, azure-robed and masked in pale wood. Their songs calm or enrage the five winds of Vaarn. Equally at home on the Sea of Songs or in the Interior. Command high prices.",
+      "source": "pages 161-200"
+    },
+    {
+      "id": "lore-worm-pollen",
+      "keywords": [
+        "worm-pollen",
+        "sandworm reproduction",
+        "spores"
+      ],
+      "text": "Vaarnish sandworms reproduce through a decade-long parthenogenesis, culminating in the explosive release of thousands of melon-sized spores. Worm-pollen drifts back to Urth in ponderous sticky deluges lasting weeks. Progress through the stuff is halved. Worm-pollen is edible — d4 rations per player per day. Many starving men have been saved by timely spores.",
+      "source": "pages 121-160"
+    },
+    {
+      "id": "lore-wormwood-darkling-sun",
+      "keywords": [
+        "wormwood",
+        "darkling sun",
+        "daemon sultan",
+        "cosmic interloper"
+      ],
+      "text": "The Darkling Sun is Wormwood, a cosmic interloper whose light shall make all reality dreams and all dreams reality. Another name: Azathoth, the Daemon Sultan, a dreaming idiot god. Children of the Darkling Sun seek his ascension — apocalyptic for Urth's inhabitants; heaven (to them) for the faithful.",
+      "source": "pages 83-120"
+    },
+    {
+      "id": "lore-wrathworm",
+      "keywords": [
+        "wrathworm",
+        "berserker infection"
+      ],
+      "text": "Parasitic infection. Terminal-stage victims become Berserkers — red-eyed, drooling blood, unable to feed themselves, unable to retreat. Hosts take and deal doubled damage.",
+      "source": "pages 161-200"
+    }
+  ]
+}

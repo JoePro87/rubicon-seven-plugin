@@ -1,0 +1,10 @@
+{
+  "_comment": "Fallback creature-type resistances (Vaarn 2e / Crimson Hound). Used ONLY when a bestiary entry has no explicit stats.resistances. Damage-type vocabulary is canonical (see _normalize_damage_type).",
+  "Biological":     { "immune": [], "double": [], "half": [] },
+  "Synthetic":      { "immune": ["suffocation", "poison", "radiation", "fungal_spores"], "double": ["electrical"], "half": [] },
+  "Psychic":        { "immune": [], "double": [], "half": [] },
+  "Fungal":         { "immune": [], "double": ["fire", "fungicide"], "half": ["kinetic"] },
+  "Mineral":        { "immune": ["fire", "cold", "poison", "radiation", "electrical", "fungal_spores", "suffocation"], "double": ["bludgeoning"], "half": [] },
+  "Hypergeometric": { "immune": [], "double": ["hypergeometric"], "half": [] },
+  "Outsider":       { "varies": true, "immune": [], "double": [], "half": [] }
+}

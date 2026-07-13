@@ -1,0 +1,73 @@
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local configuration
+.mcp.json
+.claude/
+
+# Logs and generated files
+logs/
+*.log
+.pytest_cache/
+nul
+
+# Backup files — never ship. Pre-edit snapshots (e.g. the unstripped
+# catch_analytics.json.bak still holds personal/mature campaign prose) must
+# stay out of the repo so a backup can never be staged by accident.
+*.backup*
+*.bak
+
+# ChromaDB binary data (active DB lives in the campaign repo; these are orphans)
+chroma_db/
+chroma_db_data/
+chroma-db/
+
+# Audit quarantine (reversible cruft sweep 2026-06-07)
+_AUDIT_QUARANTINE_2026-06-07/
+
+# Large reference files
+*.pdf
+
+# Development artifacts
+archive/
+Bulk Data/
+test_*.json
+*.zip
+vscode-extension/
+startup_log.txt
+
+# Engine-repo sandbox campaign dir (engine-play-never-canon; built by scripts/make_sandbox.py)
+sandbox-campaign/
+
+# Runtime cache state (user-state, not source). GLOB covers every variant —
+# .json / .lock / .tmp / .staging.json / .pre-backfill-*.json — so no canon-data
+# snapshot can slip back into the repo (two such backups had been tracked).
+hooks/.canon_distillations*
+# Per-campaign play history — was wrongly git-tracked here (privacy leak); now
+# campaign-scoped (rubicon_paths.catch_analytics_path). The legacy engine-dir copy
+# stays on the owner's disk as a migration backup but must never be tracked again.
+hooks/catch_analytics.json
+catch_analytics.json
+# Per-campaign correction history (campaign-specific canon: "<NPC> is a navigator
+# not a botanist"). Was wrongly engine-relative + git-tracked; now campaign-scoped.
+hooks/fabrication_bans.json
+fabrication_bans.json
+# Live session/turn state — churns every turn and can capture session vocabulary.
+# Ship the clean hooks/.hook_state.json.example seed instead; load_state() defaults
+# gracefully when the live file is absent.
+hooks/.hook_state.json
+hooks/.hook_state.lock
+# Blacklist match cache — a runtime pickle derived from the tracked blacklist.json
+# (rebuilt on demand). Was wrongly git-tracked and showed phantom-modified every
+# session; untracked 2026-07-02. The source blacklist.json stays tracked.
+hooks/.blacklist_cache.pkl
+
+# Tuning measurement dumps — contain full check_canon output incl. DM-only
+# KNOWLEDGE/secrets, so never commit them. The .md changelog (no raw secrets)
+# is fine to track.
+tests/results/tuning-*-dump.json
+tests/results/tuning-*-verdicts.json

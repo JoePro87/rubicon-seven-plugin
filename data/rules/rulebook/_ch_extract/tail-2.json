@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Quantum Daemon, Lesser",
+    "printed_pages": "233",
+    "pdf_pages": "240",
+    "type": "Outsider",
+    "level": null,
+    "hp": null,
+    "av": null,
+    "morale": "+d8",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Generate a Daemon Attack (see Daemon Attack table, printed p.234)",
+        "damage": ""
+      }
+    ],
+    "special": [
+      "Level: d6",
+      "AV: d6+8",
+      "Morale: +d8",
+      "A minor Quantum Daemon, whose paradoxical footprint upon our reality is light and subtle.",
+      "Incorporeal: the Daemon does not actually exist, and cannot be harmed nor harm others unless it is forced to manifest itself.",
+      "Daemon Ability: generate one special Daemon Ability (see Daemon Ability table, printed p.234)."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": true,
+      "notes": "No FIXED resistances printed in the stat block. The Daemon is Incorporeal (cannot be harmed unless forced to manifest). Any immunities come from the rolled Daemon Ability table (printed p.234), which is generated once per individual and varies; possible rolled abilities include Immune to Fire, Immune to Cold, Immune to Poison and Fungal Spores, Immune to Electrical Weapons, Immune to Beam Weapons, Immune to Physical Damage, Immune to All Damage (Harmed by Healing), Immune to Mystic Gifts and Hypergeometry, Immortal Unless True Name Spoken. NOT fixed for this creature."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Killing a Quantum Daemon is not possible with conventional weaponry, as they do not actually exist. Weaponised Normality or other ontological anchoring devices might make the Daemon corporeal and allow one to fight them. Each individual is unique; attack(s) and ability are randomly generated from the tables on printed p.234.",
+    "confidence": "high",
+    "raw_excerpt": "QuantumDaemon,Lesser / Outsider / Level AV Morale / d6 D6+8 +d8 / Attack:GenerateaDaemonAttack(seeopposite) / A minor Quantum Daemon, whose paradoxical footprint upon our reality is light and subtle. / Incorporeal: the Daemon does not actually exist, and cannot be harmed nor harm others unless it is forced to manifest itself. / DaemonAbility: generate one special Daemon Ability (see opposite)."
+  },
+  {
+    "name": "Quantum Daemon, Greater",
+    "printed_pages": "233",
+    "pdf_pages": "240",
+    "type": "Outsider",
+    "level": null,
+    "hp": null,
+    "av": null,
+    "morale": "+2d6",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Generate two Daemon Attacks (see Daemon Attack table, printed p.234)",
+        "damage": ""
+      }
+    ],
+    "special": [
+      "Level: 3d6",
+      "AV: 3d6+10",
+      "Morale: +2d6",
+      "A mighty Quantum Daemon, whose paradoxical footprint upon our reality is trampling and impetuous.",
+      "Incorporeal: the Daemon does not actually exist, and cannot be harmed nor harm others unless it is forced to manifest itself.",
+      "Daemon Abilities: generate two special Daemon Abilities (see Daemon Ability table, printed p.234)."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": true,
+      "notes": "No FIXED resistances printed in the stat block. The Daemon is Incorporeal (cannot be harmed unless forced to manifest). Any immunities come from the rolled Daemon Ability table (printed p.234), of which a Greater Daemon generates two; these vary per individual. Possible rolled immunity-type abilities include Immune to Fire, Immune to Cold, Immune to Poison and Fungal Spores, Immune to Electrical Weapons, Immune to Beam Weapons, Immune to Physical Damage, Immune to All Damage (Harmed by Healing), Immune to Mystic Gifts and Hypergeometry, Immortal Unless True Name Spoken. NOT fixed for this creature."
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Killing a Quantum Daemon is not possible with conventional weaponry, as they do not actually exist. Weaponised Normality or other ontological anchoring devices might make the Daemon corporeal and allow one to fight them. Each individual is unique; the two attacks and two abilities are randomly generated from the tables on printed p.234.",
+    "confidence": "high",
+    "raw_excerpt": "QuantumDaemon,Greater / Outsider / Level AV Morale / 3d6 3d6+10 +2d6 / Attack:GeneratetwoDaemonAttacks(seeopposite) / A mighty Quantum Daemon, whose paradoxical footprint upon our reality is trampling and impetuous. / Incorporeal: the Daemon does not actually exist, and cannot be harmed nor harm others unless it is forced to manifest itself. / DaemonAbilities: generate two special Daemon Abilities (see opposite)."
+  }
+]

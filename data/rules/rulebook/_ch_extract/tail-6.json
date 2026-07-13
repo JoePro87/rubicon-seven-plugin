@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Infant Ramworm",
+    "printed_pages": "303",
+    "pdf_pages": "310",
+    "type": "Biological",
+    "level": 4,
+    "hp": null,
+    "av": 16,
+    "morale": "+7",
+    "enc": "",
+    "movement": "",
+    "attacks": [
+      {
+        "name": "Gore",
+        "damage": "d10"
+      }
+    ],
+    "special": [
+      "Carnivorous species of sandworm. Ambushes from below sand. Sharp, armoured head resembles the ram mounted on the prow of an ancient warship."
+    ],
+    "resistances": {
+      "immune": [],
+      "minimum": [],
+      "double": [],
+      "half": [],
+      "varies": false,
+      "notes": ""
+    },
+    "flags": {
+      "mystic_gift_immune": false,
+      "ranged_immune": false,
+      "mimic": false
+    },
+    "combat_note": "Per adventure room text (9-Worm Corral): kept unfed for weeks, will attack anything stepping onto the sand; pursues prey onto solid ground but moves much slower when exposed.",
+    "confidence": "high",
+    "raw_excerpt": "InfantRamworm 303 Biological  Level AV Morale  4 16 +7  Attack:Gore(d10)  Carnivorousspeciesofsandworm.Ambushesfrom belowsand.Sharp,amouredheadresemblestheram mountedontheprowofanancientwarship."
+  }
+]

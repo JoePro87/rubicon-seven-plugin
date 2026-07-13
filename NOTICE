@@ -1,0 +1,43 @@
+NOTICE — Attribution & Licensing
+=================================
+
+Rubicon Seven MCP combines two kinds of material under two licenses.
+
+------------------------------------------------------------------------
+Engine code — MIT
+------------------------------------------------------------------------
+All original software in this repository (server.py, the engine modules,
+hooks, tests, scripts, and tooling) is licensed under the MIT License.
+See the LICENSE file.
+
+------------------------------------------------------------------------
+Vaults of Vaarn setting content — CC BY 4.0 (Leo Hunt)
+------------------------------------------------------------------------
+The game setting, rules, tables, bestiary, and lore data this engine ships
+and operates on (notably under data/rules/) are derived from VAULTS OF VAARN,
+created by LEO HUNT, and used under the Creative Commons Attribution 4.0
+International License (CC BY 4.0).
+
+  Setting & rules:  Vaults of Vaarn © Leo Hunt
+  License:          CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+
+This project is an unofficial, fan-made tool. It is not affiliated with,
+sponsored by, or endorsed by Leo Hunt.
+
+The setting data here has been transcribed and restructured into
+machine-readable form (JSON) for use by the engine. That restructuring is a
+modification/adaptation of the original tables and is provided under the same
+CC BY 4.0 terms. Anyone redistributing this content (modified or not) must
+continue to credit Leo Hunt, per CC BY 4.0.
+
+------------------------------------------------------------------------
+The rulebook PDF is NOT included
+------------------------------------------------------------------------
+Rubicon Seven does not ship the Vaults of Vaarn rulebook itself. To play,
+bring your own copy of the official rulebook — please support Leo Hunt by
+buying it. The PDF path is configured locally and is never redistributed.
+
+------------------------------------------------------------------------
+Credit
+------------------------------------------------------------------------
+Vaults of Vaarn by Leo Hunt — https://creativecommons.org/licenses/by/4.0/

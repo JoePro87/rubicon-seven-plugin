@@ -1,0 +1,31 @@
+{
+  "_comment": "Default scene-type to failure-pattern weights. Overridden by analytics data when available.",
+  "intimate": {
+    "patterns": ["breathing-as-shock", "characterization-shorthand", "negation-correction"],
+    "description": "Breathing metaphors, vague emotional signals, defining-by-negation"
+  },
+  "combat": {
+    "patterns": ["freeze-lock-petrification", "silence-as-actor"],
+    "description": "Freeze/lock/petrification reactions, silence personified"
+  },
+  "settlement": {
+    "patterns": ["vocal-adjective-tags", "vague-signal-on-face", "silence-as-actor"],
+    "description": "Voice delivery adjectives, vague facial signals, silence personified"
+  },
+  "social": {
+    "patterns": ["vocal-adjective-tags", "vague-signal-on-face", "silence-as-actor"],
+    "description": "Voice delivery adjectives, vague facial signals, silence personified"
+  },
+  "travel": {
+    "patterns": ["duration-padding", "transition-phrases"],
+    "description": "Duration-padding adverbs, announced transitions"
+  },
+  "hexpedition": {
+    "patterns": ["duration-padding", "transition-phrases", "silence-as-actor"],
+    "description": "Duration-padding, transition phrases, silence personified"
+  },
+  "vault_exploration": {
+    "patterns": ["freeze-lock-petrification", "silence-as-actor", "duration-padding"],
+    "description": "Freeze reactions, silence personified, duration-padding"
+  }
+}

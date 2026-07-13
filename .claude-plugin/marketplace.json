@@ -1,0 +1,19 @@
+{
+  "name": "rubicon-seven",
+  "owner": {
+    "name": "JoePro87"
+  },
+  "description": "Marketplace for Rubicon Seven — the autonomous solo-TTRPG dungeon master engine for Vaults of Vaarn.",
+  "plugins": [
+    {
+      "name": "rubicon-seven",
+      "source": {
+        "source": "github",
+        "repo": "JoePro87/rubicon-seven-plugin"
+      },
+      "description": "An autonomous solo-TTRPG dungeon master engine for Vaults of Vaarn. Bundles the MCP engine (~50 tools: combat, vault maps, travel, NPCs, canon tracking, history search), seven skills (/vaarn-start onboarding, /session-start, /session-end, /menu, location generation), the DM output style, narrative-quality hooks, a companion terminal dashboard, and the Vaarn rules data (CC BY 4.0, by Leo Hunt).",
+      "homepage": "https://github.com/JoePro87/rubicon-seven-plugin",
+      "license": "MIT"
+    }
+  ]
+}

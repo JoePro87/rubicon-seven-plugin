@@ -1,0 +1,402 @@
+{
+  "1": {
+    "name": "Acid Blood",
+    "effect": "Your blood is caustic. Creatures that attack you in melee suffer d4 acid damage when they damage you."
+  },
+  "2": {
+    "name": "Adhesive Touch",
+    "effect": "Your hands and feet are like those of a gecko. You can climb any surface and crawl across ceilings."
+  },
+  "3": {
+    "name": "Albino",
+    "effect": "Your body has no pigmentation. You must carry a sunshade (1 slot) or suffer DIS on all Saves during daylight hours."
+  },
+  "4": {
+    "name": "Antlers",
+    "effect": "You have antlers like an elk or moose. Make an extra +d6 melee attack when you charge."
+  },
+  "5": {
+    "name": "Analgesia",
+    "effect": "You are unable to feel pain. You do not know your maximum or current HP; the Referee tracks both."
+  },
+  "6": {
+    "name": "Armoured Skin",
+    "effect": "Your body is protected by natural armour. Add +2 to your base AV."
+  },
+  "7": {
+    "name": "Backwards Head",
+    "effect": "Your head can swivel backwards like an owl's. You cannot be ambushed."
+  },
+  "8": {
+    "name": "Backwards Legs",
+    "effect": "Your legs are backwards. DIS when fleeing and sneaking."
+  },
+  "9": {
+    "name": "Beak",
+    "effect": "Make an extra d6 melee attack. ADV on reaction rolls when encountering bird-like creatures."
+  },
+  "10": {
+    "name": "Bioelectricity",
+    "effect": "Your unarmed melee attack causes +d6 electrical damage."
+  },
+  "11": {
+    "name": "Bioluminescence",
+    "effect": "Your flesh produces a faint glow. You always have a light source. DIS to hide at night."
+  },
+  "12": {
+    "name": "Blind",
+    "effect": "You cannot see and must navigate by sound and scent. DIS on ranged attacks, ADV when fighting in the dark. Cancels effects of other visual mutations."
+  },
+  "13": {
+    "name": "Body Barbs",
+    "effect": "Your flesh is studded with sharp barbs. Opponents who miss melee attacks against you suffer damage equal to your Level."
+  },
+  "14": {
+    "name": "Bulbous Eyes",
+    "effect": "Your eyes are enormous. DIS on Saves to avoid blindness."
+  },
+  "15": {
+    "name": "Centaur",
+    "effect": "You have the lower body and legs of a horse. +2 CON, +4 max items slots (24 total)."
+  },
+  "16": {
+    "name": "Chameleon Skin",
+    "effect": "Your skin always matches its surroundings. ADV to conceal yourself."
+  },
+  "17": {
+    "name": "Claws, Crab",
+    "effect": "One hand is a huge crab-like claw. Your unarmed attack deals d8 damage. You cannot use two-handed weapons."
+  },
+  "18": {
+    "name": "Claws, Retractable",
+    "effect": "You have retractable feline claws. Your unarmed attack deals d6 damage."
+  },
+  "19": {
+    "name": "Clubfoot",
+    "effect": "One foot is larger and heavier than the other. DIS when fleeing and sneaking."
+  },
+  "20": {
+    "name": "Compound Eyes",
+    "effect": "Your eyes are like those of a fly. +1 DEX."
+  },
+  "21": {
+    "name": "Crest, Bone",
+    "effect": "You have a large bony crest on your head. +1 AV. Cannot wear helmets."
+  },
+  "22": {
+    "name": "Crest, Feathers",
+    "effect": "You have a crest of feathers on your head. +1 EGO. Cannot wear helmets."
+  },
+  "23": {
+    "name": "Crown, Horns",
+    "effect": "You have a crown of horns on your head. +1 AV. Cannot wear helmets."
+  },
+  "24": {
+    "name": "Crown, Coral",
+    "effect": "You have a coral-like crown on your head. +1 AV. Cannot wear helmets."
+  },
+  "25": {
+    "name": "Crown, Eyestalks",
+    "effect": "You have a crown of eyestalks on your head. +1 PSY. Cannot wear helmets."
+  },
+  "26": {
+    "name": "Cyclops Eye",
+    "effect": "You have a single huge eye. You have poor depth perception. DIS on Saves vs blindness."
+  },
+  "27": {
+    "name": "Detachable Head",
+    "effect": "Your head can detach from your body and move of its own accord for as long as you can hold your breath."
+  },
+  "28": {
+    "name": "Detachable Limb",
+    "effect": "A single limb can detach from your body and move of its own accord. If separated from your body it cannot 'see' and must proceed by touch alone."
+  },
+  "29": {
+    "name": "Double Muscled",
+    "effect": "Your limbs have an extra pair of muscles. +2 STR, ADV when fleeing or pursuing."
+  },
+  "30": {
+    "name": "Echolocation",
+    "effect": "You can 'see' in pitch darkness using echoes. You cannot be blinded and have ADV when fighting in the dark."
+  },
+  "31": {
+    "name": "Exposed Organs",
+    "effect": "You suffer double damage from slashing or piercing attacks."
+  },
+  "32": {
+    "name": "Extra Arms",
+    "effect": "You have an extra pair of arms. You can make an extra melee or ranged attack each turn, if equipped with a second weapon."
+  },
+  "33": {
+    "name": "Extra Eyes",
+    "effect": "You have d3 extra eyes on your forehead. +1 PSY for each."
+  },
+  "34": {
+    "name": "Extra Head",
+    "effect": "You have an extra head. ADV on INT, PSY and EGO Saves. You can survive one decapitation."
+  },
+  "35": {
+    "name": "Extra Heart",
+    "effect": "+2 CON, +5 max HP."
+  },
+  "36": {
+    "name": "Extra Legs",
+    "effect": "You have a pair of extra legs. +2 CON, ADV on Saves relating to pursuits."
+  },
+  "37": {
+    "name": "Extra Liver",
+    "effect": "ADV on Saves vs poisons and TOX attacks."
+  },
+  "38": {
+    "name": "Eyestalks",
+    "effect": "Your eyes extend out of their sockets on stalks."
+  },
+  "39": {
+    "name": "Fangs, Venomous",
+    "effect": "You have a poisonous bite (d6 TOX)."
+  },
+  "40": {
+    "name": "Feathers",
+    "effect": "You have feathers instead of hair. ADV to reaction roll when encountering feathered creatures."
+  },
+  "41": {
+    "name": "Frog Tongue",
+    "effect": "Your tongue is extremely long and sticky. DEX save to snatch weapons from foe's hands."
+  },
+  "42": {
+    "name": "Fur",
+    "effect": "You are covered in fur. ADV to reaction roll when encountering furry creatures."
+  },
+  "43": {
+    "name": "Gills",
+    "effect": "You have gills and can breathe underwater. You must drink double rations of water each day or become Deprived."
+  },
+  "44": {
+    "name": "Gliding Membranes",
+    "effect": "You have membranes between your arms and torso and can glide for short distances."
+  },
+  "45": {
+    "name": "Goat Legs",
+    "effect": "You have the legs and hooves of a goat. You can walk up sheer surfaces."
+  },
+  "46": {
+    "name": "Headless",
+    "effect": "You have no head; your face is on your torso. You cannot wear helmets or hats."
+  },
+  "47": {
+    "name": "Heightened Hearing",
+    "effect": "You have extremely sharp hearing. You suffer no ill-effects from blindness or darkness and cannot be ambushed."
+  },
+  "48": {
+    "name": "Heightened Immune System",
+    "effect": "Your immune system is the envy of all. ADV on Saves vs diseases and poisons."
+  },
+  "49": {
+    "name": "Hook, Climbing",
+    "effect": "You have hook-like protrusions on your limbs. ADV to climbing and acrobatics."
+  },
+  "50": {
+    "name": "Hopper",
+    "effect": "You have a single, powerful leg. You can leap huge distances."
+  },
+  "51": {
+    "name": "Horns, Ram",
+    "effect": "You have ram-like horns. You can make an extra d6 melee attack. ADV on reaction rolls when encountering other horned creatures."
+  },
+  "52": {
+    "name": "Horns, Rhino",
+    "effect": "You have a single rhino-like horn. When you charge into melee range, add +d10 to your damage roll."
+  },
+  "53": {
+    "name": "Huge Beard",
+    "effect": "You have a gigantic, fast-growing beard that resists all attempts to tame it."
+  },
+  "54": {
+    "name": "Huge Brain",
+    "effect": "Your head is enormous. +2 to INT. You cannot wear helmets or hats."
+  },
+  "55": {
+    "name": "Humpback",
+    "effect": "You have a hump like that of a camel, which stores water. You can go seven days without drinking water."
+  },
+  "56": {
+    "name": "Infravision",
+    "effect": "You can detect heat signatures and can see warm-blooded creatures in total darkness."
+  },
+  "57": {
+    "name": "Ink Ducts",
+    "effect": "You can spray out ink like a squid, causing an opponent to DEX save vs blindness. You can do this a number of times per day equal to your Level."
+  },
+  "58": {
+    "name": "Insulated Skin",
+    "effect": "Your skin is resistant to heat and cold. Take half damage from extreme temperatures."
+  },
+  "59": {
+    "name": "Kangaroo Pouch",
+    "effect": "You have a torso-pouch like a kangaroo's. +2 max item slots (22 max)."
+  },
+  "60": {
+    "name": "Larynx Darts",
+    "effect": "You can cough bony barbs from a discreet orifice in your neck. Treat as a concealed d4 ranged weapon that cannot run out of ammunition."
+  },
+  "61": {
+    "name": "Leaves",
+    "effect": "You have leaves instead of hair. Regain d4 HP per hour when resting in sunlight."
+  },
+  "62": {
+    "name": "Malleable Body",
+    "effect": "Your body is rubbery and malleable; you can fit into tight gaps. Take half damage from bludgeoning attacks."
+  },
+  "63": {
+    "name": "Malleable Face",
+    "effect": "Your face is malleable; you can imitate the faces of others given time."
+  },
+  "64": {
+    "name": "Mane, Hair",
+    "effect": "You have a lion-like mane of hair around your neck. +1 EGO."
+  },
+  "65": {
+    "name": "No Ears",
+    "effect": "You have no external ears; just holes."
+  },
+  "66": {
+    "name": "Obligate Carnivore",
+    "effect": "You must eat raw meat each day or become Deprived."
+  },
+  "67": {
+    "name": "Patterned Skin",
+    "effect": "Your skin is striped or spotted. +1 EGO."
+  },
+  "68": {
+    "name": "Pleasant Fragrance",
+    "effect": "Your scent is pleasing to all. +1 EGO."
+  },
+  "69": {
+    "name": "Poison Spur",
+    "effect": "You have a poison spur on your wrist. Your unarmed attack deals d6 TOX damage."
+  },
+  "70": {
+    "name": "Powerful Jaws",
+    "effect": "You can bite through metal. Add +d6 to melee attack damage."
+  },
+  "71": {
+    "name": "Prehensile Feet",
+    "effect": "Your feet can grip objects like hands. +1 DEX."
+  },
+  "72": {
+    "name": "Prehensile Hair",
+    "effect": "Your hair can grip objects like a hand. +1 DEX."
+  },
+  "73": {
+    "name": "Quills",
+    "effect": "You have quills coating your body. Add +2 to your AV. Opponents who miss melee attacks against you suffer damage equal to your Level. You cannot wear other armour."
+  },
+  "74": {
+    "name": "Scaly Skin",
+    "effect": "Your skin is thick and scaly. Add +1 to your AV."
+  },
+  "75": {
+    "name": "Silk Production",
+    "effect": "You can produce strands of sticky web. Make an opposed DEX save to wrap an enemy in web, paralysing them until they succeed at a DEX save."
+  },
+  "76": {
+    "name": "Skeletal Frame",
+    "effect": "Your body is incredibly light. -2 STR and -2 CON. You take double damage from bludgeoning and crushing attacks."
+  },
+  "77": {
+    "name": "Slimy Skin",
+    "effect": "You are coated in slime. ADV to escape grab attacks and enclosing traps."
+  },
+  "78": {
+    "name": "Slug Body",
+    "effect": "You have a single slimy tail-foot and leave a trail of mucus. -2 DEX, can stick to sheer surfaces."
+  },
+  "79": {
+    "name": "Small Stature",
+    "effect": "Your body is child-sized and will never grow larger. DIS on all STR saves."
+  },
+  "80": {
+    "name": "Snout",
+    "effect": "You have a snout-like, animalistic face. ADV to reaction rolls with Newbeasts."
+  },
+  "81": {
+    "name": "Stilt Legs",
+    "effect": "You have long stilt-like legs. ADV in chases and pursuits, can wade quickly through flooded areas. You are the default target for ranged attacks."
+  },
+  "82": {
+    "name": "Strange-Hued Eyes",
+    "effect": "Your eyes are an unnatural colour."
+  },
+  "83": {
+    "name": "Strange-Hued Hair",
+    "effect": "Your hair is an unnatural colour."
+  },
+  "84": {
+    "name": "Strange-Hued Skin",
+    "effect": "Your skin is an unnatural colour."
+  },
+  "85": {
+    "name": "Tail, Club",
+    "effect": "You have a club-like, heavy tail. Make an extra d8 crushing melee attack per round."
+  },
+  "86": {
+    "name": "Tail, Prehensile",
+    "effect": "You have a long, thin tail that can grip objects. +2 DEX."
+  },
+  "87": {
+    "name": "Tail, Scorpion",
+    "effect": "You have a segmented stinging tail like a scorpion's. Make one extra attack per round (d6 TOX)."
+  },
+  "88": {
+    "name": "Tentacles, Arms",
+    "effect": "You have tentacles instead of arms. -3 STR, +3 DEX."
+  },
+  "89": {
+    "name": "Tentacles, Hair",
+    "effect": "You have stinging tentacles instead of hair. At melee range you can make a d6 TOX attack instead of your normal attack."
+  },
+  "90": {
+    "name": "Toxic Flesh",
+    "effect": "Your flesh is toxic when eaten (d10 TOX)."
+  },
+  "91": {
+    "name": "Transparent Skin",
+    "effect": "Your skin is transparent and your muscles and veins can be seen. Take double damage from Beam attacks."
+  },
+  "92": {
+    "name": "Trunk",
+    "effect": "You have an elephant-like trunk, which can hold and manipulate objects. +1 DEX."
+  },
+  "93": {
+    "name": "Tusks",
+    "effect": "You have tusks like a boar. +D6 melee damage."
+  },
+  "94": {
+    "name": "Ultravision",
+    "effect": "You have eyes that see beyond the normal spectrum of light. You can see otherwise invisible creatures and objects. You cannot be blinded."
+  },
+  "95": {
+    "name": "Vestigial Wings",
+    "effect": "You have vestigial, unusable wings."
+  },
+  "96": {
+    "name": "Vocal Mimic",
+    "effect": "You can perfectly mimic voices or sounds you have heard."
+  },
+  "97": {
+    "name": "Warty Skin",
+    "effect": "Your skin is thick and warty. Add +1 to your AV."
+  },
+  "98": {
+    "name": "Webbed Digits",
+    "effect": "Your hands and feet are webbed like a frog's."
+  },
+  "99": {
+    "name": "Whiskers",
+    "effect": "You have sensitive whiskers like a cat. +1 PSY."
+  },
+  "100": {
+    "name": "Wings",
+    "effect": "You have wings that allowed you to fly freely. When airborne you are the default target for ranged attacks."
+  }
+}

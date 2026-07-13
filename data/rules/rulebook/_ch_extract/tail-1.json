@@ -1,0 +1,1319 @@
+[
+  {
+    "name": "Nerve Crawler",
+    "printed_pages": "201",
+    "pdf_pages": "208",
+    "type": "",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+8",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Nerve-lash", "damage": "d6"},
+      {"name": "Neural Hijack", "damage": "EGO save vs Mind Control"}
+    ],
+    "special": [
+      "Neural Hijack: hijacked targets must make an opposed EGO save. On failure, the Nerve Crawler bonds with them and is able to direct their actions. The victim may attempt a new EGO save each round to break free."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "LVL1(4HP)/AV12/ML+8/ENCd8 ATK:Nerve-lash(d6)/NeuralHijack(EGOsavevs MindControl). Victims of an insidious nanotech infestation, decaying human corpses..."
+  },
+  {
+    "name": "Nightmare Herald",
+    "printed_pages": "201",
+    "pdf_pages": "208",
+    "type": "Outsider / Psychic",
+    "level": 5,
+    "hp": 20,
+    "av": 14,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Darkling Lullaby", "damage": "EGO Save vs Sleep"},
+      {"name": "Revelation", "damage": "d4 EGO damage"}
+    ],
+    "special": [
+      "Sleep: targets fall into a nightmare-wracked sleep and cannot act. They can be woken by direct damage, or anything else that would wake a sleeper.",
+      "Feast of Dreams: at the start of the round, a Nightmare Herald regenerates d6 HP for each sleeping creature nearby, allied or enemy. This effect can resurrect the Herald from apparent 'death'."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Regenerates from sleeping creatures; can resurrect from apparent death unless no sleepers nearby.",
+    "confidence": "high",
+    "raw_excerpt": "Outsider/Psychic LVL5(20HP)/AV14/ML+5/ENC1 ATK:DarklingLullaby(EGOSavevsSleep)/Revelation(d4EGOdamage). FeastofDreams: regenerates d6 HP for each sleeping creature nearby..."
+  },
+  {
+    "name": "Nome",
+    "printed_pages": "201",
+    "pdf_pages": "208",
+    "type": "Biological / Hypergeometric",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+8",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Clockwork Musket", "damage": "d8, wind-up after each shot"},
+      {"name": "Bite", "damage": "d4"}
+    ],
+    "special": [
+      "Vanish: a Nome can disappear inside its cap as a combat action, doubling its AV. The cap sticks to the floor like a limpet, and is impossible to move. While inside the cap the Nome regains all HP.",
+      "Summoning Triangle: a group of three Nomes can remove their caps to create a summoning triangle. A single target the Nomes can see must PSY Save or be transported to the centre of the summoning triangle."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "AV 12 normal, 24 when incapped (vanished into cap). Stat block notation: AV12(24 incap).",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Hypergeometric LVL1(4HP)/AV12(24incap)/ML+8/ENC2d6 ATK:ClockworkMusket(d8,wind-upaftereachshot)/Bite(d4). Vanish: doubling its AV... regains all HP."
+  },
+  {
+    "name": "Oblivion Obelisk",
+    "printed_pages": "201",
+    "pdf_pages": "208",
+    "type": "Mineral / Psychic",
+    "level": 13,
+    "hp": 52,
+    "av": 22,
+    "morale": "-",
+    "enc": "1 + d8 Heralds",
+    "movement": "",
+    "attacks": [
+      {"name": "Oblivion", "damage": "1 EGO damage per round, affects all in line of sight"}
+    ],
+    "special": [
+      "The very sight of the edifice erodes the mind's fabric, replacing the striving will with a terrible blankness.",
+      "Oblivion Heralds: unfortunates who have fallen victim to the Obelisk. They seek not to kill but to restrain, forcing captives to kneel unblinking before the black stone until their own mind has been erased. Stats as Bandits (p.xx), but armed with non-lethal weapons."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Morale dash (no morale). Comes with d8 Oblivion Heralds (Bandit stats, non-lethal weapons).",
+    "confidence": "high",
+    "raw_excerpt": "Mineral/Psychic LVL13(52HP)/AV22/ML-/ENC1+d8Heralds ATK:Oblivion(1EGOdamageperround,affects allinlineofsight)."
+  },
+  {
+    "name": "Occulith",
+    "printed_pages": "201",
+    "pdf_pages": "208",
+    "type": "Mineral",
+    "level": 12,
+    "hp": 48,
+    "av": 20,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Lithifying Gaze", "damage": "auto-hit, d6 DEX damage, +2 AV"}
+    ],
+    "special": [
+      "Lithifying Gaze: automatically hits a target in line of sight. Target loses d6 DEX and gains +2 AV per round; must break line of sight to stop the attack. Both effects fade at the rate of one point per day. An Occulith is immune to its own gaze.",
+      "Surprise: the Occulith appears to be inanimate stone until it moves, and always surprises unless the PCs are informed of its exact location."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Immune to its own gaze (Lithifying Gaze) only."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Always surprises unless PCs know its exact location.",
+    "confidence": "high",
+    "raw_excerpt": "Mineral LVL12(48HP)/AV20/ML+10/ENC1 ATK:LithifyingGaze(auto-hit,d6DEXdamage,+2AV). An Occulith is immune to its own gaze."
+  },
+  {
+    "name": "Parched Man's Snare",
+    "printed_pages": "201",
+    "pdf_pages": "208",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 16,
+    "morale": "-",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Snare", "damage": "d6, followed by drowning (STR save vs d6 damage per round)"}
+    ],
+    "special": [
+      "A giant, carnivorous plant that lurks in pools and oases. The Snare hunts by grabbing animals while they drink and dragging them to the bottom of the lake or river, there to be drowned and absorbed into the Snare's root structure."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Morale dash (no morale).",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL4(16HP)/AV16/ML-/ENCd4 ATK:Snare(d6),followedbydrowning(STRsave vsd6damageperround)."
+  },
+  {
+    "name": "Phase Panther",
+    "printed_pages": "202",
+    "pdf_pages": "209",
+    "type": "Hypergeometric",
+    "level": 6,
+    "hp": 24,
+    "av": 14,
+    "morale": "+5",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Claws", "damage": "d10, hypergeometric"},
+      {"name": "Pounce", "damage": "DEX Save vs 2d6 damage per round"}
+    ],
+    "special": [
+      "Phase: At the start of each combat round, the Phase Panther may choose to phase out of reality. While phased, the panther can be seen but cannot be touched or damaged; it likewise cannot touch or harm any non-phased creature.",
+      "Pounce: Targets make an opposed DEX save; on failure the target is pinned and takes 2d6 damage per round. While pinned the Panther and target phase out of reality. The target must DEX save to break free and return to the material world."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Cannot be damaged while phased (Phase ability), but this is a conditional state, not a damage-type resistance."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Claws deal hypergeometric damage.",
+    "confidence": "high",
+    "raw_excerpt": "Hypergeometric LVL6(24HP)/AV14/ML+5/ENCd4 ATK:Claws(d10,hypergeometric)/Pounce(DEX Savevs2d6damageperround)."
+  },
+  {
+    "name": "Phthalo-Jackal",
+    "printed_pages": "202",
+    "pdf_pages": "209",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 14,
+    "morale": "+4",
+    "enc": "3d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d4"}
+    ],
+    "special": [
+      "Cautious, clever, cerulean-coated pack hunters. Will always flee battle if they are outnumbered."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Always flees if outnumbered.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL1(4HP)/AV14/ML+4/ENC3d6 ATK:Bite(d4). Will always flee battle if they are outnumbered."
+  },
+  {
+    "name": "Piranha Mole",
+    "printed_pages": "202",
+    "pdf_pages": "209",
+    "type": "Biological",
+    "level": 0,
+    "hp": 1,
+    "av": 11,
+    "morale": "+1",
+    "enc": "2d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Flense", "damage": "d4 ongoing, DEX Save to pull off"}
+    ],
+    "special": [
+      "Burrower: the Moles can burrow in soft ground, doubling their AV."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "AV 11 normal, 22 when burrowing. Stat block notation: AV11(22).",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL0(1HP)/AV11(22)/ML+1/ENC2d8 ATK:Flense(d4ongoing,DEXSavetopulloff). Burrower: doubling their AV."
+  },
+  {
+    "name": "Planeyfolk",
+    "printed_pages": "202",
+    "pdf_pages": "209",
+    "type": "Biological / Hypergeometric",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+4",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Flattening Touch", "damage": "d4 STR damage"}
+    ],
+    "special": [
+      "Hypergeometric humans that only have two dimensions.",
+      "Flat: Planeyfolk take double damage from slashing or slicing weapons. When encountered, they may be pretending to be wall frescoes or shadows. Make a PSY Save to identify them as living creatures. On failure, they may attack from ambush."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": ["slashing"], "half": [], "varies": false, "notes": "Flat: take double damage from slashing or slicing weapons."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": true},
+    "combat_note": "Mimic wall frescoes/shadows; PSY Save to identify or they ambush.",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Hypergeometric LVL2(8HP)/AV13/ML+4/ENCd6 ATK:FlatteningTouch(d4STRdamage). Flat: Planeyfolk take double damage from slashing or slicing weapons."
+  },
+  {
+    "name": "Plated Beetle",
+    "printed_pages": "202",
+    "pdf_pages": "209",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 20,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Charge", "damage": "DEX Save vs 2d6"},
+      {"name": "Pincers", "damage": "d6"}
+    ],
+    "special": [
+      "Aggressive carnivorous beetles. Their heads are thickly armoured and almost impervious to harm, but their abdomens are soft and exposed, with AV 10. They are vulnerable after a charge."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Head AV 20, abdomen AV 10 (soft/exposed). Vulnerable after a charge. Stat block notation: AV20(10)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "AV 20 (head/front) vs AV 10 (soft abdomen). Vulnerable after charging.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL3(12HP)/AV20(10)/ML+5/ENCd6 ATK:Charge(DEXSavevs2d6)/Pincers(d6). abdomens are soft and exposed, with AV 10."
+  },
+  {
+    "name": "Pontiff Scorpion",
+    "printed_pages": "202",
+    "pdf_pages": "209",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 15,
+    "morale": "+2",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claw", "damage": "d4"},
+      {"name": "Sting", "damage": "d10 TOX"}
+    ],
+    "special": [
+      "A large venomous arachnid. Named for its colouring, which resembles the red armour worn by the battle-crazed Pontiffs of the Church of the Everbleeding Wound."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Sting deals poison damage (TOX -> poison).",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL2(8HP)/AV15/ML+2/ENC1 ATK:2xClaw(d4)+Sting(d10TOX)."
+  },
+  {
+    "name": "Pseudo-Giant",
+    "printed_pages": "202",
+    "pdf_pages": "209",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 15,
+    "morale": "+8",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Stomp", "damage": "d10"}
+    ],
+    "special": [
+      "Severely mutated humans that resemble enormous ambulatory torsos. They have a primitive, furious face on their chest, and tiny vestigial arms. They are unintelligent but ferocious and will pursue prey for miles."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL4(16HP)/AV15/ML+8/ENCd4 ATK:Stomp(d10)."
+  },
+  {
+    "name": "Psyche Leech",
+    "printed_pages": "202-203",
+    "pdf_pages": "209-210",
+    "type": "Outsider / Psychic",
+    "level": 8,
+    "hp": 32,
+    "av": 14,
+    "morale": "+8",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Tendrils", "damage": "d8"},
+      {"name": "Psyche Syphon", "damage": "grab, d6 PSY damage per round, STR save to break free"}
+    ],
+    "special": [
+      "What appears to be a man is merely the beast's shell: from within the ambling corpse's skull blooms a ravenous tangle of questing tendrils. The otherworldly leech is drawn to the brains of active psychics.",
+      "Gleam Seeker: PCs with Gleam (p.xx) are always visible to the Leech, regardless of distance. They cannot surprise the creature.",
+      "Immunity: the Leech is immune to damage caused by Mystic Gifts."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Immune to damage caused by Mystic Gifts."},
+    "flags": {"mystic_gift_immune": true, "ranged_immune": false, "mimic": false},
+    "combat_note": "Cannot be surprised by PCs with Gleam. Immune to Mystic Gift damage.",
+    "confidence": "high",
+    "raw_excerpt": "Outsider/Psychic LVL8(32HP)/AV14/ML+8/ENC1 ATK:2xTendrils(d8)+PsycheSyphon(grab,d6 PSYdamageperround,STRsavetobreakfree). Immunity: the Leech is immune to damage caused by Mystic Gifts."
+  },
+  {
+    "name": "Psy-Owl",
+    "printed_pages": "203",
+    "pdf_pages": "210",
+    "type": "Biological / Psychic",
+    "level": 1,
+    "hp": 4,
+    "av": 14,
+    "morale": "+1",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Beak", "damage": "d4"},
+      {"name": "Dominate", "damage": "EGO save vs Mind Control"}
+    ],
+    "special": [
+      "A flightless blue owl with delicate pink eyes. Psy-Owls mentally dominate small animals and force them to climb into the owl's beak. Larger creatures that fall under the Owl's influence are tasked with capturing small lizards and desert mice and hand-feeding them to the gluttonous bird."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Psychic LVL1(4HP)/AV14/ML+1/ENCd6 ATK:Beak(d4)/Dominate(EGOsavevsMind Control)."
+  },
+  {
+    "name": "Quicksilver Exterminator",
+    "printed_pages": "203",
+    "pdf_pages": "210",
+    "type": "Synthetic",
+    "level": 10,
+    "hp": 40,
+    "av": 20,
+    "morale": "+15",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Slash", "damage": "d12"},
+      {"name": "Laser Eyes", "damage": "d10, beam"}
+    ],
+    "special": [
+      "Merciless shapeshifting liquid metal war-synth. Immune to kinetic damage, fire, acid, radiation, and all poisons. Can only be harmed with extreme cold, or with hypergeometric weapons."
+    ],
+    "resistances": {"immune": ["kinetic", "fire", "acid", "radiation", "poison"], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Immune to kinetic, fire, acid, radiation, all poisons. Can only be harmed with extreme cold (extreme_temperature/cold) or hypergeometric weapons."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Only extreme cold or hypergeometric weapons damage it.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL10(40HP)/AV20/ML+15/ENC1 ATK:2xSlash(d12)+LaserEyes(d10,beam). Immunetokineticdamage,fire,acid,radiation, andallpoisons.Canonlybeharmedwith extremecold,orwithhypergeometricweapons."
+  },
+  {
+    "name": "Quill Spider",
+    "printed_pages": "203",
+    "pdf_pages": "210",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d6"},
+      {"name": "Quill Spray", "damage": "d8, blast"}
+    ],
+    "special": [
+      "Quills: if an opponent misses a melee attack against the spider, they suffer 2 damage from the quills."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Reactive quill damage on missed melee attacks.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL2(8HP)/AV13/ML+5/ENCd6 ATK:Bite(d6)/QuillSpray(d8,blast). Quills: suffer 2 damage from the quills."
+  },
+  {
+    "name": "Regenerator",
+    "printed_pages": "203",
+    "pdf_pages": "210",
+    "type": "Biological",
+    "level": 6,
+    "hp": 24,
+    "av": 15,
+    "morale": "+6",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claw", "damage": "d6"},
+      {"name": "Bite", "damage": "d8 if both claws hit same target"}
+    ],
+    "special": [
+      "Regeneration: a Regenerator regains +4 HP at the start of its combat round. Dead Regenerators will revive within d6 hours. Damage caused by fire or acid prevents this."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Regeneration is stopped by fire or acid damage (revival prevention), not a standard damage resistance."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Regains +4 HP per round; revives in d6 hours unless killed with fire/acid.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL6(24HP)/AV15/ML+6/ENCd6 ATK:2xClaw(d6)+Bite(d8)ifbothclawshit sametarget. Regeneration: regains +4 HP... Damage caused by fire or acid prevents this."
+  },
+  {
+    "name": "Rustacean",
+    "printed_pages": "203",
+    "pdf_pages": "210",
+    "type": "Biological / Synthetic",
+    "level": 4,
+    "hp": 16,
+    "av": 18,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Big Claw", "damage": "d10, corrosive"},
+      {"name": "Small Claw", "damage": "d6, corrosive"}
+    ],
+    "special": [
+      "Corrosion: a hit from the Rustacean's claws will corrode a metal item in the target's inventory, rendering it useless. Armour corroded in this fashion loses -1 AV per hit. Synthetic PCs damaged by corrosive claws also suffer d4 CON loss. If there is debate about which item should be corroded by a hit, flip a coin. On heads the players choose, on tails the Rustacean does."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Claws corrode metal items/armour; Synthetic PCs suffer d4 CON loss.",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Synthetic LVL4(16HP)/AV18/ML+5/ENC1 ATK:BigClaw(d10,corrosive)+SmallClaw(d6, corrosive). Corrosion: corrode a metal item..."
+  },
+  {
+    "name": "Sandworm (Adult)",
+    "printed_pages": "203",
+    "pdf_pages": "210",
+    "type": "Biological",
+    "level": 50,
+    "hp": 200,
+    "av": 26,
+    "morale": "+12",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Slam", "damage": "5d20"},
+      {"name": "Swallow Whole", "damage": "All opponents DEX save vs Death"}
+    ],
+    "special": [
+      "Colossal: a Sandworm takes minimum damage from all damage sources."
+    ],
+    "resistances": {"immune": [], "minimum": ["kinetic", "bludgeoning", "slashing", "piercing", "fire", "cold", "electrical", "acid", "poison", "radiation", "beam", "fungicide", "hypergeometric"], "double": [], "half": [], "varies": false, "notes": "Colossal: takes minimum damage from ALL damage sources."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Colossal - minimum damage from everything.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL50(200HP)/AV26/ML+12/ENC1 ATK:Slam(5d20)/SwallowWhole(Allopponents DEXsavevsDeath). Colossal: a Sandworm takes minimum damage from all damage sources."
+  },
+  {
+    "name": "Sandworm (Juvenile)",
+    "printed_pages": "203",
+    "pdf_pages": "210",
+    "type": "Biological",
+    "level": 10,
+    "hp": 40,
+    "av": 18,
+    "morale": "+9",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Slam", "damage": "2d10"},
+      {"name": "Swallow Whole", "damage": "Single target DEX save vs Death"}
+    ],
+    "special": [
+      "Juveniles, between one and five centuries of age, are the size of passenger trains. Some are trained by the Faa to pull sand-sleds. Although not predatory, they are aggressive towards sources of unwelcome vibration, like heavy machinery or warding field technology."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL10(40HP)/AV18/ML+9/ENC1 ATK:Slam(2d10)/SwallowWhole(Singletarget DEXsavevsDeath)."
+  },
+  {
+    "name": "Sawbone Drone",
+    "printed_pages": "203-204",
+    "pdf_pages": "210-211",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 14,
+    "morale": "+3",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Surgical Array", "damage": "Special"}
+    ],
+    "special": [
+      "Surgical Array: non-Biological targets suffer d8 damage. Biological targets roll d6 for one of the following effects: 1. d6 STR damage; 2. d6 DEX damage; 3. d6 CON damage; 4. Roll 2d6 for a random Wound (p.xx); 5. Healed for d8+CON HP; 6. Forcibly installed with an Advanced Cybernetic Implant (p.xx)."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Surgical Array: non-Biological d8 dmg; Biological roll d6 table.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL3(12HP)/AV14/ML+3/ENCd4 ATK:SurgicalArray(Special). non-Biological targets suffer d8 damage. Biological targets roll d6..."
+  },
+  {
+    "name": "Seeker of Eyeless Wisdom",
+    "printed_pages": "204",
+    "pdf_pages": "211",
+    "type": "Biological / Psychic",
+    "level": 2,
+    "hp": 8,
+    "av": 11,
+    "morale": "+5",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Brain Burster", "damage": "Special"},
+      {"name": "Telekinesis", "damage": "d6, STR save vs lifted and thrown"}
+    ],
+    "special": [
+      "Brain Burster: an embolism catalysed by psychic malice. For each combat round that the Seeker focuses their attention on a target, the target takes unblockable damage, with no to-hit roll required. This damage starts at 2 and doubles each turn, unless the Seeker's focus is broken, or if they switch to a new target. Creatures without a brain cannot be harmed by this attack."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Brain Burster: unblockable, starts at 2 and doubles each round of focus; brainless creatures immune.",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Psychic LVL2(8HP)/AV11/ML+5/ENCd4 ATK:BrainBurster(Special)/Telekinesis(d6, STRsavevsliftedandthrown). damage starts at 2 and doubles each turn."
+  },
+  {
+    "name": "Scintillating Swarm",
+    "printed_pages": "204",
+    "pdf_pages": "211",
+    "type": "Biological",
+    "level": null,
+    "hp": null,
+    "av": 12,
+    "morale": "+1",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Swarm", "damage": "d6, auto-hit, max targets = Swarm's Level"}
+    ],
+    "special": [
+      "Ambusher: when motionless, the Scintillating Swarm appears to be a large cache of golden coins, abandoned on the ground. If approached, they attack in an Ambush round.",
+      "Swarmers: the Swarm is comprised of innumerable coin-sized Swarmers, which move and fight as one entity. The Swarm takes half damage from single target attacks, but doubled damage from blasting attacks like grenades."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Takes half damage from single-target attacks; doubled damage from blast attacks. (Attack-type dependent, not element-dependent.)"},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": true},
+    "combat_note": "Level is variable: LVL d8 (rolled). HP not given as fixed number. Half damage from single-target attacks, double from blast. Mimics a cache of golden coins.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVLd8/AV12/ML+1/ENC1 ATK:Swarm(d6,auto-hit,maxtargets=Swarm's Level). The Swarm takes half damage from single target attacks, but doubled damage from blasting attacks."
+  },
+  {
+    "name": "Scythesliver",
+    "printed_pages": "204",
+    "pdf_pages": "211",
+    "type": "Hypergeometric / Synthetic",
+    "level": 5,
+    "hp": 20,
+    "av": 15,
+    "morale": "+10",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Blades", "damage": "d10"}
+    ],
+    "special": [
+      "Sharpness Beyond Measure: Scytheslivers can cut through any material, and hit as though their target had AV 10. If a Scythesliver rolls a 20 or higher while attacking, it inflicts a Wound: Severed Limb (3 Slots, -10 STR, -10 DEX)."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Attacks treat target AV as 10; nat 20+ inflicts Severed Limb wound.",
+    "confidence": "high",
+    "raw_excerpt": "Hypergeometric/Synthetic LVL5(20HP)/AV15/ML+10/ENCd4 ATK:2xBlades(d10). hit as though their target had AV10... Wound:SeveredLimb(3Slots,-10STR,-10DEX)."
+  },
+  {
+    "name": "Sentry Turret",
+    "printed_pages": "204-205",
+    "pdf_pages": "211-212",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "-",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Motion-Tracking Gun", "damage": "always hits target that moved last, d8"}
+    ],
+    "special": [
+      "A tripod of silvery legs, on which perches a shiny little gun with a malicious little brain. Attacks anything that moves nearby. Speaks with a childish voice. Totally unreasonable and defends its position ferociously."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Morale dash (no morale). Gun always hits the target that moved last.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL1(4HP)/AV12/ML-/ENCd6 ATK:Motion-TrackingGun(alwayshitstarget thatmovedlast,d8)."
+  },
+  {
+    "name": "Shriekman",
+    "printed_pages": "205",
+    "pdf_pages": "212",
+    "type": "Biological",
+    "level": 3,
+    "hp": 12,
+    "av": 13,
+    "morale": "+7",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Claws", "damage": "d8"},
+      {"name": "Hypersonic Scream", "damage": "d6 + DEX save vs Deafened"}
+    ],
+    "special": [
+      "Abhuman troglodytes, blind and cunning. They are excellent climbers and can attack from any angle within the depths they inhabit.",
+      "Deafened: PCs who have been deafened by a hypersonic scream gain a Wound: Deafened. They cannot hear their surroundings and are always surprised by encounters."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Scream inflicts Deafened wound.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL3(12HP)/AV13/ML+7/ENCd8 ATK:2xClaws(d8)/HypersonicScream(d6+ DEXsavevsDeafened)."
+  },
+  {
+    "name": "Spambot",
+    "printed_pages": "205",
+    "pdf_pages": "212",
+    "type": "Synthetic / Psychic",
+    "level": 1,
+    "hp": 4,
+    "av": 13,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Over-firm handshake", "damage": "d4"},
+      {"name": "Spamblast", "damage": "EGO save vs Wound: Spam Ad"}
+    ],
+    "special": [
+      "Spam Ad: Fills one Item Slot. To erase this burden, make a sale pitch to five strangers regarding the bizarre product that impinges on your consciousness."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Spamblast inflicts Spam Ad wound (fills item slot).",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic/Psychic LVL1(4HP)/AV13/ML+3/ENCd6 ATK:Over-firmhandshake(d4)/Spamblast(EGO savevsWound:SpamAd)."
+  },
+  {
+    "name": "Spectre of Indifference",
+    "printed_pages": "205",
+    "pdf_pages": "212",
+    "type": "Outsider",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+12",
+    "enc": "d3",
+    "movement": "",
+    "attacks": [
+      {"name": "Envelop", "damage": "d8 EGO drain"}
+    ],
+    "special": [
+      "For reasons unknown, they cannot feed on children or be perceived by them.",
+      "Incorporeal: immune to damage from conventional sources. Only hypergeometric or anti-paradoxical weapons will harm the Spectre.",
+      "Indifference: those reduced to 0 EGO by a Spectre's touch do not die, but are empty of intent and consumed by a terrible blankness. They will not react to any stimuli, and die of thirst without intravenous fluids."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Incorporeal: immune to damage from conventional sources. Only hypergeometric or anti-paradoxical weapons harm it."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Only hypergeometric/anti-paradoxical weapons harm it.",
+    "confidence": "high",
+    "raw_excerpt": "Outsider LVL1(4HP)/AV11/ML+12/ENCd3 ATK:Envelop(d8EGOdrain). Incorporeal: immune to damage from conventional sources. Only hypergeometric or anti-paradoxical weapons will harm the Specter."
+  },
+  {
+    "name": "Star Vampire",
+    "printed_pages": "205-206",
+    "pdf_pages": "212-213",
+    "type": "Outsider",
+    "level": 6,
+    "hp": 24,
+    "av": 25,
+    "morale": "+6",
+    "enc": "d3",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Tentacles", "damage": "d8"},
+      {"name": "Latch", "damage": "d4 CON drain"}
+    ],
+    "special": [
+      "Invisible: Star Vampires are invisible to conventional light sources and always surprise when encountered. Infrared or ulfire light will reveal their true shapes. Once the Vampire latches and begins feeding the creature becomes visible, as red blood flows through its occluded body. If visible the creature's AV drops to 15.",
+      "Star Flesh: the Vampire takes minimum damage from kinetic attacks. Hypergeometric and electrified weapons deal damage as normal."
+    ],
+    "resistances": {"immune": [], "minimum": ["kinetic"], "double": [], "half": [], "varies": false, "notes": "Star Flesh: takes minimum damage from kinetic attacks. Hypergeometric and electrical weapons deal normal damage."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "AV 25 while invisible, drops to 15 when visible (feeding). Stat block notation: AV25(15). Always surprises; infrared/ulfire reveals.",
+    "confidence": "high",
+    "raw_excerpt": "Outsider LVL6(24HP)/AV25(15)/ML+6/ENCd3 ATK:2xTentacles(d8)/Latch(d4CONdrain). StarFlesh: the Vampire takes minimum damage from kinetic attacks."
+  },
+  {
+    "name": "Stumbling Drone",
+    "printed_pages": "206",
+    "pdf_pages": "213",
+    "type": "Synthetic",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+8",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Plasma-rifle", "damage": "d8"}
+    ],
+    "special": [
+      "Staggering boxy war-synths. When flipped on their backs they cannot right themselves.",
+      "Overheat: when the Drone's plasma-rifle deals maximum damage, the synth shuts down for a turn afterwards."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Shuts down a turn after a max-damage plasma shot.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL2(8HP)/AV13/ML+8/ENCd6 ATK:Plasma-rifle(d8). Overheat: when the Drone's plasma-rifle deals maximum damage, the synth shuts down for a turn afterwards."
+  },
+  {
+    "name": "Squishwolf",
+    "printed_pages": "206",
+    "pdf_pages": "213",
+    "type": "Biological",
+    "level": 4,
+    "hp": 16,
+    "av": 13,
+    "morale": "+5",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Swallow", "damage": "d8 ongoing, STR save to break free"}
+    ],
+    "special": [
+      "Jelly-flesh: Squishwolves can fit through gaps no larger than a closed fist, and pursue cunningly through the underground environments they haunt. They take minimum damage from bludgeoning and crushing weapons."
+    ],
+    "resistances": {"immune": [], "minimum": ["bludgeoning"], "double": [], "half": [], "varies": false, "notes": "Jelly-flesh: take minimum damage from bludgeoning and crushing weapons (crushing -> bludgeoning)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Minimum damage from bludgeoning/crushing; squeezes through fist-sized gaps.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL4(16HP)/AV13/ML+5/ENC2d6 ATK:Swallow(d8ongoing,STRsavetobreak free). Jelly-flesh: They take minimum damage from bludgeoning and crushing weapons."
+  },
+  {
+    "name": "Subtle Stalker",
+    "printed_pages": "206",
+    "pdf_pages": "213",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 22,
+    "morale": "+8",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Slash", "damage": "d8"}
+    ],
+    "special": [
+      "Active Camouflage: Always Ambushes (p.xx) unless PCs have infrared vision. If the active camouflage is disrupted, the Stalker's AV drops to 11."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "AV 22 while camouflaged, drops to 11 if camouflage disrupted/visible. Not a damage-type resistance."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "AV 22 normal, 11 if visible. Stat block notation: AV22(11 if visible). Always ambushes unless PCs have infrared vision.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL3(12HP)/AV22(11ifvisible)/ML+8/ENC1 Attacks:2xSlash(d8). Active Camouflage: Always Ambushes unless PCs have infrared vision."
+  },
+  {
+    "name": "Synth Skeleton",
+    "printed_pages": "206",
+    "pdf_pages": "213",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+1",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Chrome Claws", "damage": "d6"}
+    ],
+    "special": [
+      "The forlorn remnants of damaged synths, stripped down to the barest essentials by the passage of years. Insane and covetous, they relentlessly attack healthy synths in an attempt to harvest them for parts.",
+      "Skeletal: the Synth Skeleton takes minimum damage from slashing and stabbing attacks."
+    ],
+    "resistances": {"immune": [], "minimum": ["slashing", "piercing"], "double": [], "half": [], "varies": false, "notes": "Skeletal: takes minimum damage from slashing and stabbing attacks (stabbing -> piercing)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Minimum damage from slashing and stabbing/piercing.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL1(4HP)/AV11/ML+1/ENCd8 ATK:ChromeClaws(d6). Skeletal: the Synth Skeleton takes minimum damage from slashing and stabbing attacks."
+  },
+  {
+    "name": "Tarantella",
+    "printed_pages": "206",
+    "pdf_pages": "213",
+    "type": "Biological",
+    "level": 7,
+    "hp": 28,
+    "av": 14,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Fangs", "damage": "d8 + CON Save vs Tarantism"}
+    ],
+    "special": [
+      "Tarantism: Biological targets afflicted by Tarantism are subjected to odd neurotoxins which force their muscles to dance with wild abandon, driving them to the point of death from exhaustion."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Tarantism dancing madness affects Biological targets.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL7(28HP)/AV14/ML+5/ENC1 ATK:Fangs(d8+CONSavevsTarantism)."
+  },
+  {
+    "name": "Titan Acolyte",
+    "printed_pages": "206",
+    "pdf_pages": "213",
+    "type": "Biological / Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 16,
+    "morale": "+5",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Vibro-Dagger", "damage": "d4, hits as if target has -5 AV"},
+      {"name": "Volt Crossbow", "damage": "d6, electrical"}
+    ],
+    "special": [
+      "Cybernetics: all Titan Acolytes bear a randomly generated Cybernetic Implant (p.xx), proof of their devotion to wire and chrome."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Vibro-Dagger hits as if target -5 AV; carries random Cybernetic Implant.",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Synthetic LVL3(12HP)/AV16/ML+5/ENCd8 ATK:Vibro-Dagger(d4,hitsasiftargethas-5AV) /VoltCrossbow(d6,electrical)."
+  },
+  {
+    "name": "Thermasaur",
+    "printed_pages": "206-207",
+    "pdf_pages": "213-214",
+    "type": "Biological",
+    "level": 12,
+    "hp": 48,
+    "av": 16,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "4x Claws", "damage": "d6"},
+      {"name": "Bite", "damage": "2d6"},
+      {"name": "Aura", "damage": "unblockable, special"}
+    ],
+    "special": [
+      "Aura: Each round, the Thermasaur can change its body temperature between searingly hot and bitterly cold. The heat or chill is so intense that anyone near the creature suffers d8 automatic damage per round. In addition, the heat forces PCs carrying metal items to EGO save or drop the item due to its scalding temperature. If the Thermasaur's aura is cold, any liquids near the creature freeze solid, and all ranged attacks are made with disadvantage due to shivering."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Aura deals d8 unblockable extreme_temperature (fire or cold) damage per round.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL12(48HP)/AV16/ML+10/ENC1 ATK:4xClaws(d6)+Bite(2d6)+Aura (unblockable,special). anyone near the creature suffers d8 automatic damage per round."
+  },
+  {
+    "name": "Thornthrower Cactus",
+    "printed_pages": "207",
+    "pdf_pages": "214",
+    "type": "Biological",
+    "level": 4,
+    "hp": 20,
+    "av": 12,
+    "morale": "+6",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "2x Thorn Fling", "damage": "d4"}
+    ],
+    "special": [
+      "Spines: if an opponent misses a melee attack against the Thornthrower cactus, they take 4 damage from the long spines."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Reactive 4 spine damage on missed melee attacks. NOTE: HP listed as 20 despite LVL 4 (normally 16) - printed as stated.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL4(20HP)/AV12/ML+6/ENCd6 ATK:2xThornFling(d4). Spines: if an opponent misses a melee attack... they take 4 damage from the long spines."
+  },
+  {
+    "name": "Thunderstrike Bird",
+    "printed_pages": "207",
+    "pdf_pages": "214",
+    "type": "Biological / Synthetic",
+    "level": 12,
+    "hp": 48,
+    "av": 20,
+    "morale": "+12",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Harpoon", "damage": "d12, electrical"},
+      {"name": "Talons", "damage": "2d8"}
+    ],
+    "special": [
+      "Will fire an electrical harpoon which punches straight through armour. Attempts to reel character back in - STR save to break free. Otherwise it pulls you up into the sky and tears at you with claws. Armour drops to 15 if grounded."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "AV 20 normally, drops to 15 if grounded. Stat block notation: AV20(15)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "AV 20 airborne, 15 grounded. Harpoon punches through armour and reels target up.",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Synthetic LVL12(48HP)/AV20(15)/ML+12/ENC1 ATK:Harpoon(d12,electrical)/Talons(2d8). Armour drops to 15 if grounded."
+  },
+  {
+    "name": "Tiger Fly",
+    "printed_pages": "207",
+    "pdf_pages": "214",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 13,
+    "morale": "+5",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Sting", "damage": "d8"}
+    ],
+    "special": [
+      "Dog-sized mutant wasps. Highly protective of their nests. If you kill one, d6 more Tiger Flies will arrive to investigate within three rounds."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Killing one summons d6 more within three rounds.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL2(8HP)/AV13/ML+5/ENCd6 ATK:Sting(d8). If you kill one, d6 more Tiger Flies will arrive..."
+  },
+  {
+    "name": "Troika",
+    "printed_pages": "207",
+    "pdf_pages": "214",
+    "type": "Synthetic",
+    "level": 3,
+    "hp": 12,
+    "av": 13,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "3x Kick", "damage": "d6"}
+    ],
+    "special": [
+      "Pinwheel of synthetic legs that tumbles through the blue wasteland kicking everything it can find. Utterly inexplicable and widely hated."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Stat block printed twice in different formats; both give LVL 3 / AV 13 / ML +3 / ENC d6 / 3x Kick (d6).",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL3(12HP)/AV13/ML+3/ENCd6 Level:3 Armour:13 Morale:3 Encountered:d6 ATK:3x Kick(d6)."
+  },
+  {
+    "name": "Tumblesnare",
+    "printed_pages": "207",
+    "pdf_pages": "214",
+    "type": "Synthetic",
+    "level": 2,
+    "hp": 8,
+    "av": 14,
+    "morale": "Always Flees",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Grab", "damage": "followed by rolling damage"}
+    ],
+    "special": [
+      "After a successful grab, the snare will roll away across the dunes with its prey still entangled in its body, causing increasing bludgeoning damage each round. The damage starts at d4 and will rise to d12.",
+      "Prisoners of the tumblesnare must make an opposed DEX save to work their way free. Once the snare has killed a victim it will spend days refuelling.",
+      "Tumblesnares have no means of aggression besides their ambushes, and always flee if their attack fails."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Rolling bludgeoning damage escalates d4 -> d12. Morale: Always Flees.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL2(8HP)/AV14/MLAlwaysFlees/ENCd6 ATK:Grab(followedbyrollingdamage). The damage starts at d4 and will rise to d12."
+  },
+  {
+    "name": "Turretwright",
+    "printed_pages": "208",
+    "pdf_pages": "215",
+    "type": "Synthetic",
+    "level": 5,
+    "hp": 20,
+    "av": 14,
+    "morale": "+5",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Deploy Protocol", "damage": "Creates a Sentry Turret"},
+      {"name": "Repair Protocol", "damage": "+d6 HP to Synthetic target"}
+    ],
+    "special": [
+      "Ancient synth, resembling a doughnut of chrome with twelve restless arm-legs. Trundles throughout Vaarn manufacturing and deploying Sentry Turrets, for no discernible reason. Highly protective of its horrible motion-sensitive children. Sings while it works."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Deploys Sentry Turrets and repairs Synthetic allies.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL5(20HP)/AV14/ML+5/ENC1 ATK:DeployProtocol(CreatesaSentryTurret)/ RepairProtocol(+d6HPtoSynthetictarget)."
+  },
+  {
+    "name": "Unicorn",
+    "printed_pages": "208",
+    "pdf_pages": "215",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+1",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Horn", "damage": "d6"}
+    ],
+    "special": [
+      "Gene sculpted pests. Tiny white equines with golden hooves and long, coiling horns. They are omnivorous, rapacious, territorial, fast-breeding, and their flesh is full of glitter, rendering it inedible."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL1(4HP)/AV11/ML+1/ENC2d6 ATK:Horn(d6)."
+  },
+  {
+    "name": "Unfolder",
+    "printed_pages": "208",
+    "pdf_pages": "215",
+    "type": "Hypergeometric",
+    "level": 9,
+    "hp": 36,
+    "av": 16,
+    "morale": "+9",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Envelop", "damage": "STR Save vs Special"}
+    ],
+    "special": [
+      "Exalted servants of the Jigsaw Autarch, which resemble depth-less cloaks made of skin. They serve as the Court's assassins, devouring scholars who pry too deeply into the mysteries of the Labyrinth.",
+      "Immunity: Unfolders are immune to damage from mundane sources. Only hypergeometric weapons will harm them.",
+      "Envelop: enveloped creatures are held in place, and cannot move or attack. They are drained of d8 STR per round. While digesting its victim the Unfolder is immobile and cannot flee."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "Immune to damage from mundane sources. Only hypergeometric weapons harm it."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Only hypergeometric weapons harm it. Envelop drains d8 STR/round.",
+    "confidence": "high",
+    "raw_excerpt": "Hypergeometric LVL9(36HP)/AV16/ML+9/ENC1 ATK:Envelop(STRSavevsSpecial). Immunity: Unfolders are immune to damage from mundane sources. Only hypergeometric weapons will harm them."
+  },
+  {
+    "name": "Viridian Ooze",
+    "printed_pages": "208",
+    "pdf_pages": "215",
+    "type": "Fungal",
+    "level": 4,
+    "hp": 16,
+    "av": 9,
+    "morale": "+8",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Engulf", "damage": "d3 CON damage, STR save to break free"}
+    ],
+    "special": [
+      "The Ooze's embrace marries digestion with cytokinesis, birthing heirs in seconds from the biomass consumed.",
+      "Engulf: Each successful engulf attack creates a new Viridian Ooze, with a Level equal to the CON lost.",
+      "Resistance: the Ooze takes half damage from kinetic attacks. It suffers 3d8 damage per round from exposure to extreme heat."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": ["kinetic"], "varies": false, "notes": "Takes half damage from kinetic attacks. Suffers 3d8 damage per round from exposure to extreme heat (fire/extreme_temperature vulnerability)."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Half damage from kinetic; 3d8/round from extreme heat. Engulf spawns new oozes.",
+    "confidence": "high",
+    "raw_excerpt": "Fungal LVL4(16HP)/AV9/ML+8/ENC1 ATK:Engulf(d3CONdamage,STRsavetobreak free). Resistance: the Ooze takes half damage from kinetic attacks. It suffers 3d8 damage per round from exposure to extreme heat."
+  },
+  {
+    "name": "Void Dragon",
+    "printed_pages": "208",
+    "pdf_pages": "215",
+    "type": "Synthetic",
+    "level": 15,
+    "hp": 60,
+    "av": 30,
+    "morale": "+15",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Apocalypse Beam", "damage": "2d10 beam + 3d6 blast"}
+    ],
+    "special": [
+      "Gigantic flying war-synth, armoured with interlocking plates of void-tempered metal. It emits a powerful beam of concentrated antimatter that can boil solid rock. The creature is geared to fight in the air, in orbit, beneath the waves, or inside a paradoxical pocket dimension with equal ferocity. These beings are always found dormant.",
+      "Enormous: the Void Dragon is so large that PCs can enter its body through coolant vents, if they are able to attach themselves to its carapace as it flies. Finding the Dragon's core reactor and destroying it will send the creature into a lethal meltdown."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Core reactor can be destroyed from inside (coolant vents) to cause meltdown.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL15(60HP)/AV30/ML+15/ENC1 ATK:ApocalypseBeam(2d10beam+3d6blast). Enormous: PCs can enter its body through coolant vents..."
+  },
+  {
+    "name": "Voltworm",
+    "printed_pages": "208",
+    "pdf_pages": "215",
+    "type": "Synthetic",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+3",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Electrobolt", "damage": "d6, electrical, ADV to hit Synths or metal armour"}
+    ],
+    "special": [
+      "Segmented synthetic worms, which feed upon and emit electrical energy. They can be mistaken for ancient cabling when lying at rest."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Advantage to hit Synths or targets in metal armour.",
+    "confidence": "high",
+    "raw_excerpt": "Synthetic LVL1(4HP)/AV12/ML+3/ENCd6 ATK:Electrobolt(d6,electrical,ADVtohit Synthsormetalarmour)."
+  },
+  {
+    "name": "Walking Womb",
+    "printed_pages": "208",
+    "pdf_pages": "215",
+    "type": "Biological",
+    "level": 5,
+    "hp": 20,
+    "av": 11,
+    "morale": "+10",
+    "enc": "d4",
+    "movement": "",
+    "attacks": [
+      {"name": "Slam", "damage": "d8"}
+    ],
+    "special": [
+      "Shambling blind mound of pregnant flesh. On death, births d6 Foetal Predators (LVL 1, AV 13, d6 bite). Fire prevents this."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": "On-death spawn (Foetal Predators) prevented by fire; not a standard damage resistance."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Births d6 Foetal Predators on death unless killed with fire.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL5(20HP)/AV11/ML+10/ENCd4 ATK:Slam(d8). On death, births d6 Foetal Predators (LVL1, AV13, d6 bite). Fire prevents this."
+  },
+  {
+    "name": "Witchgrub",
+    "printed_pages": "208-209",
+    "pdf_pages": "215-216",
+    "type": "Biological",
+    "level": 0,
+    "hp": 1,
+    "av": 10,
+    "morale": "+1",
+    "enc": "d8",
+    "movement": "",
+    "attacks": [
+      {"name": "Corrosive Spit", "damage": "d4, -1 AV"}
+    ],
+    "special": [
+      "Bloated grubs, the length of a man's arm, with a decoy of a humanoid face swelling above their real mandibles. Eat decaying flesh, the riper the better, and defend themselves with jets of acidic spit. Said to be the juvenile form of Vaarn's Witches, hence the name, although this is unproven."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Corrosive spit reduces target AV by 1.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL0(1HP)/AV10/ML+1/ENCd8 ATK:CorrosiveSpit(d4,-1AV)."
+  },
+  {
+    "name": "Windweird",
+    "printed_pages": "209",
+    "pdf_pages": "216",
+    "type": "Biological / Psychic",
+    "level": 1,
+    "hp": 4,
+    "av": 11,
+    "morale": "+4",
+    "enc": "d6",
+    "movement": "",
+    "attacks": [
+      {"name": "War Kite", "damage": "d6"},
+      {"name": "Stolen Breath", "damage": "EGO save vs d6 choking, ongoing"}
+    ],
+    "special": [
+      "Raise the Winds: Windweirds can change the weather with their chants. One hour of chanting produces a Dust Storm, two hours raises a Sand Storm, and three hours can summon a Prismatic Tempest. Once summoned the weather effect remains for the rest of the day (see p.xx). The mystics can also calm storms."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Can summon/calm storms via chanting.",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Psychic LVL1(4HP)/AV11/ML+4/ENCd6 ATK:WarKite(d6)/StolenBreath(EGOsavevs d6choking,ongoing)."
+  },
+  {
+    "name": "Xanthous Mycomorph",
+    "printed_pages": "209",
+    "pdf_pages": "216",
+    "type": "Fungal",
+    "level": null,
+    "hp": null,
+    "av": 9,
+    "morale": "+10",
+    "enc": "1",
+    "movement": "",
+    "attacks": [
+      {"name": "Slam", "damage": "d8"},
+      {"name": "Spore Spray", "damage": "d10, fungal, blast"}
+    ],
+    "special": [
+      "Mass of yellow necrotech fungus that engulfs corpses and uses them as fuel to grow ever larger.",
+      "Kinetic Resistance: Takes minimum damage from kinetic weapons.",
+      "Regenerative Mass: regains HP equal to LVL at the start of a combat round. 'Dead' Xanthous Mycomorphs will revive within d6 hours. Damage caused by fire or acid prevents this. If the Mycomorph consumes a biological corpse, it gains Levels equal to those of the dead creature."
+    ],
+    "resistances": {"immune": [], "minimum": ["kinetic"], "double": [], "half": [], "varies": true, "notes": "Takes minimum damage from kinetic weapons. Regeneration/revival prevented by fire or acid. Level is variable (LVL d6*), grows by consuming corpses."},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Level is variable: LVL d6* (rolled). HP not fixed; regains HP=LVL per round; revives in d6h unless fire/acid; gains levels by consuming biological corpses. Minimum damage from kinetic.",
+    "confidence": "high",
+    "raw_excerpt": "Fungal LVLd6*/AV09/ML+10/ENC1 ATK:Slam(d8)+SporeSpray(d10,fungal,blast). KineticResistance:Takesminimumdamage fromkineticweapons. RegenerativeMass: regains HP equal to LVL... Damage caused by fire or acid prevents this."
+  },
+  {
+    "name": "Xeric Triffid",
+    "printed_pages": "209",
+    "pdf_pages": "216",
+    "type": "Biological",
+    "level": 1,
+    "hp": 4,
+    "av": 12,
+    "morale": "+8",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {"name": "Lash", "damage": "d6"},
+      {"name": "Blinding Spit", "damage": "CON save vs Blindness, d6 rounds"}
+    ],
+    "special": [
+      "Walking, carnivorous plants. They remain rooted during the heat of the day, but become mobile at dawn and twilight, stalking on three large roots in search of prey.",
+      "Blindness: Characters blinded by Triffid spit make melee attacks with DIS. They cannot use ranged weapons."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Blinding spit imposes DIS on melee, blocks ranged.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL1(4HP)/AV12/ML+8/ENCd10 ATK:Lash(d6)/BlindingSpit(CONsavevs Blindness,d6rounds)."
+  },
+  {
+    "name": "Yurling",
+    "printed_pages": "209",
+    "pdf_pages": "216",
+    "type": "Biological / Fungal",
+    "level": 1,
+    "hp": 4,
+    "av": 14,
+    "morale": "+1",
+    "enc": "2d6",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d4 or steal metal item"}
+    ],
+    "special": [
+      "Tiny mischievous monkey-like mutants. Covered in symbiotic white fungus. Exclusively eat metal. If a Yurling scores a hit, instead of dealing damage it can choose to steal and devour a metal object from the target's inventory."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Can steal/devour a metal item on a hit instead of dealing damage.",
+    "confidence": "high",
+    "raw_excerpt": "Biological/Fungal LVL1(4HP)/AV14/ML+1/ENC2d6 ATK:Bite(d4orstealmetalitem)."
+  },
+  {
+    "name": "Zoanthrope",
+    "printed_pages": "209",
+    "pdf_pages": "216",
+    "type": "Biological",
+    "level": 2,
+    "hp": 8,
+    "av": 10,
+    "morale": "Group Size",
+    "enc": "d10",
+    "movement": "",
+    "attacks": [
+      {"name": "Bite", "damage": "d6"},
+      {"name": "Thrown Rock", "damage": "d6"}
+    ],
+    "special": [
+      "Humans who have willingly surrendered their higher reasoning to live out their days as beasts. Divested of shame and language they live as their antediluvian ancestors did. Sometimes farmed for meat by newbeasts."
+    ],
+    "resistances": {"immune": [], "minimum": [], "double": [], "half": [], "varies": false, "notes": ""},
+    "flags": {"mystic_gift_immune": false, "ranged_immune": false, "mimic": false},
+    "combat_note": "Morale = Group Size.",
+    "confidence": "high",
+    "raw_excerpt": "Biological LVL2(8HP)/AV10/MLGroupSize/ENCd10 ATK:Bite(d6)/ThrownRock(d6)."
+  }
+]

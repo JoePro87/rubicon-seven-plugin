@@ -1,0 +1,196 @@
+{
+  "version": "2.0.1",
+  "source": "Crimson Hound printed p.47-50 (verified 2026-06-07 audit remediation)",
+  "entries": [
+    {
+      "id": "gift-core-mechanics",
+      "keywords": [
+        "mystic gift",
+        "gift mechanics",
+        "gift cost",
+        "hp cost",
+        "always hit",
+        "no attack roll",
+        "psy bonus",
+        "extended use",
+        "cannot self-heal"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [
+        "combat_active",
+        "npc_interaction"
+      ],
+      "rule": "Mystic Gifts always hit in combat (no attack roll needed). Base HP cost: d6. Greater feat = greater toll (die size scales with target level). Die TYPE = risk/magnitude; die RESULT = HP paid. Damage or healing dice = same size as HP cost die, plus PSY bonus. Extended use costs HP for each 10-minute period the Gift is active; this table uses a HOMEBREW REFEREE RULING of d6 HP per 10-minute period (the book leaves the per-period cost referee-determined). Gifts cannot heal their user's HP — self-healing is impossible via Gifts.",
+      "homebrew_ruling": "EXTENDED-USE COST (d6 HP per 10-minute period) is an INTENTIONAL Rubicon Seven referee ruling, NOT a book error. Crimson Hound printed p.47 states only that 'the character must pay HP for each ten-minute period that the Gift is active' and leaves the precise per-period cost to the referee ('a precise cost will be determined by the referee'). We have fixed it at d6/10min. DO NOT 'correct' this in future audits.",
+      "tool_ref": "gift_add|gift_remove|gift_calculate_cost",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.47 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "gift-hp-cost-scaling",
+      "keywords": [
+        "gift scaling",
+        "hp cost table",
+        "gift damage",
+        "gift healing",
+        "target level",
+        "gift cost by level"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [
+        "combat_active"
+      ],
+      "rule": "Gift HP Cost Scaling by target level: d6 HP cost (target Level 1-2, deals/heals d6+PSY) | d8 HP cost (target Level 3-4, deals/heals d8+PSY) | d10 HP cost (target Level 5-6, deals/heals d10+PSY) | d12 HP cost (target Level 7-8, deals/heals d12+PSY) | d20 HP cost (target Level 9+, deals/heals d20+PSY).",
+      "tool_ref": "gift_calculate_cost",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.47 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "gift-obtaining",
+      "keywords": [
+        "obtain gift",
+        "learn gift",
+        "new gift",
+        "acquire gift",
+        "amaranthine sugar",
+        "brain surgery",
+        "psychic training",
+        "eat brain",
+        "hypergeometric locus"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [
+        "downtime",
+        "npc_interaction"
+      ],
+      "rule": "Five methods to obtain new Mystic Gifts: 1) Psychoactive drugs (e.g., Amaranthine Sugar from sandworm secretions). 2) Brain Surgery — requires a skilled surgeon, costly (Exotica-level trade). 3) Training with another psychic — takes 10 minus PSY bonus days; payment at Exotica level. 4) Eating another psychic's brain — instant acquisition, consumes the brain-stem. 5) Meditating before a hypergeometric obelisk or other locus of paradoxical power — location-specific, one Gift obtainable per location.",
+      "tool_ref": "gift_add",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.49 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "gift-gleam",
+      "keywords": [
+        "gleam",
+        "psychic gleam",
+        "gleam score",
+        "equipped gifts",
+        "psy bonus",
+        "negative gleam",
+        "adventuring week"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [],
+      "rule": "Gleam = total number of equipped Gifts + PSY bonus. A negative PSY bonus can produce negative Gleam, allowing a character to escape psychic notice. At the start of each adventuring week, the Referee rolls d20 + Gleam and consults the Gleam Test table to determine psychic side-effects.",
+      "tool_ref": "gleam_check",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.49 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "gift-gleam-test",
+      "keywords": [
+        "gleam test",
+        "gleam table",
+        "gleam roll",
+        "psychic side effects",
+        "seekers",
+        "quantum daemon",
+        "psychic broadcast",
+        "mystic hunter"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [],
+      "rule": "Gleam Test Table (d20 + Gleam, rolled at start of each adventuring week): 1-15: Nothing. 16: Brief vision from psychic aether — glimpse single person/entity relevant to current quest. 17: Unwitting broadcast — a person/entity relevant to quest glimpses the PC. 18: Ancient cry for help detected, encoded in aether — contains coordinates 2d6 days away. 19: Detect line of psychic force leading to nearby locus/shrine — new random Mystic Gift obtainable there. 20: d4 Seekers of Eyeless Wisdom sensed character — set out to convert, arrive within d6 days. 21: Prescient dream — roll 1d20, record number; can replace any dice result with this number during next in-game week. 22: Extended vision — see person/entity relevant to quest in detail, along with their surroundings. 23: Strong broadcast — person/entity sees PC in detail + surroundings, begins seeking PC if not already met. 24: Lesser Quantum Daemon sensed character — moves through multiverse to contact in dreams, roll form/motivations. 25: Contacted by seemingly-benevolent mass mind seeking new members — does not know exact location. 26: Psychic spam-ad transmitter floods consciousness/dreams with bizarre product informercials. 27: d6 Seekers of Eyeless Wisdom sensed character — set out to forcefully convert, arrive in d6 days. 28: Alternate universe version of PC detected — begins trying to insinuate into PC's reality, unclear motives. 29: Psychic scream — all surrounding creatures aware of PC's location, roll local encounter table, arrives within an hour. 30: Hungry Psyche Leech caught sight of character — will attack within d6 days. 31: Children of the Darkling Sun sensed character — dispatch emissaries to forcibly convert, arrive in d6 days. 32: Greater Quantum Daemon sensed character — contacts in dreams, roll form/motivations. 33: d10 Seekers of Eyeless Wisdom — fearfully set out to devour/absorb PC's mind, attack within d6 days. 34: Extradimensional Mystic Hunter teleports into Vaarn — begins seeking PC, finds them in d6 days. 35+: Extradimensional Mystic Hunter teleports in and immediately attacks PC, seeking to absorb mind.",
+      "tool_ref": "gleam_check",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.50 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "gift-sample-sources",
+      "keywords": [
+        "sample gifts",
+        "gift source",
+        "gift table",
+        "d20 gifts",
+        "telekinesis",
+        "pyrokinesis",
+        "telepathy",
+        "invisibility",
+        "healing hands",
+        "eye lasers",
+        "cryokinesis"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [
+        "generation"
+      ],
+      "rule": "d20 Sample Gifts table (Source of Power / Gift): 1: Mystical Crystal / Telekinesis. 2: Ritual Cannibalism / Pyrokinesis. 3: Psychoactive Fungus / Telepathy. 4: Nanomachine Infection / Memory Extraction. 5: Irradiated at Birth / Mind Control. 6: Meditation / Invisibility. 7: Dream Quest / Astral Projection. 8: Parasitic Spirit Entity / Healing Hands. 9: Mental Mutation / Paralysing Touch. 10: Addictive Rare Drug / Eye Lasers. 11: Brain Implants / Augury. 12: Devouring Memories / Inhuman Speed. 13: Brain Surgery / Second Sight. 14: Secret Religion / Force Wall. 15: Ancient Mask / Generate Lightning. 16: Cursed Ring / Ultrasonic Scream. 17: Born During Eclipse / Create Paradox-Clone. 18: Found Weird Orb / Summon Orbs. 19: Beheld Azathoth / Cryokinesis. 20: Studied in Lost Archives / Induce Sleep.",
+      "tool_ref": "gift_add",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.47 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "gift-qualities",
+      "keywords": [
+        "gift quality",
+        "gift descriptor",
+        "bashing",
+        "binding",
+        "blinding",
+        "burning",
+        "absorbing",
+        "armouring",
+        "banishing",
+        "gift generation"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [
+        "generation"
+      ],
+      "rule": "Gift Quality Table: 4 columns of d20 entries (80 qualities total). Roll d20 and select column to determine the quality/descriptor of a Mystic Gift. Example qualities include: Bashing, Binding, Blinding, Burning, Absorbing, Armouring, Banishing, Adhering, Blossoming, Bewildering, Calming, Charming, and 68 others. Quality describes the nature of the Gift's effect (what it does to targets or the environment). Full table on printed p.48.",
+      "tool_ref": "gift_add",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.48 (verified 2026-06-07 audit remediation)"
+    },
+    {
+      "id": "gift-forms",
+      "keywords": [
+        "gift form",
+        "gift material",
+        "gift manifestation",
+        "claw",
+        "clay",
+        "crystal",
+        "flesh",
+        "salt",
+        "sand",
+        "silk",
+        "gift generation"
+      ],
+      "categories": [
+        "gifts"
+      ],
+      "contexts": [
+        "generation"
+      ],
+      "rule": "Gift Form Table: 4 columns of d20 entries (80 forms total). Roll d20 and select column to determine the physical manifestation/material of a Mystic Gift. Example forms include: Claw, Clay, Crystal, Flesh, Salt, Sand, Silk, Hail, Haze, Wind, Chaos, Cold, Darkness, and 67 others. Form describes how the Gift visually/physically manifests when used. Full table on printed p.48.",
+      "tool_ref": "gift_add",
+      "lore_refs": [],
+      "source": "Crimson Hound printed p.48 (verified 2026-06-07 audit remediation)"
+    }
+  ]
+}
