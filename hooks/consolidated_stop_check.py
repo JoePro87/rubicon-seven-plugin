@@ -967,6 +967,31 @@ def _check_dm_design_gate(hook_input: dict, state: dict) -> tuple[bool, str, dic
         return False, "", {}
 
 
+_PROSE_WINDOW_CAP = 200
+
+
+def _append_prose_window(text: str) -> None:
+    """Append a narration turn to the campaign-scoped rolling prose window
+    (rubicon_paths.prose_window_path), keeping the newest _PROSE_WINDOW_CAP
+    entries. Source corpus for the evolver's template-nomination scan."""
+    try:
+        from rubicon_paths import prose_window_path
+    except ImportError:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).parent.parent))
+        from rubicon_paths import prose_window_path
+    path = prose_window_path()
+    lines = []
+    if path.exists():
+        lines = path.read_text(encoding="utf-8").splitlines()
+    lines.append(json.dumps({"text": text}, ensure_ascii=False))
+    if len(lines) > _PROSE_WINDOW_CAP:
+        lines = lines[-_PROSE_WINDOW_CAP:]
+    tmp = path.with_suffix(".jsonl.tmp")
+    tmp.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+
 def _check_anti_pattern(hook_input: dict, state: dict, response_text: str) -> tuple[bool, str, dict]:
     """Check 2: Anti-pattern / blacklist scan (soft logger — validate_prose is the real gate)."""
     hook_name = "anti_pattern_check"
@@ -978,7 +1003,21 @@ def _check_anti_pattern(hook_input: dict, state: dict, response_text: str) -> tu
     if not response_text:
         return False, "", {}
 
-    # Log warning if validate_prose was not called for gameplay narrative
+    # Rolling narration window (template-nomination corpus, 2026-07-19):
+    # substantial gameplay turns are appended to a capped campaign-scoped
+    # JSONL the evolver's template scan reads at save-commit. Fail-open.
+    if len(response_text) > 200 and state.get("session_type") == "gameplay":
+        try:
+            _append_prose_window(response_text)
+        except Exception:
+            pass
+
+    # Log warning if validate_prose was not called for gameplay narrative.
+    # 2026-07-19 fix (Thyricost leak audit): this used to EARLY-RETURN, which
+    # switched the deterministic blacklist scan OFF on exactly the turns that
+    # skipped self-validation — 27 hard-banned phrases reached live narration.
+    # Now it only arms the flag and falls through; the scan runs regardless.
+    _vp_extra = {}
     if (not state.get("validate_prose_called", False)
             and len(response_text) > 200
             and state.get("session_type") == "gameplay"):
@@ -988,7 +1027,7 @@ def _check_anti_pattern(hook_input: dict, state: dict, response_text: str) -> tu
             reason_given="Narrative output without validate_prose call",
             severity="warning",
         )
-        return False, "", {"validate_prose_required": True}
+        _vp_extra["validate_prose_required"] = True
 
     blacklist_patterns, sparingly_patterns = _load_blacklist_cached()
 
@@ -1033,7 +1072,7 @@ def _check_anti_pattern(hook_input: dict, state: dict, response_text: str) -> tu
         }
 
         # Soft log — validate_prose is the pre-output gate. This logs for session-end review.
-        return False, "", updates
+        return False, "", {**updates, **_vp_extra}
 
     # Use-sparingly phrases
     if sparingly_patterns:
@@ -1081,17 +1120,17 @@ def _check_anti_pattern(hook_input: dict, state: dict, response_text: str) -> tu
                 }
 
                 # Soft log — validate_prose is the pre-output gate. This logs for session-end review.
-                return False, "", updates
+                return False, "", {**updates, **_vp_extra}
 
             # Not repeated — record in session vocabulary
             for hit in sparingly_hits:
                 if hit.lower() not in [v.lower() for v in session_vocab]:
                     session_vocab.append(hit)
             # Pass vocab update through state updates
-            return False, "", {"session_vocabulary": session_vocab}
+            return False, "", {"session_vocabulary": session_vocab, **_vp_extra}
 
     # All clear
-    return False, "", {}
+    return False, "", dict(_vp_extra)
 
 
 def _check_prep_file(hook_input: dict, state: dict) -> tuple[bool, str, dict]:

@@ -605,10 +605,32 @@ class GeographySystem:
         os.replace(tmp, p)
 
     def _resolve_days(self, origin_key, dest_key, mode) -> float:
-        """Route days_foot if present, else d6/2d6/3d6 by hex band. Vehicle -> /2."""
+        """Travel days for the journey, mode-aware.
+
+        Resolution order: (1) canonical per-mode route days (days_<mode>),
+        (2) the transport-speed table's daily range for fast modes (an
+        ornithopter covers ~960 mi/day — it must never be charged foot-days),
+        (3) days_foot / dice band, with the legacy vehicle halving."""
         data = self._load_geography()
         route = (data["routes"].get(f"{origin_key}_to_{dest_key}")
                  or data["routes"].get(f"{dest_key}_to_{origin_key}") or {})
+        per_mode = route.get(f"days_{mode}")
+        if per_mode is not None:
+            return float(per_mode)
+        if mode not in ("foot", "vehicle"):
+            mdata = self._load_transport_speeds().get("transport_modes", {}).get(mode)
+            if isinstance(mdata, dict):
+                daily = mdata.get("daily_range_miles") or (
+                    (mdata.get("base_speed_mph") or 0)
+                    * (mdata.get("sustained_hours") or 8))
+                miles = route.get("distance_miles")
+                if miles is None:
+                    dist = self.get_distance(origin_key, dest_key)
+                    miles = (dist.get("as_crow_flies_miles")
+                             if isinstance(dist, dict) else None)
+                if daily and miles:
+                    import math
+                    return float(max(1, math.ceil(miles / daily)))
         if route.get("days_foot") is not None:
             days = float(route["days_foot"])
         else:
@@ -620,9 +642,19 @@ class GeographySystem:
             days = max(1.0, round(days / 2.0))
         return days
 
-    def travel_depart(self, destination: str, mode: str = "foot", noisy: bool = False) -> str:
+    def travel_depart(self, destination: str, mode: str = "foot", noisy: bool = False,
+                      origin: str = None) -> str:
         data = self._load_geography()
-        origin_key = data["meta"].get("party_location", "ceruline")
+        if origin:
+            origin_key = origin.lower().replace(" ", "_").replace("'", "")
+            if origin_key not in data["locations"]:
+                return f"Error: origin '{origin}' not found in geography"
+            # The explicit origin is the truth — persist it so the stored
+            # party_location can't stay stale for the next depart.
+            data["meta"]["party_location"] = origin_key
+            self._save_geography(data)
+        else:
+            origin_key = data["meta"].get("party_location", "ceruline")
         dest_key = destination.lower().replace(" ", "_").replace("'", "")
         if dest_key not in data["locations"]:
             return f"Error: destination '{destination}' not found in geography"
@@ -633,7 +665,10 @@ class GeographySystem:
             "pace": "normal", "noisy": bool(noisy), "log": [],
         }
         self._save_travel_state(state)
-        return (f"▶ DEPART {origin_key} → {dest_key} — {days:g} days ({mode}).\n"
+        origin_note = ("" if origin else
+                       f"\nOrigin read from stored party location — if that's wrong, "
+                       f"re-depart with origin=\"<place>\" to correct it.")
+        return (f"▶ DEPART {origin_key} → {dest_key} — {days:g} days ({mode}).{origin_note}\n"
                 f"Supply now FIELD mode (rations burn daily).\n"
                 f"→ geography(action=\"travel_day\") to advance the first day.")
 
@@ -645,7 +680,9 @@ class GeographySystem:
         self.set_party_location(dest)
         self._save_travel_state({"active": False})
         out = (f"▶ ARRIVED at {dest} (journey complete).\n"
-               f"→ supply(action=\"arrive\", location=\"{dest}\") to refill + stamp the return clock.\n"
+               f"→ IF this is a supplied base (settlement/earned camp): "
+               f"supply(action=\"arrive\", location=\"{dest}\") to refill + stamp the return clock. "
+               f"A ruin/vault/wilderness arrival is NOT a base — supply stays FIELD there.\n"
                f"→ if {dest} is an adventure site: map(action=\"enter_site\", map_name=\"{dest}\", "
                f"prep_file=\"{dest.upper()}_PREP.md\") to start its turn clock.")
         try:
@@ -1467,7 +1504,10 @@ def register_geography_tools(mcp, campaign_dir: Path):
         resolution: str = "compact",
         pace: str = "normal",
         forage: bool = False,
-        noisy: bool = False
+        noisy: bool = False,
+        food: int = None,
+        water: int = None,
+        follower_mouths: int = None
     ) -> str:
         """Reach for this WHEN the party travels overland, a new location is discovered, or you need to render the world map or plan a journey route.
 
@@ -1491,8 +1531,8 @@ def register_geography_tools(mcp, campaign_dir: Path):
             set_party_location: Set party location (location)
             get_party_location: Get party location
             inject_context: Scan for locations (user_input)
-            depart: Begin travel to a destination (destination; location_type carries transport mode e.g. "foot"/"ornithopter")
-            arrive: Complete travel — arrive at the pending destination
+            depart: Begin travel (destination; location_type carries transport mode e.g. "foot"/"ornithopter"; origin? overrides+corrects the stored party location; food?/water?/follower_mouths? seed the supply pool — vehicle/cargo provisions)
+            arrive: Complete travel — arrive at the pending destination (supply mode is NOT auto-flipped; run the pushed supply(action="arrive") only at a supplied base)
             travel_day: Advance one day along the current journey (pace?, forage?)
 
         Examples:
@@ -1616,22 +1656,30 @@ def register_geography_tools(mcp, campaign_dir: Path):
         elif action == "depart":
             if not destination:
                 return "Error: depart requires destination"
-            _out = geo.travel_depart(destination, mode=(location_type or "foot"), noisy=noisy)
+            _out = geo.travel_depart(destination, mode=(location_type or "foot"),
+                                     noisy=noisy, origin=origin)
+            if _out.startswith("Error"):
+                return _out
             if getattr(geo, "on_depart", None):
                 try:
-                    geo.on_depart()
+                    # Pass pool seeds through so vehicle/cargo provisions can be
+                    # declared at depart time (D134: carried-only false-flagged
+                    # the crew Deprived). The supply output is surfaced, not
+                    # swallowed — its zero-notes and status ARE the picture.
+                    _sup_out = geo.on_depart(food=food, water=water,
+                                             follower_mouths=follower_mouths)
+                    if isinstance(_sup_out, str) and _sup_out:
+                        _out += "\n\n" + _sup_out
                 except Exception:
                     pass
             return _out
 
         elif action == "arrive":
-            _out = geo.travel_arrive()
-            if getattr(geo, "on_arrive", None):
-                try:
-                    geo.on_arrive(geo.get_party_location())
-                except Exception:
-                    pass
-            return _out
+            # No automatic supply flip here: whether this arrival is a supplied
+            # base is a DM judgment call — travel_arrive pushes the exact
+            # supply(action="arrive") call for the DM to run when it is.
+            # (D134: auto-flip read 'abundant' at a dead vault's salt-bore rim.)
+            return geo.travel_arrive()
 
         elif action == "travel_day":
             return geo.travel_day(pace=pace, forage=forage)

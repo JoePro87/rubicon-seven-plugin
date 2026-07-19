@@ -752,8 +752,14 @@ No DM knowledge leaks. This is what you can describe freely.]
 **Secrets:** [secret_id→target (discovery condition)]
 **Entrance:** true   (mark exactly ONE room as the entry point; omit on all others)
 
+### First Glance
+[2-3 sensory impressions on entry — what registers in the first three seconds.
+No mechanics, no lists. map(enter) serves ONLY this; deeper detail waits for
+the player to look. If omitted, the first paragraph of Observables is used.]
+
 ### Observables
-[What the party sees, hears, smells — freely describable]
+[Full detail the party can find by looking closer — served by
+map(action="look"). Freely describable once queried.]
 
 ### Obstacles
 - **obstacle_id:** [Description]
@@ -808,6 +814,16 @@ Specific encounters that should happen:
 3. Update prep file if permanent change
 4. THEN narrate the revelation
 
+### Reveal Pacing & the Revealed Ledger
+Discovery tracking is ENGINE state, not markdown — do not author hand-maintained
+"REVEALED LEDGER" sections in new preps. When the party learns a DM-only fact
+socially or by deduction (an NPC tells them, they piece it together), ledger it
+the moment it lands: `map(action="reveal", map_name="vault_name", fact="...")`.
+NPCs may assert only ledgered facts; off-ledger they speculate and may be wrong;
+unledgered secret names are unspeakable (validate_prose enforces this). Pacing:
+map(enter) serves only the First Glance layer — render ONE finding per beat and
+let the player's questions pull the rest via map(action="look").
+
 ### Red Flags (Never Do These)
 - Describing what's behind a locked door before it's opened
 - Revealing NPC motivations before interaction
@@ -839,8 +855,10 @@ Specific encounters that should happen:
 - [ ] Write prep file with DM sections
 - [ ] **MANDATORY:** Register overworld presence — geography(action="add_location", ..., known per type)
 - [ ] **MANDATORY:** Emit canonical `## ROOM:` markers so the prep is walkable via map(action="init")
-- [ ] **MANDATORY:** Every `## ROOM:` block declares `**Floor:**` and `**Connections:**` — the
-  engine's fog-of-war player map places and links rooms from these fields (`validate_prep_file` warns if either is missing).
+- [ ] **MANDATORY:** Every `## ROOM:` block declares `**Floor:**`, `**Coords:**`, and `**Connections:**` — the
+  engine's fog-of-war player map places and links rooms from these fields (`validate_prep_file` warns if any is missing).
+  Rooms without `**Coords:**` all default to [5,5] and overlap on the grid — lay out coords roughly matching the
+  site's geography, one unique cell per room per floor.
 - [ ] Run geography(action="validate_consistency") — confirm no collisions/dangling routes
 
 **If this is a SETTLEMENT prep, two additional requirements apply:**

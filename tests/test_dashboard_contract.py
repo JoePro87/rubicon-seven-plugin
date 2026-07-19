@@ -83,6 +83,50 @@ def test_world_summary_none_on_no_view():
     assert model.world_summary(None) is None
 
 
+def test_world_summary_includes_updated_at(view_fixture):
+    w = model.world_summary(view_fixture)
+    assert w["updated_at"] == "2026-07-05T10:00:00"
+
+
+# -- format_time ------------------------------------------------------------
+
+def test_format_time_renders_hh_mm_ss():
+    assert model.format_time("2026-07-05T10:03:07") == "10:03:07"
+
+
+def test_format_time_returns_raw_on_bad_input():
+    assert model.format_time("not-a-timestamp") == "not-a-timestamp"
+    assert model.format_time(None) == "None"
+
+
+# -- safe_stat_mtime (TOCTOU guard) -----------------------------------------
+
+def test_safe_stat_mtime_missing_file_returns_none(tmp_path):
+    assert model.safe_stat_mtime(tmp_path / "nope.txt") is None
+
+
+def test_safe_stat_mtime_existing_file_returns_mtime(tmp_path):
+    f = tmp_path / "x.txt"
+    f.write_text("hi", encoding="utf-8")
+    assert model.safe_stat_mtime(f) == f.stat().st_mtime
+
+
+def test_safe_stat_mtime_race_deleted_between_exists_and_stat(tmp_path, monkeypatch):
+    """Simulates the TOCTOU race: file is gone by the time stat() runs."""
+    f = tmp_path / "y.txt"
+    f.write_text("hi", encoding="utf-8")
+
+    real_stat = Path.stat
+
+    def _boom(self, *args, **kwargs):
+        if self == f:
+            raise FileNotFoundError()
+        return real_stat(self, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "stat", _boom)
+    assert model.safe_stat_mtime(f) is None
+
+
 # -- parleys_list --------------------------------------------------------
 
 def test_parleys_list_shape(view_fixture):

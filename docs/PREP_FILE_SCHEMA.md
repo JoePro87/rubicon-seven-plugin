@@ -116,6 +116,23 @@ One traversable location. Parsed fields:
 All other prose under a ROOM (the description, `**DM Note:**`, `**Loot:**`, etc.) is
 free text for the DM.
 
+### First Glance (reveal pacing, 2026-07-16)
+
+`map(action="enter")` serves only the room's opening impression; the rest of the
+obvious layer waits for `map(action="look", room_id=..., feature=...)` (free — no turn
+cost). What counts as the opening impression:
+
+- If a room has a **`### First Glance`** subsection, that section IS the glance layer,
+  and ALL of `### Observables` becomes look-detail.
+- Otherwise the **first paragraph** of `### Observables` is the glance and the remaining
+  paragraphs are look-detail (legacy preps need no rewrite).
+
+Author accordingly: make paragraph 1 of Observables (or the First Glance section) the
+2–3 sensory impressions that register in the first three seconds — no mechanics, no
+lists. `validate_prep_file` emits an advisory NOTE when a room's Observables is a single
+paragraph (everything would show on enter). Hidden/Loot/Secrets tiers are unchanged —
+they still require a search or `reveal_secret`.
+
 ### `## ENCOUNTERS`
 
 Optional. Two formats are auto-detected:

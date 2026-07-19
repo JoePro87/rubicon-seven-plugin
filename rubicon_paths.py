@@ -64,6 +64,15 @@ def catch_analytics_path() -> Path:
     return campaign_dir() / "catch_analytics.json"
 
 
+def prose_window_path() -> Path:
+    """Per-campaign rolling window of recent DM narration turns (JSONL, capped).
+
+    CAMPAIGN-SCOPED for the same privacy reason as catch_analytics_path.
+    Written by the Stop hook on narrative turns; consumed by the blacklist
+    evolver's template scan (template_nominations) at save-commit."""
+    return campaign_dir() / ".prose_window.jsonl"
+
+
 def _cc_project_slug(path_str: str) -> str:
     """Claude Code's per-project dir slug: every non-alphanumeric char -> '-'.
     Verified against the live store (e.g. '/mnt/c/path/to/campaign'

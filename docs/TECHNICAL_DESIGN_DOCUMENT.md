@@ -309,6 +309,16 @@ Mechanics (all verified against the shipped code):
 - **Fail-open, three layers:** `_load_cached_json` (no fixed cache key — default `str(path)`, so a repointed `RULES_DATA_DIR` can never serve a stale copy) → the module's per-entry guards → an outer `except` that zeroes `book_matches`. Missing/corrupt file ⇒ output identical to pre-layer behavior. The NO-MATCHES escalation reminder fires only when campaign AND book both matched nothing.
 - **No campaign file is ever written.** Book facts have one home (the shipped file); engine-side fixes reach every table on update. Trigger-word hygiene is guarded by `tests/test_book_lore_layer.py` (`_GENERIC_DENY` denylist, `_META_IDS` sync, shape/uniqueness); entry texts are PDF-verified (Crimson Hound printed pages — the Sable Gecko batch extraction is a locator only).
 
+### Reveal Discipline (2026-07-16)
+
+Engine-enforced reveal discipline — born from the D134 Thyricost session (an NPC spoke a DM-only name; room payloads firehosed discovery). Player-directed; spec `docs/superpowers/specs/2026-07-16-reveal-discipline-design.md`. Three surfaces (all verified against shipped code):
+
+- **Revealed Ledger (engine state).** `revealed_ledger` list in each site's map-state JSON (`maps/<name>_map.json`), entries `{"fact" (≤300c), "day", "source_room", "source_action"}`, written only by `map_system._ledger_append`. Auto-appended: `enter_room` first visit ("Entered <room>"), `search_room` ("Searched <room>" + loot names), `reveal_secret` (the discovery line). Explicit lever: `map(action="reveal", map_name=..., fact=..., room_id?)` → `MapSystem.reveal_fact` — the DM calls it the moment the party learns a fact socially/by deduction. On vault turns (`_active_vault_turn()` non-None) check_canon appends `_revealed_ledger_injection()` (placed after the no-matches/escalation logic, next to the site-features block): newest 8 facts + "(+N earlier)" + the charter (*NPCs may assert ONLY these facts; off-ledger they speculate and may be WRONG; unledgered names are unspeakable*) + the map(reveal) push. Empty ledger still renders the charter. Whitelist-by-construction: only reveal paths and neutral markers ever write it.
+- **DM-only name tripwire (validate_prose).** `_vp_check_dm_name_leaks` runs in the deterministic block right after `_vp_check_tripwires`, only when there is an active vault AND a resolvable active prep (`_resolve_active_prep_path`: `GAME_STATE["active_prep_file"]`, falling back to CURRENT_STATUS `**Active Prep:**`). `_dm_only_proper_nouns(prep_path)` extracts proper nouns appearing ONLY in DM-only content: player side = `_filter_dm_only_content(...)` **plus** header-style DM sections cut by regex (`## DM ONLY — …` / `## DM KNOWLEDGE` / `## … (GM KNOWLEDGE ONLY)` through the next h2) — that extra cut is load-bearing: the ⛔-block filter alone sees zero DM content in live-convention preps. Candidates come from body lines only (headers are structure), possessives normalize, any word that ever appears fully lowercase in the prep is dropped (common noun), and `_DM_NAME_STOPWORDS` carries a common-English band (bias: false positives block play; false negatives just mean one exotic name isn't machine-guarded). Nouns already in the ledger pass. Violation text carries the `map(action="reveal", ...)` remediation. Cache keyed (path, mtime, ledger length); fail-open everywhere; deterministic — no judge model.
+- **Paced room delivery.** `location_content` gains `first_glance`/`inspection` views of the obvious tier: an explicit `### First Glance` subsection (`_section_tier` → "glance") IS the glance layer (all Observables become inspection); otherwise the first paragraph of each obvious body is the glance and the rest is inspection. Plain `"obvious"` behavior is unchanged for other callers (glance sections additionally render there so nothing is lost). `enter_room` serves glance + `[DM]` notes + a render-ONE-finding discipline push naming `map(action="look")`; `look_room` / `map(action="look", room_id?, feature?)` serves inspection detail with **no turn cost** (feature= scopes to matching paragraphs; unknown feature hints a search); `search_room` carries the same discipline line. `validate_prep_file` recognizes First Glance as a reveal-tier header and NOTEs single-paragraph Observables (pacing-poor). Conventions: `docs/PREP_FILE_SCHEMA.md` "First Glance" + content-forge's room template (authors First Glance natively; new preps must NOT hand-author REVEALED LEDGER markdown — discovery tracking is engine state).
+
+Tests: `tests/test_reveal_ledger.py`, `tests/test_dm_name_leak.py`, `tests/test_paced_delivery.py`.
+
 ### Error Handling
 
 Fail-open philosophy: nearly every injection block is wrapped in `try/except` that catches Exception and passes silently. check_canon never crashes — it degrades gracefully by skipping non-critical injections. ChromaDB failures, missing files, and embedding errors all skip silently.
@@ -343,6 +353,39 @@ Fail-open philosophy: nearly every injection block is wrapped in `try/except` th
 |------|---------|
 | `hook_utils.py` | Shared utilities, state management, file locking, STATE_CHANGING_TOOLS constants |
 | `blacklist_evolver.py` | Evolution cycle — grows blacklist.json from catch analytics at session-end, prunes old catches |
+
+### Prose-Tic Policing (2026-07-19)
+
+A 58.5k-word audit of the Thyricost leg proved the prose had **mutated around its own bans** —
+"the way X \<verbs\>" (66×), participle/bare-appositive variants of the banned "the X of a Y
+who/that" template (24×), "a (very) long time" (19×), "a stillness with contents" (5×) — while
+27 exact-banned phrases reached live output. Four coordinated changes:
+
+1. **blacklist.json v9** — five mutation-family `structural_patterns` (regexes FP-validated
+   against the transcript corpus) + "four thousand years"/"through the bond" in use_sparingly.
+   Consumed by `narrative_qa(validate)` (`_load_prose_patterns`, mtime-cached).
+2. **judge_prompt.txt** — categories 3/4/6 name the re-lexicalized variants; category 10 adds
+   the **portent-closer** flag (turn-final standalone mood-fragment ≲8 words).
+3. **Unconditional Stop-hook backstop** — `_check_anti_pattern`'s validate_prose_required branch
+   no longer early-returns (commit 173999d had switched the deterministic scan OFF on exactly
+   the turns that skipped self-validation); it arms the flag and falls through. Regression:
+   `tests/test_antipattern_backstop.py`.
+4. **Template nominations (the durable fix)** — the Stop hook appends substantial gameplay turns
+   to a capped campaign-scoped corpus (`rubicon_paths.prose_window_path`, 200 turns);
+   `_run_prose_evolution` (save-commit) feeds it to `blacklist_evolver.run_template_scan`, which
+   slot-normalizes prose (proper nouns→`<N>`, pronouns→`<P>`), counts recurring 3–5-token frames,
+   and NOMINATES over-threshold frames not already covered by existing regexes into blacklist.json
+   `template_nominations` (`status: "pending"`, owner review — never auto-ban). This catches the
+   NEXT mutation without a human noticing first. Tests: `tests/test_template_detection.py`.
+
+**Defenses-before-harm** (same date, owner ruling from the D134 memory-eater retcon):
+`_standing_defenses_injection` (server.py, wired into check_canon beside the Revealed Ledger)
+surfaces on vault/combat turns every roster item/augment/gift whose effect matches defensive
+markers, capped at 12 lines, with the charter: a strike a listed defense answers is narrated as
+ANSWERED — never written as landed and retconned. Tests: `tests/test_standing_defenses.py`
+(incl. live-roster count probe). Judgment-side counterparts live in the campaign repo's VOICE.md
+(speaker/wit/flattery budgets) and SCENE_FRAMING_GUIDE.md (action-termination, closer-variety,
+simile-budget, inert-texture rules).
 
 ### Shared State
 
@@ -2675,6 +2718,24 @@ rooms marked `?`, party position `⊕`; connections filtered to fog-visible targ
 contents. Primary path delegates to `_render_ascii` (one drawing engine for DM + player maps) over a
 fog-filtered deep copy; a labeled list-render fallback covers coords-less legacy states.
 
+**Collision auto-layout (2026-07-19):** preps authored without `**Coords:**` default every room to
+[5,5], which used to stack all boxes on one cell (last drawn wins, party marker overdrawn — the D135
+Thyricost one-room map). `_auto_layout(rooms, party_id)` (map_system.py) now computes a deterministic
+render-only layout per floor — BFS from entrance → party room → lowest sorted id, cardinal/diagonal
+direction offsets, spiral-probe on collision, disconnected rooms in a free column — applied inside
+`_render_ascii` whenever a floor's drawn rooms share coords, so BOTH the DM `render_map` and player
+`render_fog` de-stack; authored distinct coords are never touched, and the saved map file is never
+mutated. `validate_prep_file` now also warns on missing `**Coords:**`, and content-forge's checklist
+requires it. Tests: `tests/test_fog_auto_layout.py`.
+
+**Companion dashboard (2026-07-19 pass):** all four tab `Static`s render with `markup=False` (raw
+`[carried]`/`[stale…]` brackets were being parsed as Rich style tags — live garble bug); visible
+footer key bindings (q quit, 1–4 tabs, ←/→ cycle); World/Parleys wrapped in `VerticalScroll`;
+TOCTOU-safe mtime polling (`model.safe_stat_mtime`); `updated_at` surfaced as "as of HH:MM:SS" in
+sub-title + World tab; Map tab headed by the current location; aligned party stat columns; launcher
+falls back to the conventional sibling `../rubicon-seven-campaign` when no arg/env is given.
+Tests: `tests/test_dashboard_contract.py`, `tests/test_dashboard_launcher.py`.
+
 **Seams:** `_emit_player_view()` (server.py, fail-soft — blanket except → logging.warning, can never
 raise into play) fires at save_state (via `session_tools` `_INJECTED`), advance_day, the combat/rest
 dispatchers and character update_hp branch (shared emit-tail), and map actions via a None-safe
@@ -2797,9 +2858,9 @@ def _hex_distance(x1, y1, x2, y2):
 ### Travel & Expedition (the step-per-day point-crawl)
 
 **Book truth (CH pp.142-149): overland travel is an abstract DAY-COUNT POINT-CRAWL, NOT a hexcrawl.** Distances are in days between region nodes (route `days_foot`, or `d6/2d6/3d6` by map distance; vehicle ÷2). A hex-grid travel system would be homebrew. Three `geography` actions drive it (logic in `geography_system.py`; state in atomic `travel_state.json`):
-- **`depart(destination, mode, noisy)`** → resolves `days_total` (float), writes travel state, enters supply field mode (via the `on_depart` callback → `supply(depart)`), pushes the first `travel_day`.
+- **`depart(destination, mode, noisy, origin?, food?, water?, follower_mouths?)`** → resolves `days_total` (float), writes travel state, enters supply field mode (via the `on_depart` callback → `supply(depart)`), pushes the first `travel_day`. **D134 fixes (2026-07-17):** `origin=` overrides AND persists the stored party location (which was verified stale in live play; without it, the output flags "read from stored party location"); `food`/`water`/`follower_mouths` pass through to `supply(depart)` as pool seeds (vehicle/cargo provisions) and the supply output is SURFACED in the depart result, not swallowed; a failed depart (unknown origin/destination) no longer flips supply to field. **Mode-aware days** (`_resolve_days`): canonical per-mode route days (`days_<mode>`) win; else fast modes resolve from the transport-speed table (`daily_range_miles`, or `base_speed_mph × sustained_hours`, against route `distance_miles` or crow-flies) with a 1-day minimum — an ornithopter is never charged foot-days (the D134 15-days-for-a-2-hour-flight bug); else `days_foot`/dice band with the legacy vehicle ÷2. tests/test_d134_travel_supply.py.
 - **`travel_day(pace, forage)`** → resolves ONE day: roll weather (gates the day — `normal`/`half`=0.5 progress/`none`=0), advance the calendar by 1 (`on_day_tick` → `advance_day`, so rations/conditions/world-tick fire), roll day+night d6 encounter dice (1=Encounter→pause+push reaction, 2=Omen, 3-6=nothing; `2d6/3d6`-take-lowest if `noisy`/`forced`), Vigilance d6, decrement `days_remaining`, push the next `travel_day` or `arrive`. `pace="forced"` = 2× distance + an Exhaustion push; `forage=True` = a stay-put day (pushes `supply(forage)`); getting-lost (+d6 days) fires only when a no-travel weather is pushed through under forced pace.
-- **`arrive()`** → sets party location, stamps the World-Tick return clock (`on_arrive` → `supply(arrive, location=)`), clears travel state, and **hands off to the site-entry detector** (pushes `enter_site` if the destination is an adventure site).
+- **`arrive()`** → sets party location, clears travel state, and **hands off to the site-entry detector** (pushes `enter_site` if the destination is an adventure site). **Supply is NOT auto-flipped to abundant (D134 fix, 2026-07-17):** whether an arrival is a supplied base is DM judgment ([[feedback-engine-vs-dm-judgment]]) — arriving at a dead vault's salt-bore rim used to silently end field-mode ration tracking. The `on_arrive` callback is unwired; instead the output pushes `supply(action="arrive", location=)` explicitly gated "IF this is a supplied base", and that supply call still clears Deprived + stamps the World-Tick return clock when run.
 
 Engine ROLLS the dice (travel-time, weather, encounter, Vigilance, lost); the DM ADJUDICATES (the Encounter's identity via the local table; Pursuit's 3 opposed CON saves and Night-Watch surprise as flagged menus). Weather effects (p.146) are wired: half-speed (Dust Storm/Worm-pollen), no-travel (Sand Storm/Prismatic Tempest), 2× water (Heatwave, surfaced), ration gains (Rain/Worm-pollen). Deferred: auto-tracking the Exhaustion inventory item on sheets, and auto-applying Heatwave 2× water in the supply tick (both surfaced as pushes today). Absent-from-book and NOT built: hex grid, miles, nav checks, guide role, porter logistics.
 

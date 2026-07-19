@@ -119,6 +119,39 @@ class MapSystem:
                     raise
                 time.sleep(0.05 * (attempt + 1))
 
+    def _ledger_append(self, state, fact, source_room, source_action):
+        """Append a party-known fact to the site's Revealed Ledger.
+        Whitelist-by-construction: callers may only pass text the party has
+        legitimately learned (reveal paths) or neutral markers (entered/searched)."""
+        fact = (fact or "").strip()
+        if not fact:
+            return
+        day = None
+        try:
+            if callable(getattr(self, "get_day", None)):
+                day = self.get_day()
+        except Exception:
+            day = None
+        state.setdefault("revealed_ledger", []).append({
+            "fact": fact[:300], "day": day,
+            "source_room": source_room or "", "source_action": source_action,
+        })
+
+    def reveal_fact(self, map_name: str, fact: str, room_id: str = None) -> str:
+        """Explicit lever: the party just learned a fact (dialogue, communion,
+        deduction). Ledger it so NPCs may assert it and the name tripwire unblocks."""
+        state = self.get_map_state(map_name)
+        if not state:
+            return f"❌ Map not found: {map_name}"
+        if not (fact or "").strip():
+            return "❌ reveal requires a non-empty fact"
+        room = (room_id or state.get("party_location") or "").lower().strip()
+        self._ledger_append(state, fact, room, "reveal")
+        self.save_map_state(map_name, state)
+        n = len(state["revealed_ledger"])
+        return (f"✅ Ledgered ({n} facts known at {map_name}): {fact.strip()}\n"
+                f"NPCs may now assert this fact.")
+
     def init_or_resume_map(self, map_name: str, prep_file: str,
                            map_type: str = "vault", current_day: int = None,
                            reset: bool = False) -> str:
@@ -222,7 +255,10 @@ class MapSystem:
         # A roomed site has a walkable map to draw; an ambient site does not.
         _render = (f' → map(action="render", map_name="{map_name}") to draw the map.'
                    if rooms else "")
-        return f"▶ SITE: {map_name} — turn 0, encounter die armed.{_render}{self._social_entry_push(state)}"
+        return (f"▶ SITE: {map_name} — turn 0, encounter die armed "
+                f"(d6 per turn: 1=encounter from the table, 2=omen, 3-6=quiet — "
+                f"the table picks WHICH encounter on a hit, not one row per roll)."
+                f"{_render}{self._social_entry_push(state)}")
 
     def init_map_from_prep(self, map_name: str, prep_file: str, map_type: str = "vault",
                            force: bool = False) -> str:
@@ -585,6 +621,8 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         # '### SECRET 3 — The Vault' / '### Secret: Hidden Door' -> secret;
         # '### Hidden Cache' -> hidden. Falls back to the exact-match table.
         h = (header or "").strip().lower()
+        if re.match(r'first glance\b', h):
+            return "glance"
         if re.match(r'secret(s)?\b', h):
             return "secret"
         if re.match(r'(hidden|loot|treasure|obstacles?|hazards?)\b', h):
@@ -620,10 +658,20 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
     def location_content(self, state, room_id, tier):
         """Return a location's content for a reveal tier. obvious=on arrival,
         hidden=on a search turn; secrets are NEVER surfaced as bodies (only a
-        count hint at the hidden tier). DM-notes surface (DM-channel) at obvious."""
+        count hint at the hidden tier). DM-notes surface (DM-channel) at obvious.
+
+        Reveal pacing (2026-07-16): tier 'first_glance' returns the opening
+        impression only (an explicit '### First Glance' section if authored,
+        else the first paragraph of each obvious body); tier 'inspection'
+        returns the rest of the obvious layer (served by map(action="look")).
+        Plain 'obvious' keeps its full pre-pacing behavior for other callers."""
         room = state.get("rooms", {}).get(room_id) if room_id else None
         raw = room.get("prep_content", "") if room else state.get("_ambient_raw", "")
         secs = self._slice_subsections(raw)
+        glance_mode = tier in ("first_glance", "inspection")
+        eff_tier = "obvious" if glance_mode else tier
+        has_explicit_glance = any(
+            self._section_tier(h) == "glance" for h in secs if h != "_lead")
         lines = []
         # Structured field-lines (already parsed into room['loot']/secret_connections/
         # etc.) live in the lead text; they must NOT re-surface as obvious prose on
@@ -643,12 +691,31 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
             if h == "secret":
                 continue
             if h == "dm":
-                if tier == "obvious" and body:
+                if tier in ("obvious", "first_glance") and body:
                     lines.append(f"  [DM] {body}")
                 continue
             if h == "skip":
                 continue
-            if h == tier and body:
+            if h == "glance":
+                # explicit First Glance section: IS the glance layer; also
+                # rides plain 'obvious' so non-paced callers lose nothing.
+                if tier in ("first_glance", "obvious") and body:
+                    lines.append(body)
+                continue
+            if h == eff_tier and body:
+                if glance_mode and h == "obvious":
+                    if has_explicit_glance:
+                        # authored glance -> ALL obvious text is inspection detail
+                        if tier == "first_glance":
+                            continue
+                    else:
+                        paras = re.split(r'\n\s*\n', body)
+                        if tier == "first_glance":
+                            body = paras[0].strip()
+                        else:  # inspection = everything after the opening paragraph
+                            body = "\n\n".join(p for p in paras[1:] if p.strip()).strip()
+                        if not body:
+                            continue
                 lines.append(body if head == "_lead" else f"**{head.title()}:** {body}")
             if (h == "obvious" and head not in self._SECTION_TIER
                     and head != "_lead" and tier == "obvious"):
@@ -692,6 +759,7 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
 
         if room['discovery_state'] in ['unknown', 'noticed']:
             room['discovery_state'] = 'explored'
+            self._ledger_append(state, f"Entered {room['name']}", room_id, "enter")
 
         state['exploration_log'].append(f"Moved: {old_location} → {room_id}")
         state.setdefault("discovery", {}).setdefault(
@@ -701,9 +769,14 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         self.save_map_state(map_name, state)
 
         body = self._format_room_content(room, for_referee=True, include_prep=False)
-        obvious = self.location_content(state, room_id, "obvious")
-        if obvious:
-            body += "\n\n" + obvious
+        # Paced delivery (2026-07-16): enter serves the first-glance layer only;
+        # the player asking questions is what unlocks the rest (map action=look).
+        glance = self.location_content(state, room_id, "first_glance")
+        if glance:
+            body += "\n\n" + glance
+        body += ("\n\nRender ONE finding in prose; hold the rest for the player's "
+                 f"questions. Detail: map(action=\"look\", map_name=\"{map_name}\", "
+                 f"room_id=\"{room_id}\", feature=\"...\")")
         if move_turns == 3:
             body += "\n\n⚠️ Moved in darkness — 3 turns consumed."
         if encounter:
@@ -761,6 +834,12 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         state.setdefault("discovery", {}).setdefault(
             room_id, {"searched": False, "secrets_revealed": [], "taken": []})
         state["discovery"][room_id]["searched"] = True
+        self._ledger_append(
+            state,
+            f"Searched {room['name']}" + (
+                f" — found: {', '.join(str(x) for x in room['loot'])}" if room.get('loot') else ""
+            ),
+            room_id, "search")
         self.save_map_state(map_name, state)
 
         result = [f"**Searched: {room['name']}**", ""]
@@ -789,11 +868,35 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         else:
             result.append("No hidden passages or secrets found.")
 
+        result.append("Render ONE finding in prose; hold the rest for the player's questions.")
         if encounter:
             result.append("")
             result.append(encounter)
         return "\n".join(result)
-    
+
+    def look_room(self, map_name: str, room_id: str = None, feature: str = None) -> str:
+        """Inspection detail for a room (the paced-delivery second layer).
+        No turn cost — looking closer is free; searching (hidden tier) costs a
+        turn. feature= scopes the return to paragraphs mentioning that term."""
+        state = self.get_map_state(map_name)
+        if not state:
+            return f"❌ Map not found: {map_name}"
+        room_id = (room_id or state.get("party_location") or "").lower().strip()
+        if room_id not in state.get("rooms", {}):
+            return f"❌ Room not found: {room_id}"
+        name = state["rooms"][room_id]["name"]
+        detail = self.location_content(state, room_id, "inspection")
+        if not detail:
+            return f"Nothing further is apparent in {name} without a search."
+        if feature:
+            paras = [p for p in re.split(r'\n\s*\n', detail) if feature.lower() in p.lower()]
+            if not paras:
+                return (f"No further detail on '{feature}' at a glance — "
+                        f"a search may reveal more.")
+            detail = "\n\n".join(paras)
+        return (f"**{name} — closer look**\n\n{detail}\n\n"
+                "Render ONE finding in prose; hold the rest for the player's questions.")
+
     def reveal_secret(self, map_name: str, room_id: str, secret_id: str) -> str:
         """Mark a secret as discovered."""
         state = self.get_map_state(map_name)
@@ -823,7 +926,11 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         
         state['secrets_found'].append(f"{room_id}:{secret_id}")
         state['exploration_log'].append(f"Secret found: {secret_id} in {room_id} → {target_room_id}")
-        
+        self._ledger_append(
+            state,
+            f"Discovered secret '{secret_id}' in {room['name']} — passage to {target_room_id}",
+            room_id, "reveal_secret")
+
         self.save_map_state(map_name, state)
         
         return f"""✅ Secret revealed!
@@ -1137,14 +1244,111 @@ The passage is now accessible."""
 
         max_box_width = 16 if resolution == "compact" else 48
         return self._render_ascii(state, floor_rooms, floor, floor_name, max_box_width=max_box_width)
-    
+
+    # Direction offsets for auto-layout (cardinals + diagonals; verticals
+    # up/down/in/out have no xy offset and are skipped).
+    _LAYOUT_OFFSETS = {
+        'n': (0, -1), 'north': (0, -1),
+        's': (0, 1), 'south': (0, 1),
+        'e': (1, 0), 'east': (1, 0),
+        'w': (-1, 0), 'west': (-1, 0),
+        'ne': (1, -1), 'nw': (-1, -1),
+        'se': (1, 1), 'sw': (-1, 1),
+    }
+
+    def _auto_layout(self, rooms: Dict[str, Dict], party_id: str = None) -> Dict[str, tuple]:
+        """Compute a distinct grid cell per room from its connections.
+
+        Used only at RENDER time (never mutates the saved map) when a floor's
+        rooms all share the default [5, 5] coords, or otherwise collide. BFS
+        from a deterministic start room, stepping by direction offsets; probes
+        a nearby free cell on collision; appends disconnected rooms in a
+        deterministic free column. Reads connection targets in both `str` and
+        `{'room': ...}` shapes.
+        """
+        if not rooms:
+            return {}
+
+        # Deterministic start: entrance, else party room, else first id sorted.
+        start = next((rid for rid in sorted(rooms) if rooms[rid].get('is_entrance')), None)
+        if start is None and party_id in rooms:
+            start = party_id
+        if start is None:
+            start = sorted(rooms)[0]
+
+        def _target_id(target):
+            if isinstance(target, str):
+                return target
+            if isinstance(target, dict):
+                return target.get('room')
+            return None
+
+        placed: Dict[str, tuple] = {}
+        used = set()
+
+        def _probe(cell):
+            """Nearest free cell to `cell` by deterministic outward ring scan."""
+            if cell not in used:
+                return cell
+            r = 1
+            while True:
+                ring = []
+                for dx in range(-r, r + 1):
+                    for dy in range(-r, r + 1):
+                        if max(abs(dx), abs(dy)) == r:
+                            ring.append((cell[0] + dx, cell[1] + dy))
+                for c in sorted(ring):
+                    if c not in used:
+                        return c
+                r += 1
+
+        # BFS from the start room.
+        placed[start] = (0, 0)
+        used.add((0, 0))
+        queue = [start]
+        while queue:
+            rid = queue.pop(0)
+            cx, cy = placed[rid]
+            conns = rooms[rid].get('connections', {}) or {}
+            for direction in sorted(conns):
+                offset = self._LAYOUT_OFFSETS.get(str(direction).lower())
+                if not offset:
+                    continue  # vertical or unknown direction: no xy step
+                tid = _target_id(conns[direction])
+                if tid not in rooms or tid in placed:
+                    continue
+                cell = _probe((cx + offset[0], cy + offset[1]))
+                placed[tid] = cell
+                used.add(cell)
+                queue.append(tid)
+
+        # Any rooms not reached via connections: drop them in a free column to
+        # the right, one per row, deterministically by room id.
+        col = (max((c[0] for c in used), default=0)) + 2
+        row = 0
+        for rid in sorted(rooms):
+            if rid not in placed:
+                cell = _probe((col, row))
+                placed[rid] = cell
+                used.add(cell)
+                row += 1
+
+        return placed
+
     def _render_ascii(self, state: Dict, floor_rooms: Dict, floor: int, floor_name: str, max_box_width: int = 16) -> str:
         """Render floor as ASCII using coordinate-based grid - FIXED VERSION."""
 
-        # Build coordinate lookup
+        # Build coordinate lookup. If rooms collide on a cell (e.g. every room
+        # defaulted to [5, 5] because the prep carried no **Coords:** lines),
+        # relayout for THIS render from connections — never touching the saved
+        # map. Genuinely distinct authored coords are left as-is.
+        coords_map = {rid: tuple(r.get('coords', [5, 5])) for rid, r in floor_rooms.items()}
+        if len(set(coords_map.values())) < len(floor_rooms):
+            coords_map = self._auto_layout(floor_rooms, state.get('party_location'))
+
         coord_to_room = {}
         for room_id, room in floor_rooms.items():
-            x, y = room['coords']
+            x, y = coords_map[room_id]
             coord_to_room[(x, y)] = room
 
         if not coord_to_room:
@@ -1743,13 +1947,15 @@ def register_map_tools(mcp, campaign_dir: Path):
         floor: int = None,
         room_id: str = None,
         secret_id: str = None,
+        fact: str = None,
         field: str = None,
         value: str = None,
         include_vertical: bool = True,
         resolution: str = "compact",
         reset: bool = False,
         rooms: int = 5,
-        encounter_die: int = 6
+        encounter_die: int = 6,
+        feature: str = None
     ) -> str:
         """Reach for this WHEN the party enters, moves through, or searches a keyed vault or dungeon — init loads the prep file, then enter/search/wait/render drive play room by room.
 
@@ -1761,8 +1967,10 @@ def register_map_tools(mcp, campaign_dir: Path):
             render: ASCII map (map_name, floor?, resolution?)
             enter: Enter room (map_name, room_id)
             search: Search for secrets (map_name, room_id?)
+            look: Inspection detail after enter (map_name, room_id?, feature?) — free, no turn cost
             wait: Hold position — advance 1 turn, roll encounter die, no room change (satisfies vault-liveness gate)
             reveal_secret: Reveal secret (map_name, room_id, secret_id)
+            reveal: Ledger a fact the party just learned socially/by deduction (map_name, fact, room_id?)
             get_room: Get room content (map_name, room_id?)
             update_room: Update room data (map_name, room_id, field, value)
             set_light: Toggle light source (map_name, value="false" for darkness)
@@ -1809,6 +2017,14 @@ def register_map_tools(mcp, campaign_dir: Path):
                 return "Error: reveal_secret requires room_id, secret_id"
             result = map_sys.reveal_secret(map_name, room_id, secret_id)
 
+        elif action == "look":
+            result = map_sys.look_room(map_name, room_id, feature)
+
+        elif action == "reveal":
+            if not fact:
+                return "Error: reveal requires fact"
+            result = map_sys.reveal_fact(map_name, fact, room_id)
+
         elif action == "get_room":
             result = map_sys.get_room_content(map_name, room_id)
 
@@ -1841,7 +2057,7 @@ def register_map_tools(mcp, campaign_dir: Path):
                                               current_day=_day, reset=reset)
 
         else:
-            return f"Unknown action: {action}. Valid actions: scaffold, init, render, enter, search, wait, reveal_secret, get_room, update_room, set_light, set_noise, query_nearby, list_floors, enter_site"
+            return f"Unknown action: {action}. Valid actions: scaffold, init, render, enter, search, wait, reveal_secret, reveal, look, get_room, update_room, set_light, set_noise, query_nearby, list_floors, enter_site"
 
         if map_sys.on_state_change:
             try:

@@ -1638,9 +1638,25 @@ def _update_current_status_active_map(map_name: str) -> bool:
 
 
 def _emit_player_view(active_map: str = None) -> None:
-    """Refresh the spoiler-safe player view artifacts. NEVER raises into play."""
+    """Refresh the spoiler-safe player view artifacts. NEVER raises into play.
+
+    When no active_map is passed (the bare call sites: advance_day, rest,
+    combat, save/session tools), fall back to the **Active Map:** field in
+    CURRENT_STATUS.md so player_map.txt refreshes too — before 2026-07-19 only
+    map() actions re-rendered the map, so it went stale across every other
+    action and could show the previous site after travel."""
     try:
         import player_view as _pv
+        if not active_map:
+            try:
+                _status = (CAMPAIGN_DIR / "CURRENT_STATUS.md").read_text(encoding='utf-8')
+                _m = re.search(r'\*\*Active Map:\*\*\s*(.+)', _status)
+                if _m:
+                    _candidate = _m.group(1).strip()
+                    if _candidate and _candidate.lower() != 'none':
+                        active_map = _candidate
+            except Exception:
+                pass
         fog = None
         if active_map:
             try:
@@ -2820,7 +2836,8 @@ def validate_prep_file(
         if isinstance(_parsed_rooms, dict):
             _recognized_tier_re = re.compile(
                 r'^(secret(s)?|hidden|loot|treasure|obstacles?|hazards?|'
-                r'observables?|description|dm notes?|referee notes?|encounters?)\b')
+                r'observables?|description|dm notes?|referee notes?|encounters?|'
+                r'first glance)\b')
             for room_id, room in _parsed_rooms.items():
                 raw = room.get("prep_content", "")
                 if not raw.strip():
@@ -2846,10 +2863,30 @@ def validate_prep_file(
                     missing.append("**Floor:**")
                 if "**connections:**" not in raw_lower:
                     missing.append("**Connections:**")
+                if "**coords:**" not in raw_lower:
+                    missing.append("**Coords:**")
                 if missing:
                     warnings.append(
                         f"Room '{room_id}' missing {' and '.join(missing)} - "
-                        f"the fog-of-war player map needs both to place and link the room."
+                        f"the fog-of-war player map places/links rooms from these "
+                        f"(rooms without Coords are auto-laid-out from connections)."
+                    )
+
+                # Reveal-pacing note (2026-07-16): map(enter) serves only the
+                # first paragraph of Observables (or a '### First Glance'
+                # section). A single-paragraph Observables shows everything at
+                # once — legal, but pacing-poor. Advisory NOTE, never an error.
+                secs = _ms2._slice_subsections(raw)
+                has_glance = any(h.startswith("first glance")
+                                 for h in secs if h != "_lead")
+                obs_body = next((b for h, b in secs.items()
+                                 if h != "_lead" and re.match(r'observables?\b', h)), "")
+                if (not has_glance and obs_body.strip()
+                        and len([p for p in re.split(r'\n\s*\n', obs_body) if p.strip()]) == 1):
+                    warnings.append(
+                        f"NOTE: room '{room_id}' Observables is a single paragraph - "
+                        f"first-glance pacing will show everything on enter. Consider a "
+                        f"'### First Glance' section or multi-paragraph Observables."
                     )
     except Exception as _e:
         warnings.append(f"Could not run reveal-tier subsection check: {_e}")
@@ -4559,6 +4596,26 @@ def check_canon(
             result.append(_sf_block)
     except Exception as e:
         logging.debug(f"Site-feature injection skipped: {e}")
+
+    # Revealed-ledger injection (reveal discipline): on vault turns, boundary
+    # of what the party actually knows.
+    try:
+        _rl_block = _revealed_ledger_injection()
+        if _rl_block:
+            result.append("")
+            result.append(_rl_block)
+    except Exception as e:
+        logging.debug(f"Revealed-ledger injection skipped: {e}")
+
+    # Standing-defenses injection (defenses-before-harm, 2026-07-19): on
+    # vault/combat turns, protective items surface BEFORE harm is narrated.
+    try:
+        _sd_block = _standing_defenses_injection()
+        if _sd_block:
+            result.append("")
+            result.append(_sd_block)
+    except Exception as e:
+        logging.debug(f"Standing-defenses injection skipped: {e}")
 
     # Faction standing injection (D1, 2026-06-13): surface REP when a faction is named.
     try:
@@ -13075,6 +13132,112 @@ def _site_features_injection(text: str) -> str:
     return "\n".join(site_features.format_features_block(e) for e in matches.values())
 
 
+_DEFENSE_MARKERS = re.compile(
+    r"immun|prevent|protect|resist|negat|shield|ward\b|aegis|"
+    r"advantage on \w+ sav|no (?:longer|navigation|combat)? ?penalt|"
+    r"never surprised|survives?\b|cannot be|blocks?\b|halves? \w+ damage",
+    re.IGNORECASE)
+
+_DEFENSES_MAX_LINES = 12
+
+
+def _standing_defenses_injection() -> str:
+    """Defenses-before-harm (2026-07-19, memory-eater ruling): on vault/combat
+    turns, surface every standing defensive item/augment/gift so the DM
+    resolves them BEFORE narrating irreversible consequence. The D134
+    memory-theft retcon happened because a protective item was discovered
+    only after the harm was written. Fail-open."""
+    try:
+        active, _turn = _active_vault_turn()
+        in_combat = bool(GAME_STATE.get("active_combat"))
+        if not active and not in_combat:
+            return ""
+        char_dir = CAMPAIGN_DIR / "characters"
+        if not char_dir.exists():
+            return ""
+        entries = []
+        for f in sorted(char_dir.glob("*.json")):
+            if f.name.startswith("_"):
+                continue
+            try:
+                c = json.loads(f.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            cname = c.get("name") or f.stem.title()
+
+            def _scan(name, text):
+                text = str(text or "")
+                if text and _DEFENSE_MARKERS.search(text):
+                    entries.append(f"  • {cname}: {name} — {text[:90].strip()}")
+
+            inv = c.get("inventory") or {}
+            for section in ("carried", "installed_permanent"):
+                for it in inv.get(section) or []:
+                    if isinstance(it, dict):
+                        _scan(it.get("name", "?"),
+                              f"{it.get('effect') or ''} {it.get('notes') or ''}")
+            augs = c.get("augmentations") or {}
+            for lst in (augs.values() if isinstance(augs, dict) else []):
+                for a in (lst if isinstance(lst, list) else []):
+                    if isinstance(a, dict):
+                        _scan(a.get("name", "?"), a.get("effect"))
+            for g in c.get("mystic_gifts") or []:
+                if isinstance(g, dict):
+                    _scan(g.get("name", "?"),
+                          f"{g.get('effect') or ''} {g.get('description') or ''}")
+            for t in c.get("special_traits") or []:
+                if isinstance(t, dict):
+                    _scan(t.get("name", "?"),
+                          f"{t.get('effect') or ''} {t.get('description') or ''}")
+        if not entries:
+            return ""
+        lines = ["**STANDING DEFENSES:**"]
+        shown = entries[:_DEFENSES_MAX_LINES]
+        lines.extend(shown)
+        if len(entries) > len(shown):
+            lines.append(f"  (+{len(entries) - len(shown)} more — character files)")
+        lines.append("  ⛔ Resolve these BEFORE narrating irreversible harm "
+                     "(memory/wound/death/item loss). A strike that a listed "
+                     "defense answers is narrated as ANSWERED — never written "
+                     "as landed and retconned.")
+        return "\n".join(lines)
+    except Exception as e:
+        logging.debug(f"standing-defenses injection failed: {e}")
+        return ""
+
+
+def _revealed_ledger_injection() -> str:
+    """Reveal discipline (2026-07-16): on vault turns, show the DM the boundary
+    of what the party actually knows. Whitelist source: maps/<name>_map.json
+    revealed_ledger (written only by reveal paths). Fail-open."""
+    try:
+        active, _turn = _active_vault_turn()
+        if not active:
+            return ""
+        state = map_system.get_map_state(active)
+        if not state:
+            return ""
+        ledger = state.get("revealed_ledger") or []
+        lines = [f"**REVEALED LEDGER ({active}):**"]
+        if not ledger:
+            lines.append("  (Nothing discovered yet.)")
+        else:
+            shown = ledger[-8:]
+            if len(ledger) > 8:
+                lines.append(f"  (+{len(ledger)-8} earlier facts)")
+            for e in shown:
+                d = f" (D{e['day']})" if e.get("day") else ""
+                lines.append(f"  • {e.get('fact','')}{d}")
+        lines.append("  ⛔ NPCs may assert ONLY these facts. Off-ledger they speculate "
+                     "and may be WRONG. Unledgered names are unspeakable. "
+                     "Party just learned something? map(action=\"reveal\", "
+                     f"map_name=\"{active}\", fact=\"...\").")
+        return "\n".join(lines)
+    except Exception as e:
+        logging.debug(f"revealed-ledger injection failed: {e}")
+        return ""
+
+
 @mcp.tool(tags=_get_tool_tags("faction"))
 def faction(
     action: str = Field(description="status|earn|spend|set|add|oppose"),
@@ -14705,12 +14868,38 @@ def _list_anti_patterns() -> str:
 
 
 def _run_prose_evolution():
-    """Thin seam around the prose blacklist evolver (monkeypatched in tests)."""
+    """Thin seam around the prose blacklist evolver (monkeypatched in tests).
+
+    2026-07-19: also feeds the campaign's rolling narration window into the
+    template scan, so recurring CONSTRUCTIONS (not just literal phrases) get
+    nominated into blacklist.json template_nominations for owner review —
+    the durable fix for the prose mutating around literal bans."""
     try:
-        from hooks.blacklist_evolver import run_evolution
+        from hooks.blacklist_evolver import run_evolution, run_template_scan
     except ImportError:
-        from blacklist_evolver import run_evolution
-    return run_evolution()
+        from blacklist_evolver import run_evolution, run_template_scan
+    result = run_evolution()
+    try:
+        from rubicon_paths import prose_window_path
+        wpath = prose_window_path()
+        if wpath.exists():
+            samples = []
+            for line in wpath.read_text(encoding="utf-8").splitlines():
+                try:
+                    t = json.loads(line).get("text", "")
+                except Exception:
+                    continue
+                # strip markdown furniture (bullets/table pipes) so the frame
+                # counter sees prose, not formatting
+                t = re.sub(r"^\s*[-*•]\s+", "", t, flags=re.MULTILINE)
+                t = t.replace("|", " ")
+                if t.strip():
+                    samples.append(t)
+            if samples:
+                run_template_scan(samples)
+    except Exception as e:
+        logging.debug(f"template scan skipped (non-fatal): {e}")
+    return result
 
 
 def _evolve_prose_blacklist_safe():
@@ -14933,6 +15122,162 @@ def _vp_check_tripwires(text: str) -> list[str]:
             from fabrication_detectors import check_tripwires
         return check_tripwires(text)
     except Exception:
+        return []
+
+
+_DM_NOUN_CACHE = {"key": None, "nouns": frozenset()}
+
+# Common capitalized/markdown artifacts that must never be treated as invented
+# DM-only proper nouns (would false-positive-block ordinary prep prose).
+_DM_NAME_STOPWORDS = frozenset({
+    "the", "this", "that", "these", "those", "never", "reveal", "revealed",
+    "only", "secret", "secrets", "truth", "notes", "hidden", "when", "what",
+    "who", "why", "how", "room", "rooms", "zone", "zones", "day", "dm", "gm",
+    "end", "truth", "note", "npc", "npcs", "pc", "pcs", "encounter",
+    "encounters", "loot", "trap", "traps", "scope", "state", "description",
+    "name", "connections", "entrance", "floor", "coords", "roll", "every",
+    "turn", "dm only", "if", "then", "must", "will", "can", "should", "party",
+    "player", "players", "dungeon", "master", "true", "guardian", "living",
+    "vaarn",  # the setting name — never a campaign secret
+    # Common English nouns that show up capitalized-only in terse prep prose
+    # (labels, sentence fragments). A villain literally named one of these
+    # slips through — accepted: false positives BLOCK live play, false
+    # negatives just mean one exotic name isn't machine-guarded.
+    "evidence", "adaptation", "era", "eras", "visitor", "visitors",
+    "depletion", "history", "memory", "memories", "pattern", "patterns",
+    "purpose", "nature", "source", "sources", "energy", "water", "light",
+    "darkness", "silence", "stone", "metal", "glass", "blood", "death",
+    "life", "time", "place", "world", "city", "desert", "night", "morning",
+    "power", "mind", "body", "voice", "word", "words", "story", "stories",
+    "sign", "signs", "mark", "marks", "path", "paths", "road", "door",
+    "doors", "wall", "walls", "ceiling", "chamber", "chambers", "hall",
+    "halls", "garden", "gardens", "machine", "machines", "engine", "engines",
+    "core", "heart", "eye", "eyes", "hand", "hands", "child", "children",
+    "woman", "women", "man", "men", "people", "king", "queen", "lord",
+    "lady", "stakes", "layers", "hook", "hooks", "collapse", "crossing",
+    "compact", "surface", "network", "system", "systems", "starvation",
+})
+
+
+def _resolve_active_prep_path() -> Path | None:
+    """Active prep file path: GAME_STATE['active_prep_file'] first, falling
+    back to CURRENT_STATUS.md's **Active Prep:** line (the same reader
+    check_canon's prep block uses) when that's empty."""
+    prep_rel = None
+    try:
+        if isinstance(GAME_STATE, dict):
+            prep_rel = (GAME_STATE.get("active_prep_file") or "").strip() or None
+    except Exception:
+        prep_rel = None
+    if not prep_rel:
+        try:
+            status_path = CAMPAIGN_DIR / "CURRENT_STATUS.md"
+            if status_path.exists():
+                status_text = status_path.read_text(encoding="utf-8")
+                for line in status_text.splitlines():
+                    if "**Active Prep:**" in line:
+                        value = line.split("**Active Prep:**", 1)[1].strip()
+                        if value and value.lower() != "none":
+                            prep_rel = value
+                        break
+        except Exception:
+            prep_rel = None
+    if not prep_rel:
+        return None
+    return CAMPAIGN_DIR / prep_rel
+
+
+def _dm_only_proper_nouns(prep_path: Path) -> frozenset:
+    """Proper nouns appearing ONLY in the prep's DM-ONLY content.
+
+    Candidates: ALL-CAPS tokens (>=4 chars) anywhere, plus Capitalized tokens
+    that occur capitalized at least once NOT at sentence start. Any token
+    (case-insensitive) also present in the player-facing remainder is
+    subtracted — it's not DM-only. Common capitalized English/markdown
+    artifacts (headers, "This", "Secret", etc.) are dropped via a stopword
+    list, expanded adversarially against realistic prep text."""
+    try:
+        raw = prep_path.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        return frozenset()
+    player_side = _filter_dm_only_content(raw, preserve_structure=False)
+    # _filter_dm_only_content only strips ⛔-paired blocks / dm_only secrets /
+    # inline markers — NOT header-style DM sections ('## DM ONLY — THE TRUTH',
+    # '## OVERVIEW (GM KNOWLEDGE ONLY)', '## DM KNOWLEDGE'), the convention
+    # live preps actually use. Cut those from the player side too (through the
+    # next h2 header or EOF), mirroring _extract_dm_only_secrets' shapes.
+    _dm_header_pattern = (
+        r'^##\s*(?:DM ONLY\b|DM KNOWLEDGE\b|[^\n]*\(GM KNOWLEDGE ONLY\))'
+        r'[^\n]*\n.*?(?=\n##\s|\Z)'
+    )
+    player_side = re.sub(_dm_header_pattern, '', player_side,
+                         flags=re.DOTALL | re.IGNORECASE | re.MULTILINE)
+    dm_side_len_delta = len(raw) - len(player_side)
+    if dm_side_len_delta <= 0:
+        return frozenset()
+
+    def _tokens(s):
+        return set(re.findall(r"[A-Za-z][A-Za-z'\-]{2,}", s))
+
+    player_low = {t.lower() for t in _tokens(player_side)}
+    # Candidates come from BODY prose only — markdown headers ('### Character
+    # Hooks', '### Current Stakes') are structure, not names; a real name used
+    # in a header also appears in body text.
+    body = "\n".join(ln for ln in raw.splitlines() if not ln.lstrip().startswith("#"))
+    nouns = set()
+    for tok in _tokens(body):
+        if tok.lower().endswith("'s"):
+            tok = tok[:-2]  # possessive -> base name ("Thresh's" -> "Thresh")
+            if len(tok) < 3:
+                continue
+        low = tok.lower()
+        if low in player_low or low in _DM_NAME_STOPWORDS:
+            continue
+        # A word that EVER appears fully-lowercase in the prep is a common
+        # noun, not a proper name — proper names stay capitalized everywhere.
+        if re.search(rf"\b{re.escape(low)}\b", body):
+            continue
+        if tok.isupper() and len(tok) >= 4:
+            nouns.add(low)
+            continue
+        if tok[0].isupper() and tok[1:].islower() and re.search(
+            rf"[a-z0-9,;:\)\"']\s+{re.escape(tok)}\b", raw
+        ):
+            nouns.add(low)
+    return frozenset(n for n in nouns if n not in _DM_NAME_STOPWORDS)
+
+
+def _vp_check_dm_name_leaks(text: str) -> list[str]:
+    """Reveal discipline Part B: block DM-only proper nouns not yet in the
+    site's Revealed Ledger. Deterministic; fail-open (never blocks live play
+    on a bug in this check)."""
+    try:
+        active, _t = _active_vault_turn()
+        if not active:
+            return []
+        prep_path = _resolve_active_prep_path()
+        if not prep_path or not prep_path.exists():
+            return []
+        state = map_system.get_map_state(active) or {}
+        ledger_blob = " ".join(e.get("fact", "") for e in state.get("revealed_ledger") or []).lower()
+        key = (str(prep_path), prep_path.stat().st_mtime, len(state.get("revealed_ledger") or []))
+        if _DM_NOUN_CACHE["key"] != key:
+            _DM_NOUN_CACHE["key"] = key
+            _DM_NOUN_CACHE["nouns"] = _dm_only_proper_nouns(prep_path)
+        out = []
+        low = text.lower()
+        for noun in _DM_NOUN_CACHE["nouns"]:
+            if noun in ledger_blob:
+                continue
+            if re.search(rf"\b{re.escape(noun)}\b", low):
+                out.append(
+                    f"DM-ONLY NAME LEAK: '{noun}' has not been discovered in play "
+                    f"(Revealed Ledger). Remove/rename it — or, if the party just "
+                    f"legitimately learned it, ledger it first: "
+                    f"map(action=\"reveal\", map_name=\"{active}\", fact=\"...\").")
+        return out
+    except Exception as e:
+        logging.debug(f"dm-name-leak check failed: {e}")
         return []
 
 
@@ -15282,6 +15627,7 @@ def _validate_prose_impl(text: str) -> str:
     # Pet-name, tripwire, narration-claim, and combat-mechanics checks (deterministic widening).
     violations.extend(_vp_check_petnames(text))
     violations.extend(_vp_check_tripwires(text))
+    violations.extend(_vp_check_dm_name_leaks(text))
     violations.extend(_vp_check_narration_claims(text))
     violations.extend(_vp_check_combat_mechanics(text))
 
@@ -17961,8 +18307,15 @@ def _wire_travel_callbacks():
     _supply = getattr(supply, "fn", supply)
     _advance_day = getattr(advance_day, "fn", advance_day)
 
-    geography_system.on_depart = lambda: _supply(action="depart")
-    geography_system.on_arrive = lambda loc: _supply(action="arrive", location=loc)
+    def _on_depart(food=None, water=None, follower_mouths=None):
+        return _supply(action="depart", food=food, water=water,
+                       follower_mouths=follower_mouths)
+
+    geography_system.on_depart = _on_depart
+    # on_arrive is intentionally NOT wired: whether an arrival is a supplied
+    # base is DM judgment — travel_arrive pushes the supply(action="arrive")
+    # call instead of auto-flipping to abundant (D134 salt-bore fix).
+    geography_system.on_arrive = None
 
     def _day_tick(double_water=False):
         # double_water is accepted but NOT auto-applied this build: the Heatwave

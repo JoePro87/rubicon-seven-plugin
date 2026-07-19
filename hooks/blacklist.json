@@ -125,7 +125,9 @@
     "the specific frequency",
     "the word sits",
     "the efficiency of a man who",
-    "the question hangs"
+    "the question hangs",
+    "four thousand years",
+    "through the bond"
   ],
   "protected_phrases": [
     "deliberate",
@@ -159,12 +161,37 @@
       "pattern": "(?:froze|went rigid|locked in place|turned to stone|became a statue|every fiber|every fibre)",
       "category": "Reaction Shot",
       "description": "Freeze/lock/petrification — structural synonyms beyond literal blacklist"
+    },
+    {
+      "pattern": "\\bthe way (?!west\\b|east\\b|north\\b|south\\b|out\\b|home\\b|back\\b|down\\b|up\\b|through\\b|in\\b|to\\b|forward\\b|of\\b)(?:(?:a |an |one |she |he |they |it |you |we )?[a-z]+ [a-z]+(?:s|es|ed)\\b|[a-z]+s [a-z]+\\b)",
+      "category": "Characterization",
+      "description": "'the way X <verbs>' epistemic simile — cat-6 characterization template with rearranged syntax (66x in Thyricost leg audit 2026-07-19)"
+    },
+    {
+      "pattern": "\\bthe \\w+ of an? \\w+ \\w+ing\\b",
+      "category": "Characterization",
+      "description": "'the X of a Y <doing>' — banned who/that template with participle swap ('the gesture of a woman preparing')"
+    },
+    {
+      "pattern": "\\bthe (?:tenderness|reluctance|satisfaction|gesture|posture|expression|cadence|register|patience|efficiency|precision|flatness|certainty|quality|tone|trust|color|colour|voice|smile|look|air|manner|calm) of an? \\w+",
+      "category": "Characterization",
+      "description": "'the <abstract> of a Y' bare portent appositive — who/that deleted ('the color of an evacuation notice no one ever read')"
+    },
+    {
+      "pattern": "\\ba (?:very )?long (?:time|moment|while)\\b|\\bthe length of an? \\w+\\b",
+      "category": "Transition duration-padding",
+      "description": "'a (very) long time' / 'the length of a breath' — evades the banned 'for a long moment' family"
+    },
+    {
+      "pattern": "\\b(?:stillness|silence|quiet) with contents\\b|\\b\\w+ does the work\\b",
+      "category": "The Pause",
+      "description": "re-lexicalized pause-as-actor ('a stillness with contents', 'the afternoon does the work')"
     }
   ],
   "_meta": {
-    "version": 8,
-    "description": "Blacklisted phrases are NEVER allowed. Use-sparingly phrases are allowed ONCE per session, then blocked. Both lists use regex patterns with word boundaries applied automatically. protected_phrases are player-pinned and never auto-promoted by the evolver. v4: Added 'not X, but Y' negation-correction pattern and variants. v5: Generalized 'the X of a Y who/that' stock characterization formula (was narrow noun-list; now catches any instance). v6: Added protected_phrases list; freed deliberate/unhurried/says nothing/without looking from use_sparingly.",
-    "last_updated": "2026-06-09",
+    "version": 9,
+    "description": "Blacklisted phrases are NEVER allowed. Use-sparingly phrases are allowed ONCE per session, then blocked. Both lists use regex patterns with word boundaries applied automatically. protected_phrases are player-pinned and never auto-promoted by the evolver. v4: Added 'not X, but Y' negation-correction pattern and variants. v5: Generalized 'the X of a Y who/that' stock characterization formula (was narrow noun-list; now catches any instance). v6: Added protected_phrases list; freed deliberate/unhurried/says nothing/without looking from use_sparingly. v9 (2026-07-19): Thyricost-leg audit — added five mutation-family structural_patterns (the-way-X-verbs epistemic simile, participle + bare-appositive cat-6 variants, mutated duration padding, re-lexicalized pause-as-actor) and refrains 'four thousand years'/'through the bond' to use_sparingly; the prose had migrated off the banned surface forms onto these grammatically-adjacent variants.",
+    "last_updated": "2026-07-19",
     "last_evolution": "2026-06-09T14:03:32"
   }
 }
