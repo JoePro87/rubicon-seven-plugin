@@ -287,6 +287,7 @@ def log_semantic_catch(
     confidence: str,
     session_id: str,
     turn_id: int,
+    scene_type: str = "unknown",
 ) -> None:
     """Log a Sonnet observer finding to catch_analytics.json.
 
@@ -301,6 +302,10 @@ def log_semantic_catch(
         confidence: "high" | "medium" | "low".
         session_id: Claude Code session UUID.
         turn_id: Monotonic turn counter from hook state.
+        scene_type: Scene type at catch time (e.g. "social", "combat"),
+            so semantic catches carry the same scene dimension the
+            deterministic v1 phrase_stats path already records. Defaults
+            to "unknown" when the caller can't resolve it.
 
     Fail-safe: any error (lock timeout, corrupt file, etc.) is caught
     and silently swallowed — analytics is advisory, never critical.
@@ -322,6 +327,7 @@ def log_semantic_catch(
                 "confidence": confidence,
                 "session_id": session_id,
                 "turn_id": turn_id,
+                "scene_type": scene_type,
                 "timestamp": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
             }
             for i, existing in enumerate(data["semantic_catches"]):

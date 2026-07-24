@@ -252,7 +252,7 @@ Context depth depends on mode:
 
 ### Prep File Integration
 
-1. Reads `Active Prep:` field from CURRENT_STATUS.md
+1. Resolves the active prep through the ONE shared resolver `_resolve_active_prep_path()` (also used by reveal provenance and the DM-name tripwire): `GAME_STATE["active_prep_file"]` first, else the CURRENT_STATUS `**Active Prep:**` line, each run through `_normalize_prep_ref()` — display labels like `SOME_SITE_PREP (expedition — descent into the buried vault)` normalize to `SOME_SITE_PREP.md` (truncate at first ` (`, append `.md` if absent); `none`/`(none)`/empty mean "no prep set". Returns an EXISTING path or None. **Fail-visible (2026-07-24, merge `5d52233`):** a non-none label that resolves to no file makes check_canon inject a `⚠️ ACTIVE PREP UNRESOLVED` scream + `logging.error` (and `full_session_startup` does the same at session start) instead of silently skipping injection — the silent-skip variant blinded the DM for an entire ~80-turn live run and also killed `prep:` provenance (root cause: `docs/handoffs/PREP_INJECTION_DEAD_2026-07-24.md`). `GAME_STATE["active_prep_file"]` is now persisted (exact filename) at both prep-write points (`update_active_prep`, `_update_current_status_prep`); when set, the field wins over the status line.
 2. Loads that prep file from the campaign directory
 3. Extracts overview (capped at 300 chars)
 4. Performs surgical section reads based on:
@@ -318,6 +318,31 @@ Engine-enforced reveal discipline — born from the D134 Thyricost session (an N
 - **Paced room delivery.** `location_content` gains `first_glance`/`inspection` views of the obvious tier: an explicit `### First Glance` subsection (`_section_tier` → "glance") IS the glance layer (all Observables become inspection); otherwise the first paragraph of each obvious body is the glance and the rest is inspection. Plain `"obvious"` behavior is unchanged for other callers (glance sections additionally render there so nothing is lost). `enter_room` serves glance + `[DM]` notes + a render-ONE-finding discipline push naming `map(action="look")`; `look_room` / `map(action="look", room_id?, feature?)` serves inspection detail with **no turn cost** (feature= scopes to matching paragraphs; unknown feature hints a search); `search_room` carries the same discipline line. `validate_prep_file` recognizes First Glance as a reveal-tier header and NOTEs single-paragraph Observables (pacing-poor). Conventions: `docs/PREP_FILE_SCHEMA.md` "First Glance" + content-forge's room template (authors First Glance natively; new preps must NOT hand-author REVEALED LEDGER markdown — discovery tracking is engine state).
 
 Tests: `tests/test_reveal_ledger.py`, `tests/test_dm_name_leak.py`, `tests/test_paced_delivery.py`.
+
+**Social/settlement extension (2026-07-19, merge `2db1ffc`).** Both lanes were originally gated on `_active_vault_turn()` — the 2026-07-19 verified audit found social/settlement scenes (where the original D134 leak happened) had NEITHER lane. Now: on a non-vault turn, `_active_prep_reveal_scope()` returns `(prep_stem, prep_path)` iff the active prep carries DM-only proper nouns (`_dm_only_proper_nouns_cached`, shared (path, mtime)-keyed cache for both lanes); the charter injection and the name tripwire then run against a **prep-scoped ledger** — the same map-state machinery keyed by the prep filename stem (`maps/<prep-stem>_map.json`). The store may not exist yet: it reads as an empty ledger (fail-SAFE — every DM-only name blocks) and is minted on first reveal by `MapSystem.reveal_fact` via `_new_ledger_only_state`, sanctioned by the `ledger_autocreate_ok` callback (wired at startup to `_active_prep_ledger_name()`; a typo'd vault name still hard-errors "Map not found"). Vault-turn behavior unchanged; prepless or secret-free scenes get neither lane. Same tests, +8 social-scene cases.
+
+### Expedition Docket (2026-07-20)
+
+Per-track state for multi-track sites — born from the Thyricost orientation failure (4-agent audit `docs/reports/THYRICOST_TRACKING_AUDIT_2026-07-20.md`: ~8 live tracks collapsed invisible behind the newest-8 ledger window + keyword-gated threads; player: "can't hold on to a single track"). Spec `docs/superpowers/specs/2026-07-20-expedition-docket-mechanics-ticker.md`; merges `c0498b9` (docket) + `ad783ab` (naming guard). All verified against shipped code:
+
+- **Track state.** `tracks: []` in the site map-state JSON (same file as `revealed_ledger`, spoiler-scoped): `{"id","title","status","stand"(≤200c),"blocked_by","next_step","clock","updated_day"}`, status OPEN|BLOCKED|WAITING|RESOLVED. CRUD via `map(action="track", track_op=add|update|resolve|list, ...)` (`MapSystem.track_add/track_update/track_resolve/track_list`; update patches only provided fields + re-stamps `updated_day`; resolve keeps the record as history). Prep-scoped (non-vault) sites hold tracks under the same `ledger_autocreate_ok` scoping as reveal.
+- **Docket injection (the fix that matters).** `_revealed_ledger_injection` renders a DOCKET block ABOVE the revealed ledger on every vault/prep-scoped turn with open tracks: ALL non-resolved tracks (no recency window, no keyword gate), one numbered line each via `MapSystem.docket_lines(state, day)` (cap 12 + overflow pointer; `!stale` marker when untouched >2 days), then the ANCHOR spine instruction (*open the scene on ONE named track; switching tracks is an explicit beat*) and the exact `track_op="update"` push. Fail-open; presentation-only; day/bell/location handling untouched.
+- **Player-facing render.** `map(action="docket")` → `MapSystem.render_docket`: an in-fiction document (header from optional map-state `docket_style`, e.g. Thyricost's "THYRICOST NODE 13 — EXPEDITION DOCKET"; default "EXPEDITION LEDGER — <name>"), full open tracks + a settled tail. The DM relays it verbatim as an in-world artifact — the bureaucracy theme becomes the orientation interface.
+- **Push wiring.** `init`/`enter`/`enter_site` on a prep-backed site with empty tracks append the NO-TRACKS-DECLARED push (exact `track_op="add"` call); `track_resolve` nudges `map(action="reveal")` (a resolution is usually a learned fact). Ledger write-time: `_ledger_append` dedups a fact byte-identical to any of the last 10 entries.
+- **Spatial-orientation push.** `render_map` stamps `last_render_turn`; `enter_room` appends a SPATIAL CHECK push naming `map(action="render")` once 5+ site turns pass unrendered (the Thyricost transcript had 4 unmet "where are we / render a map" asks).
+- **Prep naming guard.** `validate_prep_file` warns on near-homograph cast names via `_prep_name_collisions`: capitalised tokens (5+ chars, ≥3 uses) that never appear lowercase in the prep (proper-noun filter), paired on edit-distance ≤2 or shared 4-char prefix (≥6 chars), plural pairs excluded. On the real Thyricost prep it fires exactly one pair: Tessith/Tesslyn — the collision the player and DM conflated in live play.
+
+Tests: `tests/test_expedition_docket.py`, `tests/test_spatial_render_push.py`, `tests/test_prep_name_guard.py`.
+
+### Fidelity Floor (A0, 2026-07-23)
+
+Emergency floor under Reveal Discipline and the mechanics ticker — closes two ways a turn could ship an unbacked claim: a ledgered "fact" that was never actually sourced, and a narrated mechanic (HP/AV/check/dice/condition) with no tool call behind it. Spec: `docs/superpowers/specs/2026-07-22-fidelity-floor-fun-restoration-design.md`. All verified against shipped code:
+
+- **Reveal provenance (A0.1).** `MapSystem._ledger_append(state, fact, source_room, source_action, provenance="")` now stores a `provenance` key (≤120 chars) on every ledger entry. The three auto-append seams (`enter_room`, `search_room`, `reveal_secret`) self-stamp `provenance="map"` — they're tool-backed by construction. The explicit lever, `map(action="reveal", map_name=..., fact=..., provenance=...)` → `MapSystem.reveal_fact`, is **fail-closed**: `_validate_provenance` runs before any state load or ledger autocreate, and a rejection writes nothing. Legal stamps: `prep:<exact phrase, ≥8 chars>` — verified case-insensitively against the active prep's live text via the server-wired `get_prep_text` callback (`_active_prep_full_text` → `_resolve_active_prep_path`); `ledger:<n>` — a 1-based index that must already exist in that site's ledger; `player` and `mint` — asserted by the DM with no further check. Storage normalization (`_normalize_provenance`) differs from the verification input: `prep:` refs collapse to the bare label `"prep"` (the phrase was proof-of-source, not a thing future turns need to see), `ledger:<n>` stores verbatim, `player`/`mint` lowercase. On the DM-facing surface, `_revealed_ledger_injection` (`server.py`) suffixes ` [MINTED]` on any entry whose stored `provenance == "mint"` — a visible flag that this fact was asserted, not sourced. The player Journal tab is untouched (DM-only surface). `map()` gained a `provenance` parameter, wired only on the reveal branch.
+- **Mechanics-source gate (A0.2).** Leaf module `hooks/mechanics_source_gate.py` (stdlib `re` only): `scan_unbacked_mechanics(text, tool_names)` checks narrated prose against 7 regex classes — HP delta (`los(?:e|es|t)` widened to catch "lost/loses", fixing a gap found during planning), HP fraction, armour value (case-sensitive `AV\d+`), forced check, dice notation, house-rule label, condition applied — each paired with the set of MCP tool names that would legitimately back it (e.g. HP delta ⇒ `combat`/`character`/`gift`/`rest`/`affliction`/`roll`). One violation surfaces per class per turn. Text from the first `>> MECHANICS` ticker header onward is exempt (that block is tool-backed by construction; see the Expedition Docket / mechanics-ticker doctrine above). Wired as a **blocking** Stop check, `_check_mechanics_source`, registered directly after `_check_dm_design_gate` in `hooks/consolidated_stop_check.py` — the second deliberate blocker in a stack that is otherwise soft-logging by design. Guards: short-circuits under `in_maintenance`, and exempts meta-only turns. Deliberately **not** scoped by `_is_narrative_turn` (whose <300-char / turn≤3 filters would exempt exactly the short unbacked-mechanics lines this gate exists to catch) — so a session-start/end recap that quotes a number in prose now blocks too; this is doctrinally correct under the Iron Law 6 amendment (mechanics numbers belong on the `>> MECHANICS` line, never in prose), and recoverable either by making the backing tool call or moving the number onto the ticker line. A false-positive probe against 174 live narration turns held every class ≤1.1%, except rule-label at 3.4% raw upper bound (no tool-call correlation was possible from the stored probe data, so that number is a ceiling, not a measured rate).
+- **Ledger surgery script (A0.3).** `scripts/thyricost_ledger_surgery.py` (dev-repo only, ship-excluded — it encodes campaign-specific entries) — a one-off, dry-run-by-default corrector for the four known-bad ledger entries, each matched by a substring verified unique against the live ledger with prep cross-checks. All-or-nothing: the plan/apply split only writes if every one of the four ops resolves cleanly, and apply takes an atomic write behind a backup copy. Surviving (un-touched) entries are stamped `provenance="surgery-2026-07-23"` so the corrected ledger carries an audit trail. **Executed 2026-07-23** with the owner's spoken go (dry-run reviewed first; one op amended mid-review to preserve a prep-supported clause); result verified — full record in SESSION_LOG 2026-07-23 and the roadmap A0 entry.
+
+Tests: `tests/test_reveal_provenance.py`, `tests/test_mechanics_source_gate.py`, `tests/test_ledger_surgery.py` (plus `tests/test_reveal_ledger.py` for the pre-existing ledger surface these stamps extend).
 
 ### Error Handling
 
@@ -386,6 +411,22 @@ ANSWERED — never written as landed and retconned. Tests: `tests/test_standing_
 (incl. live-roster count probe). Judgment-side counterparts live in the campaign repo's VOICE.md
 (speaker/wit/flattery budgets) and SCENE_FRAMING_GUIDE.md (action-termination, closer-variety,
 simile-budget, inert-texture rules).
+
+**Live ban prime (2026-07-19, merge `8ec270a`).** The adversarially-verified audit found
+`phrase_reminder.build_reminder` received the blacklist as **dead parameters** — the per-turn
+BANNED block was a hardcoded pre-v9 string that only rendered at Tier 3, so blacklist v9's
+mutation families never reached write-time. Now the prime is built FROM blacklist.json (single
+home): `load_blacklist()` returns `(blacklisted, sparingly, structural_patterns)`;
+`_banned_families` groups structural patterns by category with terse glosses; every tier renders
+at least the compact `BANNED FAMILIES` line, Tier 3 the full glossed block + a capped exact-phrase
+sample; use_sparingly surfaces only entries already spent this session. The hardcoded literal is
+deleted. Same merge: `log_semantic_catch` records `scene_type` (threaded from the Stop-hook spawn)
+and `prose_observer._normalize_category` case-folds to the canonical 11 category keys (live data
+had case-split counts diluting the top-categories prime); and check_canon's thread injection is
+**ungated** — `_thread_injection_elements` (mirroring `_faction_injection_lines`) keyword-matches
+every turn, cap 2, delta-deduped, replacing the `'threads' in active_blocks` gate that suppressed
+thread surfacing in ordinary play. Tests: `test_phrase_reminder_banned_families.py`,
+`test_prose_observer_normalize.py`, `test_check_canon_threads_ungated.py`.
 
 ### Shared State
 
@@ -536,7 +577,7 @@ The runner's only blocking path (shipped 2026-06-12, content-forge revision; tes
 - **State preservation:** `turn_reset.py` now carries `pending_dm_design`, `skip_dm_design_gate`, and `maintenance_mode` across turn resets, so an armed gate survives until released or waived.
 
 #### Check 2: Anti-Pattern Blacklist
-- Loads `blacklist.json`: 90 blacklisted phrases + 34 use-sparingly + 5 protected + 5 structural patterns = 134 total (canonical split — the other §5 mentions of this count point back here)
+- Loads `blacklist.json`: 92 blacklisted phrases + 36 use-sparingly + 5 protected + 10 structural patterns = 143 total as of v10, 2026-07-20 (canonical split — the ONLY place counts are written; other §5 mentions point back here without numbers, and `scripts/verify_claims.py` checks this line against the live file)
 - Each phrase compiled as case-insensitive word-boundary regex
 - **Blacklisted**: Any match → soft log, increment catch_count
 - **Use-sparingly**: First use in session → phrase added to session_vocabulary. Second use → soft log.
@@ -642,7 +683,7 @@ Called by Claude before outputting narrative. The single pre-output quality gate
 |------|-------|--------|------|
 | 1 | Fabrication-ban scan | fabrication_bans.json — hard-block on any draft that re-asserts a permanently corrected error (entity + wrong-term pairs); runs first, cheapest and certain | ~0ms |
 | 2 | Literal blacklist scan | blacklist.json — banned phrases (current split at §4 Check 2), case-insensitive word-boundary regex | ~0ms |
-| 3 | Structural regex scan | blacklist.json `structural_patterns` — 5 pattern-level checks for negation-correction across sentence breaks, characterization formulas, freeze/lock synonyms | ~0ms |
+| 3 | Structural regex scan | blacklist.json `structural_patterns` — pattern-level checks (count at §4 Check 2) for negation-correction across sentence breaks, characterization formulas, freeze/lock synonyms, and the v9 mutation families | ~0ms |
 | 4 | NPC mention verification | Cross-reference NPC names against check_canon injection, lorebook/npc tool calls, Present field | ~0ms |
 | 5 | Backstory hallucination patterns | 10 regex patterns for false memory insertion ("the first time we met", "remember when we", etc.) | ~0ms |
 | 6 | In-dialogue factual claim scan | Duration, quantity, date, relationship claims inside quoted dialogue vs distillation cache | ~5ms |
@@ -684,9 +725,9 @@ Runs the same blacklist scan post-delivery, logging to `catch_analytics.json`. *
 | Characterization formula | 1 | `the \w+ of (a|an) \w+ (who|that)` (regex) |
 | Negation-correction | 3 | `not .{1,40}[,;—] (but)? the/a/an...` (regex) |
 
-**Structural patterns (5):** Negation-correction across sentence breaks (2 variants), expanded characterization formula, double-negation-affirmation, freeze/lock structural synonyms. These catch rephrasings that bypass the literal blacklist.
+**Structural patterns** (count at §4 Check 2): Negation-correction across sentence breaks (2 variants), expanded characterization formula, double-negation-affirmation, freeze/lock structural synonyms, plus the five v9 mutation families (2026-07-19 audit). These catch rephrasings that bypass the literal blacklist.
 
-**Protected phrases (5):** A short allowlist (`blacklist.json` `protected_phrases`) that the blacklist evolution cycle must never auto-promote into the banned list, even if analytics flag them as frequent — `blacklist_evolver.py` skips any candidate in this set. Rounds out the four `blacklist.json` categories — current split at §4 Check 2 (protected and structural stay fixed at 5 each; total 134).
+**Protected phrases (5):** A short allowlist (`blacklist.json` `protected_phrases`) that the blacklist evolution cycle must never auto-promote into the banned list, even if analytics flag them as frequent — `blacklist_evolver.py` skips any candidate in this set. Rounds out the four `blacklist.json` categories — current split lives at §4 Check 2 only.
 
 ### Layer 3: prose_observer — The Deep Diagnostic
 
@@ -766,7 +807,8 @@ The guard rides inside `validate_prose` (the Layer 1 gate, in `server.py`), stil
 5. **Pet-name, tripwire, and narration relationship/job checks** (`hooks/fabrication_detectors.py`):
    - **Pet-names** — forbidden bond-names used in the wrong register (a campaign-defined bond-name spoken outside private `*bond*` text).
    - **Tripwires** — per-character canon hard rules (e.g. a photosynthete PC never eats; Mystic Gifts need no save). Campaign-specific pet-names and tripwires are DATA, loaded per call from the campaign dir's `fabrication_tripwires.json` (fail-open; 2026-07-12 — campaign facts never live in engine code); only setting-generic book rules are built in. Sentence-scoped, so a multi-character scene doesn't false-fire when an unrelated character is mentioned in an adjacent sentence.
-   - **Narration claims** — relationship/job assertions about a named canon character in narrator voice, matched against a narrow familial-verb set and a bounded "Name, the role," appositive. Deliberately narrow to avoid crying wolf.
+   - **Narration claims** — relationship/job assertions about a named canon character in narrator voice, matched against a narrow familial-verb set and a bounded "Name, the role," appositive. Deliberately narrow to avoid crying wolf. **D135 extension (2026-07-20, merge `4c196c2`):** a third pass flags a concrete numeral attached to a campaign-tracked noun (`tracked_quantity_nouns` in `fabrication_tripwires.json` — petitions, votes, citizens…) unless BOTH the numeral and the noun appear in the distillation-cache blob. Noun-list-driven by construction so scenery counts ("three doors") never flag; vague quantifiers ("several") and quoted dialogue excluded (the dialogue scanner owns those). Born from the D135 complaint: "a way to file four petitions" — wrong count in narration — sailed through the dialogue-only scanner.
+   - **Tripwire negation guard (2026-07-20, merge `76e5237`):** a context-verb match directly preceded by a negation (never/doesn't/cannot/without…, one intervening adverb allowed) states the rule rather than violating it and is skipped — the live-corpus probe showed "Creenash never eats" tripping the very wire that enforces it. Campaign data expanded same day (campaign `767af66`): eat/drink/sleep verb families now include bare infinitives (the lentil-cake miss was "to eat", absent from the old inflected-forms-only list), and the two unguarded CLAUDE.md tripwire rows (bond-overheard, met-at-Nassak's-Tomb) plus Bugsie-flies were added.
 6. **Semantic judges — only if nothing above fired:**
    - The existing prose-style **Haiku judge** (`_vp_call_haiku_judge`).
    - Then, **only when a known canon name appears in the draft**, the **fact-checking Haiku judge** (`_vp_call_fact_judge`, prompt in `hooks/fact_judge_prompt.txt`). It receives the draft plus an answer key of cache facts *scoped to the entities named in the draft* (so the payload stays bounded as the cache grows), and flags only medium/high-confidence contradictions. Both judges fail open — any error returns no violations rather than blocking.
@@ -2408,6 +2450,16 @@ Damage interactions are driven by the creature's **type(s)** (Crimson Hound, ver
 
 **Incorporeal** (`stats.incorporeal`, e.g. Spectre of Indifference): immune to ALL damage except `hypergeometric` damage or an `anti-paradoxical` weapon; the tag then also doubles vs Outsider. `_combat_init` carries the flag onto the enemy.
 
+### Mechanics Ticker (2026-07-20)
+
+Player-relay lines for mechanical state changes — born from the Thyricost audit's measured **0%** surfacing of HP/stat/status changes into player-readable prose (41 events, none relayed; the old Iron Law 6 "mechanics are invisible" was being obeyed perfectly). **Owner ruling 2026-07-20, Iron Law 6 amended** (campaign `.claude/rules/iron-laws.md`): numbers stay OUT of narrative and dialogue, but every mechanical state change IS relayed in the engine's marked line, verbatim, after the prose. Merge `ea6041d` (adversarial combat-path review: SHIP). Verified against shipped code:
+
+- **`mechanics_ticker.py` (leaf module, never imports server).** `ticker_line(events)` renders the `>> MECHANICS (relay to player verbatim, after your prose):` block. PC events carry EXACT numbers (`Creenash: -7 HP (kinetic) -> 18/25`); enemy events are QUALITATIVE ONLY on every player-facing surface (unharmed / hurt (>50%) / bloodied (≤50%) / down (0) — exact enemy HP stays DM-only). `append_ticker(text, events, campaign_dir?)` is the single caller seam: appends the block + persists via `record_events` (rolling `mechanics_events.json` in the campaign dir, cap 20, day-stamped, atomic, FAIL-OPEN — a persistence failure never crashes a damage tool nor drops the line; enemy `pct` is quantized to the word at rest so the stored ledger never holds the fraction).
+- **Attach points (return-string appends only; death seam untouched):** `_character_take_damage` (pc_damage with TRUE HP removed — overkill relays the clamped delta, not raw damage — + wound diff read before/after at the call site), `_character_update_hp` (mid-scene heals/harm relay their delta), `_combat_damage` (enemy qualitative; enemy ability loss = "weakened (STAT)", no numbers; the PC-target path delegates to `_character_take_damage` — single-emit verified), `_condition_impl` apply/clear/clear-all, `_disease_impl` contract, `_rest_long` per-PC heals. Attack outputs carry the block via the embedded `damage_result`. Deferred: toxin/TOX-die relay (deep multi-return dispatch near the death seam — follow-on), spec-B4 non-blocking relay-enforcement check.
+- **Always-visible surfaces:** `player_view.build_view` gains per-PC `conditions[]` + top-level `last_events[]` (last 5 stored events); `scripts/statusline_rubicon.py` renders a conditions count (`!Nc`) and a compact last-event bit (`[Creenash -7]`, enemies by word); `dashboard/model.py` party cards carry conditions.
+
+Tests: `tests/test_mechanics_ticker.py`, `tests/test_mechanics_ticker_integration.py`, extended `test_player_view_emitter.py` / `test_statusline_script.py` / `test_dashboard_contract.py`.
+
 ### Enemy Naming
 
 `combat_descriptors.py` assigns thematic descriptors to distinguish multiple enemies of the same type. 60 descriptors across 6 categories (physical 15, equipment 12, position 10, behavior 10, appearance 8, stance 5). Priority tiers by count: 1-5 prefer physical+position (fallback: a physical+behavior combined descriptor); 6-10 pick any available descriptor (fallback: an equipment+position combined descriptor); 11-15 also pick any available descriptor — identical primary rule to 6-10, differing only in fallback (fallback: two randomly-chosen category descriptors combined); 16+ use the numbered format `#{count} ({descriptor})` with a single random-category modifier. Custom descriptors can be passed via `enemies` parameter: `"Gene Thief (leader)"`.
@@ -2727,6 +2779,17 @@ direction offsets, spiral-probe on collision, disconnected rooms in a free colum
 `render_fog` de-stack; authored distinct coords are never touched, and the saved map file is never
 mutated. `validate_prep_file` now also warns on missing `**Coords:**`, and content-forge's checklist
 requires it. Tests: `tests/test_fog_auto_layout.py`.
+
+**Vertical-spine follow-up (2026-07-19 later, merge `60771a6` — the live Thyricost one-column
+report):** the BFS had no offsets for `up`/`down` (or full diagonal names), so a bore/shaft vault —
+rooms chained vertically on ONE floor, entrance's only exit `down` — died at the start room and
+dumped everything else in the fallback column with no connectors. `_LAYOUT_OFFSETS` now includes
+`up`/`out`=(0,-1), `down`/`in`=(0,1) (descend = lower on screen; cross-floor targets are still
+floor-filtered out before the BFS) and `northeast/northwest/southeast/southwest`. The second-pass
+connector drawing now derives dx/dy from the ACTUAL laid-out cells (`coords_map`) instead of the
+direction label — same-floor vertical links between adjacent cells get lines, probed-away and
+diagonal neighbors correctly get none (the label-based code could draw a bogus east line for a
+`southeast` link). Tests: `tests/test_vertical_spine_layout.py`.
 
 **Companion dashboard (2026-07-19 pass):** all four tab `Static`s render with `markup=False` (raw
 `[carried]`/`[stale…]` brackets were being parsed as Rich style tags — live garble bug); visible

@@ -15,6 +15,6 @@ def test_app_mounts_with_expected_tabs(tmp_path):
         app = DashboardApp(tmp_path)
         async with app.run_test() as pilot:
             tab_ids = {pane.id for pane in app.query("TabPane")}
-            assert tab_ids == {"party", "map", "world", "parleys"}
+            assert tab_ids == {"party", "map", "world", "journal", "parleys"}
 
     asyncio.run(_drive())

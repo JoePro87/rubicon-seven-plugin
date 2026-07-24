@@ -74,7 +74,7 @@ def tmp_map_with_loot(tmp_map):
 
 
 def test_reveal_fact_appends_and_persists(map_sys, tmp_map):
-    map_sys.reveal_fact(tmp_map, "The seal bears a hound sigil", room_id="antechamber")
+    map_sys.reveal_fact(tmp_map, "The seal bears a hound sigil", room_id="antechamber", provenance="mint")
     state = map_sys.get_map_state(tmp_map)
     entry = state["revealed_ledger"][-1]
     assert entry["fact"] == "The seal bears a hound sigil"
@@ -104,8 +104,28 @@ def test_search_ledgers_loot(map_sys, tmp_map_with_loot):
 
 
 def test_reveal_fact_empty_rejected(map_sys, tmp_map):
-    out = map_sys.reveal_fact(tmp_map, "   ")
+    out = map_sys.reveal_fact(tmp_map, "   ", provenance="mint")
     assert "❌" in out
+
+
+def test_reveal_fact_autocreates_social_ledger(map_sys):
+    """Non-vault reveal home: with no map for this name, reveal_fact mints a
+    ledger-only state ONLY when the injected sanction callback approves the
+    name (the active prep's stem, in live wiring)."""
+    map_sys.ledger_autocreate_ok = lambda name: name == "hollow_market_prep"
+    out = map_sys.reveal_fact("hollow_market_prep", "The broker runs the debt ring", provenance="mint")
+    assert "Ledgered" in out
+    state = map_sys.get_map_state("hollow_market_prep")
+    assert state and state.get("kind") == "ledger"
+    assert state["revealed_ledger"][-1]["fact"] == "The broker runs the debt ring"
+
+
+def test_reveal_fact_unknown_name_still_errors(map_sys):
+    """A name the sanction rejects (e.g. a typo'd vault name) still hard-errors
+    on a missing map — auto-create is scoped to the active prep only."""
+    map_sys.ledger_autocreate_ok = lambda name: False
+    out = map_sys.reveal_fact("no_such_map", "x", provenance="mint")
+    assert "Map not found" in out
 
 
 # ---------------------------------------------------------------------------
@@ -137,8 +157,48 @@ def test_ledger_injection_empty_ledger_still_charters(monkeypatch):
     assert "unspeakable" in block.lower()
 
 
-def test_ledger_injection_no_vault(monkeypatch):
+def test_ledger_injection_no_vault(monkeypatch, tmp_path):
+    # No vault AND no active prep -> no injection. Point CAMPAIGN_DIR at an empty
+    # tmp dir and clear the active prep so the non-vault path finds no prep
+    # (never reads live campaign data).
     monkeypatch.setattr(server, "_active_vault_turn", lambda: (None, None))
+    monkeypatch.setattr(server, "CAMPAIGN_DIR", tmp_path)
+    monkeypatch.setitem(server.GAME_STATE, "active_prep_file", None)
+    assert server._revealed_ledger_injection() == ""
+
+
+def test_ledger_injection_social_scene_charters(monkeypatch, tmp_path):
+    """Non-vault turn with an Active Prep carrying DM-only content: the charter
+    injects using the prep-scoped ledger name (the prep stem), even with no
+    reveals yet. This is the social/settlement lane the original incident hit."""
+    server._DM_NOUN_CACHE["key"] = None
+    server._DM_NOUN_CACHE["nouns"] = frozenset()
+    prep = tmp_path / "HOLLOW_MARKET_PREP.md"
+    prep.write_text(
+        "## OVERVIEW\n**Name:** Hollow Market\nStalls under a torn awning.\n\n"
+        "## DM ONLY — THE TRUTH\n"
+        "The broker VESKARN secretly runs the slave-debt ring.\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(server, "_active_vault_turn", lambda: (None, None))
+    monkeypatch.setattr(server.map_system, "get_map_state", lambda name: None)
+    monkeypatch.setattr(server, "CAMPAIGN_DIR", tmp_path)
+    monkeypatch.setitem(server.GAME_STATE, "active_prep_file", prep.name)
+    block = server._revealed_ledger_injection()
+    assert "REVEALED LEDGER" in block
+    assert "HOLLOW_MARKET_PREP" in block  # prep-stem ledger name
+    assert "unspeakable" in block.lower()
+    assert "Nothing discovered yet" in block
+
+
+def test_ledger_injection_prepless_social_silent(monkeypatch, tmp_path):
+    """Non-vault turn with no active prep: no injection (prepless scenes stay
+    quiet)."""
+    server._DM_NOUN_CACHE["key"] = None
+    server._DM_NOUN_CACHE["nouns"] = frozenset()
+    monkeypatch.setattr(server, "_active_vault_turn", lambda: (None, None))
+    monkeypatch.setattr(server, "CAMPAIGN_DIR", tmp_path)
+    monkeypatch.setitem(server.GAME_STATE, "active_prep_file", None)
     assert server._revealed_ledger_injection() == ""
 
 

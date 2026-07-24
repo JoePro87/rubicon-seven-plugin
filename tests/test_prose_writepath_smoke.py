@@ -152,7 +152,7 @@ def test_observer_spawn_dead_without_hydration(tmp_path, monkeypatch):
     spawned = []
     monkeypatch.setattr(
         csc, "_spawn_observer",
-        lambda text, sid, tid: spawned.append((text, sid, tid)),
+        lambda text, sid, tid, scene_type="unknown": spawned.append((text, sid, tid)),
     )
     records, _ = _narrative_records()
     hook_input = _real_stdin(tmp_path, records)
@@ -167,7 +167,7 @@ def test_observer_spawn_alive_with_hydration(tmp_path, monkeypatch):
     spawned = []
     monkeypatch.setattr(
         csc, "_spawn_observer",
-        lambda text, sid, tid: spawned.append((text, sid, tid)),
+        lambda text, sid, tid, scene_type="unknown": spawned.append((text, sid, tid)),
     )
     records, narration = _narrative_records()
     hook_input = _real_stdin(tmp_path, records)
@@ -188,7 +188,7 @@ def test_observer_respects_maintenance_bypass(tmp_path, monkeypatch):
     spawned = []
     monkeypatch.setattr(
         csc, "_spawn_observer",
-        lambda text, sid, tid: spawned.append((text, sid, tid)),
+        lambda text, sid, tid, scene_type="unknown": spawned.append((text, sid, tid)),
     )
     records, _ = _narrative_records()
     hook_input = _real_stdin(tmp_path, records)

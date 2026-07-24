@@ -92,6 +92,7 @@ def party_cards(view: dict) -> list:
             "hp_text": f"{hp if hp is not None else '?'}/{hp_max if hp_max is not None else '?'}",
             "av": member.get("av"),
             "wounds": member.get("wounds"),
+            "conditions": list(member.get("conditions") or []),
             "slots_text": f"{slots_free if slots_free is not None else '?'}/"
                           f"{slots_total if slots_total is not None else '?'}",
             "items": [_norm_item(i) for i in (member.get("items") or [])],
@@ -172,3 +173,30 @@ def parleys_list(view: dict) -> list:
         return []
     return [{"slug": p.get("slug"), "tier": p.get("tier")}
             for p in (view.get("open_parleys") or [])]
+
+
+def journal_lines(view: dict, width: int = 76) -> list:
+    """Shape the Journal tab: open business first, then the story so far
+    (revealed facts, newest first). [] when there's no journal in the view."""
+    j = (view or {}).get("journal") or {}
+    if not j:
+        return []
+    out = []
+    site = j.get("site") or "?"
+    tracks = j.get("tracks") or []
+    if tracks:
+        out.append(f"OPEN BUSINESS — {site}")
+        for t in tracks:
+            head = f"  • {t.get('title', '?')} [{t.get('status', '?')}]"
+            out.append(head)
+            stand = t.get("stand") or ""
+            if stand:
+                out.extend(_wrap(stand, width, "      "))
+        out.append("")
+    entries = j.get("entries") or []
+    if entries:
+        out.append(f"THE STORY SO FAR — newest first")
+        for e in entries:
+            day = f"D{e['day']}" if e.get("day") else "D?"
+            out.extend(_wrap(f"{day} · {e.get('fact', '')}", width, "  ") or [""])
+    return out

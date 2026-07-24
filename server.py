@@ -356,6 +356,7 @@ import wounds as _wnd
 import survival as _sv
 import conditions as _cnd
 import diseases as _dz
+import mechanics_ticker as _mt
 
 # Substance helpers (toxin/poison/usage/item — 38 funcs + 2 consts) moved to
 # substances.py (decomposition slice 2); imported-and-aliased back here. Shared
@@ -1554,12 +1555,14 @@ def _load_game_state():
 # _clear_game_state() removed 2026-06-07 (was dead code, 0 callers). Its former
 # caller location_init was retired in tool consolidation. No replacement is needed:
 # active_combat self-clears at combat-end, and active_constraints is managed live by
-# the constraint tool. NOTE (C28, 2026-07-02): active_location_name / active_prep_file
-# are NOT overwritten on prep/vault init anymore — their setters died with the
-# location-tool retirement (c1f3744), so both stay None in live play (the dm_view tool
-# that depended on them was retired). A blanket "wipe game_state.json" on prep-switch
-# would wrongly nuke live combat and active_constraints mid-scene, so it must NOT be
-# re-wired.
+# the constraint tool. NOTE (C28, 2026-07-02; amended 2026-07-24): active_prep_file
+# IS now set at the prep-change write points — update_active_prep and
+# _update_current_status_prep call _persist_active_prep_file, which resolves the
+# incoming reference to a real filename and saves it (handoff PREP_INJECTION_DEAD:
+# resolution must not depend on parsing the human-formatted **Active Prep:** display
+# line). active_location_name is still not written (its setter died with the
+# location-tool retirement, c1f3744). A blanket "wipe game_state.json" on prep-switch
+# remains FORBIDDEN — it would nuke live combat and active_constraints mid-scene.
 
 
 def _update_current_status_prep(prep_file: str, scene_type: str = "vault_exploration"):
@@ -1603,6 +1606,10 @@ def _update_current_status_prep(prep_file: str, scene_type: str = "vault_explora
         tmp_path = status_path.with_suffix('.tmp')
         tmp_path.write_text(content, encoding='utf-8')
         tmp_path.replace(status_path)
+
+        # Persist the exact resolved filename in game state so prep resolution
+        # never has to fall back to parsing the display line (handoff fix #2).
+        _persist_active_prep_file(prep_file)
 
         logging.info(f"CURRENT_STATUS.md synced: Active Prep={prep_file}, Scene Type={scene_type}")
         return True
@@ -2529,6 +2536,64 @@ def _register_constraint(constraint_id: str, subject: str, limitation: str, scop
     return f"Constraint registered: {subject} - {limitation}"
 
 
+def _prep_name_collisions(raw_text: str) -> list:
+    """Naming guard (2026-07-20): warn on near-homograph cast names at
+    authoring time. Tessith/Tesslyn (2 letters apart, both in the same quorum)
+    was conflated by player AND DM for a week — this fires while renaming is
+    still cheap. Deterministic + conservative: candidates are capitalised
+    tokens (5+ chars) appearing >=3 times; a pair fires on edit distance <=2
+    (both >=5 chars) or a shared 4-char prefix (both >=6 chars). Plural pairs
+    (X / Xs) and common English capitalised words are excluded."""
+    import itertools
+    _STOP = {
+        "There", "These", "Those", "Their", "Theirs", "Where", "Which", "While",
+        "White", "Would", "Could", "Should", "About", "Above", "Below", "Before",
+        "After", "Every", "Never", "Again", "Because", "Between", "Without",
+        "Player", "Party", "Floor", "Rooms", "Name", "Names", "Status", "Type",
+        "Zone", "Zones", "Secret", "Secrets", "Reveal", "Truth", "Effect",
+        "Discovery", "Connections", "Entrance", "Notes", "Location",
+    }
+    counts = {}
+    for tok in re.findall(r"\b[A-Z][a-z]{4,}\b", raw_text or ""):
+        if tok in _STOP:
+            continue
+        counts[tok] = counts.get(tok, 0) + 1
+    # Proper-noun filter: a real cast name never appears lowercase in the same
+    # text, while common capitalised words (Combat, Three, Policy...) do. This
+    # is what keeps the warning list to actual name collisions.
+    lower_words = set(re.findall(r"\b[a-z]{5,}\b", raw_text or ""))
+    cast = sorted(t for t, n in counts.items()
+                  if n >= 3 and t.lower() not in lower_words)
+
+    def _lev(a, b):
+        if abs(len(a) - len(b)) > 2:
+            return 99
+        prev = list(range(len(b) + 1))
+        for i, ca in enumerate(a, 1):
+            cur = [i]
+            for j, cb in enumerate(b, 1):
+                cur.append(min(prev[j] + 1, cur[j - 1] + 1,
+                               prev[j - 1] + (ca != cb)))
+            prev = cur
+        return prev[-1]
+
+    out = []
+    for a, b in itertools.combinations(cast, 2):
+        if a + "s" == b or b + "s" == a:
+            continue  # plural of the same word, not two cast members
+        close_edit = len(a) >= 5 and len(b) >= 5 and _lev(a, b) <= 2
+        shared_prefix = (len(a) >= 6 and len(b) >= 6
+                         and a[:4].lower() == b[:4].lower())
+        if close_edit or shared_prefix:
+            out.append(
+                f"NAME COLLISION risk: '{a}' vs '{b}' — near-homograph names "
+                f"confuse play (the Tessith/Tesslyn precedent). Rename one, or "
+                f"add a disambiguation glossary entry at the top of the prep.")
+        if len(out) >= 8:
+            break
+    return out
+
+
 def _validate_prep_schema(data: dict, prep_path: str) -> tuple[list[str], list[str]]:
     """
     Validate parsed prep data against required schema.
@@ -2725,6 +2790,12 @@ def validate_prep_file(
         return f"**ERROR:** {error}"
 
     critical_errors, warnings = _validate_prep_schema(data, prep_file)
+
+    # Naming guard: near-homograph cast names (see _prep_name_collisions).
+    try:
+        warnings.extend(_prep_name_collisions(data.get("raw_content", "")))
+    except Exception:
+        pass
 
     # Vault-liveness authoring guard: if this prep calls map(action="init"
     # it MUST carry the <!-- DUNGEON: map=<name> enforce=vault-liveness --> header.
@@ -3027,6 +3098,139 @@ map_system.get_day = _map_get_day_safe
 # Wire the player-view refresh so any map action re-emits the spoiler-safe
 # artifacts with a fresh fog render (layering: map_system never imports server).
 map_system.on_state_change = _emit_player_view
+# Wire the reveal auto-create sanction: reveal_fact mints a ledger-only state
+# ONLY for the active prep's ledger name (a non-vault social/settlement scene
+# with no map). Any other unknown name still hard-errors. Resolves at call-time
+# and never raises (a raise would abort a legitimate reveal). See
+# _active_prep_ledger_name (defined below).
+def _ledger_autocreate_ok(name):
+    try:
+        return bool(name) and name == _active_prep_ledger_name()
+    except Exception:
+        return False
+map_system.ledger_autocreate_ok = _ledger_autocreate_ok
+# Wire the prep-text provider (A0 fidelity floor): reveal_fact's prep: provenance
+# stamp verifies its phrase against the ACTIVE prep file's full text. Supply that
+# text here, reusing _resolve_active_prep_path — the SAME reader the reveal-scope
+# logic uses, so there is one parser of the active prep, one home. Resolves at
+# call-time (like the wrappers above; _resolve_active_prep_path is defined
+# further below) and NEVER raises / returns None: '' on every failure path, so a
+# missing/unreadable prep fails CLOSED (a prep: ref then rejects, never writes).
+def _active_prep_full_text() -> str:
+    try:
+        prep_path = _resolve_active_prep_path()
+        if prep_path and prep_path.exists():
+            return prep_path.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+    return ""
+map_system.get_prep_text = _active_prep_full_text
+
+
+def _prep_unresolved_lines(raw_value: str) -> list[str]:
+    """Fail-VISIBLE block for an active-prep value that names no real file.
+
+    One home for the scream text, shared by check_canon's prep injection and
+    the session-start check. The whole reason the bug survived ~80 turns is
+    that both prep readers failed SILENTLY; this makes the failure loud."""
+    return [
+        "",
+        f"⚠️ ACTIVE PREP UNRESOLVED: '{raw_value}' does not match any file in "
+        f"the campaign dir.",
+        "Prep injection and prep: provenance are DEAD until this is fixed — "
+        "call update_active_prep with the real filename.",
+    ]
+
+
+def _prep_injection_lines(prep_value: str, prep_path: "Path | None",
+                          prep_content: str,
+                          scene_type: str = "vault_exploration") -> list[str]:
+    """Core check_canon prep-injection lines for a resolved prep, or the
+    fail-visible scream when it did not resolve.
+
+    Given the raw **Active Prep:** display value, the resolved path (or None),
+    and the prep file text, build: the ACTIVE PREP FILE header (using the
+    RESOLVED filename, never the raw label), the overview, prep-room list,
+    ⛔ SECRETS block, prep constraints, and location-progress lines. Returns
+    _prep_unresolved_lines(prep_value) + logs when prep_path is None. This is
+    the single home for the injection body — check_canon extends scene state
+    with it, and tests exercise it directly."""
+    if prep_path is None:
+        logging.error("ACTIVE PREP UNRESOLVED: %r", prep_value)
+        return _prep_unresolved_lines(prep_value)
+
+    lines = ["", f"**ACTIVE PREP FILE:** {prep_path.name} ({scene_type})"]
+
+    # Overview / summary (first matching section), capped for token efficiency.
+    overview_patterns = [
+        r'^#[^#].*?\n\n(.*?)(?=\n##|\n---|\Z)',
+        r'## Overview\n\n(.*?)(?=\n##|\Z)',
+        r'## Summary\n\n(.*?)(?=\n##|\Z)',
+        r'\*\*Summary:\*\*\s*(.*?)(?:\n\n|\Z)',
+    ]
+    overview_text = None
+    for pattern in overview_patterns:
+        m = re.search(pattern, prep_content, re.DOTALL | re.MULTILINE)
+        if m:
+            overview_text = m.group(1).strip()
+            break
+    if overview_text:
+        if len(overview_text) > 300:
+            overview_text = overview_text[:300].rsplit(' ', 1)[0] + "..."
+        lines.append(f"_Overview: {overview_text}_")
+
+    # Prep rooms (vault exploration only).
+    if scene_type == "vault_exploration":
+        room_headers = re.findall(r'##\s*ROOM:\s*(\w+)', prep_content)
+        if room_headers:
+            lines.append(
+                f"_Prep rooms: {', '.join(room_headers[:8])}"
+                f"{'...' if len(room_headers) > 8 else ''}_")
+
+    # ⛔ DM-only secrets (spoiler enforcement).
+    dm_secrets = _extract_dm_only_secrets(prep_content)
+    if dm_secrets:
+        lines.append("")
+        lines.append("**⛔ SECRETS (do not reveal until discovered):**")
+        for secret in dm_secrets[:7]:
+            lines.append(f"- {secret}")
+        lines.append("_Use map(action=\"get_room\", include_prep=True) for the "
+                     "DM-side view. Never quote/paraphrase dm_only content._")
+
+    # Prep constraints (C31) — party_known only.
+    _prep_cons = _extract_prep_constraints(prep_content)
+    _prep_cons_pk = [c for c in _prep_cons
+                     if c.get("scope", "party_known") == "party_known"]
+    if _prep_cons_pk:
+        lines.append("")
+        lines.append("**⛓ CONSTRAINTS IN PLAY (prep):**")
+        for c in _prep_cons_pk[:6]:
+            lines.append(
+                f"- {c.get('subject', '?')}: {c.get('limitation', '?')}")
+        lines.append(
+            "→ constraint(action=\"check\", subject=\"<X>\") before a PC "
+            "acts against a limit; constraint(action=\"add\", ...) if a new "
+            "one emerges.")
+
+    # Location progress (continuity).
+    progress_entries = _extract_progress_log(prep_content)
+    if progress_entries:
+        latest = progress_entries[-1]
+        lines.append("")
+        lines.append(
+            f"**LOCATION PROGRESS (Day {latest['day']}: {latest['title']}):**")
+        if latest.get("items_taken"):
+            lines.append(f"- Took: {', '.join(latest['items_taken'])}")
+        if latest.get("npcs_met"):
+            lines.append(f"- Met: {', '.join(latest['npcs_met'])}")
+        if latest.get("secrets_revealed"):
+            lines.append(f"- Discovered: {', '.join(latest['secrets_revealed'])}")
+        if latest.get("summary"):
+            lines.append(f"- {latest['summary']}")
+        if len(progress_entries) > 1:
+            lines.append(f"_({len(progress_entries)} total visits logged)_")
+
+    return lines
 # Same lazy-resolution pattern as _map_get_day_safe above: get_current_day_safe
 # is defined further below, so wrap it in a lambda-equivalent that resolves
 # at call-time and never raises.
@@ -4738,98 +4942,27 @@ def check_canon(
             active_prep_match = re.search(r'\*\*Active Prep:\*\*\s*(.+?)(?:\n|$)', status_content) if _do_prep_injection else None
             if active_prep_match:
                 prep_filename = active_prep_match.group(1).strip()
-                if prep_filename and prep_filename.lower() != "none":
+                # Gate on the normalizer's none-detection so all three prep
+                # readers agree: empty / "none" / "(none)" (the sentinel the
+                # campaign scaffolder writes) yields no candidates and thus no
+                # injection AND no false UNRESOLVED scream on a prepless turn.
+                if _normalize_prep_ref(prep_filename):
                     try:
-                        prep_path = CAMPAIGN_DIR / prep_filename
-                        if prep_path.exists():
-                            prep_content = prep_path.read_text(encoding='utf-8')
-
-                            # Reuse pre-parsed scene type
-                            scene_type = scene_type_early
-
-                            scene_state_lines.append("")
-                            scene_state_lines.append(f"**ACTIVE PREP FILE:** {prep_filename} ({scene_type})")
-
-                            # Extract overview/summary from prep file (first few paragraphs)
-                            # Look for common prep file sections
-                            overview_patterns = [
-                                r'^#[^#].*?\n\n(.*?)(?=\n##|\n---|\Z)',  # Content after title
-                                r'## Overview\n\n(.*?)(?=\n##|\Z)',
-                                r'## Summary\n\n(.*?)(?=\n##|\Z)',
-                                r'\*\*Summary:\*\*\s*(.*?)(?:\n\n|\Z)',
-                            ]
-
-                            overview_text = None
-                            for pattern in overview_patterns:
-                                overview_match = re.search(pattern, prep_content, re.DOTALL | re.MULTILINE)
-                                if overview_match:
-                                    overview_text = overview_match.group(1).strip()
-                                    break
-
-                            if overview_text:
-                                # Limit to ~300 chars for token efficiency
-                                if len(overview_text) > 300:
-                                    overview_text = overview_text[:300].rsplit(' ', 1)[0] + "..."
-                                scene_state_lines.append(f"_Overview: {overview_text}_")
-
-                            # Extract available rooms/locations if vault exploration
-                            if scene_type == "vault_exploration":
-                                room_headers = re.findall(r'##\s*ROOM:\s*(\w+)', prep_content)
-                                if room_headers:
-                                    scene_state_lines.append(f"_Prep rooms: {', '.join(room_headers[:8])}{'...' if len(room_headers) > 8 else ''}_")
-
-                            # ========================================
-                            # DM_ONLY SECRETS INJECTION (spoiler enforcement)
-                            # Extract secrets from prep file that should NOT be revealed
-                            # ========================================
-                            dm_secrets = _extract_dm_only_secrets(prep_content)
-                            if dm_secrets:
-                                scene_state_lines.append("")
-                                scene_state_lines.append("**⛔ SECRETS (do not reveal until discovered):**")
-                                for secret in dm_secrets[:7]:  # Limit to 7 for token efficiency
-                                    scene_state_lines.append(f"- {secret}")
-                                scene_state_lines.append("_Use map(action=\"get_room\", include_prep=True) for the DM-side view. Never quote/paraphrase dm_only content._")
-
-                            # ========================================
-                            # PREP CONSTRAINTS (C31)
-                            # Surface the already-authored ### CONSTRAINT: channel
-                            # (previously parsed but read only by a debug counter).
-                            # party_known only; pushes the check/add calls.
-                            # ========================================
-                            _prep_cons = _extract_prep_constraints(prep_content)
-                            _prep_cons_pk = [c for c in _prep_cons
-                                             if c.get("scope", "party_known") == "party_known"]
-                            if _prep_cons_pk:
-                                scene_state_lines.append("")
-                                scene_state_lines.append("**⛓ CONSTRAINTS IN PLAY (prep):**")
-                                for c in _prep_cons_pk[:6]:
-                                    scene_state_lines.append(
-                                        f"- {c.get('subject', '?')}: {c.get('limitation', '?')}")
-                                scene_state_lines.append(
-                                    "→ constraint(action=\"check\", subject=\"<X>\") before a PC "
-                                    "acts against a limit; constraint(action=\"add\", ...) if a new "
-                                    "one emerges.")
-
-                            # ========================================
-                            # PROGRESS LOG INJECTION (continuity tracking)
-                            # Shows what party has already done at this location
-                            # ========================================
-                            progress_entries = _extract_progress_log(prep_content)
-                            if progress_entries:
-                                # Show most recent visit summary
-                                latest = progress_entries[-1]
-                                scene_state_lines.append("")
-                                scene_state_lines.append(f"**LOCATION PROGRESS (Day {latest['day']}: {latest['title']}):**")
-                                if latest.get("items_taken"):
-                                    scene_state_lines.append(f"- Took: {', '.join(latest['items_taken'])}")
-                                if latest.get("npcs_met"):
-                                    scene_state_lines.append(f"- Met: {', '.join(latest['npcs_met'])}")
-                                if latest.get("secrets_revealed"):
-                                    scene_state_lines.append(f"- Discovered: {', '.join(latest['secrets_revealed'])}")
-                                if latest.get("summary"):
-                                    scene_state_lines.append(f"- {latest['summary']}")
-                                if len(progress_entries) > 1:
-                                    scene_state_lines.append(f"_({len(progress_entries)} total visits logged)_")
+                        # ONE shared resolver: normalizes the **Active Prep:**
+                        # display label to the real file (or None). prep_filename
+                        # (the raw label) stays alive for the auto-correct re.sub
+                        # below. The core injection body — header, overview, prep
+                        # rooms, ⛔ SECRETS, constraints, progress — lives in
+                        # _prep_injection_lines; when the label resolves to no
+                        # file that helper returns the fail-visible scream.
+                        prep_path = _resolve_active_prep_path()
+                        scene_type = scene_type_early
+                        prep_content = (prep_path.read_text(encoding='utf-8')
+                                        if prep_path is not None else "")
+                        scene_state_lines.extend(
+                            _prep_injection_lines(prep_filename, prep_path,
+                                                  prep_content, scene_type))
+                        if prep_path is not None:
 
                             # ========================================
                             # SURGICAL PREP READS — targeted section extraction
@@ -4887,8 +5020,13 @@ def check_canon(
                                                 expected_prep = prep_file
                                                 break
 
-                                    # Compare expected vs actual
-                                    if expected_prep and expected_prep != prep_filename:
+                                    # Compare expected vs actual. Use the
+                                    # RESOLVED filename (prep_path.name), not the
+                                    # raw display label — the registry stores
+                                    # clean filenames, so comparing against the
+                                    # label (with its parenthetical) would never
+                                    # match and would false-positive every turn.
+                                    if expected_prep and expected_prep != prep_path.name:
                                         if auto_correct_prep:
                                             # Phase 2: Auto-correction enabled
                                             try:
@@ -5376,57 +5514,21 @@ def check_canon(
     # ACTIVE NARRATIVE THREADS INJECTION
     # When thread keywords appear in user input, inject thread context
     # ========================================
-    if 'threads' in active_blocks:
-        try:
-            threads_path = CAMPAIGN_DIR / "narrative_threads.json"
-            if threads_path.exists():
-                threads_data = _load_cached_json(threads_path, 'threads')
-
-                matched_threads = []
-                for thread_id, thread in threads_data.get("threads", {}).items():
-                    if thread.get("status") != "active":
-                        continue
-                    # Check if thread title or description keywords appear in input
-                    title = thread.get("title", "").lower()
-                    desc = thread.get("description", "").lower()
-                    foreshadowing = [f.lower() for f in thread.get("foreshadowing", [])]
-
-                    # Match on title words, description key terms, or foreshadowing words
-                    title_words = [w for w in title.split() if len(w) > 3]
-                    # Extract significant words from foreshadowing phrases (4+ chars, not common)
-                    foreshadow_words = set()
-                    for phrase in foreshadowing:
-                        for word in phrase.split():
-                            if len(word) > 3 and word not in {'the', 'and', 'for', 'with', 'from', 'that', 'this', 'been', 'have', 'will'}:
-                                foreshadow_words.add(word)
-
-                    if any(w in input_lower for w in title_words):
-                        matched_threads.append(thread)
-                    elif any(w in input_lower for w in foreshadow_words):
-                        matched_threads.append(thread)
-                    # Check for character names in description
-                    elif any(name.lower() in desc for name in present_names_raw if len(name) > 2):
-                        # Only inject if the character is mentioned AND in the scene
-                        if any(name.lower() in input_lower for name in present_names_raw):
-                            matched_threads.append(thread)
-
-                if matched_threads:
-                    # Delta-delivered: active threads are stable reference (the same
-                    # 1-2 threads persist for stretches), so key each one and let the
-                    # fold collapse unchanged threads to a pointer. A thread whose
-                    # title/urgency/summary changes re-ships on its own hash.
-                    for thread in matched_threads[:2]:  # Limit to 2 threads
-                        title = thread.get("title", "?")
-                        urgency = thread.get("urgency", "low")
-                        desc = thread.get("description", "")
-                        # Truncate description to first sentence
-                        first_sentence = desc.split('.')[0] + '.' if '.' in desc else desc[:100]
-                        dedup_elements.append(
-                            ("ACTIVE THREADS", f"thread:{title}",
-                             f"- **{title}** [{urgency}]: {first_sentence}")
-                        )
-        except Exception:
-            pass  # Thread injection not critical
+    # Thread keyword-match runs EVERY turn (ungated). Ordinary-play regex paths
+    # never add 'threads' to active_blocks, so the old `if 'threads' in
+    # active_blocks` gate silently suppressed all thread surfacing outside
+    # lore/high-match turns. Factions and site-features already inject
+    # unconditionally; threads now match the same way. The keyword match itself
+    # is the real gate; cap 2 + the canon_delivered delta-dedup fold (these go
+    # through dedup_elements) keep repeats from re-shipping.
+    try:
+        threads_path = CAMPAIGN_DIR / "narrative_threads.json"
+        if threads_path.exists():
+            threads_data = _load_cached_json(threads_path, 'threads')
+            dedup_elements.extend(
+                _thread_injection_elements(threads_data, input_lower, present_names_raw))
+    except Exception:
+        pass  # Thread injection not critical
 
     # ============================================================
     # DISTILLATION CACHE INJECTION
@@ -5882,6 +5984,10 @@ def update_active_prep(
 
         # Write updated content
         status_path.write_text(updated_content, encoding='utf-8')
+
+        # Persist the exact resolved filename in game state (handoff fix #2) so
+        # prep resolution never again depends on parsing the display line.
+        _persist_active_prep_file(prep_filename)
 
         # Load prep file overview
         prep_overview = "No overview available"
@@ -11684,6 +11790,7 @@ def _rest_long(
 
     results = []
     wounds_to_heal = []  # Track characters with wounds to heal
+    _heal_events = []  # mechanics-ticker pc_heal events (actual HP restored)
 
     for char_name in char_names:
         key, char = _find_character(data, char_name)
@@ -11713,10 +11820,16 @@ def _rest_long(
                 char['hp']['current'] = current + gain
                 char_result.append(f"  HP: {current} -> {char['hp']['current']} "
                                    f"(half regain - Janus Lenses)")
+                _heal_events.append({"kind": "pc_heal", "name": char['name'],
+                                     "amount": gain, "old_hp": current,
+                                     "new_hp": char['hp']['current'], "hp_max": max_hp})
             else:
                 # Restore all HP
                 char['hp']['current'] = max_hp
                 char_result.append(f"  HP: {current} -> {max_hp}")
+                _heal_events.append({"kind": "pc_heal", "name": char['name'],
+                                     "amount": max_hp - current, "old_hp": current,
+                                     "new_hp": max_hp, "hp_max": max_hp})
         else:
             char_result.append(f"  HP: Full ({max_hp}/{max_hp})")
 
@@ -11771,7 +11884,7 @@ def _rest_long(
                     f'  - {name}: {wound_name} ({w.get("effect", "")}) '
                     f'-> affliction(kind="wound", action="heal", character="{name}", wound="{wound_name}")')
 
-    return "\n".join(output)
+    return _mt.append_ticker("\n".join(output), _heal_events)
 
 
 # ============================================
@@ -12441,7 +12554,9 @@ def _condition_impl(
             out.append(f"DM rules (prose): {rec['note']}")
         if corpse_note:
             out.append(corpse_note.strip())
-        return "\n".join(o for o in out if o)
+        return _mt.append_ticker(
+            "\n".join(o for o in out if o),
+            [{"kind": "condition", "name": cname, "condition": rec["name"], "applied": True}])
 
     if action == "clear":
         conds = [c for c in char.get("conditions") or [] if isinstance(c, dict)]
@@ -12453,11 +12568,15 @@ def _condition_impl(
             char["conditions"] = []
             char.pop("twinning_pending", None)
             _save_single_character(key, char, data)
-            return (f"**{cname}: ALL conditions cleared** ({cleared}).\n"
-                    f"Revival per the book is means-specific (p.229 - spores/"
-                    f"necrotech/pseudo-womb/spirit/ego-engine): set HP per the "
-                    f"means used. If a Twinning bond was cleared, clear the "
-                    f"partner's record too.{corpse_note}")
+            _cleared_names = [c.get("name", "?") for c in conds]
+            return _mt.append_ticker(
+                (f"**{cname}: ALL conditions cleared** ({cleared}).\n"
+                 f"Revival per the book is means-specific (p.229 - spores/"
+                 f"necrotech/pseudo-womb/spirit/ego-engine): set HP per the "
+                 f"means used. If a Twinning bond was cleared, clear the "
+                 f"partner's record too.{corpse_note}"),
+                [{"kind": "condition", "name": cname, "condition": _cn, "applied": False}
+                 for _cn in _cleared_names])
         if not name:
             return "action='clear' requires name (or all_conditions=True)."
         needle = name.strip().lower()
@@ -12483,7 +12602,10 @@ def _condition_impl(
             if char.pop("twinning_pending", None) is not None:
                 extra += " (Death-pending mark popped with the bond.)"
         _save_single_character(key, char, data)
-        return f"**{cname}: {matches[0].get('name')} cleared.**{extra}{corpse_note}"
+        return _mt.append_ticker(
+            f"**{cname}: {matches[0].get('name')} cleared.**{extra}{corpse_note}",
+            [{"kind": "condition", "name": cname,
+              "condition": matches[0].get('name'), "applied": False}])
 
     if action == "save":
         if not name or save_total is None:
@@ -12502,8 +12624,10 @@ def _condition_impl(
             # E3: a cured nanomachine infection frees its augmentation slot(s)
             _clear_infection_markers(char, [rec.get("name")])
             _save_single_character(key, char, data)
-            return (f"**{cname}: {rec['name']} save PASS** ({save_total} vs "
-                    f"{ste['dc']}) - condition CLEARED.")
+            return _mt.append_ticker(
+                (f"**{cname}: {rec['name']} save PASS** ({save_total} vs "
+                 f"{ste['dc']}) - condition CLEARED."),
+                [{"kind": "condition", "name": cname, "condition": rec['name'], "applied": False}])
         return (f"**{cname}: {rec['name']} save FAIL** ({save_total} vs "
                 f"{ste['dc']}) - the condition holds.")
 
@@ -12761,7 +12885,9 @@ def _disease_impl(
             _pf.push_call("affliction", kind="condition", action="save", character=cname,
                           name=disease, save_total=_pf.raw("<cure roll>")),
             label="track / treat"))
-        return "\n".join(o for o in out if o) + corpse_note
+        return _mt.append_ticker(
+            "\n".join(o for o in out if o) + corpse_note,
+            [{"kind": "condition", "name": cname, "condition": disease, "applied": True}])
 
     return f"Unknown action '{action}'. Use apply|expose|list|info."
 
@@ -13113,6 +13239,54 @@ def _faction_injection_lines(user_input, cap=3):
     return out
 
 
+def _thread_injection_elements(threads_data, input_lower, present_names_raw, cap=2):
+    """Active narrative threads whose title/foreshadowing/character keywords appear
+    in the turn input, as up to `cap` canon-delivery tuples (section, key, content)
+    for dedup_elements.
+
+    Runs every turn (ungated) — the keyword match IS the gate, mirroring
+    _faction_injection_lines / _site_features_injection. Returned through
+    dedup_elements so the canon_delivered delta-dedup fold collapses unchanged
+    threads to a pointer on repeat turns (keying on `thread:<title>`)."""
+    matched_threads = []
+    for _thread_id, thread in threads_data.get("threads", {}).items():
+        if not isinstance(thread, dict) or thread.get("status") != "active":
+            continue
+        # Match on title words, description key terms, or foreshadowing words
+        title = thread.get("title", "").lower()
+        desc = thread.get("description", "").lower()
+        foreshadowing = [f.lower() for f in thread.get("foreshadowing", [])]
+        title_words = [w for w in title.split() if len(w) > 3]
+        # Extract significant words from foreshadowing phrases (4+ chars, not common)
+        foreshadow_words = set()
+        for phrase in foreshadowing:
+            for word in phrase.split():
+                if len(word) > 3 and word not in {'the', 'and', 'for', 'with', 'from', 'that', 'this', 'been', 'have', 'will'}:
+                    foreshadow_words.add(word)
+
+        if any(w in input_lower for w in title_words):
+            matched_threads.append(thread)
+        elif any(w in input_lower for w in foreshadow_words):
+            matched_threads.append(thread)
+        # Character named in the thread AND present in the scene
+        elif any(name.lower() in desc for name in present_names_raw if len(name) > 2):
+            if any(name.lower() in input_lower for name in present_names_raw):
+                matched_threads.append(thread)
+
+    elements = []
+    for thread in matched_threads[:cap]:  # Limit to `cap` threads
+        title = thread.get("title", "?")
+        urgency = thread.get("urgency", "low")
+        desc = thread.get("description", "")
+        # Truncate description to first sentence
+        first_sentence = desc.split('.')[0] + '.' if '.' in desc else desc[:100]
+        elements.append(
+            ("ACTIVE THREADS", f"thread:{title}",
+             f"- **{title}** [{urgency}]: {first_sentence}")
+        )
+    return elements
+
+
 def _site_features_injection(text: str) -> str:
     """Stamped site-features resurface when a stamped place is named in the
     turn text OR is the party's current location. One ledger read; returns
@@ -13212,13 +13386,39 @@ def _revealed_ledger_injection() -> str:
     revealed_ledger (written only by reveal paths). Fail-open."""
     try:
         active, _turn = _active_vault_turn()
-        if not active:
-            return ""
-        state = map_system.get_map_state(active)
-        if not state:
-            return ""
+        if active:
+            # Vault turn: the active map owns the ledger (unchanged behavior).
+            ledger_name = active
+            state = map_system.get_map_state(active)
+            if not state:
+                return ""
+        else:
+            # Non-vault turn: engage only when the active prep carries DM-only
+            # content (social/settlement scene). The prep-scoped ledger may not
+            # exist yet — render the charter over an empty ledger.
+            ledger_name, _prep = _active_prep_reveal_scope()
+            if not ledger_name:
+                return ""
+            state = map_system.get_map_state(ledger_name) or {}
         ledger = state.get("revealed_ledger") or []
-        lines = [f"**REVEALED LEDGER ({active}):**"]
+        # DOCKET block (2026-07-20): the party's open tracks, rendered ABOVE the
+        # revealed ledger on every vault/prep-scoped turn. Presentation only — one
+        # line per non-resolved track, never touches day/bell/location handling.
+        docket_block = ""
+        try:
+            _day = get_current_day_safe()
+        except Exception:
+            _day = None
+        _dlines = map_system.docket_lines(state, _day)
+        if _dlines:
+            _d = [f"**DOCKET ({ledger_name}) - open tracks:**"]
+            _d.extend(_dlines)
+            _d.append("  ANCHOR: open the scene on ONE named track; switching tracks "
+                      "is an explicit beat.")
+            _d.append('  Track moved? map(action="track", track_op="update", '
+                      f'map_name="{ledger_name}", track_id="...", stand="...")')
+            docket_block = "\n".join(_d) + "\n"
+        lines = [f"**REVEALED LEDGER ({ledger_name}):**"]
         if not ledger:
             lines.append("  (Nothing discovered yet.)")
         else:
@@ -13227,12 +13427,16 @@ def _revealed_ledger_injection() -> str:
                 lines.append(f"  (+{len(ledger)-8} earlier facts)")
             for e in shown:
                 d = f" (D{e['day']})" if e.get("day") else ""
-                lines.append(f"  • {e.get('fact','')}{d}")
+                # A0.1: label facts the engine could NOT source to prep/ledger/
+                # player. DM-facing surface only — the player journal is unchanged.
+                suffix = " [MINTED]" if e.get("provenance") == "mint" else ""
+                lines.append(f"  • {e.get('fact','')}{d}{suffix}")
         lines.append("  ⛔ NPCs may assert ONLY these facts. Off-ledger they speculate "
                      "and may be WRONG. Unledgered names are unspeakable. "
-                     "Party just learned something? map(action=\"reveal\", "
-                     f"map_name=\"{active}\", fact=\"...\").")
-        return "\n".join(lines)
+                     "Ledgered facts are STATED PLAINLY when they surface — never as "
+                     "implication. Party just learned something? map(action=\"reveal\", "
+                     f"map_name=\"{ledger_name}\", fact=\"...\").")
+        return docket_block + "\n".join(lines)
     except Exception as e:
         logging.debug(f"revealed-ledger injection failed: {e}")
         return ""
@@ -15159,32 +15363,113 @@ _DM_NAME_STOPWORDS = frozenset({
 })
 
 
+def _normalize_prep_ref(raw: str) -> list[str]:
+    """Candidate relative filenames from a raw **Active Prep:** value, in
+    priority order:
+      1. the value verbatim (back-compat for exact paths),
+      2. the value truncated at the first ` (` and stripped (drops the
+         `(Node 13 expedition — …)` display parenthetical),
+      3. candidate 2 with `.md` appended when it doesn't already end in `.md`.
+    Empty / `none` / `(none)` (case-insensitive) -> []. Never raises."""
+    if not raw:
+        return []
+    raw = raw.strip()
+    if not raw or raw.lower() in ("none", "(none)"):
+        return []
+    candidates = [raw]
+    truncated = raw.split(" (", 1)[0].strip()
+    if truncated and truncated not in candidates:
+        candidates.append(truncated)
+    if truncated and not truncated.lower().endswith(".md"):
+        with_md = truncated + ".md"
+        if with_md not in candidates:
+            candidates.append(with_md)
+    return candidates
+
+
 def _resolve_active_prep_path() -> Path | None:
-    """Active prep file path: GAME_STATE['active_prep_file'] first, falling
-    back to CURRENT_STATUS.md's **Active Prep:** line (the same reader
-    check_canon's prep block uses) when that's empty."""
-    prep_rel = None
+    """The active prep file as an EXISTING path, or None.
+
+    Source order (unchanged): GAME_STATE['active_prep_file'] first, falling back
+    to CURRENT_STATUS.md's **Active Prep:** line (the same reader check_canon's
+    prep block uses) only when the field is empty. Each raw value is run through
+    _normalize_prep_ref, and the FIRST candidate whose CAMPAIGN_DIR/candidate
+    exists is returned. Returns None (never a phantom non-existent path) on any
+    miss — the **Active Prep:** value is a display label, not a filepath."""
+    raw_values = []
     try:
         if isinstance(GAME_STATE, dict):
-            prep_rel = (GAME_STATE.get("active_prep_file") or "").strip() or None
+            gs = (GAME_STATE.get("active_prep_file") or "").strip()
+            if gs:
+                raw_values.append(gs)
     except Exception:
-        prep_rel = None
-    if not prep_rel:
+        pass
+    if not raw_values:
         try:
             status_path = CAMPAIGN_DIR / "CURRENT_STATUS.md"
             if status_path.exists():
-                status_text = status_path.read_text(encoding="utf-8")
-                for line in status_text.splitlines():
+                for line in status_path.read_text(encoding="utf-8").splitlines():
                     if "**Active Prep:**" in line:
                         value = line.split("**Active Prep:**", 1)[1].strip()
-                        if value and value.lower() != "none":
-                            prep_rel = value
+                        if value:
+                            raw_values.append(value)
                         break
         except Exception:
-            prep_rel = None
-    if not prep_rel:
-        return None
-    return CAMPAIGN_DIR / prep_rel
+            pass
+    for raw in raw_values:
+        for cand in _normalize_prep_ref(raw):
+            try:
+                p = CAMPAIGN_DIR / cand
+                if p.exists():
+                    return p
+            except Exception:
+                continue
+    return None
+
+
+def _persist_active_prep_file(prep_filename: str) -> "str | None":
+    """Resolve an incoming prep reference to an EXISTING filename and persist it
+    in GAME_STATE['active_prep_file'] (+ _save_game_state). Returns the persisted
+    filename, or None when it resolves to no file — in which case GAME_STATE is
+    left untouched (the CURRENT_STATUS write still proceeds; no new hard failure
+    in a live-play path). Called at both prep-change write points so resolution
+    never again has to depend on parsing the human-formatted display line."""
+    try:
+        for cand in _normalize_prep_ref(prep_filename or ""):
+            if (CAMPAIGN_DIR / cand).exists():
+                GAME_STATE["active_prep_file"] = cand
+                try:
+                    _save_game_state()
+                except Exception as e:
+                    logging.warning("active_prep_file set but save failed: %s", e)
+                return cand
+    except Exception as e:
+        logging.warning("Failed to persist active_prep_file %r: %s",
+                        prep_filename, e)
+    return None
+
+
+def _startup_prep_scream_lines() -> list[str]:
+    """Session-start check: if CURRENT_STATUS names an active prep that resolves
+    to no file on disk, return a loud DM-visible warning (and log.error). []
+    when there is no active prep or it resolves fine. The bug this guards
+    survived ~80 turns precisely because both prep readers failed silently."""
+    try:
+        raw = ""
+        status_path = CAMPAIGN_DIR / "CURRENT_STATUS.md"
+        if status_path.exists():
+            for line in status_path.read_text(encoding="utf-8").splitlines():
+                if "**Active Prep:**" in line:
+                    raw = line.split("**Active Prep:**", 1)[1].strip()
+                    break
+        if not raw or raw.lower() in ("none", "(none)"):
+            return []
+        if _resolve_active_prep_path() is not None:
+            return []
+        logging.error("ACTIVE PREP UNRESOLVED (session start): %r", raw)
+        return _prep_unresolved_lines(raw)
+    except Exception:
+        return []
 
 
 def _dm_only_proper_nouns(prep_path: Path) -> frozenset:
@@ -15247,26 +15532,84 @@ def _dm_only_proper_nouns(prep_path: Path) -> frozenset:
     return frozenset(n for n in nouns if n not in _DM_NAME_STOPWORDS)
 
 
+def _dm_only_proper_nouns_cached(prep_path: Path) -> frozenset:
+    """Cached _dm_only_proper_nouns, keyed on (path, mtime). The extracted set
+    depends only on the prep file (not the ledger), so both reveal-discipline
+    lanes — the check_canon injection and the validate_prose tripwire — share
+    one cache slot."""
+    try:
+        key = (str(prep_path), prep_path.stat().st_mtime)
+    except Exception:
+        return _dm_only_proper_nouns(prep_path)
+    if _DM_NOUN_CACHE.get("key") != key:
+        _DM_NOUN_CACHE["key"] = key
+        _DM_NOUN_CACHE["nouns"] = _dm_only_proper_nouns(prep_path)
+    return _DM_NOUN_CACHE["nouns"]
+
+
+def _active_prep_ledger_name() -> "str | None":
+    """Prep-scoped Revealed Ledger key for a NON-vault turn: the active prep's
+    filename stem. None on a vault turn (the map owns the ledger there) or a
+    prepless scene. This is also the name reveal_fact auto-creates a ledger for
+    (via the ledger_autocreate_ok callback wired at startup)."""
+    try:
+        active, _ = _active_vault_turn()
+        if active:
+            return None
+        prep_path = _resolve_active_prep_path()
+        if not prep_path:
+            return None
+        return prep_path.stem
+    except Exception:
+        return None
+
+
+def _active_prep_reveal_scope() -> "tuple":
+    """(ledger_name, prep_path) when a NON-vault turn's active prep carries
+    DM-only proper nouns — a social/settlement scene the party is inside;
+    (None, None) otherwise. Both reveal-discipline lanes engage on non-vault
+    turns exactly when this returns a name, so prepless / secret-free scenes
+    get neither the charter injection nor the name gate."""
+    try:
+        active, _ = _active_vault_turn()
+        if active:
+            return None, None
+        prep_path = _resolve_active_prep_path()
+        if not prep_path or not prep_path.exists():
+            return None, None
+        if not _dm_only_proper_nouns_cached(prep_path):
+            return None, None
+        return prep_path.stem, prep_path
+    except Exception:
+        return None, None
+
+
 def _vp_check_dm_name_leaks(text: str) -> list[str]:
     """Reveal discipline Part B: block DM-only proper nouns not yet in the
     site's Revealed Ledger. Deterministic; fail-open (never blocks live play
     on a bug in this check)."""
     try:
         active, _t = _active_vault_turn()
-        if not active:
-            return []
-        prep_path = _resolve_active_prep_path()
+        if active:
+            # Vault turn: the active map owns the ledger (unchanged behavior).
+            ledger_name = active
+            prep_path = _resolve_active_prep_path()
+        else:
+            # Non-vault turn: engage only when the active prep carries DM-only
+            # content (a social/settlement scene). The reveal store is the
+            # prep-scoped ledger; absent (never revealed) it reads empty, so
+            # every DM-only name blocks — fail-SAFE.
+            ledger_name, prep_path = _active_prep_reveal_scope()
+            if not ledger_name:
+                return []
         if not prep_path or not prep_path.exists():
             return []
-        state = map_system.get_map_state(active) or {}
+        state = map_system.get_map_state(ledger_name) or {}
         ledger_blob = " ".join(e.get("fact", "") for e in state.get("revealed_ledger") or []).lower()
-        key = (str(prep_path), prep_path.stat().st_mtime, len(state.get("revealed_ledger") or []))
-        if _DM_NOUN_CACHE["key"] != key:
-            _DM_NOUN_CACHE["key"] = key
-            _DM_NOUN_CACHE["nouns"] = _dm_only_proper_nouns(prep_path)
+        nouns = _dm_only_proper_nouns_cached(prep_path)
         out = []
         low = text.lower()
-        for noun in _DM_NOUN_CACHE["nouns"]:
+        for noun in nouns:
             if noun in ledger_blob:
                 continue
             if re.search(rf"\b{re.escape(noun)}\b", low):
@@ -15274,7 +15617,7 @@ def _vp_check_dm_name_leaks(text: str) -> list[str]:
                     f"DM-ONLY NAME LEAK: '{noun}' has not been discovered in play "
                     f"(Revealed Ledger). Remove/rename it — or, if the party just "
                     f"legitimately learned it, ledger it first: "
-                    f"map(action=\"reveal\", map_name=\"{active}\", fact=\"...\").")
+                    f"map(action=\"reveal\", map_name=\"{ledger_name}\", fact=\"...\").")
         return out
     except Exception as e:
         logging.debug(f"dm-name-leak check failed: {e}")
@@ -17702,6 +18045,7 @@ def _combat_damage(target: str, amount: int, damage_type: str, ability_stat: str
         return "Action 'damage' requires positive 'amount' parameter."
 
     output = []
+    _events = []  # mechanics-ticker events (enemy state only; PC path self-tickers)
 
     # Convenience resolution (2026-06-07 audit): enemies are stored under their
     # full descriptor key (e.g. "bandit_leader (vanguard)"), but a DM mid-combat
@@ -17779,7 +18123,10 @@ def _combat_damage(target: str, amount: int, damage_type: str, ability_stat: str
             if new_val <= 0:
                 output.append(f"  **{stat} at 0 or below** — creature is incapacitated by {stat} loss")
             _save_game_state()
-            return "\n".join(output)
+            # Enemy ability loss is relayed QUALITATIVELY only (exact scores are
+            # DM-only) -- "weakened (STR)", never the number.
+            return _mt.append_ticker("\n".join(output),
+                                     [{"kind": "enemy_ability", "name": target, "stat": stat}])
 
         # --- Normal HP damage (with creature resistance/weakness) ---
         eff_amount, resist_note = _apply_creature_resistance(
@@ -17792,6 +18139,8 @@ def _combat_damage(target: str, amount: int, damage_type: str, ability_stat: str
             output.append(f"  ({enemy.get('resist_type','?')}: {resist_note})")
         combat["log"].append(f"{target} takes {eff_amount} {damage_type} damage: {enemy['hp']}/{enemy['max_hp']} HP")
         output.append(f"{target}: {enemy['hp']}/{enemy['max_hp']} HP (took {eff_amount} damage)")
+        _events.append({"kind": "enemy_damage", "name": target,
+                        "pct": (enemy['hp'] / enemy['max_hp']) if enemy.get('max_hp') else 0})
 
         # Check defeat
         if enemy["hp"] <= 0 and not enemy["defeated"]:
@@ -17846,7 +18195,7 @@ def _combat_damage(target: str, amount: int, damage_type: str, ability_stat: str
     
     _save_game_state()
     
-    return "\n".join(output)
+    return _mt.append_ticker("\n".join(output), _events)
 
 def _combat_morale(force_morale: bool) -> str:
     """Run an enemy morale check.

@@ -313,11 +313,11 @@ class TestAdaptivePhraseReminder:
             blacklisted=["pattern1", "pattern2"], sparingly=["word1"],
             session_vocab=[], scene_type="settlement"
         )
-        # Clean-session output is a single concise line. A ~130-char lorebook
-        # nudge is now appended to every tier (phrase_reminder.py:122/136), so
-        # the clean line is ~230 chars. Threshold raised to accommodate the nudge
-        # while still guarding against the full banned-pattern dump.
-        assert len(result) < 260, f"Clean session output too long: {len(result)} chars"
+        # Clean-session output is a single concise line: scene hint + ~130-char
+        # lorebook nudge + a compact one-line BANNED FAMILIES marker (the banned
+        # prime now renders at every tier, not Tier-3-only). Lands ~350 chars.
+        # Threshold guards against the full glossed banned dump (Tier 3 only).
+        assert len(result) < 400, f"Clean session output too long: {len(result)} chars"
         assert "clean" in result.lower()
         assert "BANNED PATTERNS:" not in result
 
@@ -334,11 +334,12 @@ class TestAdaptivePhraseReminder:
             blacklisted=["pattern1"], sparingly=[],
             session_vocab=[], scene_type="intimate"
         )
-        # Tier-2 output lists session offenders plus a scene line and the
-        # appended lorebook nudge (phrase_reminder.py:159), landing ~543 chars.
-        # Threshold raised; the structural intent (offenders shown, no full
-        # banned-pattern dump) is still asserted below.
-        assert len(result) < 560, f"Medium output too long: {len(result)} chars"
+        # Tier-2 output lists session offenders, a scene line, the lorebook
+        # nudge, and a compact one-line BANNED FAMILIES marker (names only, not
+        # the full glossed dump), landing ~640 chars. Threshold raised; the
+        # structural intent (offenders shown, no full banned-pattern dump) still
+        # holds — "BANNED PATTERNS:" is Tier-3-only and asserted absent below.
+        assert len(result) < 760, f"Medium output too long: {len(result)} chars"
         assert "SESSION OFFENDERS:" in result
         assert "bad phrase" in result
         assert "BANNED PATTERNS:" not in result

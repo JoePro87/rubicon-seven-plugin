@@ -120,11 +120,25 @@ def test_vp_check_prep_progress_returns_string_or_none():
 import ast
 
 
+# Checks that are DELIBERATELY allowed to return blocked=True from the Stop hook.
+# Every other check must remain a soft logger. Adding a name here is a doctrine
+# change and must cite the owner-approved spec that sanctions it.
+SANCTIONED_BLOCKING_CHECKS = {
+    # forged *_PREP.md files must pass the dm-design review gate.
+    "_check_dm_design_gate",
+    # A0.2 fail-closed mechanics gate on the vault-liveness pattern — owner-approved
+    # 2026-07-22, docs/superpowers/specs/2026-07-22-fidelity-floor-fun-restoration-design.md
+    # §4 A0.2. Distinguished from the retired prose-QUALITY output-blocking doctrine:
+    # this is a content/mechanics-fidelity lane, not a style gate.
+    "_check_mechanics_source",
+}
+
+
 def test_stop_hook_never_blocks():
     """No SOFT check returns blocked=True.
 
-    Exception: _check_dm_design_gate is the one deliberate BLOCKING check
-    (forged *_PREP.md files must pass the dm-design review gate). Every
+    Exception: checks named in SANCTIONED_BLOCKING_CHECKS are deliberate BLOCKING
+    checks (see that set's docstring/comments for the spec citing each one). Every
     other check must remain a soft logger.
     """
     stop_hook_path = Path(__file__).parent.parent / "hooks" / "consolidated_stop_check.py"
@@ -133,7 +147,7 @@ def test_stop_hook_never_blocks():
     for func in tree.body:
         if not isinstance(func, ast.FunctionDef):
             continue
-        if func.name == "_check_dm_design_gate":
+        if func.name in SANCTIONED_BLOCKING_CHECKS:
             continue
         for node in ast.walk(func):
             if isinstance(node, ast.Return) and node.value:

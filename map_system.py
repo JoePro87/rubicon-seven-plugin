@@ -41,6 +41,18 @@ DIR_OFFSETS = {
     'w': (-1, 0), 'west': (-1, 0),
 }
 
+# A0 fidelity floor: every reveal_fact() call must carry a validated
+# provenance stamp. This help text is the single copy of that contract —
+# it's reused verbatim in every rejection message and by the reveal-gate copy.
+PROVENANCE_HELP = (
+    "REVEAL REJECTED — every ledger write needs provenance. Legal stamps: "
+    "provenance='prep:<exact phrase from the active prep (>=8 chars)>' | "
+    "'ledger:<n>' (existing entry number) | 'player' (player-originated) | "
+    "'mint' (conscious new invention, stored labeled). "
+    "If the fact has no source: cite it, cut it, downgrade to an in-fiction "
+    "unknown, or mint it consciously. Silent invention is not a legal move."
+)
+
 
 class MapSystem:
     """Spatial tracking system for dungeon/vault/city exploration."""
@@ -77,6 +89,11 @@ class MapSystem:
         # player view after any map action. Same layering rule: server wires it
         # after init. Takes the active map_name (may be None).
         self.on_state_change = None
+        # Optional callback injected by server.py (Task 3) to READ the active
+        # prep file's full text, so reveal_fact can verify 'prep:<phrase>'
+        # provenance stamps against it. Same layering rule: server wires it
+        # after init. Returns the prep text (str) or "" if none is active.
+        self.get_prep_text = None
 
     # ========================================
     # STATE MANAGEMENT
@@ -119,38 +136,347 @@ class MapSystem:
                     raise
                 time.sleep(0.05 * (attempt + 1))
 
-    def _ledger_append(self, state, fact, source_room, source_action):
+    def _ledger_append(self, state, fact, source_room, source_action, provenance: str = ""):
         """Append a party-known fact to the site's Revealed Ledger.
         Whitelist-by-construction: callers may only pass text the party has
         legitimately learned (reveal paths) or neutral markers (entered/searched)."""
         fact = (fact or "").strip()
         if not fact:
             return
+        stored = fact[:300]
+        ledger = state.setdefault("revealed_ledger", [])
+        # Dedup: skip a fact byte-identical (post-strip) to any of the last 10
+        # entries — repeated enter/search marks and re-reveals no longer pile up.
+        for e in ledger[-10:]:
+            if (e.get("fact") or "") == stored:
+                return
         day = None
         try:
             if callable(getattr(self, "get_day", None)):
                 day = self.get_day()
         except Exception:
             day = None
-        state.setdefault("revealed_ledger", []).append({
-            "fact": fact[:300], "day": day,
+        entry = {
+            "fact": stored, "day": day,
             "source_room": source_room or "", "source_action": source_action,
-        })
+        }
+        if provenance:
+            entry["provenance"] = provenance[:120]
+        ledger.append(entry)
 
-    def reveal_fact(self, map_name: str, fact: str, room_id: str = None) -> str:
+    def _new_ledger_only_state(self, map_name: str) -> Dict:
+        """A minimal, room-less state whose only live field is the Revealed
+        Ledger. This is the reveal home for a NON-vault (social/settlement)
+        scene: an Active Prep with no map, so a legitimately-learned DM-only
+        fact still has somewhere to be ledgered (and stop tripping the name
+        gate)."""
+        return {
+            "map_name": map_name, "map_type": "site", "kind": "ledger",
+            "prep_file": None, "rooms": {}, "revealed_ledger": [],
+            "current_turn": 0, "created_day": None, "last_seen_day": None,
+            "discovery": {},
+        }
+
+    def _normalize_provenance(self, provenance: str) -> str:
+        """The stored label differs from the verification input for prep:
+        refs — the phrase was proof-of-source, not the thing future turns
+        need to see. ledger:<n> is stored verbatim (it's already a compact,
+        checkable label); player/mint are lowercased."""
+        p = (provenance or "").strip()
+        return "prep" if p.lower().startswith("prep:") else p.lower() if p.lower() in ("player", "mint") else p
+
+    def _validate_provenance(self, map_name: str, provenance) -> str:
+        """Fail-closed gate on reveal_fact: returns "" if the stamp is legal,
+        else a REJECTED message (PROVENANCE_HELP or a specific reason +
+        PROVENANCE_HELP). Callers must not write to state when this is non-empty."""
+        p = (provenance or "").strip()
+        if not p:
+            return PROVENANCE_HELP
+        low = p.lower()
+        if low in ("player", "mint"):
+            return ""
+        if low.startswith("ledger:"):
+            try:
+                n = int(p.split(":", 1)[1])
+            except ValueError:
+                return PROVENANCE_HELP
+            state = self.get_map_state(map_name)
+            ledger = (state or {}).get("revealed_ledger", [])
+            if not (1 <= n <= len(ledger)):
+                return f"REJECTED — ledger:{n} does not exist ({len(ledger)} entries). " + PROVENANCE_HELP
+            return ""
+        if low.startswith("prep:"):
+            ref = p.split(":", 1)[1].strip().strip('"').strip("'")
+            if len(ref) < 8:
+                return "REJECTED — prep: reference too short to verify (need >=8 chars). " + PROVENANCE_HELP
+            text = ""
+            if self.get_prep_text is not None:
+                try:
+                    text = self.get_prep_text() or ""
+                except Exception:
+                    text = ""
+            if not text:
+                return "REJECTED — no active prep text available to verify a prep: reference. " + PROVENANCE_HELP
+            if ref.casefold() not in text.casefold():
+                return f"REJECTED — prep: reference not found in the active prep: '{ref[:60]}'. " + PROVENANCE_HELP
+            return ""
+        return PROVENANCE_HELP
+
+    def reveal_fact(self, map_name: str, fact: str, room_id: str = None,
+                    provenance: str = None) -> str:
         """Explicit lever: the party just learned a fact (dialogue, communion,
-        deduction). Ledger it so NPCs may assert it and the name tripwire unblocks."""
+        deduction). Ledger it so NPCs may assert it and the name tripwire unblocks.
+        Fail-closed on provenance: no validated stamp, no write — see PROVENANCE_HELP."""
+        err = self._validate_provenance(map_name, provenance)
+        if err:
+            return err
         state = self.get_map_state(map_name)
         if not state:
-            return f"❌ Map not found: {map_name}"
+            # Non-vault scenes (an Active Prep with no map) still need a reveal
+            # home. Mint a ledger-only state ONLY when the injected callback
+            # sanctions this name as the active prep's ledger — a typo'd vault
+            # name (no matching prep) still hard-errors, as before.
+            _ok = getattr(self, "ledger_autocreate_ok", None)
+            if callable(_ok) and _ok(map_name):
+                state = self._new_ledger_only_state(map_name)
+            else:
+                return f"❌ Map not found: {map_name}"
         if not (fact or "").strip():
             return "❌ reveal requires a non-empty fact"
         room = (room_id or state.get("party_location") or "").lower().strip()
-        self._ledger_append(state, fact, room, "reveal")
+        self._ledger_append(state, fact, room, "reveal",
+                            provenance=self._normalize_provenance(provenance))
         self.save_map_state(map_name, state)
         n = len(state["revealed_ledger"])
         return (f"✅ Ledgered ({n} facts known at {map_name}): {fact.strip()}\n"
-                f"NPCs may now assert this fact.")
+                f"NPCs may now assert this fact. STATE IT PLAINLY in your prose — "
+                f"an earned fact is a declarative sentence, never atmosphere.")
+
+    # ========================================
+    # EXPEDITION DOCKET — per-track state
+    # ========================================
+    # A track is one strand of the party's open business at a site (a petition,
+    # a blocked door, a favour owed). It travels with the site map-state JSON
+    # (spoiler-scoped, same file as revealed_ledger). RESOLVED tracks stay in the
+    # array for history but drop out of the docket. See the 2026-07-20 spec.
+
+    TRACK_STATUSES = {"OPEN", "BLOCKED", "WAITING", "RESOLVED"}
+
+    def _tracks(self, state: Dict) -> List:
+        """The site's track array, created on first touch."""
+        return state.setdefault("tracks", [])
+
+    def _find_track(self, state: Dict, track_id: str) -> Optional[Dict]:
+        tid = (track_id or "").strip()
+        for t in state.get("tracks", []):
+            if t.get("id") == tid:
+                return t
+        return None
+
+    def _track_day(self):
+        """Current campaign day via the injected callback, or None. Never raises."""
+        try:
+            if callable(getattr(self, "get_day", None)):
+                return self.get_day()
+        except Exception:
+            pass
+        return None
+
+    def _resolve_track_state(self, map_name: str):
+        """Load a site's state for a track op. Honours the same ledger_autocreate_ok
+        scoping as reveal_fact: a prep-scoped site with no map yet can hold tracks;
+        an unknown name still hard-errors. Returns (state, error_or_None)."""
+        state = self.get_map_state(map_name)
+        if state is None:
+            _ok = getattr(self, "ledger_autocreate_ok", None)
+            if callable(_ok) and _ok(map_name):
+                state = self._new_ledger_only_state(map_name)
+            else:
+                return None, f"❌ Map not found: {map_name}"
+        return state, None
+
+    def track_add(self, map_name: str, track_id: str, title: str, stand: str = "",
+                  status: str = "OPEN", blocked_by: str = "", next_step: str = "",
+                  clock: str = "") -> str:
+        """Declare a new open track at a site. Duplicate id -> error (use update)."""
+        state, err = self._resolve_track_state(map_name)
+        if err:
+            return err
+        track_id = (track_id or "").strip()
+        if not track_id:
+            return "❌ track add requires a non-empty track_id"
+        title = (title or "").strip()
+        if not title:
+            return "❌ track add requires a non-empty title"
+        if self._find_track(state, track_id):
+            return (f"❌ Track '{track_id}' already exists at {map_name} — "
+                    f"use track_op=\"update\" to change it.")
+        st = (status or "OPEN").strip().upper()
+        if st not in self.TRACK_STATUSES:
+            st = "OPEN"
+        self._tracks(state).append({
+            "id": track_id,
+            "title": title,
+            "status": st,
+            "stand": (stand or "").strip()[:200],
+            "blocked_by": (blocked_by or "").strip(),
+            "next_step": (next_step or "").strip(),
+            "clock": (clock or "").strip(),
+            "updated_day": self._track_day(),
+        })
+        self.save_map_state(map_name, state)
+        return f"✅ Track added at {map_name}: [{track_id}] {title} — {st}"
+
+    def track_update(self, map_name: str, track_id: str, title: str = None,
+                     stand: str = None, status: str = None, blocked_by: str = None,
+                     next_step: str = None, clock: str = None) -> str:
+        """Patch ONLY the provided fields of an existing track; always re-stamp
+        updated_day. A None argument means 'leave this field alone'."""
+        state, err = self._resolve_track_state(map_name)
+        if err:
+            return err
+        t = self._find_track(state, track_id)
+        if not t:
+            return (f"❌ Track '{(track_id or '').strip()}' not found at {map_name} — "
+                    f"track_op=\"add\" to create it.")
+        if title is not None:
+            ts = title.strip()
+            if ts:
+                t["title"] = ts
+        if stand is not None:
+            t["stand"] = stand.strip()[:200]
+        if status is not None:
+            st = status.strip().upper()
+            if st in self.TRACK_STATUSES:
+                t["status"] = st
+        if blocked_by is not None:
+            t["blocked_by"] = blocked_by.strip()
+        if next_step is not None:
+            t["next_step"] = next_step.strip()
+        if clock is not None:
+            t["clock"] = clock.strip()
+        t["updated_day"] = self._track_day()
+        self.save_map_state(map_name, state)
+        return f"✅ Track updated at {map_name}: [{t['id']}] {t['title']} — {t['status']}"
+
+    def track_resolve(self, map_name: str, track_id: str) -> str:
+        """Mark a track RESOLVED. It stays in the array (history) but leaves the
+        docket. Nudges a reveal — a resolution is usually a learned fact."""
+        state, err = self._resolve_track_state(map_name)
+        if err:
+            return err
+        t = self._find_track(state, track_id)
+        if not t:
+            return f"❌ Track '{(track_id or '').strip()}' not found at {map_name}."
+        t["status"] = "RESOLVED"
+        t["updated_day"] = self._track_day()
+        self.save_map_state(map_name, state)
+        return (f"✅ Track resolved at {map_name}: [{t['id']}] {t['title']}.\n"
+                f"Resolution usually = a learned fact: map(action=\"reveal\", "
+                f"map_name=\"{map_name}\", fact=\"...\")")
+
+    def track_list(self, map_name: str) -> str:
+        """All tracks at a site (open first, then resolved), for DM review."""
+        state = self.get_map_state(map_name)
+        if state is None:
+            _ok = getattr(self, "ledger_autocreate_ok", None)
+            if callable(_ok) and _ok(map_name):
+                return f"No tracks declared at {map_name}."
+            return f"❌ Map not found: {map_name}"
+        tracks = state.get("tracks") or []
+        if not tracks:
+            return f"No tracks declared at {map_name}."
+        lines = [f"TRACKS ({map_name}):"]
+        for t in tracks:
+            extra = []
+            if t.get("blocked_by"):
+                extra.append(f"BY: {t['blocked_by']}")
+            if t.get("next_step"):
+                extra.append(f"NEXT: {t['next_step']}")
+            if t.get("clock"):
+                extra.append(f"CLOCK: {t['clock']}")
+            tail = (" [" + " · ".join(extra) + "]") if extra else ""
+            lines.append(f"  [{t.get('id')}] {t.get('title')} — "
+                         f"{(t.get('status') or 'OPEN').upper()}: {t.get('stand','')}{tail}")
+        return "\n".join(lines)
+
+    def _no_tracks_push(self, state: Dict) -> str:
+        """Push the track-declaration call when a prep-backed site has no tracks
+        yet. Empty string otherwise (already declared, or no prep to declare from)."""
+        if not state or not state.get("prep_file"):
+            return ""
+        if state.get("tracks"):
+            return ""
+        name = state.get("map_name", "")
+        return (f"\nNO TRACKS DECLARED — declare this site's open tracks from prep: "
+                f"map(action=\"track\", track_op=\"add\", map_name=\"{name}\", "
+                f"track_id=\"...\", title=\"...\", stand=\"...\")")
+
+    def docket_lines(self, state: Dict, current_day: int = None) -> List[str]:
+        """Injection form of the docket: one numbered line per NON-resolved track,
+        capped at 12 with an overflow pointer. Empty list when no open tracks.
+        `!stale` flags a track untouched for >2 days (only when both days known)."""
+        tracks = [t for t in (state or {}).get("tracks", [])
+                  if (t.get("status") or "").upper() != "RESOLVED"]
+        if not tracks:
+            return []
+        cap = 12
+        lines = []
+        for i, t in enumerate(tracks[:cap], start=1):
+            line = (f"  {i}. {t.get('title','')} — {(t.get('status') or 'OPEN').upper()}: "
+                    f"{t.get('stand','')}")
+            if t.get("blocked_by"):
+                line += f" [BY: {t['blocked_by']}]"
+            if t.get("next_step"):
+                line += f" [NEXT: {t['next_step']}]"
+            if t.get("clock"):
+                line += f" [CLOCK: {t['clock']}]"
+            ud = t.get("updated_day")
+            if ud is not None and current_day is not None and (current_day - ud) > 2:
+                line += " !stale"
+            lines.append(line)
+        if len(tracks) > cap:
+            name = (state or {}).get("map_name", "")
+            lines.append(f'  (+{len(tracks) - cap} more — map(action="track", '
+                         f'track_op="list", map_name="{name}"))')
+        return lines
+
+    def render_docket(self, map_name: str) -> str:
+        """Player-facing document form: header (from optional `docket_style`, else
+        a default), a day line, every open track in full (no cap), and a short
+        trailing list of settled tracks. Relayed verbatim by the DM as an in-fiction
+        artifact — the party's own paperwork."""
+        state = self.get_map_state(map_name)
+        if state is None:
+            _ok = getattr(self, "ledger_autocreate_ok", None)
+            if not (callable(_ok) and _ok(map_name)):
+                return f"❌ Map not found: {map_name}"
+            state = self._new_ledger_only_state(map_name)
+        header = (state.get("docket_style") or f"EXPEDITION LEDGER — {map_name}").strip()
+        day = self._track_day()
+        lines = [header, f"Day {day}" if day is not None else "Day —"]
+        tracks = state.get("tracks") or []
+        open_tracks = [t for t in tracks if (t.get("status") or "").upper() != "RESOLVED"]
+        resolved = [t for t in tracks if (t.get("status") or "").upper() == "RESOLVED"]
+        if not open_tracks:
+            lines.append("")
+            lines.append("(No open tracks.)")
+        for i, t in enumerate(open_tracks, start=1):
+            lines.append("")
+            lines.append(f"{i}. {t.get('title','')} — {(t.get('status') or 'OPEN').upper()}")
+            if t.get("stand"):
+                lines.append(f"   Stand: {t['stand']}")
+            if t.get("blocked_by"):
+                lines.append(f"   Blocked by: {t['blocked_by']}")
+            if t.get("next_step"):
+                lines.append(f"   Next: {t['next_step']}")
+            if t.get("clock"):
+                lines.append(f"   Clock: {t['clock']}")
+        if resolved:
+            lines.append("")
+            for t in resolved:
+                lines.append(f"— settled: {t.get('title','')}")
+        return "\n".join(lines)
 
     def init_or_resume_map(self, map_name: str, prep_file: str,
                            map_type: str = "vault", current_day: int = None,
@@ -201,7 +527,7 @@ class MapSystem:
             return (f"▶ RESUMING {map_name} — turn {existing.get('current_turn', 0)}"
                     f"{', last here day ' + str(last) if last is not None else ''}."
                     f"{' (note: stored prep differs — reset=True to rebuild)' if prep_differs else ''}"
-                    f"{_render}{self._social_entry_push(existing)}")
+                    f"{_render}{self._social_entry_push(existing)}{self._no_tracks_push(existing)}")
 
         prep_path = self.campaign_dir / prep_file
         if not prep_path.exists():
@@ -258,7 +584,7 @@ class MapSystem:
         return (f"▶ SITE: {map_name} — turn 0, encounter die armed "
                 f"(d6 per turn: 1=encounter from the table, 2=omen, 3-6=quiet — "
                 f"the table picks WHICH encounter on a hit, not one row per roll)."
-                f"{_render}{self._social_entry_push(state)}")
+                f"{_render}{self._social_entry_push(state)}{self._no_tracks_push(state)}")
 
     def init_map_from_prep(self, map_name: str, prep_file: str, map_type: str = "vault",
                            force: bool = False) -> str:
@@ -348,7 +674,7 @@ class MapSystem:
 **Secrets:** {secret_count}
 **Starting Location:** {entrance}
 
-Map state saved to maps/{map_name}_map.json{enc_warn}"""
+Map state saved to maps/{map_name}_map.json{enc_warn}""" + self._no_tracks_push(state)
     
     def scaffold_prep(self, map_name: str, rooms: int = 5, prep_file: str = None,
                       encounter_die: int = 6) -> str:
@@ -759,7 +1085,7 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
 
         if room['discovery_state'] in ['unknown', 'noticed']:
             room['discovery_state'] = 'explored'
-            self._ledger_append(state, f"Entered {room['name']}", room_id, "enter")
+            self._ledger_append(state, f"Entered {room['name']}", room_id, "enter", provenance="map")
 
         state['exploration_log'].append(f"Moved: {old_location} → {room_id}")
         state.setdefault("discovery", {}).setdefault(
@@ -774,15 +1100,21 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         glance = self.location_content(state, room_id, "first_glance")
         if glance:
             body += "\n\n" + glance
-        body += ("\n\nRender ONE finding in prose; hold the rest for the player's "
+        body += ("\n\nServe the prep's details AS WRITTEN — render ONE finding plainly; "
+                 "hold the rest for the player's "
                  f"questions. Detail: map(action=\"look\", map_name=\"{map_name}\", "
                  f"room_id=\"{room_id}\", feature=\"...\")")
         if move_turns == 3:
             body += "\n\n⚠️ Moved in darkness — 3 turns consumed."
         if encounter:
             body += f"\n\n{encounter}"
-        return body
-    
+        unrendered = state.get("current_turn", 0) - state.get("last_render_turn", 0)
+        if unrendered >= 5:
+            body += (f"\n\nSPATIAL CHECK - {unrendered} turns since the last map render. "
+                     f"Ground the player: map(action=\"render\", map_name=\"{map_name}\") "
+                     "and relay the map.")
+        return body + self._no_tracks_push(state)
+
     def _is_valid_move(self, state: Dict, from_room: str, to_room: str) -> bool:
         """Check if movement between rooms is valid."""
         if from_room not in state['rooms']:
@@ -839,7 +1171,7 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
             f"Searched {room['name']}" + (
                 f" — found: {', '.join(str(x) for x in room['loot'])}" if room.get('loot') else ""
             ),
-            room_id, "search")
+            room_id, "search", provenance="map")
         self.save_map_state(map_name, state)
 
         result = [f"**Searched: {room['name']}**", ""]
@@ -868,7 +1200,7 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         else:
             result.append("No hidden passages or secrets found.")
 
-        result.append("Render ONE finding in prose; hold the rest for the player's questions.")
+        result.append("Serve the prep's details AS WRITTEN — render ONE finding plainly; hold the rest for the player's questions.")
         if encounter:
             result.append("")
             result.append(encounter)
@@ -895,7 +1227,7 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
                         f"a search may reveal more.")
             detail = "\n\n".join(paras)
         return (f"**{name} — closer look**\n\n{detail}\n\n"
-                "Render ONE finding in prose; hold the rest for the player's questions.")
+                "Serve the prep's details AS WRITTEN — render ONE finding plainly; hold the rest for the player's questions.")
 
     def reveal_secret(self, map_name: str, room_id: str, secret_id: str) -> str:
         """Mark a secret as discovered."""
@@ -929,7 +1261,7 @@ Map state saved to maps/{map_name}_map.json{enc_warn}"""
         self._ledger_append(
             state,
             f"Discovered secret '{secret_id}' in {room['name']} — passage to {target_room_id}",
-            room_id, "reveal_secret")
+            room_id, "reveal_secret", provenance="map")
 
         self.save_map_state(map_name, state)
         
@@ -1228,6 +1560,11 @@ The passage is now accessible."""
         if not state:
             return f"❌ Map not found: {map_name}"
 
+        # Stamp for the spatial-orientation push: enter_room nags after 5+
+        # unrendered turns (2026-07-20 — Thyricost "where are we?" gap).
+        state["last_render_turn"] = state.get("current_turn", 0)
+        self.save_map_state(map_name, state)
+
         if floor is None:
             floor = state['party_floor']
 
@@ -1254,6 +1591,14 @@ The passage is now accessible."""
         'w': (-1, 0), 'west': (-1, 0),
         'ne': (1, -1), 'nw': (-1, -1),
         'se': (1, 1), 'sw': (-1, 1),
+        'northeast': (1, -1), 'northwest': (-1, -1),
+        'southeast': (1, 1), 'southwest': (-1, 1),
+        # Same-floor vertical spines (a bore/shaft vault): descend = lower on
+        # screen. Cross-floor targets never reach the BFS (floor-filtered), so
+        # these only fire for rooms sharing a floor — without them a vault whose
+        # spine is up/down collapses into the disconnected fallback column.
+        'up': (0, -1), 'out': (0, -1),
+        'down': (0, 1), 'in': (0, 1),
     }
 
     def _auto_layout(self, rooms: Dict[str, Dict], party_id: str = None) -> Dict[str, tuple]:
@@ -1444,48 +1789,47 @@ The passage is now accessible."""
             by = cy + 1
             
             for direction, target in room['connections'].items():
-                if direction in VERTICAL_DIRECTIONS:
-                    continue
-                
                 target_id = target if isinstance(target, str) else target.get('room')
-                
+
                 # Check if target is discovered and on same floor
                 if target_id not in floor_rooms:
                     continue
-                
-                # Get direction offset
-                offset = DIR_OFFSETS.get(direction)
-                if not offset:
-                    continue
-                
-                dx, dy = offset
-                
+
+                # Draw from ACTUAL laid-out adjacency, not the direction label:
+                # auto-layout may probe a neighbor to a different cell than its
+                # label implies, and a same-floor up/down neighbor (vertical
+                # bore spine) has no lateral label at all. Only exact N/S/E/W
+                # adjacency gets a line; diagonal or probed-away neighbors are
+                # left to the room-box glyphs.
+                tx, ty = coords_map[target_id]
+                dx, dy = tx - rx, ty - ry
+
                 # Draw connection line
-                if dx == 1:  # East
+                if dx == 1 and dy == 0:  # East
                     line_y = by + 2
                     # Draw from box edge to cell edge
                     for lx in range(bx + BOX_W, cx + CELL_W):
                         put(lx, line_y, '─')
                     # Add connector on box edge
                     put(bx + BOX_W - 1, line_y, '╡')
-                
-                elif dx == -1:  # West  
+
+                elif dx == -1 and dy == 0:  # West
                     line_y = by + 2
                     # Draw from cell start to box edge
                     for lx in range(cx, bx):
                         put(lx, line_y, '─')
                     # Add connector on box edge
                     put(bx, line_y, '╞')
-                
-                elif dy == 1:  # South - FIXED
+
+                elif dy == 1 and dx == 0:  # South
                     line_x = bx + BOX_W // 2
                     # Draw from box bottom to cell bottom
                     for ly in range(by + BOX_H, cy + CELL_H):
                         put(line_x, ly, '│')
                     # Add connector on box edge
                     put(line_x, by + BOX_H - 1, '╧')
-                
-                elif dy == -1:  # North
+
+                elif dy == -1 and dx == 0:  # North
                     line_x = bx + BOX_W // 2
                     # Draw from cell top to box top
                     for ly in range(cy, by):
@@ -1948,6 +2292,7 @@ def register_map_tools(mcp, campaign_dir: Path):
         room_id: str = None,
         secret_id: str = None,
         fact: str = None,
+        provenance: str = None,
         field: str = None,
         value: str = None,
         include_vertical: bool = True,
@@ -1955,7 +2300,15 @@ def register_map_tools(mcp, campaign_dir: Path):
         reset: bool = False,
         rooms: int = 5,
         encounter_die: int = 6,
-        feature: str = None
+        feature: str = None,
+        track_op: str = None,
+        track_id: str = None,
+        title: str = None,
+        stand: str = None,
+        blocked_by: str = None,
+        next_step: str = None,
+        clock: str = None,
+        status: str = None
     ) -> str:
         """Reach for this WHEN the party enters, moves through, or searches a keyed vault or dungeon — init loads the prep file, then enter/search/wait/render drive play room by room.
 
@@ -1970,7 +2323,9 @@ def register_map_tools(mcp, campaign_dir: Path):
             look: Inspection detail after enter (map_name, room_id?, feature?) — free, no turn cost
             wait: Hold position — advance 1 turn, roll encounter die, no room change (satisfies vault-liveness gate)
             reveal_secret: Reveal secret (map_name, room_id, secret_id)
-            reveal: Ledger a fact the party just learned socially/by deduction (map_name, fact, room_id?)
+            reveal: Ledger a fact the party just learned socially/by deduction (map_name, fact, room_id?, provenance) — provenance: required for reveal — 'prep:<exact phrase>' | 'ledger:<n>' | 'player' | 'mint'
+            track: Manage the Expedition Docket — the party's open business at this site (map_name, track_op="add|update|resolve|list", track_id, title?, stand?, status?, blocked_by?, next_step?, clock?). add declares a strand; update patches only the fields you pass; resolve retires it (stays as history); list shows all.
+            docket: Render the player-facing Expedition Docket document (map_name) — relay verbatim as the party's own paperwork
             get_room: Get room content (map_name, room_id?)
             update_room: Update room data (map_name, room_id, field, value)
             set_light: Toggle light source (map_name, value="false" for darkness)
@@ -2023,7 +2378,7 @@ def register_map_tools(mcp, campaign_dir: Path):
         elif action == "reveal":
             if not fact:
                 return "Error: reveal requires fact"
-            result = map_sys.reveal_fact(map_name, fact, room_id)
+            result = map_sys.reveal_fact(map_name, fact, room_id, provenance=provenance)
 
         elif action == "get_room":
             result = map_sys.get_room_content(map_name, room_id)
@@ -2056,8 +2411,35 @@ def register_map_tools(mcp, campaign_dir: Path):
             result = map_sys.init_or_resume_map(map_name, prep_file, map_type,
                                               current_day=_day, reset=reset)
 
+        elif action == "track":
+            top = (track_op or "").lower().strip()
+            if top == "add":
+                if not track_id or not title:
+                    return "Error: track add requires track_id, title"
+                result = map_sys.track_add(
+                    map_name, track_id, title, stand=stand or "",
+                    status=status or "OPEN", blocked_by=blocked_by or "",
+                    next_step=next_step or "", clock=clock or "")
+            elif top == "update":
+                if not track_id:
+                    return "Error: track update requires track_id"
+                result = map_sys.track_update(
+                    map_name, track_id, title=title, stand=stand, status=status,
+                    blocked_by=blocked_by, next_step=next_step, clock=clock)
+            elif top == "resolve":
+                if not track_id:
+                    return "Error: track resolve requires track_id"
+                result = map_sys.track_resolve(map_name, track_id)
+            elif top == "list":
+                result = map_sys.track_list(map_name)
+            else:
+                return "Error: track requires track_op (add|update|resolve|list)"
+
+        elif action == "docket":
+            result = map_sys.render_docket(map_name)
+
         else:
-            return f"Unknown action: {action}. Valid actions: scaffold, init, render, enter, search, wait, reveal_secret, reveal, look, get_room, update_room, set_light, set_noise, query_nearby, list_floors, enter_site"
+            return f"Unknown action: {action}. Valid actions: scaffold, init, render, enter, search, wait, reveal_secret, reveal, look, get_room, update_room, set_light, set_noise, query_nearby, list_floors, enter_site, track, docket"
 
         if map_sys.on_state_change:
             try:

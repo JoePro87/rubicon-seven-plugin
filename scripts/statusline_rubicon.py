@@ -26,6 +26,40 @@ def _dashboard_running():
     except Exception:
         return None
 
+def _last_event_bit(v):
+    """Most recent mechanical delta, compact, for the line end (e.g. '[Creenash
+    -7]'). None when there are none. Self-contained: the statusline imports only
+    json/os/sys, so the enemy qualitative thresholds are inlined here (they
+    mirror mechanics_ticker._enemy_word) rather than importing the repo."""
+    evs = v.get("last_events") or []
+    if not evs:
+        return None
+    e = evs[-1]
+    k, nm = e.get("kind"), e.get("name", "?")
+    if k == "pc_damage":
+        return f"[{nm} -{e.get('amount')}]"
+    if k == "pc_heal":
+        return f"[{nm} +{e.get('amount')}]"
+    if k == "enemy_damage":
+        # Stored events carry the quantized word (record_events strips pct so
+        # the player-facing ledger never holds the exact fraction).
+        word = e.get("state")
+        if not word:
+            p = e.get("pct", 0)
+            word = ("unharmed" if p >= 1 else "hurt" if p > 0.5
+                    else "bloodied" if p > 0 else "down")
+        return f"[{nm}: {word}]"
+    if k == "enemy_ability":
+        return f"[{nm} weakened]"
+    if k == "condition":
+        return f"[{nm} {'+' if e.get('applied') else '-'}{e.get('condition')}]"
+    if k == "wound":
+        return f"[{nm} wound]"
+    if k == "ability_damage":
+        return f"[{nm} -{e.get('amount')}{e.get('stat')}]"
+    return None
+
+
 def _context_bit():
     """Context-window element from the JSON Claude Code pipes on stdin.
     Returns e.g. 'ctx 37% left', or None when stdin is absent or the
@@ -59,8 +93,13 @@ def main():
         bits[0] += f" · {v['weather']}"
     if v.get("location"):
         bits.append(v["location"])
-    party = " · ".join(f"{p.get('name')} {p.get('hp')}/{p.get('hp_max')}"
-                       for p in v.get("party", []) if p.get("name"))
+    def _pc_seg(p):
+        seg = f"{p.get('name')} {p.get('hp')}/{p.get('hp_max')}"
+        nc = len(p.get("conditions") or [])
+        if nc:
+            seg += f"!{nc}c"
+        return seg
+    party = " · ".join(_pc_seg(p) for p in v.get("party", []) if p.get("name"))
     if party:
         bits.append(party)
     supply = (v.get("supply") or {}).get("mode")
@@ -71,6 +110,9 @@ def main():
     n = len(v.get("open_parleys") or [])
     if n:
         bits.append(f"🤝 {n}")
+    ev = _last_event_bit(v)
+    if ev:
+        bits.append(ev)
     if ctx:
         bits.append(ctx)
     if _dashboard_running() is False:

@@ -61,6 +61,14 @@ def test_party_cards_new_item_shape_passes_through(view_fixture):
     ]
 
 
+def test_party_cards_conditions_pass_through(view_fixture):
+    view_fixture["party"][0]["conditions"] = ["Burning", "Deprived"]
+    cards = model.party_cards(view_fixture)
+    assert cards[0]["conditions"] == ["Burning", "Deprived"]
+    # absent conditions key -> empty list, never a crash
+    assert cards[1]["conditions"] == []
+
+
 def test_party_cards_empty_on_no_view():
     assert model.party_cards(None) == []
     assert model.party_cards({}) == []
@@ -191,3 +199,22 @@ def test_read_artifacts_never_opens_other_files(tmp_path, view_fixture, monkeypa
     assert str(decoy) not in opened
     assert str(tmp_path / "player_view.json") in opened
     assert str(tmp_path / "player_map.txt") in opened
+
+
+def test_journal_lines_renders_tracks_then_story():
+    view = {"journal": {"site": "thyricost", "entries": [
+        {"day": 135, "fact": "Quorum achieved."},
+        {"day": 134, "fact": "Entered the Hall of Registration."}],
+        "tracks": [{"title": "Departure petitions", "status": "OPEN",
+                    "stand": "3 to file"}]}}
+    lines = model.journal_lines(view)
+    text = "\n".join(lines)
+    assert "OPEN BUSINESS" in text and "thyricost" in text
+    assert "Departure petitions [OPEN]" in text
+    assert text.index("OPEN BUSINESS") < text.index("THE STORY SO FAR")
+    assert "D135" in text and "Quorum achieved." in text
+
+
+def test_journal_lines_empty_view():
+    assert model.journal_lines(None) == []
+    assert model.journal_lines({}) == []

@@ -46,6 +46,10 @@ from hooks.hook_utils import (
 from hooks.correction_logger import log_correction
 from hooks.analytics_utils import log_catch as _analytics_log_catch
 from hooks.lorebook_gate import lorebook_was_called, assistant_turn_is_tool_only
+try:
+    from hooks.mechanics_source_gate import scan_unbacked_mechanics
+except ImportError:  # sibling-import fallback (hooks/ on sys.path directly)
+    from mechanics_source_gate import scan_unbacked_mechanics
 
 # ---------------------------------------------------------------------------
 # Constants from anti_pattern_check
@@ -242,6 +246,23 @@ _MIN_NARRATIVE_CHARS = 300
 _TOOL_HEAVY_RATIO = 0.5  # If tool-call blocks > 50% of content blocks, not narrative
 
 
+def _is_meta_only_response(text: str) -> bool:
+    """True when the assistant's ENTIRE output is parenthetical meta.
+
+    Table convention (campaign CLAUDE.md, Intent Parsing): parenthetical =
+    out-of-character meta — enforcement Q&A, model questions, check-ins.
+    D135 complaint 3: such turns armed the prose gate and forced a junk
+    validate call on throwaway text, polluting catch analytics. A turn counts
+    as meta-only when every non-empty paragraph is wrapped in parentheses —
+    narrative prose never has that shape across ALL paragraphs.
+    """
+    stripped = (text or "").strip()
+    if not stripped:
+        return False
+    paragraphs = [p.strip() for p in stripped.split("\n\n") if p.strip()]
+    return all(p.startswith("(") and p.endswith(")") for p in paragraphs)
+
+
 def _is_narrative_turn(hook_input: dict, response_text: str, state: dict) -> bool:
     """Decide whether the prose observer should run on this turn.
 
@@ -266,6 +287,10 @@ def _is_narrative_turn(hook_input: dict, response_text: str, state: dict) -> boo
 
     # Empty or too short
     if not response_text or len(response_text.strip()) < _MIN_NARRATIVE_CHARS:
+        return False
+
+    # Entirely-parenthetical output = out-of-character meta, not narration
+    if _is_meta_only_response(response_text):
         return False
 
     # Tool-heavy check: inspect the LAST assistant message's content blocks
@@ -306,13 +331,18 @@ _TEMP_DIR = temp_dir()
 _OBSERVER_SCRIPT = str(Path(__file__).parent / "prose_observer.py")
 
 
-def _spawn_observer(response_text: str, session_id: str, turn_id: int) -> None:
+def _spawn_observer(response_text: str, session_id: str, turn_id: int,
+                    scene_type: str = "unknown") -> None:
     """Spawn the prose observer as a fully detached child process.
 
     Writes response + metadata to a temp JSON file, then invokes
     prose_observer.py with the file path as argv[1]. The child
     is detached via start_new_session=True so parent can return
     immediately without waiting for observer completion.
+
+    scene_type is read at spawn time (from CURRENT_STATUS) and carried in the
+    payload so the observer can stamp semantic catches with the same scene
+    dimension the deterministic v1 path records.
 
     Fail-safe: all exceptions caught and logged; never raises
     back into the hook chain.
@@ -323,6 +353,7 @@ def _spawn_observer(response_text: str, session_id: str, turn_id: int) -> None:
             "session_id": session_id,
             "turn_id": turn_id,
             "response_text": response_text,
+            "scene_type": scene_type,
         }
         temp_path.write_text(json.dumps(payload), encoding="utf-8")
 
@@ -356,8 +387,9 @@ def _check_semantic_observer(hook_input: dict, state: dict, response_text: str) 
 
     session_id = hook_input.get("session_id", "unknown-session")
     turn_id = state.get("turn_count", 0)
+    scene_type = _read_scene_type()
 
-    _spawn_observer(response_text, session_id, turn_id)
+    _spawn_observer(response_text, session_id, turn_id, scene_type)
 
     return False, "", {}
 
@@ -1001,6 +1033,13 @@ def _check_anti_pattern(hook_input: dict, state: dict, response_text: str) -> tu
         return False, "", {}
 
     if not response_text:
+        return False, "", {}
+
+    # Meta-only turns (every paragraph parenthetical) are not narration:
+    # don't arm the prose gate, don't scan, don't feed the template corpus.
+    # (D135 complaint 3 — armed gates on meta answers forced junk validate
+    # calls; scanning meta text about bans would also log phantom catches.)
+    if _is_meta_only_response(response_text):
         return False, "", {}
 
     # Rolling narration window (template-nomination corpus, 2026-07-19):
@@ -2058,6 +2097,42 @@ def _check_prose_dice(hook_input: dict, state: dict, response_text: str) -> tupl
     return False, "", {}
 
 
+def _check_mechanics_source(hook_input: dict, state: dict, response_text: str) -> tuple[bool, str, dict]:
+    """A0.2 — fail-closed: narrated mechanics must trace to a tool call this turn.
+
+    A narrated mechanical resolution (HP delta, AV, forced check, dice,
+    condition, rule label) must be backed by a governing engine tool call in
+    the same turn (scan_unbacked_mechanics). BLOCKING: returns True on a
+    violation so the reason wins over advisory checks.
+
+    Short-circuits BEFORE any scanning on:
+      - maintenance mode (engine-dev rooms don't narrate; full_session_startup
+        clears maintenance so this can never ride into play), and
+      - meta-only turns (entirely-parenthetical out-of-character asides — the
+        D135 exemption). NOT gated on length/turn_count: a one-line "You lose
+        12 HP" with no backing tool is exactly the failure this gate targets,
+        so the full _is_narrative_turn length/turn_count/tool-heavy filters are
+        deliberately not applied here (they would neuter the gate).
+    """
+    if in_maintenance(state):
+        return False, "", {}
+    if _is_meta_only_response(response_text):
+        return False, "", {}
+    tool_names = [
+        name.replace("mcp__rubicon-seven__", "")
+        for name, _ in _iter_assistant_tool_uses(hook_input)
+    ]
+    hits = scan_unbacked_mechanics(response_text, tool_names)
+    if hits:
+        reason = (
+            "MECHANICS GATE (A0.2 — fail-closed):\n" + "\n".join(hits[:4])
+            + "\nRe-emit the turn with the governing tool call made, or with the "
+              "mechanic removed from the prose (the >> MECHANICS line relays numbers)."
+        )
+        return True, reason, {}
+    return False, "", {}
+
+
 # ===================================================================
 # Main entry point
 # ===================================================================
@@ -2078,6 +2153,9 @@ def main():
         lambda: _check_canon(hook_input, state),
         # BLOCKING check: forged preps must pass the dm-design review gate.
         lambda: _check_dm_design_gate(hook_input, state),
+        # BLOCKING check (A0.2): narrated mechanics must trace to a tool call
+        # this turn. Registered before advisory checks so its reason wins.
+        lambda: _check_mechanics_source(hook_input, state, response_text),
         lambda: _check_anti_pattern(hook_input, state, response_text),
         lambda: _check_semantic_observer(hook_input, state, response_text),
         lambda: _check_prep_file(hook_input, state),

@@ -54,6 +54,8 @@ class DashboardApp(App):
                 yield VerticalScroll(Static(model.NO_VIEW_PLACEHOLDER, id="map-body", markup=False))
             with TabPane("World", id="world"):
                 yield VerticalScroll(Static(model.NO_VIEW_PLACEHOLDER, id="world-body", markup=False))
+            with TabPane("Journal", id="journal"):
+                yield VerticalScroll(Static(model.NO_VIEW_PLACEHOLDER, id="journal-body", markup=False))
             with TabPane("Parleys", id="parleys"):
                 yield VerticalScroll(Static(model.NO_VIEW_PLACEHOLDER, id="parleys-body", markup=False))
         yield Footer()
@@ -104,6 +106,7 @@ class DashboardApp(App):
         self._render_party()
         self._render_map()
         self._render_world()
+        self._render_journal()
         self._render_parleys()
 
     def _suffix(self) -> str:
@@ -145,6 +148,14 @@ class DashboardApp(App):
         ]
         if w.get("updated_at"):
             lines.append(f"as of {model.format_time(w['updated_at'])}")
+        body.update("\n".join(lines) + self._suffix())
+
+    def _render_journal(self) -> None:
+        body = self.query_one("#journal-body", Static)
+        lines = model.journal_lines(self._last_view)
+        if not lines:
+            body.update(model.NO_VIEW_PLACEHOLDER)
+            return
         body.update("\n".join(lines) + self._suffix())
 
     def _render_parleys(self) -> None:

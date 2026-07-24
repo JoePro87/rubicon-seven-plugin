@@ -80,8 +80,13 @@ def test_player_facing_name_never_blocked(monkeypatch, tmp_path, tmp_prep, _rese
     assert hits == []
 
 
-def test_no_vault_or_no_prep_silent(monkeypatch, _reset_cache):
+def test_no_vault_or_no_prep_silent(monkeypatch, tmp_path, _reset_cache):
+    # No vault AND no active prep -> silent. Point CAMPAIGN_DIR at an empty tmp
+    # dir and clear the active prep so the non-vault path finds no prep (never
+    # reads live campaign data).
     monkeypatch.setattr(server, "_active_vault_turn", lambda: (None, None))
+    monkeypatch.setattr(server, "CAMPAIGN_DIR", tmp_path)
+    monkeypatch.setitem(server.GAME_STATE, "active_prep_file", None)
     hits = server._vp_check_dm_name_leaks('"VORNMEK is starving," it says.')
     assert hits == []
 
@@ -143,6 +148,63 @@ def test_header_style_dm_only_section_blocked(monkeypatch, tmp_path, _reset_cach
     assert "gallery" not in nouns and "zone" not in nouns
     hits = server._vp_check_dm_name_leaks('"THALVEK hungers," the machine intones.')
     assert hits and "thalvek" in hits[0].lower()
+
+
+def _wire_social_prep(monkeypatch, tmp_path, tmp_prep, ledger=None, state=None):
+    """A NON-vault turn (no active map) that still has an Active Prep carrying
+    DM-only content — the social/settlement scene shape the original incident
+    happened in. The reveal store is keyed by the prep's filename stem."""
+    monkeypatch.setattr(server, "_active_vault_turn", lambda: (None, None))
+    if state is None and ledger is not None:
+        state = {"revealed_ledger": ledger}
+    monkeypatch.setattr(server.map_system, "get_map_state", lambda name: state)
+    monkeypatch.setattr(server, "CAMPAIGN_DIR", tmp_path)
+    monkeypatch.setitem(server.GAME_STATE, "active_prep_file", tmp_prep.name)
+
+
+def test_social_scene_dm_only_name_blocked(monkeypatch, tmp_path, tmp_prep, _reset_cache):
+    """Active Prep, NO active map: an unledgered DM-only name still trips. The
+    reveal store never existed (get_map_state -> None) so it reads empty =
+    fail-SAFE (every DM-only name blocks)."""
+    _wire_social_prep(monkeypatch, tmp_path, tmp_prep, state=None)
+    hits = server._vp_check_dm_name_leaks('Tesslyn whispers: "VORNMEK is starving."')
+    assert hits and "vornmek" in hits[0].lower()
+    # the fix instruction points at the prep-scoped ledger name (the prep stem)
+    assert tmp_prep.stem in hits[0]
+
+
+def test_social_scene_ledgered_name_passes(monkeypatch, tmp_path, tmp_prep, _reset_cache):
+    """Same social scene, but the name has been revealed via the prep-scoped
+    ledger -> no longer blocked."""
+    ledger = [{"fact": "The guardian's true name is VORNMEK", "day": 4,
+               "source_room": "", "source_action": "reveal"}]
+    _wire_social_prep(monkeypatch, tmp_path, tmp_prep, ledger=ledger)
+    hits = server._vp_check_dm_name_leaks('Tesslyn whispers: "VORNMEK is starving."')
+    assert hits == []
+
+
+def test_prepless_social_scene_silent(monkeypatch, tmp_path, _reset_cache):
+    """No active map AND no active prep: no candidates, no block, no crash."""
+    monkeypatch.setattr(server, "_active_vault_turn", lambda: (None, None))
+    monkeypatch.setattr(server.map_system, "get_map_state", lambda name: None)
+    monkeypatch.setattr(server, "CAMPAIGN_DIR", tmp_path)
+    monkeypatch.setitem(server.GAME_STATE, "active_prep_file", None)
+    hits = server._vp_check_dm_name_leaks('"VORNMEK is starving," it says.')
+    assert hits == []
+
+
+def test_social_scene_no_dm_content_no_block(monkeypatch, tmp_path, _reset_cache):
+    """Active Prep with NO DM-only content on a non-vault turn: the tripwire
+    does not engage (no noise on secret-free social scenes)."""
+    prep = tmp_path / "PLAIN_SOCIAL_PREP.md"
+    prep.write_text("## OVERVIEW\n**Name:** Market Row\nA busy market of stalls.\n",
+                    encoding="utf-8")
+    monkeypatch.setattr(server, "_active_vault_turn", lambda: (None, None))
+    monkeypatch.setattr(server.map_system, "get_map_state", lambda name: None)
+    monkeypatch.setattr(server, "CAMPAIGN_DIR", tmp_path)
+    monkeypatch.setitem(server.GAME_STATE, "active_prep_file", prep.name)
+    hits = server._vp_check_dm_name_leaks("The party wanders Market Row.")
+    assert hits == []
 
 
 def test_markdown_headers_and_stopwords_not_flagged(monkeypatch, tmp_path, _reset_cache):

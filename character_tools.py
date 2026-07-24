@@ -28,6 +28,7 @@ import mercenaries as _mercenaries
 import pets_steeds as _pets
 import vehicles as _vehicles
 import push_format as _pf
+import mechanics_ticker as _mt
 import item_slots as _isl
 import wounds as _wnd
 import conditions as _cnd
@@ -965,7 +966,19 @@ def _character_update_hp(character_name: str, current: int, max_hp: int = None) 
             )
         )
 
-    return result
+    # Mechanics ticker: manual HP sets are how mid-scene heals/harm land
+    # (medkits, powers) -- relay the delta like any other mechanical change.
+    _delta = current - old_current
+    _events = []
+    if _delta < 0:
+        _events.append({"kind": "pc_damage", "name": char['name'], "amount": -_delta,
+                        "dtype": None, "old_hp": old_current, "new_hp": current,
+                        "hp_max": char['hp']['max']})
+    elif _delta > 0:
+        _events.append({"kind": "pc_heal", "name": char['name'], "amount": _delta,
+                        "old_hp": old_current, "new_hp": current,
+                        "hp_max": char['hp']['max']})
+    return _mt.append_ticker(result, _events)
 
 def _character_update_stat(character_name: str, stat: str, value: int) -> str:
     """Update an ability score."""
@@ -3398,8 +3411,10 @@ def _character_take_damage(character_name: str, damage: int, damage_type: str) -
                 vuln_note = f" (DOUBLED from {damage} due to {vuln.get('source', 'vulnerability')})"
 
     old_hp = char.get('hp', {}).get('current', 0)
+    _wounds_before = [w.get('name') for w in char.get('wounds', []) if isinstance(w, dict)]
     dmg_lines, _lethal_dd = _apply_hp_damage_and_wounds(key, char, data, actual_damage)
     new_hp = char.get('hp', {}).get('current', 0)
+    hp_max = char.get('hp', {}).get('max', new_hp)
 
     output = [f"**{char['name']}** takes {actual_damage} {damage_type} damage{vuln_note}"]
     output.append(f"HP: {old_hp} -> {new_hp}")
@@ -3407,7 +3422,27 @@ def _character_take_damage(character_name: str, damage: int, damage_type: str) -
 
     _save_single_character(key, char, data)
 
-    return "\n".join(output)
+    # Mechanics ticker (player-relay): exact HP delta + any wound just gained.
+    # Wound names are diffed from a before/after read on THIS site -- the death
+    # /wound seam (_apply_hp_damage_and_wounds) is never modified.
+    # Relay the TRUE HP removed (old-new), not the raw damage dealt: on an
+    # overkill hit clamped at the floor, "-10 HP -> 0/29" with 3 HP left reads
+    # as broken arithmetic to the player. Overkill still matters for wounds --
+    # that lives in the DM-facing lines above, not the relay.
+    _hp_removed = old_hp - new_hp
+    _events = []
+    if _hp_removed > 0:
+        _events.append({"kind": "pc_damage", "name": char['name'], "amount": _hp_removed,
+                        "dtype": damage_type, "old_hp": old_hp, "new_hp": new_hp,
+                        "hp_max": hp_max})
+    _wounds_after = [w.get('name') for w in char.get('wounds', []) if isinstance(w, dict)]
+    _new_wounds = list(_wounds_after)
+    for _wn in _wounds_before:
+        if _wn in _new_wounds:
+            _new_wounds.remove(_wn)
+    for _wn in _new_wounds:
+        _events.append({"kind": "wound", "name": char['name'], "wound": _wn})
+    return _mt.append_ticker("\n".join(output), _events)
 
 def _vehicle_take_damage(name, amount, weapon_tags=None):
     """Apply Hull-Points damage to a vehicle (CH p.73): a single source reduces

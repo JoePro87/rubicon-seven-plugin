@@ -84,12 +84,27 @@ def _active_tripwires() -> list[tuple[re.Pattern, re.Pattern, str]]:
     return wires
 
 
+# Negation guard (2026-07-20, live-corpus probe): the rule-STATING sentence
+# "Creenash never eats" tripped the Creenash-eats tripwire. A context match
+# directly preceded by a negation (one intervening adverb allowed: "never
+# actually eats") asserts the rule rather than violating it — skip it.
+_NEGATION_BEFORE_RE = re.compile(
+    r"\b(never|doesn'?t|does not|cannot|can'?t|won'?t|wouldn'?t|"
+    r"refuses? to|without)\s+(?:\w+\s+)?$",
+    re.IGNORECASE)
+
+
 def check_tripwires(text: str) -> list[str]:
     sentences = _SENTENCE_SPLIT_RE.split(text)
     hits = []
     for subject_re, context_re, msg in _active_tripwires():
-        if any(subject_re.search(s) and context_re.search(s) for s in sentences):
-            hits.append(msg)
+        for s in sentences:
+            if not subject_re.search(s):
+                continue
+            if any(not _NEGATION_BEFORE_RE.search(s[:m.start()])
+                   for m in context_re.finditer(s)):
+                hits.append(msg)
+                break
     return hits
 
 
@@ -110,6 +125,41 @@ _DIALOGUE_OR_BOND_RE = re.compile(r'"[^"]*"|"[^"]*"|\*[^*]+\*', re.DOTALL)
 # because both matched structural nouns ("the wind Kael", "Bugsie, the smallest of
 # them") and cried wolf on ordinary narration.
 _APPOSITIVE_RE = re.compile(r"\b([A-Z][a-z]+),\s+the\s+([a-z]+)(?=[,.])")
+
+# --- Tracked-entity quantity claims in narration (D135 complaint 2c) ---
+# "Somewhere in this hall there is a way to file four petitions" sailed through
+# because the quantity scanner only reads quoted dialogue. Narration gets a
+# NARROW version: numerals attached to nouns the campaign declares tracked
+# (``tracked_quantity_nouns`` in fabrication_tripwires.json). Noun-list-driven
+# by construction so ordinary scenery counts ("three doors") never flag.
+try:
+    from hooks.dialogue_claim_scanner import _COMPOUNDS, _BASE_NUMBERS
+except ImportError:
+    from dialogue_claim_scanner import _COMPOUNDS, _BASE_NUMBERS
+
+# Concrete numbers only — vague quantifiers ("many", "several", "countless")
+# are legitimate narration texture, not checkable counts.
+_VAGUE_QUANTIFIERS = {"many", "several", "few", "countless", "dozens",
+                      "hundreds", "thousands"}
+_CONCRETE_NUMBER_WORDS = "|".join(
+    _COMPOUNDS + [n for n in _BASE_NUMBERS if n not in _VAGUE_QUANTIFIERS])
+
+_TRACKED_QTY_CACHE: dict = {"key": None, "regex": None}
+
+
+def _tracked_quantity_re():
+    """Compiled numeral+tracked-noun regex, rebuilt only when the noun list changes."""
+    nouns = _campaign_rules().get("tracked_quantity_nouns", [])
+    key = tuple(sorted({str(n).strip().lower() for n in nouns if str(n).strip()}))
+    if not key:
+        return None
+    if _TRACKED_QTY_CACHE["key"] != key:
+        alternation = "|".join(re.escape(n) for n in key)
+        _TRACKED_QTY_CACHE["regex"] = re.compile(
+            rf"\b(\d+|{_CONCRETE_NUMBER_WORDS})[\s-]+({alternation})\b",
+            re.IGNORECASE)
+        _TRACKED_QTY_CACHE["key"] = key
+    return _TRACKED_QTY_CACHE["regex"]
 
 
 def _all_tokens_present(blob: str, *tokens) -> bool:
@@ -204,5 +254,19 @@ def check_narration_claims(text: str, known_names: set, cache_facts_blob: str = 
             hits.append(
                 f'NARRATION CLAIM: relationship "{m.group(0)}" asserted about '
                 f'{named[0]} — verify before output.'
+            )
+
+    # 3) Quantities attached to campaign-tracked entities. Verified when BOTH
+    # the numeral and the noun appear in the cache blob (so "three petitions"
+    # passes against "three outstanding departure petitions"); anything else
+    # flags — an unsupported count of a tracked thing is exactly the D135 error.
+    qty_re = _tracked_quantity_re()
+    if qty_re is not None:
+        for m in qty_re.finditer(narration):
+            if _all_tokens_present(low_blob, m.group(1).lower(), m.group(2).lower()):
+                continue
+            hits.append(
+                f'NARRATION CLAIM: "{m.group(0)}" — unverified count of a tracked '
+                f'entity. Verify the number (thread/search/lorebook) before asserting it.'
             )
     return hits

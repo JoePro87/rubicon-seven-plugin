@@ -72,11 +72,19 @@ CATEGORY_NORMALIZATION = {
 }
 
 
+# Case-fold lookup onto the canonical enum — Haiku returns e.g. "Density drift"
+# where the enum key is "Density Drift", which otherwise split analytics into
+# two buckets for one family.
+_CANONICAL_BY_LOWER = {c.lower(): c for c in VIOLATION_CATEGORIES}
+
+
 def _normalize_category(cat: str) -> str:
-    """Coerce long-label categories to canonical short names. Unknown categories pass through."""
+    """Coerce long-label categories to canonical short names, then case-fold to
+    the canonical VIOLATION_CATEGORIES casing. Unknown categories pass through."""
     if not isinstance(cat, str):
         return "Unknown"
-    return CATEGORY_NORMALIZATION.get(cat.strip(), cat.strip())
+    mapped = CATEGORY_NORMALIZATION.get(cat.strip(), cat.strip())
+    return _CANONICAL_BY_LOWER.get(mapped.lower(), mapped)
 
 
 # Tool schema forces structured output — model must call this tool with
@@ -250,6 +258,7 @@ def run(input_file_path: str) -> int:
         session_id = payload["session_id"]
         turn_id = int(payload["turn_id"])
         response_text = payload["response_text"]
+        scene_type = payload.get("scene_type", "unknown")
     except Exception as e:
         _log_error(f"Failed to read input file {input_file_path}: {e}")
         try:
@@ -305,6 +314,7 @@ def run(input_file_path: str) -> int:
                 confidence=v.get("confidence", "low"),
                 session_id=session_id,
                 turn_id=turn_id,
+                scene_type=scene_type,
             )
         except Exception as e:
             _log_error(f"Failed to log semantic catch: {e}")

@@ -63,6 +63,35 @@ def test_log_semantic_catch_idempotent_on_duplicate_quote(temp_analytics):
     assert data["semantic_catches"][0]["confidence"] == "medium"
 
 
+def test_log_semantic_catch_persists_scene_type(temp_analytics):
+    """Fix 2 — semantic catches carry scene_type, mirroring the v1 phrase_stats
+    path, so retrieval can weight catches by scene."""
+    analytics_utils.log_semantic_catch(
+        quote="goes very still",
+        category="Reaction Shot",
+        confidence="high",
+        session_id="sess-abc",
+        turn_id=42,
+        scene_type="combat",
+    )
+    entry = json.loads(temp_analytics.read_text())["semantic_catches"][0]
+    assert entry["scene_type"] == "combat"
+
+
+def test_log_semantic_catch_scene_type_defaults_to_unknown(temp_analytics):
+    """When the caller can't resolve a scene, scene_type defaults to 'unknown'
+    (never missing) so downstream readers always find the field."""
+    analytics_utils.log_semantic_catch(
+        quote="silence stretches",
+        category="The Pause",
+        confidence="high",
+        session_id="sess-xyz",
+        turn_id=7,
+    )
+    entry = json.loads(temp_analytics.read_text())["semantic_catches"][0]
+    assert entry["scene_type"] == "unknown"
+
+
 def test_log_semantic_catch_multiple_violations_per_turn(temp_analytics):
     """A single turn with multiple distinct violations yields multiple entries."""
     analytics_utils.log_semantic_catch(

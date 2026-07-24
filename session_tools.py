@@ -287,6 +287,19 @@ def full_session_startup(characters_present: str = None) -> str:
     results.append(day_info)
     results.append("")
 
+    # === PREP INTEGRITY (handoff PREP_INJECTION_DEAD_2026-07-24) ===
+    # If CURRENT_STATUS names an active prep that resolves to no file, SCREAM.
+    # Prep injection + prep: provenance both fail silently otherwise — the exact
+    # failure that ran unnoticed for ~80 turns of the Thyricost dungeon.
+    try:
+        _prep_scream = _startup_prep_scream_lines()
+        if _prep_scream:
+            results.append("=== ⚠️ PREP INTEGRITY ===")
+            results.extend(_prep_scream)
+            results.append("")
+    except Exception:
+        pass  # Non-critical: never block session start on this check
+
     # === 1.5 PROSE OBSERVER RECENT CATCHES (last session feedback loop) ===
     observer_summary = _build_prose_observer_summary()
     if observer_summary:
@@ -2282,7 +2295,7 @@ def confirm_save(token: str) -> str:
     return _save_result
 
 
-_INJECTED = ('CAMPAIGN_DIR', 'GAME_STATE', 'THREADS_FILE', '_DISTILLATION_CACHE_PATH', '_active_site_briefing_line', '_apply_inventory_changes', '_atomic_json_write', '_atomic_text_write', '_audit_log', '_build_prose_observer_summary', '_compute_diff', '_distill_analyze', '_distill_write', '_emit_player_view', '_evolve_prose_blacklist_safe', '_faction_clamp', '_faction_line', '_generate_save_token', '_get_tool_tags', '_infer_scene_type', '_load_cached_json', '_load_cultivation', '_load_factions', '_load_relationships', '_load_threads', '_lorebook_merge_push', '_pf', '_read_current_status_day', '_resolve_meta_day', '_review_cultivation', '_safe_print', '_sanitize_emotional_states', '_sanitize_param', '_save_cultivation', '_stringify_metadata', '_thread_current_day', '_world_forces_people_lines', '_crossing_briefing_lines', '_antagonist_briefing_lines', '_parley_briefing_lines', 'chunk_text_tiered', 'get_canon_distillations_collection', 'get_chroma_collection', 'get_ollama_embedding_sync', 'get_ollama_embeddings_batch', 'read_file', 'rulebook_system')
+_INJECTED = ('CAMPAIGN_DIR', 'GAME_STATE', 'THREADS_FILE', '_DISTILLATION_CACHE_PATH', '_active_site_briefing_line', '_apply_inventory_changes', '_atomic_json_write', '_atomic_text_write', '_audit_log', '_build_prose_observer_summary', '_compute_diff', '_distill_analyze', '_distill_write', '_emit_player_view', '_evolve_prose_blacklist_safe', '_faction_clamp', '_faction_line', '_generate_save_token', '_get_tool_tags', '_infer_scene_type', '_load_cached_json', '_load_cultivation', '_load_factions', '_load_relationships', '_load_threads', '_lorebook_merge_push', '_pf', '_read_current_status_day', '_resolve_meta_day', '_review_cultivation', '_safe_print', '_sanitize_emotional_states', '_sanitize_param', '_save_cultivation', '_stringify_metadata', '_thread_current_day', '_world_forces_people_lines', '_crossing_briefing_lines', '_antagonist_briefing_lines', '_parley_briefing_lines', '_startup_prep_scream_lines', 'chunk_text_tiered', 'get_canon_distillations_collection', 'get_chroma_collection', 'get_ollama_embedding_sync', 'get_ollama_embeddings_batch', 'read_file', 'rulebook_system')
 
 
 def register_session_tools(mcp, srv):

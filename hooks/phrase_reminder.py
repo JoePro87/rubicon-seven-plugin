@@ -169,13 +169,30 @@ def _update_vault_enforce(state: dict) -> tuple[dict, str | None]:
         return state, None
 
 
-def load_blacklist() -> tuple[list[str], list[str]]:
-    """Load phrases from blacklist.json. Returns (blacklisted, use_sparingly)."""
+def load_blacklist() -> tuple[list[str], list[str], list[dict]]:
+    """Load phrases from blacklist.json.
+
+    Returns (blacklisted, use_sparingly, structural_patterns). structural_patterns
+    are the v9 mutation FAMILIES (category + description) — the single source the
+    per-turn banned prime is built from, so the prime can never drift from the
+    blacklist the way the old hand-authored literal did."""
     try:
         data = json.loads(BLACKLIST_FILE.read_text(encoding="utf-8"))
-        return data.get("blacklisted_phrases", []), data.get("use_sparingly", [])
+        return (data.get("blacklisted_phrases", []),
+                data.get("use_sparingly", []),
+                data.get("structural_patterns", []))
     except (FileNotFoundError, json.JSONDecodeError, IOError):
-        return [], []
+        return [], [], []
+
+
+def _load_structural_patterns() -> list[dict]:
+    """Structural mutation families from blacklist.json — fallback loader for
+    build_reminder when it isn't handed the list explicitly (e.g. unit tests)."""
+    try:
+        data = json.loads(BLACKLIST_FILE.read_text(encoding="utf-8"))
+        return data.get("structural_patterns", [])
+    except (FileNotFoundError, json.JSONDecodeError, IOError):
+        return []
 
 
 def simplify_pattern(pattern: str) -> str:
@@ -193,6 +210,82 @@ def simplify_pattern(pattern: str) -> str:
     s = s.replace("(drops|dropped)", "drops/dropped")
     # If still too regex-heavy, just return as-is
     return s
+
+
+# ---------------------------------------------------------------------------
+# Banned-pattern prime — built FROM blacklist.json (single source of truth).
+# The old hand-authored literal drifted from the blacklist and only rendered at
+# Tier 3; these helpers render the v9 mutation FAMILIES at every tier.
+# ---------------------------------------------------------------------------
+
+
+def _family_gloss(description: str) -> str:
+    """Terse gloss from a structural pattern's description: the concrete FORM
+    example (the half before the '—' explanation), capped for the per-turn prime."""
+    if not description:
+        return ""
+    head = re.split(r"\s[—–]\s", description, 1)[0].strip()
+    if not head:
+        head = description.strip()
+    return head[:70]
+
+
+def _banned_families(structural: list) -> list:
+    """Group structural patterns by category, preserving first-seen order.
+    Returns [(category, [gloss, ...]), ...] with glosses deduped per category."""
+    order, by_cat = [], {}
+    for entry in structural or []:
+        if not isinstance(entry, dict):
+            continue
+        cat = str(entry.get("category", "")).strip()
+        if not cat:
+            continue
+        if cat not in by_cat:
+            by_cat[cat] = []
+            order.append(cat)
+        gloss = _family_gloss(str(entry.get("description", "")))
+        if gloss and gloss not in by_cat[cat]:
+            by_cat[cat].append(gloss)
+    return [(cat, by_cat[cat]) for cat in order]
+
+
+def _banned_families_line(structural: list) -> str:
+    """Compact one-line families marker for the clean/low tiers (names only)."""
+    fams = _banned_families(structural)
+    if not fams:
+        return ""
+    return "BANNED FAMILIES (v9): " + " · ".join(cat for cat, _ in fams)
+
+
+def _banned_block_full(blacklisted: list, structural: list,
+                       sparingly: list, session_vocab: list) -> list:
+    """Full banned prime (high tier): the v9 mutation families with glosses, a
+    capped sample of exact phrases, and any use-sparingly entries already spent
+    this session. Built entirely from blacklist.json — no hand-authored list."""
+    out = []
+    fams = _banned_families(structural)
+    if fams:
+        out.append("BANNED PATTERNS: mutation families (v9) — never write these or their variants:")
+        for cat, glosses in fams:
+            out.append(f"  {cat}: " + "; ".join(glosses) if glosses else f"  {cat}")
+    # Exact-phrase sample: most-recently-added heuristic = tail of the list.
+    if blacklisted:
+        sample = []
+        for pat in reversed(blacklisted):
+            readable = simplify_pattern(pat)
+            if readable not in sample:
+                sample.append(readable)
+            if len(sample) >= 10:
+                break
+        if sample:
+            out.append("BANNED PHRASES (sample): " + ", ".join(sample))
+    # use_sparingly: surface ONLY entries already used this session; never dump
+    # the whole list (that was noise). Skip silently when nothing's been spent.
+    if sparingly and session_vocab:
+        used = [s for s in sparingly if s in session_vocab]
+        if used:
+            out.append("SPARINGLY (already used — now avoid): " + ", ".join(used[:8]))
+    return out
 
 
 _EXPLORATION_SCENE_TYPES = {"vault_exploration"}   # mirrors server._is_exploration_scene (hook can't import server)
@@ -265,14 +358,24 @@ def _build_scene_line(scene_type: str) -> str:
 def build_reminder(catch_count: int, catch_log: dict,
                    blacklisted: list[str], sparingly: list[str],
                    session_vocab: list[str], scene_type: str = "unknown",
-                   canon_required: bool = False) -> str:
+                   canon_required: bool = False,
+                   structural: list | None = None) -> str:
     """Build the reminder string based on session state.
 
     Three tiers:
-    - 0 catches: one-line reminder with scene-type top patterns
-    - 1-5 catches: session offenders + scene line (no full banned list)
-    - 6+ catches: full output (you need the reinforcement)
+    - 0 catches: one-line reminder with scene-type top patterns + families marker
+    - 1-5 catches: session offenders + scene line + families marker
+    - 6+ catches: full output including the built-from-blacklist banned families
+
+    The banned-pattern prime is derived from ``structural`` (blacklist.json's
+    structural_patterns) at EVERY tier — a compact one-line families marker at
+    the clean/low tiers, the full glossed block at the high tier. When
+    ``structural`` is None it is loaded from blacklist.json so callers/tests that
+    don't pass it still get the live families.
     """
+    if structural is None:
+        structural = _load_structural_patterns()
+
     # Lorebook nudge — appended to all tiers
     lorebook_nudge = "LOREBOOK: Before writing biology, history, species traits, or world facts — call lorebook(view, keyword) first. Tool Before Tale."
 
@@ -281,6 +384,11 @@ def build_reminder(catch_count: int, catch_log: dict,
     if canon_required:
         canon_warning = "**CANON REQUIRED THIS TURN** — call check_canon(user_input) BEFORE writing narrative. "
 
+    # Compact families marker — rendered at every tier so the banned prime is
+    # never Tier-3-only (the old failure). Empty string when no structural data.
+    fam_line = _banned_families_line(structural)
+    fam_suffix = f" | {fam_line}" if fam_line else ""
+
     # === TIER 1: Clean session — minimal reminder ===
     if catch_count == 0:
         if scene_type != "unknown":
@@ -288,8 +396,8 @@ def build_reminder(catch_count: int, catch_log: dict,
             weights = get_scene_weights(scene_type)
             if weights:
                 top_3 = list(weights.keys())[:3]
-                return f"{canon_warning}PHRASE DISCIPLINE: Clean session. {scene_type} — watch: {', '.join(top_3)} | {lorebook_nudge}"
-        return f"{canon_warning}PHRASE DISCIPLINE: Clean session. Stay sharp. | {lorebook_nudge}"
+                return f"{canon_warning}PHRASE DISCIPLINE: Clean session. {scene_type} — watch: {', '.join(top_3)} | {lorebook_nudge}{fam_suffix}"
+        return f"{canon_warning}PHRASE DISCIPLINE: Clean session. Stay sharp. | {lorebook_nudge}{fam_suffix}"
 
     lines = []
 
@@ -310,6 +418,8 @@ def build_reminder(catch_count: int, catch_log: dict,
         if scene_type != "unknown":
             lines.append(_build_scene_line(scene_type))
 
+        if fam_line:
+            lines.append(fam_line)
         lines.append("RULE: Affirmative statement first. State what it IS, never what it isn't.")
         lines.append(lorebook_nudge)
         return " ".join(lines)
@@ -333,7 +443,7 @@ def build_reminder(catch_count: int, catch_log: dict,
     if scene_type != "unknown":
         lines.append(_build_scene_line(scene_type))
 
-    lines.append("BANNED PATTERNS: no 'the X of a Y who/that'; no 'not X — Y' negation-correction; no freeze/lock/petrification for reactions; no silence-as-actor; no vocal-adjective delivery tags; no 'something in her voice/eyes'; no 'settles over/into/between'; no 'the weight of'; no breathing-as-shock ('breath catches/hitches', 'exhales', 'breathes out').")
+    lines.extend(_banned_block_full(blacklisted, structural, sparingly, session_vocab))
     lines.append("RULE: Affirmative statement first. State what it IS, never what it isn't. If a sentence starts with 'not', rewrite it.")
     # Scene-type replacement suggestions
     replacements = {
@@ -1067,10 +1177,10 @@ def main():
         catch_log = state.get("catch_log", {})
         session_vocab = state.get("session_vocabulary", [])
 
-        blacklisted, sparingly = load_blacklist()
+        blacklisted, sparingly, structural = load_blacklist()
         scene_type = _read_scene_type()
         canon_required = state.get("canon_required", False)
-        reminder = build_reminder(catch_count, catch_log, blacklisted, sparingly, session_vocab, scene_type, canon_required)
+        reminder = build_reminder(catch_count, catch_log, blacklisted, sparingly, session_vocab, scene_type, canon_required, structural)
 
         # Bell tracking: append current in-game time
         bell = state.get("current_bell", 0)

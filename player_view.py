@@ -81,6 +81,47 @@ def _current_place_features(campaign_dir: Path, location) -> list:
     return []
 
 
+def _last_mechanics_events(campaign_dir: Path) -> list:
+    """Last 5 mechanical deltas (mechanics_ticker ledger). Player-known by
+    construction: PC numbers are theirs; enemy entries are qualitative. []
+    when the file is absent. Leaf-safe: mechanics_ticker never imports server."""
+    try:
+        import mechanics_ticker
+        return mechanics_ticker.last_events(campaign_dir, 5)
+    except Exception:
+        return []
+
+
+def _journal(campaign_dir: Path) -> dict:
+    """The player journal: the active site's revealed ledger, newest first, plus
+    its open docket tracks. Spoiler-safe by construction — the ledger holds only
+    party-earned facts and the docket stands were written from play. The active
+    site = the maps/*_map.json with the newest last_seen_day (mtime fallback)."""
+    try:
+        maps_dir = campaign_dir / "maps"
+        best, best_key = None, (-1, -1.0)
+        for f in maps_dir.glob("*_map.json"):
+            data = _read_json(f)
+            if not isinstance(data, dict):
+                continue
+            day = data.get("last_seen_day")
+            key = (day if isinstance(day, int) else -1, f.stat().st_mtime)
+            if key > best_key:
+                best, best_key = data, key
+        if not best:
+            return {}
+        entries = [{"day": e.get("day"), "fact": e.get("fact", "")}
+                   for e in (best.get("revealed_ledger") or [])][-30:]
+        entries.reverse()
+        tracks = [{"title": t.get("title", ""), "status": t.get("status", ""),
+                   "stand": t.get("stand", "")}
+                  for t in (best.get("tracks") or [])
+                  if isinstance(t, dict) and t.get("status") != "RESOLVED"]
+        return {"site": best.get("map_name"), "entries": entries, "tracks": tracks}
+    except Exception:
+        return {}
+
+
 def build_view(campaign_dir: Path) -> dict:
     campaign_dir = Path(campaign_dir)
     meta = _read_json(campaign_dir / "characters" / "_meta.json") or {}
@@ -97,12 +138,15 @@ def build_view(campaign_dir: Path) -> dict:
             c = _read_json(f) or {}
             hp = c.get("hp") or {}
             av = c.get("av") or {}
+            conditions = [cd.get("name") for cd in (c.get("conditions") or [])
+                          if isinstance(cd, dict) and cd.get("name")]
             party.append({
                 "name": c.get("name") or f.stem,
                 "hp": hp.get("current") if isinstance(hp, dict) else hp,
                 "hp_max": hp.get("max") if isinstance(hp, dict) else None,
                 "av": av.get("base") if isinstance(av, dict) else av,
                 "wounds": len(c.get("wounds") or []),
+                "conditions": conditions,
                 "slots_free": c.get("slots_free"),
                 "slots_total": c.get("slot_capacity_total"),
                 "items": _item_entries(c),
@@ -124,6 +168,8 @@ def build_view(campaign_dir: Path) -> dict:
         "location": game.get("active_location_name"),
         "active_prep": Path(prep).stem if prep else None,
         "site_features": _current_place_features(campaign_dir, game.get("active_location_name")),
+        "last_events": _last_mechanics_events(campaign_dir),
+        "journal": _journal(campaign_dir),
         "party": party,
         "wealth_tokens": (party_file.get("wealth") or {}).get("tokens"),
         "supply": meta.get("supply") or {},

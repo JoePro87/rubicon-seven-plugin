@@ -109,7 +109,7 @@ def test_enter_room_returns_glance_only(map_env):
     out = map_env.enter_room("testvault", "atrium")
     assert "para one" in out
     assert "para two" not in out
-    assert "Render ONE finding" in out
+    assert "render ONE finding plainly" in out
     assert 'map(action="look"' in out
 
 
@@ -117,7 +117,7 @@ def test_look_returns_inspection(map_env):
     map_env.enter_room("testvault", "atrium")
     out = map_env.look_room("testvault", "atrium")
     assert "para two" in out and "para three" in out
-    assert "Render ONE finding" in out
+    assert "render ONE finding plainly" in out
 
 
 def test_look_feature_scoped(map_env):
@@ -163,7 +163,7 @@ def test_loot_never_in_glance_or_inspection(map_env):
 def test_search_carries_discipline_line(map_env):
     map_env.enter_room("testvault", "atrium")
     out = map_env.search_room("testvault", "atrium")
-    assert "Render ONE finding" in out
+    assert "render ONE finding plainly" in out
 
 
 def test_first_glance_header_not_warned_as_unmapped(map_env, caplog):
