@@ -506,10 +506,12 @@ def test_three_column_table_still_parses(camp):
     assert enc["table_entries"][0]["context"] == "from the vents"
 
 def test_real_kalaxis_table_parses_all_rows(camp):
-    # the real KALAXIS d6 encounter table is 2-column; all 6 rows must parse
+    # live-file check: a real campaign's 2-column d6 encounter table must parse
+    # all rows. Runs only when a campaign dir with this prep is present.
     import os
-    kal = r"C:\rubicon-seven-campaign\KALAXIS_PREP.md"
-    if os.path.exists(kal):
+    camp_dir = os.environ.get("RUBICON_CAMPAIGN_DIR", "")
+    kal = os.path.join(camp_dir, "KALAXIS_PREP.md") if camp_dir else ""
+    if kal and os.path.exists(kal):
         ms = MapSystem(camp)
         enc = ms._parse_encounters_from_prep(open(kal, encoding="utf-8").read())
         if enc and enc["type"] == "random_table":

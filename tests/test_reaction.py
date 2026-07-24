@@ -1,5 +1,3 @@
-import sys
-sys.path.insert(0, r"C:\rubicon-seven-mcp\.claude\worktrees\queued-followups")
 import server
 import bestiary_encounter
 
