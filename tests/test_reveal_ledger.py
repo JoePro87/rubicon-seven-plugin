@@ -120,6 +120,31 @@ def test_reveal_fact_autocreates_social_ledger(map_sys):
     assert state["revealed_ledger"][-1]["fact"] == "The broker runs the debt ring"
 
 
+def test_long_fact_round_trips_byte_identical(map_sys, tmp_map):
+    """Regression (2026-07-24): facts were silently sliced to 300 chars mid-word.
+    A ~600-char fact must store and echo intact."""
+    long_fact = ("The keeper's registration file records forty-seven traversals "
+                 "and forty-seven unanswered requests, each one filed against a "
+                 "node that no longer answers, and the notation left behind in "
+                 "Zone C is hypergeometric rather than clerical. ") * 3
+    long_fact = long_fact.strip()
+    assert len(long_fact) > 600
+    out = map_sys.reveal_fact(tmp_map, long_fact, room_id="room_a", provenance="mint")
+    state = map_sys.get_map_state(tmp_map)
+    assert state["revealed_ledger"][-1]["fact"] == long_fact
+    assert long_fact in out  # echo reflects what was actually stored
+
+
+def test_over_cap_fact_fails_loudly_and_stores_nothing(map_sys, tmp_map):
+    huge = "x" * (MapSystem.LEDGER_FACT_MAX_CHARS + 1)
+    before = len(map_sys.get_map_state(tmp_map).get("revealed_ledger", []))
+    out = map_sys.reveal_fact(tmp_map, huge, room_id="room_a", provenance="mint")
+    assert "REFUSED" in out and "Split it into two reveals" in out
+    after = map_sys.get_map_state(tmp_map).get("revealed_ledger", [])
+    assert len(after) == before
+    assert not any((e.get("fact") or "").startswith("xxxx") for e in after)
+
+
 def test_reveal_fact_unknown_name_still_errors(map_sys):
     """A name the sanction rejects (e.g. a typo'd vault name) still hard-errors
     on a missing map — auto-create is scoped to the active prep only."""

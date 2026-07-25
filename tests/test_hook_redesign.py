@@ -131,6 +131,16 @@ SANCTIONED_BLOCKING_CHECKS = {
     # §4 A0.2. Distinguished from the retired prose-QUALITY output-blocking doctrine:
     # this is a content/mechanics-fidelity lane, not a style gate.
     "_check_mechanics_source",
+    # Canon gate hardening (spec 2026-07-24 §A/§B/§C.3). The 2026-07-24 poisoning
+    # ran through OOC exposition, which reached ZERO blocking canon checks: the
+    # deterministic detectors live in the opt-in validate_prose path, and every
+    # other canon check on the Stop path soft-logs. These three are deliberate
+    # BLOCKING content-fidelity gates, not style gates.
+    "_check_spatial_source",
+    "_check_attributed_claims",
+    # §C.3: conditionally blocking — advisory when the turn DID consult canon,
+    # blocking only when it consulted nothing.
+    "_check_in_dialogue_fabrication",
 }
 
 

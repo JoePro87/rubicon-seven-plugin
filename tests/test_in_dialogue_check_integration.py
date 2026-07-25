@@ -7,21 +7,35 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from hooks.consolidated_stop_check import _check_in_dialogue_fabrication
 
 
-def test_blocks_fabricated_duration():
-    """Detection still works; the hard block was removed.
+def _hook_input(tool_names=()):
+    return {"transcript_messages": [{
+        "role": "assistant",
+        "content": [{"type": "tool_use", "name": n, "input": {}} for n in tool_names],
+    }]}
 
-    _check_in_dialogue_fabrication was converted to soft-log-only
-    (consolidated_stop_check.py:990-998 returns (False,"",{}) — validate_prose is
-    the primary gate now). The scanner still detects the fabricated duration.
+
+def test_blocks_fabricated_duration():
+    """Canon gate hardening §C.3 (2026-07-24): blocks when nothing was consulted.
+
+    The old contract soft-logged unconditionally because "validate_prose is the
+    primary gate" — untrue for any turn the DM never validates, which is how ten
+    turns of invention reached the player on 2026-07-24.
     """
-    hook_input = {}
     state = {"session_type": "gameplay"}
     response = 'Amara leaned back. "I have known him seventy-nine days," she said.'
-    blocked, reason, _ = _check_in_dialogue_fabrication(hook_input, state, response)
-    # Detection still fires...
+    blocked, reason, _ = _check_in_dialogue_fabrication(_hook_input(), state, response)
     from hooks.dialogue_claim_scanner import detect_claims_in_response
     assert detect_claims_in_response(response), "Scanner should still detect the claim"
-    # ...but the hook no longer hard-blocks.
+    assert blocked is True
+    assert "seventy-nine days" in reason
+
+
+def test_stays_advisory_when_the_turn_consulted_canon():
+    """A turn that DID check canon keeps the old soft-log behaviour."""
+    state = {"session_type": "gameplay"}
+    response = 'Amara leaned back. "I have known him seventy-nine days," she said.'
+    blocked, _, _ = _check_in_dialogue_fabrication(
+        _hook_input(["mcp__rubicon-seven__check_canon"]), state, response)
     assert blocked is False
 
 

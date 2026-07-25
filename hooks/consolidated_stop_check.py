@@ -50,6 +50,26 @@ try:
     from hooks.mechanics_source_gate import scan_unbacked_mechanics
 except ImportError:  # sibling-import fallback (hooks/ on sys.path directly)
     from mechanics_source_gate import scan_unbacked_mechanics
+try:
+    from hooks.place_lexicon import load_place_lexicon
+    from hooks.spatial_claim_gate import (
+        scan_unbacked_spatial, extract_spatial_assertions,
+        block_tail as _spatial_block_tail,
+    )
+    from hooks.attributed_claim_gate import (
+        scan_attributed_claims, block_tail as _attributed_block_tail,
+    )
+    from hooks import spatial_register as _spatial_register
+except ImportError:  # sibling-import fallback (hooks/ on sys.path directly)
+    from place_lexicon import load_place_lexicon
+    from spatial_claim_gate import (
+        scan_unbacked_spatial, extract_spatial_assertions,
+        block_tail as _spatial_block_tail,
+    )
+    from attributed_claim_gate import (
+        scan_attributed_claims, block_tail as _attributed_block_tail,
+    )
+    import spatial_register as _spatial_register
 
 # ---------------------------------------------------------------------------
 # Constants from anti_pattern_check
@@ -1326,18 +1346,12 @@ def _check_npc_fabrication(hook_input: dict, state: dict, response_text: str) ->
     if state.get("session_type", "development") != "gameplay":
         return False, "", {}
 
-    # Skip non-narrative responses (meta discussion, technical explanations, tool summaries)
-    # Narrative prose uses second-person ("you"), scene verbs, and NPC dialogue in quotes.
-    # Meta responses discuss implementation, use "the hook", "server.py", "check_canon", etc.
-    meta_signals = ["server.py", "check_canon", "lorebook(", "hook", "MCP", "implement",
-                    "Phase ", "token", "caching", "inject", "function", "middleware"]
-    meta_count = sum(1 for signal in meta_signals if signal in response_text)
-    has_narrative_markers = ("What do you do?" in response_text or
-                            "\nyou " in response_text.lower() or
-                            "\nYour " in response_text or
-                            '"' in response_text[:500])
-    if meta_count >= 2 and not has_narrative_markers:
-        return False, "", {}
+    # C.2 (2026-07-24): the meta-signal skip that used to sit here was DELETED.
+    # It bailed out of the whole check when >=2 engineering words appeared
+    # without narrative markers — which is exactly the shape of the OOC
+    # exposition that carried the 2026-07-24 fabrications. The
+    # session_type != "gameplay" guard above already excludes engine-dev
+    # sessions, which is what that heuristic was approximating.
 
     # Load NPC names from npc_states.json
     npc_path = CAMPAIGN_DIR / "npc_states.json"
@@ -1742,7 +1756,15 @@ def _check_in_dialogue_fabrication(hook_input: dict, state: dict, response_text:
         severity="soft",
     )
 
-    # Soft log only — validate_prose is the primary gate.
+    # C.3 (2026-07-24): this used to soft-log unconditionally, on the rationale
+    # that "validate_prose is the primary gate". That is false for any turn the
+    # DM does not voluntarily validate — and OOC turns are never validated.
+    # Now: a turn that DID consult canon stays advisory; a turn that consulted
+    # nothing blocks. Strictly narrower than what the check already computes.
+    verifiers = {"check_canon", "search", "lorebook", "npc"}
+    tool_names = set(_turn_tool_names(hook_input))
+    if not (tool_names & verifiers):
+        return True, reason, {}
     return False, "", {}
 
 
@@ -2134,6 +2156,196 @@ def _check_mechanics_source(hook_input: dict, state: dict, response_text: str) -
 
 
 # ===================================================================
+# Canon gate hardening (spec 2026-07-24) — spatial + attributed claims.
+#
+# Both gates are Stop-hook-resident and BLOCKING by design. The 2026-07-24
+# poisoning was delivered in OOC exposition, which reaches ZERO blocking canon
+# checks: validate_prose (where the deterministic fabrication detectors live) is
+# opt-in, and every other canon check on that path soft-logs. Adding these to
+# validate_prose only would reproduce the failure exactly.
+#
+# The ONLY exemptions are maintenance, non-gameplay sessions, and
+# _is_meta_only_response (all-paragraphs-parenthesised). Deliberately NOT gated
+# on _is_narrative_turn: its 300-char floor, turn_count<=3 bypass and tool-heavy
+# ratio test would each independently have let the 2026-07-24 turns through.
+# ===================================================================
+
+def _turn_tool_names(hook_input: dict) -> list:
+    return [name.replace("mcp__rubicon-seven__", "")
+            for name, _ in _iter_assistant_tool_uses(hook_input)]
+
+
+def _revealed_ledger_blob() -> str:
+    """Lowercased ' | '-joined revealed_ledger facts from every live maps/*.json.
+
+    Facts learned in play this session live in the site map's revealed_ledger,
+    not in the distillation cache — an answer key built from the cache alone
+    would flag freshly-earned facts as fabrications. Backup maps are excluded;
+    newest 60 per map. Fail-open to ''.
+    """
+    try:
+        facts = []
+        for mp in sorted((CAMPAIGN_DIR / "maps").glob("*.json")):
+            if ".bak" in mp.name or ".pre-" in mp.name:
+                continue
+            try:
+                data = json.loads(mp.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            ledger = (data or {}).get("revealed_ledger") or []
+            for entry in ledger[-60:]:
+                if isinstance(entry, dict) and entry.get("fact"):
+                    facts.append(str(entry["fact"]))
+        return " | ".join(facts).lower()
+    except Exception:
+        return ""
+
+
+# The answer key is ~0.5 MB and rebuilding it every turn dominated the gate's
+# cost (146ms -> single-digit ms cached). Keyed on the mtimes of everything that
+# feeds it, so a fresh reveal or distillation invalidates immediately.
+_ANSWER_KEY_CACHE: dict = {"key": None, "value": None}
+
+
+def _answer_key_blob() -> str:
+    """Distillation cache + Revealed Ledger, mtime-cached. Fail-open to ''."""
+    try:
+        paths = [_DEFAULT_CACHE_PATH] + sorted((CAMPAIGN_DIR / "maps").glob("*.json"))
+        key = tuple((str(p), p.stat().st_mtime if p.exists() else None)
+                    for p in paths)
+    except Exception:
+        key = None
+    if key is not None and _ANSWER_KEY_CACHE["key"] == key:
+        return _ANSWER_KEY_CACHE["value"]
+    blob = _distillation_blob() + " | " + _revealed_ledger_blob()
+    if key is not None:
+        _ANSWER_KEY_CACHE["key"] = key
+        _ANSWER_KEY_CACHE["value"] = blob
+    return blob
+
+
+def _distillation_blob() -> str:
+    """Lowercased ' | '-joined cache key_facts + learnings. Fail-open to ''."""
+    try:
+        try:
+            from hooks.distillation_cache import DistillationCache
+        except ImportError:
+            from distillation_cache import DistillationCache
+        parts = []
+        for entry in DistillationCache(_DEFAULT_CACHE_PATH).all_entries():
+            parts += [str(f) for f in (entry.get("key_facts") or [])]
+            learning = entry.get("learning") or entry.get("learnings")
+            if isinstance(learning, str):
+                parts.append(learning)
+            elif isinstance(learning, list):
+                parts += [str(x) for x in learning]
+        return " | ".join(parts).lower()
+    except Exception:
+        return ""
+
+
+def _gate_preconditions(state: dict, response_text: str) -> bool:
+    """Shared short-circuits for both new gates. True = proceed to scan."""
+    if in_maintenance(state):
+        return False
+    if _is_meta_only_response(response_text):
+        return False
+    if state.get("session_type", "development") != "gameplay":
+        return False
+    return bool(response_text)
+
+
+def _check_spatial_source(hook_input: dict, state: dict, response_text: str) -> tuple[bool, str, dict]:
+    """BLOCKING (spec §A): bearings/distances/containment about canon places
+    must trace to a geography()/map()/check_canon() call this turn.
+
+    Also folds in the session-scoped spatial register (spec §D) — ADVISORY only,
+    printed to stdout, never part of the block reason.
+    """
+    if not _gate_preconditions(state, response_text):
+        return False, "", {}
+    try:
+        lexicon = load_place_lexicon(CAMPAIGN_DIR)
+    except Exception:
+        return False, "", {}
+    if not (lexicon.get("overworld") or lexicon.get("site")):
+        return False, "", {}          # fail-open: no data, no gate
+
+    # Advisory register pass runs regardless of whether the turn is backed —
+    # a sourced bearing that contradicts an earlier sourced bearing still matters.
+    try:
+        session_id = state.get("session_id") or "unknown"
+        turn = state.get("turn_count")
+        for subj, rel, obj, value, excerpt in extract_spatial_assertions(
+                response_text, lexicon):
+            key, norm = _spatial_register.normalize_assertion(subj, rel, obj, value)
+            for line in _spatial_register.record(
+                    CAMPAIGN_DIR, session_id, key, norm, excerpt, turn=turn):
+                print(line)
+    except Exception:
+        pass
+
+    try:
+        hits = scan_unbacked_spatial(
+            response_text, _turn_tool_names(hook_input), lexicon)
+    except Exception:
+        return False, "", {}
+    if hits:
+        reason = ("SPATIAL GATE (fail-closed):\n" + "\n".join(hits[:3])
+                  + _spatial_block_tail())
+        try:
+            log_correction(hook_name="spatial_claim_gate", caught_text=hits[0],
+                           reason_given=reason, severity="hard")
+        except Exception:
+            pass
+        return True, reason, {}
+    return False, "", {}
+
+
+def _check_attributed_claims(hook_input: dict, state: dict, response_text: str) -> tuple[bool, str, dict]:
+    """BLOCKING (spec §B): a claim put in a canon NPC's mouth must be on the
+    record (distillation cache + Revealed Ledger) or sourced by a tool call.
+
+    Measured arm rate over the 200-turn live corpus: 7.0% — under the spec's
+    10% blocking threshold (§B.5), so this ships blocking rather than advisory.
+    """
+    if not _gate_preconditions(state, response_text):
+        return False, "", {}
+    try:
+        npc_names = set()
+        npc_path = CAMPAIGN_DIR / "npc_states.json"
+        if npc_path.exists():
+            data = json.loads(npc_path.read_text(encoding="utf-8"))
+            for key, entry in (data.get("npcs") or {}).items():
+                npc_names.add(str(key).replace("_", " ").lower())
+                if isinstance(entry, dict) and entry.get("name"):
+                    npc_names.add(str(entry["name"]).lower().split()[0])
+        npc_names |= {n.lower() for n in _load_party_names()}
+        npc_names = {n for n in npc_names if len(n) >= 3}
+    except Exception:
+        return False, "", {}
+    if not npc_names:
+        return False, "", {}          # fail-open: no roster, no gate
+
+    try:
+        blob = _answer_key_blob()
+        hits = scan_attributed_claims(
+            response_text, npc_names, blob, _turn_tool_names(hook_input))
+    except Exception:
+        return False, "", {}
+    if hits:
+        reason = ("ATTRIBUTED-CLAIM GATE (fail-closed):\n" + "\n".join(hits[:3])
+                  + _attributed_block_tail())
+        try:
+            log_correction(hook_name="attributed_claim_gate", caught_text=hits[0],
+                           reason_given=reason, severity="hard")
+        except Exception:
+            pass
+        return True, reason, {}
+    return False, "", {}
+
+
+# ===================================================================
 # Main entry point
 # ===================================================================
 
@@ -2156,6 +2368,11 @@ def main():
         # BLOCKING check (A0.2): narrated mechanics must trace to a tool call
         # this turn. Registered before advisory checks so its reason wins.
         lambda: _check_mechanics_source(hook_input, state, response_text),
+        # BLOCKING checks (canon gate hardening, 2026-07-24): spatial claims and
+        # NPC-attributed claims must trace to a source. Registered here so their
+        # reasons win over the advisory checks below.
+        lambda: _check_spatial_source(hook_input, state, response_text),
+        lambda: _check_attributed_claims(hook_input, state, response_text),
         lambda: _check_anti_pattern(hook_input, state, response_text),
         lambda: _check_semantic_observer(hook_input, state, response_text),
         lambda: _check_prep_file(hook_input, state),

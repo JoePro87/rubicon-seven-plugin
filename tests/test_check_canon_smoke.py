@@ -53,15 +53,17 @@ def test_smoke_2_fabricated_duration_blocks():
         finally:
             cs._DEFAULT_CACHE_PATH = original_path
 
-    # The check still DETECTS the fabricated duration, but no longer hard-blocks:
-    # _check_in_dialogue_fabrication soft-logs and returns (False,"",{})
-    # (consolidated_stop_check.py:990-998 "Soft log only — validate_prose is the
-    # primary gate."). Verify detection still fires via the scanner.
+    # Canon gate hardening §C.3 (2026-07-24): this check used to soft-log
+    # unconditionally on the rationale that "validate_prose is the primary gate".
+    # That is false for any turn the DM never routes through validate_prose.
+    # Now: a turn that consulted NO canon tool blocks; a turn that did stays
+    # advisory. This hook_input carries no tool calls, so it blocks.
     from hooks.dialogue_claim_scanner import detect_claims_in_response
     claims = detect_claims_in_response(response)
     assert claims, "Scanner should still detect the fabricated duration claim"
     assert any("duration" in t for t, _ in claims)
-    assert blocked is False
+    assert blocked is True
+    assert "seventy-nine days" in reason
 
 
 # ------------------------------------------------------------------

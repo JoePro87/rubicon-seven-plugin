@@ -57,6 +57,10 @@ PROVENANCE_HELP = (
 class MapSystem:
     """Spatial tracking system for dungeon/vault/city exploration."""
 
+    # Generous hard cap on a single Revealed Ledger fact. Over this, the append
+    # is REFUSED loudly (never silently sliced) — see _ledger_append.
+    LEDGER_FACT_MAX_CHARS = 2000
+
     # Map a room's `### Subsection` header (lowercased) to a reveal tier.
     # obvious = surfaced on arrival; hidden = surfaced only on a search turn;
     # dm = DM-channel note (surfaced at obvious, marked [DM]); skip = never here
@@ -139,17 +143,26 @@ class MapSystem:
     def _ledger_append(self, state, fact, source_room, source_action, provenance: str = ""):
         """Append a party-known fact to the site's Revealed Ledger.
         Whitelist-by-construction: callers may only pass text the party has
-        legitimately learned (reveal paths) or neutral markers (entered/searched)."""
+        legitimately learned (reveal paths) or neutral markers (entered/searched).
+
+        Facts are stored INTACT — never sliced. (Until 2026-07-24 this silently
+        truncated to 300 chars mid-word, damaging 31 Thyricost entries.) A fact
+        over LEDGER_FACT_MAX_CHARS is REFUSED loudly instead of being trimmed.
+        Returns "" on success, or an error string the caller must surface."""
         fact = (fact or "").strip()
         if not fact:
-            return
-        stored = fact[:300]
+            return ""
+        if len(fact) > self.LEDGER_FACT_MAX_CHARS:
+            return (f"❌ REFUSED — fact is {len(fact)} chars, over the "
+                    f"{self.LEDGER_FACT_MAX_CHARS}-char ledger cap. Nothing was "
+                    f"stored. Split it into two reveals rather than losing text.")
+        stored = fact
         ledger = state.setdefault("revealed_ledger", [])
         # Dedup: skip a fact byte-identical (post-strip) to any of the last 10
         # entries — repeated enter/search marks and re-reveals no longer pile up.
         for e in ledger[-10:]:
             if (e.get("fact") or "") == stored:
-                return
+                return ""
         day = None
         try:
             if callable(getattr(self, "get_day", None)):
@@ -163,6 +176,7 @@ class MapSystem:
         if provenance:
             entry["provenance"] = provenance[:120]
         ledger.append(entry)
+        return ""
 
     def _new_ledger_only_state(self, map_name: str) -> Dict:
         """A minimal, room-less state whose only live field is the Revealed
@@ -244,11 +258,19 @@ class MapSystem:
         if not (fact or "").strip():
             return "❌ reveal requires a non-empty fact"
         room = (room_id or state.get("party_location") or "").lower().strip()
-        self._ledger_append(state, fact, room, "reveal",
-                            provenance=self._normalize_provenance(provenance))
+        err = self._ledger_append(state, fact, room, "reveal",
+                                  provenance=self._normalize_provenance(provenance))
+        if err:
+            return err
         self.save_map_state(map_name, state)
         n = len(state["revealed_ledger"])
-        return (f"✅ Ledgered ({n} facts known at {map_name}): {fact.strip()}\n"
+        # Echo the STORED value, not the input — a storage discrepancy must be
+        # visible in the confirmation instead of masked by it (2026-07-24).
+        want = fact.strip()
+        stored = next((e.get("fact") or "" for e in reversed(state["revealed_ledger"])
+                       if (e.get("fact") or "") == want),
+                      (state["revealed_ledger"][-1].get("fact") or ""))
+        return (f"✅ Ledgered ({n} facts known at {map_name}): {stored}\n"
                 f"NPCs may now assert this fact. STATE IT PLAINLY in your prose — "
                 f"an earned fact is a declarative sentence, never atmosphere.")
 
